@@ -1,0 +1,382 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema">
+    <!-- Password restriction -->
+    <xs:simpleType name="TypePassword">
+        <xs:restriction base="xs:string">
+            <xs:minLength value="8"/>
+        </xs:restriction>
+    </xs:simpleType>
+
+    <!-- Definition des roles -->
+    <xs:simpleType name="TypeRole">
+        <xs:restriction base="xs:string">
+            <xs:enumeration value="admin"/>
+            <xs:enumeration value="responsable municipalite"/>
+            <xs:enumeration value="responsable service de voirie"/>
+            <xs:enumeration value="responsable service d'environnement"/>
+            <xs:enumeration value="chef de tournee"/>
+            <xs:enumeration value="ouvrier"/>
+            <xs:enumeration value="citoyen"/>
+        </xs:restriction>
+    </xs:simpleType>
+
+    <!-- Type user -->
+    <xs:complexType name="TypeUser">
+        <xs:sequence>
+            <xs:element name="login" type="xs:string"/>
+            <xs:element name="password" type="TypePassword"/>
+            <xs:element name="nom" type="xs:string"/>
+            <xs:element name="prenom" type="xs:string"/>
+            <xs:element name="role" type="TypeRole"/>
+        </xs:sequence>
+        <xs:attribute name="id" type="xs:int" use="required"/>
+    </xs:complexType>
+
+
+    <!-- Liste des utilisateurs -->
+    <xs:element name="users">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="user" type="TypeUser" minOccurs="1" maxOccurs="unbounded"/>
+            </xs:sequence>
+        </xs:complexType>
+
+        <!-- id unique (clé primaire) -->
+        <xs:key name="UserIdKey">
+            <xs:selector xpath="user"/>
+            <xs:field xpath="@id"/>
+        </xs:key>
+
+        <!-- login unique -->
+        <xs:unique name="UserLoginUnique">
+            <xs:selector xpath="user"/>
+            <xs:field xpath="login"/>
+        </xs:unique>
+
+    </xs:element>
+
+    <!-- declaration de type de vehicules -->
+
+    <!-- pattern de matricule -->
+    <xs:simpleType name="TypeMat">
+        <xs:restriction base="xs:string">
+            <xs:pattern value="[0-9]{3}TUN[0-9]{4}"/>
+        </xs:restriction>
+    </xs:simpleType>
+
+    <!-- valeurs possibles de disponibilite -->
+    <xs:simpleType name="TypeDispo">
+        <xs:restriction base="xs:string">
+            <xs:enumeration value="disponible"/>
+            <xs:enumeration value="en service"/>
+        </xs:restriction>
+    </xs:simpleType>
+
+    <!-- element vide chauffeur -->
+    <xs:complexType name="TypeChauffeur">
+        <xs:attribute name="id"/>
+    </xs:complexType>
+
+    <xs:complexType name="TypeVehicule">
+        <xs:sequence>
+            <xs:element name="matricule" type="TypeMat"/>
+            <xs:element name="chauffeur" type="TypeChauffeur"/>
+            <xs:element name="disponibilite" type="TypeDispo"/>
+        </xs:sequence>
+        <xs:attribute name="id" type="xs:string"/>
+    </xs:complexType>
+
+    <xs:element name="vehicules">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="vehicule" type="TypeVehicule" minOccurs="1" maxOccurs="unbounded"/>
+            </xs:sequence>
+        </xs:complexType>
+        <xs:key name="VehiculeIdKey">
+            <xs:selector xpath="vehicule"/>
+            <xs:field xpath="@id"/>
+        </xs:key>
+        <xs:keyref name="chauffeurRef" refer="UserIdKey">
+            <xs:selector xpath="vehicules/vehicule/chauffeur"/>
+            <xs:field xpath="@id"/>
+        </xs:keyref>
+    </xs:element>
+
+    <!-- declaration de type de trashCans -->
+
+    <!-- type coordonnees -->
+     <xs:complexType name="TypeCoord">
+        <xs:sequence>
+            <xs:element name="latitude" type="xs:float"/>
+            <xs:element name="longitude" type="xs:float"/>
+        </xs:sequence>
+     </xs:complexType>
+
+    <!-- type lieu -->
+    <xs:complexType name="TypeLieu">
+        <xs:sequence>
+            <xs:element name="adresse" type="xs:string"/>
+            <xs:element name="coordonnees" type="TypeCoord"/>
+        </xs:sequence>
+    </xs:complexType>
+    
+    <!-- val de type dechets -->
+    <xs:simpleType name="TypeDechets">
+        <xs:restriction base="xs:string">
+            <xs:enumeration value="plastique"/>
+            <xs:enumeration value="verre"/>
+            <xs:enumeration value="papier"/>
+            <xs:enumeration value="autre"/>
+        </xs:restriction>
+    </xs:simpleType>
+
+    <!-- val de type status -->
+    <xs:simpleType name="TypeStatus">
+        <xs:restriction base="xs:string">
+            <xs:enumeration value="vide"/>
+            <xs:enumeration value="moitie"/>
+            <xs:enumeration value="pleine"/>
+        </xs:restriction>
+    </xs:simpleType>
+
+    <xs:complexType name="TypeTrashCan">
+        <xs:sequence>
+            <xs:element name="lieu" type="TypeLieu"/>
+            <xs:element name="typeDechet" type="TypeDechets"/>
+            <xs:element name="status" type="TypeStatus"/>
+        </xs:sequence>
+        <xs:attribute name="id"/>
+    </xs:complexType>
+
+    <xs:element name="trashCans">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="trashCan" type="TypeTrashCan" minOccurs="1" maxOccurs="unbounded"/>
+            </xs:sequence>
+        </xs:complexType>
+        <xs:key name="TrashCanIdKey">
+            <xs:selector xpath="trashCan"/>
+            <xs:field xpath="@id"/>
+        </xs:key>
+    </xs:element>
+
+    <!-- declaration de type de tournees -->
+
+    <!-- elements vides (trashCan/ouvrier/vehicule) -->
+     <xs:complexType name="TypeTrashCanTournee">
+        <xs:attribute name="id"/>
+    </xs:complexType>
+
+    <xs:complexType name="TypeOuvrierTournee">
+        <xs:attribute name="id"/>
+    </xs:complexType>
+
+    <xs:complexType name="TypeVehiculeTournee">
+        <xs:attribute name="id"/>
+    </xs:complexType>
+    <xs:complexType name="TypeTournee">
+        <xs:sequence>
+            <xs:element name="trashCans">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element name="trashCan" type="TypeTrashCanTournee" minOccurs="1" maxOccurs="unbounded"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="ouvriers" minOccurs="1" maxOccurs="1">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element name="ouvrier" type="TypeOuvrierTournee" minOccurs="1" maxOccurs="unbounded"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="vehicule" type="TypeVehiculeTournee"/>
+            <xs:element name="date" type="xs:date"/>
+        </xs:sequence>
+        <xs:attribute name="id" type="xs:int"/>
+    </xs:complexType>
+
+    <xs:element name="tournees">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="tournee" type="TypeTournee" minOccurs="1" maxOccurs="unbounded"/>
+            </xs:sequence>
+        </xs:complexType>
+        <xs:key name="TourneeIdKey">
+            <xs:selector xpath="tournee"/>
+            <xs:field xpath="@id"/>
+        </xs:key>
+        <xs:keyref name="ouvrierRef" refer="UserIdKey">
+            <xs:selector xpath="tournees/tournee/emplyees/employee/ouvrier"/>
+            <xs:field xpath="@id"/>
+        </xs:keyref>
+        <xs:keyref name="tashCanRef" refer="TrashCanIdKey">
+            <xs:selector xpath="tournees/tournee/trashCans/trashCan"/>
+            <xs:field xpath="@id"/>
+        </xs:keyref>
+    </xs:element>
+
+    <!-- declaration de type de rapports -->
+
+    <xs:complexType name="TypeTourneeRapport">
+        <xs:attribute name="id"/>
+    </xs:complexType>
+    <!-- valeurs de status -->
+     <xs:simpleType name="TypeStatusRapport">
+        <xs:restriction base="xs:string">
+            <xs:enumeration value="present"/>
+            <xs:enumeration value="absent"/>
+        </xs:restriction>
+    </xs:simpleType>
+
+    <xs:complexType name="TypeOuvrierRapport">
+        <xs:sequence>
+            <xs:element name="nom" type="xs:string"/>
+            <xs:element name="prenom" type="xs:string"/>
+            <xs:element name="status" type="TypeStatusRapport"/>
+        </xs:sequence>
+        <xs:attribute name="id" type="xs:int"/>
+    </xs:complexType>
+
+    <xs:complexType name="TypeEmployeesRapport">
+        <xs:sequence>
+            <xs:element name="chefTourne" type="TypeChauffeur"/>
+            <xs:element name="ouvriers">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element name="ouvrier" type="TypeOuvrierRapport" minOccurs="1" maxOccurs="unbounded"/>
+                    </xs:sequence>
+                    <xs:attribute name="id"/>
+                </xs:complexType>
+            </xs:element>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="TypeTrashCanRapport">
+        <xs:attribute name="id" type="xs:int"/>
+        <xs:attribute name="quantite" type="xs:int"/>
+    </xs:complexType>
+    <xs:complexType name="TypeDechetsCollecteRapport">
+        <xs:sequence>
+            <xs:element name="trashCan" type="TypeTrashCanRapport" minOccurs="1" maxOccurs="unbounded"/>
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:complexType name="TypeRapport">
+        <xs:sequence>
+            <xs:element name="date" type="xs:date"/>
+            <xs:element name="tournee" type="TypeTourneeRapport"/>
+            <xs:element name="employees" type="TypeEmployeesRapport"/>
+            <xs:element name="dechetsCollecte" type="TypeDechetsCollecteRapport" minOccurs="1" maxOccurs="unbounded"/>
+        </xs:sequence>
+        <xs:attribute name="id" type="xs:int"/>
+    </xs:complexType>
+
+    <xs:element name="rapports">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="rapport" type="TypeRapport" minOccurs="1" maxOccurs="unbounded"/>
+            </xs:sequence>
+        </xs:complexType>
+        <xs:key name="RapportIdKey">
+            <xs:selector xpath="rapport"/>
+            <xs:field xpath="@id"/>
+        </xs:key>
+        <xs:keyref name="ouvrierRapportRef" refer="UserIdKey">
+            <xs:selector xpath="rapports/rapport/employees/ouvriers/ouvrier"/>
+            <xs:field xpath="@id"/>
+        </xs:keyref>
+        <xs:keyref name="chefTourneeRapportRef" refer="UserIdKey">
+            <xs:selector xpath="rapports/rapport/employees/chefTournee"/>
+            <xs:field xpath="@id"/>
+        </xs:keyref>
+        <xs:keyref name="trashCanRapportRef" refer="TrashCanIdKey">
+            <xs:selector xpath="rapports/rapport/dechetsCollecte/trashCan"/>
+            <xs:field xpath="@id"/>
+        </xs:keyref>
+    </xs:element>
+
+    <!-- declaration de type de travails -->
+    <xs:simpleType name="TypeEtatTravail">
+        <xs:restriction base="xs:string">
+            <xs:enumeration value="complet"/>
+            <xs:enumeration value="en cours"/>
+        </xs:restriction>
+    </xs:simpleType>
+
+    <xs:complexType name="TypeTravail">
+        <xs:sequence>
+            <xs:element name="date" type="xs:date"/>
+            <xs:element name="lieu" type="xs:string"/>
+            <xs:element name="etat" type="TypeEtatTravail"/>
+        </xs:sequence>
+        <xs:attribute name="id" type="xs:int"/>
+    </xs:complexType>
+
+    <xs:element name="travaux">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="travail" type="TypeTravail"/>
+            </xs:sequence>
+        </xs:complexType>
+
+        <xs:key name="TravailIdKey">
+            <xs:selector xpath="travail"/>
+            <xs:field xpath="@id"/>
+        </xs:key>
+    </xs:element>
+
+    <!-- declaration de type de notifications -->
+    <!-- elements vides: chef tournee/travail -->
+    <xs:complexType name="TypeChefTourneeNotif">
+        <xs:attribute name="id" type="xs:int"/>
+    </xs:complexType>
+    <xs:complexType name="TypeTravilNotif">
+        <xs:attribute name="id" type="xs:int"/>
+    </xs:complexType>
+    <xs:complexType name="TypeNotif">
+        <xs:sequence>
+            <xs:element name="chefTournee" type="TypeChefTourneeNotif"/>
+            <xs:element name="travail" type="TypeTravilNotif"/>
+            <xs:element name="contenu" type="xs:string"/>
+        </xs:sequence>
+        <xs:attribute name="id" type="xs:int"/>
+    </xs:complexType>
+
+    <xs:element name="notifications">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="notification" type="TypeNotif"/>
+            </xs:sequence>
+        </xs:complexType>
+        <xs:unique name="uniqueNotifId">
+            <xs:selector xpath="notifications/notification"/>
+            <xs:field xpath="@id"/>
+        </xs:unique>
+    </xs:element>
+
+    <!-- declaration de type de reclamations -->
+    <!-- elements vides: citoyen -->
+    <xs:complexType name="TypeCitoyenRec">
+        <xs:attribute name="id" type="xs:int"/>
+    </xs:complexType>
+    <xs:complexType name="TypeReclamation">
+        <xs:sequence>
+            <xs:element name="citoyen" type="TypeCitoyenRec"/>
+            <xs:element name="contenu" type="xs:string"/>
+        </xs:sequence>
+        <xs:attribute name="id" type="xs:int"/>
+    </xs:complexType>
+
+    <xs:element name="reclamations">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="reclamation" type="TypeReclamation"/>
+            </xs:sequence>
+        </xs:complexType>
+        <xs:key name="ReclamationIdKey">
+            <xs:selector xpath="reclamation"/>
+            <xs:field xpath="@id"/>
+        </xs:key>
+    </xs:element>
+
+</xs:schema>

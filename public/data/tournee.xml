@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<tournees xmlns:xs="http://www.w3.org/2001/XMLSchema-instance"
+           xs:noNamespaceSchemaLocation="greenBin.xsd">
+    <tournee id="1"> <!-- id: key -->
+        <trashCans>
+            <trashCan id="1"/>
+            <trashCan id="2"/>
+        </trashCans>
+        <!--<employees>-->
+            <!--  <chefTourne id="1"/> deja mawjoud fl vehicule-->
+            <ouvriers>
+                <ouvrier id="2"/>
+                <ouvrier id="3"/>
+            </ouvriers>
+        <!--</employees>-->
+        <vehicule id="1"/>
+        <date>2024-06-15</date>
+    </tournee>
+</tournees>

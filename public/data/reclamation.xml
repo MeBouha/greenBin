@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<reclamations xmlns:xs="http://www.w3.org/2001/XMLSchema-instance"
+           xs:noNamespaceSchemaLocation="greenBin.xsd">
+    <reclamation id="1"> <!-- id: key -->
+        <citoyen id="1"/> <!-- un user -->
+        <contenu></contenu>
+    </reclamation>
+</reclamations>

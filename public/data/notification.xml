@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<notifications xmlns:xs="http://www.w3.org/2001/XMLSchema-instance"
+           xs:noNamespaceSchemaLocation="greenBin.xsd">
+    <notification id="1"> <!-- id: key -->
+        <chefTournee id="1"/>
+        <travail id="1"/>
+        <contenu></contenu>
+    </notification>
+</notifications>

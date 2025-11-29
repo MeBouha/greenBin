@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<vehicules xmlns:xs="http://www.w3.org/2001/XMLSchema-instance"
+           xs:noNamespaceSchemaLocation="greenBin.xsd">
+    <vehicule id="1"> <!-- id: key -->
+        <matricule>123TUN1234</matricule> <!-- unique [0-9]{3}TUN[0-9]{4} -->
+        <chauffeur id="2"/> <!-- un employé -->
+        <disponibilite>disponible</disponibilite> <!-- Disponible, En Service -->
+    </vehicule>
+</vehicules>

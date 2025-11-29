@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rapports xmlns:xs="http://www.w3.org/2001/XMLSchema-instance"
+           xs:noNamespaceSchemaLocation="greenBin.xsd">
+    <rapport id="1"> <!-- id: key -->
+        <date>2024-06-10</date>
+        <tournee id="1"/>
+        <employees>
+            <chefTourne id="1"/>
+            <ouvriers>
+                <ouvrier id="3">
+                    <nom>Smith</nom>
+                    <prenom>Jane</prenom>
+                    <status>present</status> <!-- Présent ou Absent -->
+                </ouvrier>
+            </ouvriers>
+        </employees>
+        <dechetsCollecte>
+            <trashCan id="1" quantite="50"/>
+            <trashCan id="2" quantite="30"/>
+        </dechetsCollecte>
+    </rapport>
+</rapports>
