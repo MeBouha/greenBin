@@ -1,0 +1,108 @@
+import { NextResponse } from 'next/server';
+import fs from 'fs';
+import path from 'path';
+import { parseString, Builder } from 'xml2js';
+
+export async function PUT(request, { params }) {
+  try {
+    const { id } = params;
+    
+    console.log('🟡 PUT API Called - Mark as resolved for ID:', id);
+    
+    if (!id) {
+      return NextResponse.json({ error: 'Reclamation ID is required' }, { status: 400 });
+    }
+
+    // Path to XML file
+    const xmlPath = path.join(process.cwd(), 'public', 'data', 'reclamation.xml');
+    console.log('📁 XML Path:', xmlPath);
+
+    // Check if file exists
+    if (!fs.existsSync(xmlPath)) {
+      console.error('❌ XML file not found');
+      return NextResponse.json({ error: 'XML file not found' }, { status: 404 });
+    }
+
+    // Read XML file
+    const xmlData = fs.readFileSync(xmlPath, 'utf8');
+    console.log('📄 XML file read successfully');
+
+    return new Promise((resolve) => {
+      parseString(xmlData, (parseErr, result) => {
+        if (parseErr) {
+          console.error('❌ XML Parse Error:', parseErr);
+          resolve(NextResponse.json({ error: 'Cannot parse XML' }, { status: 500 }));
+          return;
+        }
+
+        console.log('📊 XML parsed successfully');
+        
+        // Check if reclamations exist
+        if (!result.reclamations || !result.reclamations.reclamation) {
+          console.error('❌ No reclamations found in XML');
+          resolve(NextResponse.json({ error: 'No reclamations found in XML' }, { status: 404 }));
+          return;
+        }
+
+        const reclamations = result.reclamations.reclamation;
+        console.log(`📋 Found ${reclamations.length} reclamations`);
+
+        // Find the reclamation to update
+        const reclamationToUpdate = reclamations.find(rec => rec.$.id === id);
+        
+        if (!reclamationToUpdate) {
+          console.error(`❌ Reclamation ${id} not found in XML`);
+          resolve(NextResponse.json({ error: `Reclamation ${id} not found` }, { status: 404 }));
+          return;
+        }
+
+        console.log('🔍 Found reclamation to update:', reclamationToUpdate);
+
+        // Update the status to "resolved"
+        if (reclamationToUpdate.status && reclamationToUpdate.status.length > 0) {
+          reclamationToUpdate.status[0] = 'resolved';
+        } else {
+          reclamationToUpdate.status = ['resolved'];
+        }
+
+        console.log('✅ Status updated to resolved');
+
+        // Convert back to XML
+        const builder = new Builder();
+        const updatedXml = builder.buildObject(result);
+
+        // Write back to file
+        fs.writeFile(xmlPath, updatedXml, 'utf8', (writeErr) => {
+          if (writeErr) {
+            console.error('❌ Error writing XML file:', writeErr);
+            resolve(NextResponse.json({ error: 'Cannot update XML file' }, { status: 500 }));
+            return;
+          }
+
+          console.log('✅ Reclamation status updated successfully:', id);
+          resolve(NextResponse.json({
+            success: true,
+            message: 'Reclamation marked as resolved',
+            updatedId: id
+          }));
+        });
+      });
+    });
+
+  } catch (error) {
+    console.error('💥 Unexpected error:', error);
+    return NextResponse.json({ error: 'Internal server error' }, { status: 500 });
+  }
+}
+
+// Handle OPTIONS for CORS
+export async function OPTIONS() {
+  return new NextResponse(null, {
+    status: 200,
+    headers: {
+      'Access-Control-Allow-Origin': '*',
+      'Access-Control-Allow-Methods': 'PUT, OPTIONS',
+      'Access-Control-Allow-Headers': 'Content-Type',
+    },
+  });
+}

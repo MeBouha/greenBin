@@ -1,8 +1,31 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<reclamations xmlns:xs="http://www.w3.org/2001/XMLSchema-instance"
-           xs:noNamespaceSchemaLocation="greenBin.xsd">
-    <reclamation id="1"> <!-- id: key -->
-        <citoyen id="1"/> <!-- un user -->
-        <contenu></contenu>
-    </reclamation>
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<reclamations xmlns:xs="http://www.w3.org/2001/XMLSchema-instance" xs:noNamespaceSchemaLocation="greenBin.xsd">
+  <reclamation id="2">
+    <citoyen id="2">Marie Martin</citoyen>
+    <contenu>Poubelle endommagée pendant la collecte, couvercle cassé</contenu>
+    <date>2024-01-14</date>
+    <status>resolved</status>
+    <type>Dommage</type>
+  </reclamation>
+  <reclamation id="3">
+    <citoyen id="3">Pierre Lambert</citoyen>
+    <contenu>Heure de collecte non respectée, le camion passe toujours avec 2 heures de retard</contenu>
+    <date>2024-01-13</date>
+    <status>resolved</status>
+    <type>Horaire</type>
+  </reclamation>
+  <reclamation id="4">
+    <citoyen id="4">Sophie Bernard</citoyen>
+    <contenu>Déchets non collectés malgré le dépôt aux heures réglementaires</contenu>
+    <date>2024-01-12</date>
+    <status>new</status>
+    <type>Collecte</type>
+  </reclamation>
+  <reclamation id="5">
+    <citoyen id="5">Michel Dubois</citoyen>
+    <contenu>Odeur nauséabonde provenant du point de collecte du quartier</contenu>
+    <date>2024-01-11</date>
+    <status>new</status>
+    <type>Sanitaire</type>
+  </reclamation>
 </reclamations>

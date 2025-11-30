@@ -345,7 +345,7 @@
     <xs:element name="notifications">
         <xs:complexType>
             <xs:sequence>
-                <xs:element name="notification" type="TypeNotif"/>
+                <xs:element name="notification" type="TypeNotif" minOccurs="0" maxOccurs="unbounded"/>
             </xs:sequence>
         </xs:complexType>
         <xs:unique name="uniqueNotifId">
@@ -357,20 +357,45 @@
     <!-- declaration de type de reclamations -->
     <!-- elements vides: citoyen -->
     <xs:complexType name="TypeCitoyenRec">
-        <xs:attribute name="id" type="xs:int"/>
+        <xs:simpleContent>
+            <xs:extension base="xs:string">
+                <xs:attribute name="id" type="xs:int" use="required"/>
+            </xs:extension>
+        </xs:simpleContent>
     </xs:complexType>
+
     <xs:complexType name="TypeReclamation">
         <xs:sequence>
             <xs:element name="citoyen" type="TypeCitoyenRec"/>
             <xs:element name="contenu" type="xs:string"/>
+            <xs:element name="date" type="xs:date"/>
+            <xs:element name="status" type="StatusType"/>
+            <xs:element name="type" type="TypeReclamationType"/>
         </xs:sequence>
-        <xs:attribute name="id" type="xs:int"/>
+        <xs:attribute name="id" type="xs:int" use="required"/>
     </xs:complexType>
+
+    <xs:simpleType name="StatusType">
+        <xs:restriction base="xs:string">
+            <xs:enumeration value="new"/>
+            <xs:enumeration value="in-progress"/>
+            <xs:enumeration value="resolved"/>
+        </xs:restriction>
+    </xs:simpleType>
+
+    <xs:simpleType name="TypeReclamationType">
+        <xs:restriction base="xs:string">
+            <xs:enumeration value="Collecte"/>
+            <xs:enumeration value="Dommage"/>
+            <xs:enumeration value="Horaire"/>
+            <xs:enumeration value="Sanitaire"/>
+        </xs:restriction>
+    </xs:simpleType>
 
     <xs:element name="reclamations">
         <xs:complexType>
             <xs:sequence>
-                <xs:element name="reclamation" type="TypeReclamation"/>
+                <xs:element name="reclamation" type="TypeReclamation" minOccurs="0" maxOccurs="unbounded"/>
             </xs:sequence>
         </xs:complexType>
         <xs:key name="ReclamationIdKey">
