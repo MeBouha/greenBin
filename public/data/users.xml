@@ -1,53 +1,51 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<users xmlns:xs="http://www.w3.org/2001/XMLSchema-instance"
-           xs:noNamespaceSchemaLocation="greenBin.xsd"> 
-    <user id="1"> <!-- id: key -->
-        <login>admin1</login>
-        <password>admin123</password>
-        <nom>nom</nom> 
-        <prenom>prenom</prenom>
-        <role>admin</role>
-    </user> 
-    <user id="2"> <!-- id: key -->
-        <login>user</login> <!-- unique -->
-        <password>12345678</password> <!-- min length: 8 characters -->
-        <nom>nomCT</nom>
-        <prenom>prenomCT</prenom>
-        <role>chef de tournee</role>
-    </user> 
-    <user id="3"> <!-- id: key -->
-        <login>ouvrier1</login> <!-- unique -->
-        <password>112345678</password> <!-- min length: 8 characters -->
-        <nom>user</nom>
-        <prenom>lastname</prenom>
-        <role>ouvrier</role>
-    </user> 
-    <user id="4"> <!-- id: key -->
-        <login>ouvrier2</login> <!-- unique -->
-        <password>02345678</password> <!-- min length: 8 characters -->
-        <nom>user</nom>
-        <prenom>lastname</prenom>
-        <role>ouvrier</role>
-    </user> 
-    <user id="5"> <!-- id: key -->
-        <login>respM</login> <!-- unique -->
-        <password>12345678</password> <!-- min length: 8 characters -->
-        <nom>user</nom>
-        <prenom>lastname</prenom>
-        <role>responsable municipalite</role>
-    </user> 
-    <user id="6"> <!-- id: key -->
-        <login>respSE</login> <!-- unique -->
-        <password>12345678</password> <!-- min length: 8 characters -->
-        <nom>user</nom>
-        <prenom>lastname</prenom>
-        <role>responsable service d'environnement</role>
-    </user> 
-    <user id="7"> <!-- id: key --> 
-        <login>respSV</login> <!-- unique -->
-        <password>12345678</password> <!-- min length: 8 characters -->
-        <nom>user</nom>
-        <prenom>lastname</prenom>
-        <role>responsable service de voirie</role>
-    </user> 
+<users>
+  <user id="1">
+    <login>admin1</login>
+    <password>admin123</password>
+    <nom>nom</nom>
+    <prenom>prenom</prenom>
+    <role>admin</role>
+  </user>
+  <user id="2">
+    <login>user</login>
+    <password>12345678</password>
+    <nom>nomCT</nom>
+    <prenom>prenomCT</prenom>
+    <role>chef de tournee</role>
+  </user>
+  <user id="3">
+    <login>ouvrier1</login>
+    <password>112345678</password>
+    <nom>user</nom>
+    <prenom>lastname</prenom>
+    <role>ouvrier</role>
+  </user>
+  <user id="4">
+    <login>ouvrier2</login>
+    <password>12345678</password>
+    <nom>user</nom>
+    <prenom>lastname</prenom>
+    <role>ouvrier</role>
+  </user>
+  <user id="5">
+    <login>respM</login>
+    <password>12345678</password>
+    <nom>user</nom>
+    <prenom>lastname</prenom>
+    <role>responsable municipalite</role>
+  </user>
+  <user id="6">
+    <login>respSE</login>
+    <password>12345678</password>
+    <nom>user</nom>
+    <prenom>lastname</prenom>
+    <role>responsable service d&apos;environnement</role>
+  </user>
+  <user id="7">
+    <login>respSV</login>
+    <password>12345678</password>
+    <nom>user</nom>
+    <prenom>lastname</prenom>
+    <role>responsable service de voirie</role>
+  </user>
 </users>

@@ -20,7 +20,7 @@
       </coordonnees>
     </lieu>
     <typeDechet>plastique</typeDechet>
-    <status>moitie</status>
+    <status>vide</status>
   </trashCan>
   <trashCan id="3">
     <lieu>

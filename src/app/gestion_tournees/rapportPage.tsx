@@ -259,15 +259,6 @@ export default function RapportPage() {
 
   return (
     <div>
-      <header className="card" style={{display:'flex',justifyContent:'space-between',alignItems:'center',gap:12}}>
-        <div style={{display:'flex',alignItems:'center',gap:12}}>
-          <div style={{width:36,height:36,borderRadius:18,background:'#10b981',color:'#fff',display:'flex',alignItems:'center',justifyContent:'center',fontWeight:700}}>G</div>
-          <div style={{fontWeight:600}}>GreenBin</div>
-        </div>
-        <div style={{fontWeight:600}}>Rapport de tournée</div>
-        <div><img src="/profile_pic.png" alt="profile" style={{width:36,height:36,borderRadius:18}}/></div>
-      </header>
-
       <main className="container" style={{marginTop:16}}>
         <div style={{display:'flex',flexDirection:'row',gap:20,alignItems:'flex-start'}}>
 

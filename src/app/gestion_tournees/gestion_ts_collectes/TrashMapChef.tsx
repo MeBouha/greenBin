@@ -1,7 +1,7 @@
 'use client';
 
 import { useEffect, useState, useRef } from 'react';
-import { MapContainer, TileLayer, Marker, Popup, useMap } from 'react-leaflet';
+import { MapContainer, TileLayer, Marker, Popup } from 'react-leaflet';
 import type { LatLngTuple, Map } from 'leaflet';
 import { useRouter } from 'next/navigation';
 
@@ -209,8 +209,18 @@ export default function TrashMapChef() {
     <div style={{ position: 'relative' }}>
       <div style={{ position: 'absolute', bottom: 20, right: 20, zIndex: 1000 }}>
         <button
+          type="button"
           onClick={() => router.push('/rapport')}
-          className="bg-blue-600 text-white px-5 py-2 rounded shadow hover:bg-blue-700 transition"
+          style={{
+            backgroundColor: '#2563eb',
+            color: '#fff',
+            padding: '8px 16px',
+            borderRadius: 8,
+            boxShadow: '0 6px 18px rgba(37,99,235,0.12)',
+            border: 'none',
+            cursor: 'pointer',
+            fontWeight: 600,
+          }}
         >
           Créer rapport de la journée
         </button>
@@ -260,12 +270,21 @@ export default function TrashMapChef() {
                 <h3>{can.name}</h3>
                 <p>Status: {can.status.toUpperCase()}</p>
                 <p>Coordinates: {can.lat.toFixed(3)}, {can.lng.toFixed(3)}</p>
-                <p>{selectedIds.includes(can.id) ? '✅ Selected' : 'Click to select'}</p>
+                <p>{selectedIds.includes(can.id) ? 'Selected' : 'Click to select'}</p>
                 {selectedIds.includes(can.id) && activeId === can.id && (
                   <div style={{ marginTop: 8 }}>
                     <button
+                      type="button"
                       onClick={() => handleEmpty(can.id)}
-                      className="bg-red-600 text-white px-3 py-1 rounded hover:bg-red-700"
+                      style={{
+                        backgroundColor: '#dc2626',
+                        color: '#fff',
+                        padding: '6px 10px',
+                        borderRadius: 6,
+                        border: 'none',
+                        cursor: 'pointer',
+                        fontWeight: 600,
+                      }}
                     >
                       Vider
                     </button>
