@@ -8,6 +8,6 @@
   <vehicule id="2">
     <matricule>234TUN2345</matricule>
     <chauffeur id="1"/>
-    <disponibilite>En Service</disponibilite>
+    <disponibilite>en service</disponibilite>
   </vehicule>
 </vehicules>

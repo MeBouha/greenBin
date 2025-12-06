@@ -4,6 +4,10 @@
     <travail id="1">
         <date>2024-06-10</date>
         <lieu>hay el ons</lieu>
+        <cords>
+            <latitude>34</latitude>
+            <longitude>5.18</longitude>
+        </cords>
         <etat>complet</etat> <!-- en cours, Complet -->
     </travail>
 </travaux>

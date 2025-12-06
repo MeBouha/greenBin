@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<travaux xmlns:xs="http://www.w3.org/2001/XMLSchema-instance" xs:noNamespaceSchemaLocation="greenBin.xsd">
+  <travail id="2">
+    <date>2025-12-10</date>
+    <lieu>Route el Ain klm1</lieu>
+    <cords>
+      <latitude>34.740</latitude>
+      <longitude>5.2</longitude>
+    </cords>
+    <etat>complet</etat>
+  </travail>
+</travaux>

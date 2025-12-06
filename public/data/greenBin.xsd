@@ -307,6 +307,14 @@
         <xs:sequence>
             <xs:element name="date" type="xs:date"/>
             <xs:element name="lieu" type="xs:string"/>
+            <xs:element name = "cords">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element name ="latitude" type = "xs:float"/>
+                        <xs:element name = "longitude" type = "xs:float"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
             <xs:element name="etat" type="TypeEtatTravail"/>
         </xs:sequence>
         <xs:attribute name="id" type="xs:int"/>
