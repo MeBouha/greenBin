@@ -93,7 +93,13 @@ export default function GestionUsers() {
             </label>
             <label style={{ gridColumn: '1 / -1' }}>
               Rôle
-              <input value={newUser.role || ''} onChange={e => setNewUser(n => ({ ...n, role: e.target.value }))} className="input" />
+                <select value={newUser.role || ''} onChange={e => setNewUser(n => ({ ...n, role: e.target.value }))} className="input">
+              <option value="admin">admin</option>
+                  <option value="chef de tournee">chef de tournee</option>
+                  <option value="responsable municipalite">responsable municipalite</option>
+                  <option value="responsable service d'environnement">responsable service d'environnement</option>
+                  <option value="ouvrier">ouvrier</option>
+                </select>
             </label>
           </div>
           <div style={{ marginTop: 10, display: 'flex', gap: 8 }}>

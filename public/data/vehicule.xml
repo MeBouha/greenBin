@@ -2,12 +2,12 @@
 <vehicules xmlns:xs="http://www.w3.org/2001/XMLSchema-instance" xs:noNamespaceSchemaLocation="greenBin.xsd">
   <vehicule id="1">
     <matricule>123TUN1234</matricule>
-    <chauffeur id="1"/>
+    <chauffeur id="2"/>
     <disponibilite>disponible</disponibilite>
-  </vehicule>
+    </vehicule>
   <vehicule id="2">
     <matricule>234TUN2345</matricule>
-    <chauffeur id="1"/>
+    <chauffeur id="3"/>
     <disponibilite>en service</disponibilite>
   </vehicule>
 </vehicules>

@@ -9,18 +9,56 @@ import 'leaflet/dist/leaflet.css';
 import 'leaflet-routing-machine/dist/leaflet-routing-machine.css';
 import 'leaflet-routing-machine';
 
+// Ajouter les styles pour l'animation pulse/radar
+const pulseStyles = `
+  @keyframes pulse-triangle {
+    0% {
+      filter: drop-shadow(0 0 0px rgba(220, 38, 38, 0.8)) brightness(1);
+    }
+    50% {
+      filter: drop-shadow(0 0 12px rgba(220, 38, 38, 0.9)) brightness(1.3);
+    }
+    100% {
+      filter: drop-shadow(0 0 0px rgba(220, 38, 38, 0.8)) brightness(1);
+    }
+  }
+  
+  .danger-marker-pulse {
+    animation: pulse-triangle 1.5s infinite;
+    filter: drop-shadow(0 0 4px rgba(220, 38, 38, 0.6));
+  }
+`;
+
+
+// Injecter les styles
+if (typeof document !== 'undefined') {
+  const style = document.createElement('style');
+  style.textContent = pulseStyles;
+  document.head.appendChild(style);
+}
+
 type TrashStatus = 'pleine' | 'moitie' | 'vide';
 
 interface TrashCan {
   id: number;
-  name: string;
+  adresse: string;
   lat: number;
   lng: number;
   status: TrashStatus;
 }
 
+interface Travaux {
+  id: number;
+  adresse: string;
+  latitude: number;
+  longitude: number;
+  date: string;
+  etat: string;
+}
+
 export default function TrashMapChef() {
   const [trashCans, setTrashCans] = useState<TrashCan[]>([]);
+  const [travaux, setTravaux] = useState<Travaux[]>([]);
   const [selectedIds, setSelectedIds] = useState<number[]>([]);
   const [leaflet, setLeaflet] = useState<any>(null);
   const [routeControl, setRouteControl] = useState<any>(null);
@@ -33,24 +71,71 @@ export default function TrashMapChef() {
   // Charger les données XML via l’API
   useEffect(() => {
     const load = async () => {
-      const res = await fetch('/api/trashcans');
-      const data = await res.json();
-      setTrashCans(
-        (data || []).map((c: any) => {
-          const raw = String(c.status || '').toLowerCase();
-          let status: TrashStatus = 'pleine';
-          if (raw.includes('vide') || raw === 'empty') status = 'vide';
-          else if (raw.includes('mo') || raw.includes('half') || raw.includes('moitié') || raw.includes('moitie')) status = 'moitie';
+      try {
+        // try to read logged-in user from sessionStorage (auth sets `user` on login)
+        const rawUser = typeof window !== 'undefined' ? sessionStorage.getItem('user') : null;
+        const user = rawUser ? JSON.parse(rawUser) : null;
+        const userId = user?.id ? Number(user.id) : null;
 
-          return {
-            id: Number(c.id) || 0,
-            name: c.name || c.adresse || '',
-            lat: Number(c.lat) || 0,
-            lng: Number(c.lng) || 0,
-            status,
-          } as TrashCan;
-        })
-      );
+        let cans: any[] = [];
+
+        if (userId !== null) {
+          // fetch tournees which already include trashCans for their zone
+          const tRes = await fetch('/api/tournee');
+          if (tRes.ok) {
+            const tournees = await tRes.json();
+            // filter tournees whose vehicule.chauffeurId matches the logged-in user
+            const matched = (turne: any[] | undefined) => (turne || []).filter((t: any) => {
+              return !!t?.vehicule?.chauffeurId && Number(t.vehicule.chauffeurId) === userId;
+            });
+            const myTournees = matched(tournees);
+            // collect their trashCans
+            cans = myTournees.flatMap((t: any) => t.trashCans || []);
+            
+            // Fetch travaux for tournee zones
+            const travauxZones = myTournees.map((t: any) => t.zone).filter(Boolean);
+            if (travauxZones.length > 0) {
+              const travauxRes = await fetch('/api/travaux');
+              if (travauxRes.ok) {
+                const allTravaux = await travauxRes.json();
+                // Filter travaux matching tournee zones
+                const filteredTravaux = allTravaux.filter((t: any) => 
+                  travauxZones.some((zone: string) => zone.toLowerCase() === t.adresse.toLowerCase())
+                );
+                setTravaux(filteredTravaux);
+              }
+            }
+          }
+        }
+
+        // fallback: if no user or no cans found, load all trashcans
+        if (!cans || cans.length === 0) {
+          const res = await fetch('/api/trashcans');
+          if (res.ok) {
+            const data = await res.json();
+            cans = data || [];
+          }
+        }
+
+        setTrashCans(
+          (cans || []).map((c: any) => {
+            const raw = String(c.status || '').toLowerCase();
+            let status: TrashStatus = 'pleine';
+            if (raw.includes('vide') || raw === 'empty') status = 'vide';
+            else if (raw.includes('mo') || raw.includes('half') || raw.includes('moitié') || raw.includes('moitie')) status = 'moitie';
+
+            return {
+              id: Number(c.id) || 0,
+              adresse: c.adresse || c.name || '',
+              lat: Number(c.lat) || Number(c.latitude) || 0,
+              lng: Number(c.lng) || Number(c.longitude) || Number(c.lng) || 0,
+              status,
+            } as TrashCan;
+          })
+        );
+      } catch (err) {
+        console.error('Failed to load trashcans or tournees', err);
+      }
     };
     load();
   }, []);
@@ -147,6 +232,17 @@ export default function TrashMapChef() {
       iconAnchor: [20, 40],
       popupAnchor: [0, -30],
     });
+
+  const getDangerIcon = (leaflet: any) => {
+    const icon = leaflet.icon({
+      iconUrl: '/icons/danger.png',
+      iconSize: [35, 35],
+      iconAnchor: [17, 34],
+      popupAnchor: [0, -30],
+      className: 'danger-marker-pulse',
+    });
+    return icon;
+  };
 
   // Mettre à jour la route
   useEffect(() => {
@@ -267,7 +363,7 @@ export default function TrashMapChef() {
               }}
             >
               <Popup>
-                <h3>{can.name}</h3>
+                <h3>Adresse: {can.adresse}</h3>
                 <p>Status: {can.status.toUpperCase()}</p>
                 <p>Coordinates: {can.lat.toFixed(3)}, {can.lng.toFixed(3)}</p>
                 <p>{selectedIds.includes(can.id) ? 'Selected' : 'Click to select'}</p>
@@ -290,6 +386,25 @@ export default function TrashMapChef() {
                     </button>
                   </div>
                 )}
+              </Popup>
+            </Marker>
+          );
+        })}
+
+        {travaux.map((t) => {
+          const dangerIcon = getDangerIcon(leaflet);
+          if (!dangerIcon) return null;
+          return (
+            <Marker
+              key={`travaux-${t.id}`}
+              position={[t.latitude, t.longitude]}
+              icon={dangerIcon}
+            >
+              <Popup>
+                <h3 style={{ color: '#dc2626', fontWeight: 700 }}>⚠️ Travaux</h3>
+                <p><strong>Adresse:</strong> {t.adresse}</p>
+                <p><strong>Date:</strong> {t.date}</p>
+                <p><strong>État:</strong> {t.etat}</p>
               </Popup>
             </Marker>
           );

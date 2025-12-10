@@ -3,11 +3,13 @@
            xs:noNamespaceSchemaLocation="greenBin.xsd">
     <travail id="1">
         <date>2024-06-10</date>
-        <lieu>hay el ons</lieu>
-        <cords>
-            <latitude>34</latitude>
-            <longitude>5.18</longitude>
-        </cords>
-        <etat>complet</etat> <!-- en cours, Complet -->
+        <lieu>
+            <adresse>Sfax centre</adresse>  
+            <coordonnees>
+                <latitude>34.741</latitude>
+                <longitude>10.7612</longitude>
+            </coordonnees>
+        </lieu>
+        <etat>en cours</etat> <!-- en cours, Complet -->
     </travail>
 </travaux>

@@ -176,13 +176,7 @@
     </xs:complexType>
     <xs:complexType name="TypeTournee">
         <xs:sequence>
-            <xs:element name="trashCans">
-                <xs:complexType>
-                    <xs:sequence>
-                        <xs:element name="trashCan" type="TypeTrashCanTournee" minOccurs="1" maxOccurs="unbounded"/>
-                    </xs:sequence>
-                </xs:complexType>
-            </xs:element>
+            <xs:element name="zone" type="xs:string"/>
             <xs:element name="ouvriers" minOccurs="1" maxOccurs="1">
                 <xs:complexType>
                     <xs:sequence>
@@ -306,15 +300,7 @@
     <xs:complexType name="TypeTravail">
         <xs:sequence>
             <xs:element name="date" type="xs:date"/>
-            <xs:element name="lieu" type="xs:string"/>
-            <xs:element name = "cords">
-                <xs:complexType>
-                    <xs:sequence>
-                        <xs:element name ="latitude" type = "xs:float"/>
-                        <xs:element name = "longitude" type = "xs:float"/>
-                    </xs:sequence>
-                </xs:complexType>
-            </xs:element>
+            <xs:element name="lieu" type="TypeLieu"/>
             <xs:element name="etat" type="TypeEtatTravail"/>
         </xs:sequence>
         <xs:attribute name="id" type="xs:int"/>
@@ -394,9 +380,9 @@
     <xs:simpleType name="TypeReclamationType">
         <xs:restriction base="xs:string">
             <xs:enumeration value="Collecte"/>
-            <xs:enumeration value="Dommage"/>
             <xs:enumeration value="Horaire"/>
             <xs:enumeration value="Sanitaire"/>
+            <xs:enumeration value="Autre"/>
         </xs:restriction>
     </xs:simpleType>
 

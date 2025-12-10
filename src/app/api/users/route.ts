@@ -2,9 +2,68 @@ import { NextResponse } from 'next/server';
 import fs from 'fs/promises';
 import path from 'path';
 import { XMLParser, XMLBuilder } from 'fast-xml-parser';
-import { getUsers } from '@/app/gestion_utilisateurs/users';
 
 const filePath = path.join(process.cwd(), 'public', 'data', 'users.xml');
+type RawUser = any;
+
+export async function getUsers(): Promise<Array<{ id: number; nom: string; prenom: string; role: string; login: string; password: string;}>> {
+    const filePath = path.join(process.cwd(), 'public', 'data', 'users.xml');
+    const xml = await fs.readFile(filePath, 'utf8');
+
+    const parser = new XMLParser({ ignoreAttributes: false, attributeNamePrefix: '@_' });
+    const parsed = parser.parse(xml);
+
+    const users = parsed?.users?.user ?? [];
+    const items = Array.isArray(users) ? users : [users];
+
+    const mapped = items.map((u: any) => {
+    const id = parseInt(u['@_id'] ?? (u.id as any) ?? '0', 10);
+    const nom = String(u.nom );
+    const prenom = String(u.prenom );
+    const role = String(u.role );
+    const login = String(u.login );
+    const password = String(u.password );
+
+    return {
+        id, nom, prenom, role, login, password,
+    };
+  });
+  return mapped;
+}
+
+export async function getUserById(id: number): Promise<
+  Array<{ id: number; nom: string; prenom: string; role: string; login: string; password: string;}>> {
+    const filePath = path.join(process.cwd(), 'public', 'data', 'users.xml');
+  const xml = await fs.readFile(filePath, 'utf8');
+
+  const parser = new XMLParser({ ignoreAttributes: false, attributeNamePrefix: '@_' });
+  const parsed = parser.parse(xml) as { users?: { user?: RawUser } };
+  const raw = parsed?.users?.user ?? [];
+  const items = Array.isArray(raw) ? raw : [raw];
+
+  const filtered = items.map((u: any) => {
+      const idUser =parseInt(u['@_id']);
+      // filtrer par adresse
+      if (idUser !== id) return null;
+          const nom = String(u.nom );
+          const prenom = String(u.prenom );
+          const role = String(u.role );
+          const login = String(u.login );
+          const password = String(u.password );
+
+      return {
+        id: idUser,
+        nom: nom,
+        prenom: prenom,
+        role: role,
+        login: login,
+        password: password,
+      };
+    })
+    .filter(Boolean) as Array<{ id: number; nom: string; prenom: string; role: string; login: string; password: string }>; // supprime les nulls
+
+  return filtered;
+}
 
 export async function GET() {
   try {

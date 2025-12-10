@@ -1,4 +1,5 @@
-<users>
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<users xmlns:xs="http://www.w3.org/2001/XMLSchema-instance" xs:noNamespaceSchemaLocation="greenBin.xsd">
   <user id="1">
     <login>admin1</login>
     <password>admin123</password>
@@ -14,38 +15,52 @@
     <role>chef de tournee</role>
   </user>
   <user id="3">
+    <login>user2</login>
+    <password>12345678</password>
+    <nom>nomCT</nom>
+    <prenom>prenomCT</prenom>
+    <role>chef de tournee</role>
+  </user>
+  <user id="4">
     <login>ouvrier1</login>
     <password>112345678</password>
     <nom>user</nom>
     <prenom>lastname</prenom>
     <role>ouvrier</role>
   </user>
-  <user id="4">
+  <user id="5">
     <login>ouvrier2</login>
     <password>12345678</password>
     <nom>user</nom>
     <prenom>lastname</prenom>
     <role>ouvrier</role>
   </user>
-  <user id="5">
+  <user id="6">
     <login>respM</login>
     <password>12345678</password>
     <nom>user</nom>
     <prenom>lastname</prenom>
     <role>responsable municipalite</role>
   </user>
-  <user id="6">
+  <user id="7">
     <login>respSE</login>
     <password>12345678</password>
     <nom>user</nom>
     <prenom>lastname</prenom>
-    <role>responsable service d&apos;environnement</role>
+    <role>responsable service d'environnement</role>
   </user>
-  <user id="7">
+  <user id="8">
     <login>respSV</login>
     <password>12345678</password>
     <nom>user</nom>
     <prenom>lastname</prenom>
     <role>responsable service de voirie</role>
+  </user>
+  <user id="9">
+    <login>citoyen9</login>
+    <password>12345678</password>
+    <nom>user</nom>
+    <prenom>user</prenom>
+    <role>citoyen</role>
   </user>
 </users>

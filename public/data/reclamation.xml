@@ -1,12 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <reclamations xmlns:xs="http://www.w3.org/2001/XMLSchema-instance" xs:noNamespaceSchemaLocation="greenBin.xsd">
-  <reclamation id="2">
-    <citoyen id="2">Marie Martin</citoyen>
-    <contenu>Poubelle endommagée pendant la collecte, couvercle cassé</contenu>
-    <date>2024-01-14</date>
-    <status>resolved</status>
-    <type>Dommage</type>
-  </reclamation>
   <reclamation id="3">
     <citoyen id="3">Pierre Lambert</citoyen>
     <contenu>Heure de collecte non respectée, le camion passe toujours avec 2 heures de retard</contenu>
@@ -27,5 +20,26 @@
     <date>2024-01-11</date>
     <status>new</status>
     <type>Sanitaire</type>
+  </reclamation>
+  <reclamation id="6">
+    <citoyen id="6">prenom nom</citoyen>
+    <contenu>content</contenu>
+    <date>2025-12-06</date>
+    <status>new</status>
+    <type>Sanitaire</type>
+  </reclamation>
+  <reclamation id="7">
+    <citoyen id="7">prenom nom</citoyen>
+    <contenu>content</contenu>
+    <date>2025-12-06</date>
+    <status>new</status>
+    <type>Sanitaire</type>
+  </reclamation>
+  <reclamation id="8">
+    <citoyen id="9">user user</citoyen>
+    <contenu>contenu de reclamation</contenu>
+    <date>2025-12-06</date>
+    <status>new</status>
+    <type>Autre</type>
   </reclamation>
 </reclamations>
