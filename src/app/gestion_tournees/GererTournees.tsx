@@ -4,6 +4,8 @@ interface Tournee {
   date: string;
   vehiculeId: string;
   ouvrierIds: string[];
+  vehiculeMatricule?: string;
+  ouvrierNames?: string[];
 }
 
 interface TourneeFormData {
@@ -72,7 +74,7 @@ export default function GererTournees({
                   <th>ID</th>
                   <th>Zone</th>
                   <th>Date</th>
-                  <th>Véhicule ID</th>
+                  <th>Véhicule</th>
                   <th>Ouvriers</th>
                   <th>Actions</th>
                 </tr>
@@ -86,13 +88,15 @@ export default function GererTournees({
                     </td>
                     <td className="date-cell">{tournee.date}</td>
                     <td>
-                      <span className="type-badge">#{tournee.vehiculeId}</span>
+                      <span className="type-badge">{tournee.vehiculeMatricule || `#${tournee.vehiculeId}`}</span>
                     </td>
                     <td>
                       <div className="items-list">
-                        {tournee.ouvrierIds.map(id => (
-                          <span key={id} className="item-badge">#{id}</span>
-                        ))}
+                        <span className="item-badge">
+                          {(tournee.ouvrierNames && tournee.ouvrierNames.length > 0)
+                            ? tournee.ouvrierNames.join(', ')
+                            : 'Non attribués'}
+                        </span>
                       </div>
                     </td>
                     <td>
