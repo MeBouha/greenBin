@@ -52,6 +52,15 @@ export interface Tournee {
   date: string;
 }
 
+export interface User {
+  id: string;
+  nom: string;
+  prenom: string;
+  role: string;
+  login: string;
+  etat: string;
+}
+
 export interface Ouvrier {
   id: string;
   nom: string;
@@ -102,7 +111,7 @@ export interface TourneeFormData {
   date: string;
   vehiculeId: string;
   trashCanIds: string;
-  ouvrierIds: string;
+  ouvrierIds: string[];
 }
 
 export interface NotificationFormData {
@@ -117,12 +126,15 @@ export default function RespMPage() {
   const [reclamations, setReclamations] = useState<Reclamation[]>([]);
   const [trashCans, setTrashCans] = useState<TrashCan[]>([]);
   const [vehicules, setVehicules] = useState<Vehicule[]>([]);
+  const [users, setUsers] = useState<User[]>([]);
+  const [ouvriers, setOuvriers] = useState<User[]>([]);
   const [tournees, setTournees] = useState<Tournee[]>([]);
   const [rapports, setRapports] = useState<Rapport[]>([]);
   const [notifications, setNotifications] = useState<Notification[]>([]);
   const [loading, setLoading] = useState(true);
   const [loadingTrashCans, setLoadingTrashCans] = useState(true);
   const [loadingVehicules, setLoadingVehicules] = useState(true);
+  const [loadingUsers, setLoadingUsers] = useState(true);
   const [loadingTournees, setLoadingTournees] = useState(true);
   const [loadingRapports, setLoadingRapports] = useState(true);
   const [loadingNotifications, setLoadingNotifications] = useState(true);
@@ -150,7 +162,58 @@ export default function RespMPage() {
     { id: 'envoyer-notification', label: 'Envoyer une notification' },
   ];
 
-  // Fonctions de fetch
+  // Fetch users from users.xml
+  const fetchUsers = async () => {
+    try {
+      setLoadingUsers(true);
+      const response = await fetch(`/data/users.xml?t=${Date.now()}`);
+      if (!response.ok) throw new Error(`HTTP error! status: ${response.status}`);
+      
+      const xmlText = await response.text();
+      const parser = new DOMParser();
+      const xmlDoc = parser.parseFromString(xmlText, "text/xml");
+      
+      const parseError = xmlDoc.getElementsByTagName("parsererror");
+      if (parseError.length > 0) throw new Error('Error parsing XML');
+      
+      const userNodes = xmlDoc.getElementsByTagName('user');
+      const usersData: User[] = [];
+      
+      for (let i = 0; i < userNodes.length; i++) {
+        const node = userNodes[i];
+        const compte = node.getElementsByTagName('compte')[0];
+        const login = compte ? compte.getElementsByTagName('login')[0] : null;
+        const etat = compte ? compte.getElementsByTagName('etat')[0] : null;
+        const nom = node.getElementsByTagName('nom')[0];
+        const prenom = node.getElementsByTagName('prenom')[0];
+        const role = node.getElementsByTagName('role')[0];
+        
+        const user: User = {
+          id: node.getAttribute('id') || '',
+          login: login ? login.textContent || '' : '',
+          etat: etat ? etat.textContent || '' : 'actif',
+          nom: nom ? nom.textContent || '' : '',
+          prenom: prenom ? prenom.textContent || '' : '',
+          role: role ? role.textContent || '' : ''
+        };
+        
+        usersData.push(user);
+        
+        // If user is an ouvrier, add to ouvriers list
+        if (user.role.toLowerCase().includes('ouvrier')) {
+          setOuvriers(prev => [...prev, user]);
+        }
+      }
+      
+      setUsers(usersData);
+    } catch (error) {
+      console.error('Error fetching users:', error);
+    } finally {
+      setLoadingUsers(false);
+    }
+  };
+
+  // Existing fetch functions (reclamations, trashCans, vehicules, tournees, rapports, notifications)
   const fetchReclamations = async () => {
     try {
       setLoading(true);
@@ -327,7 +390,7 @@ export default function RespMPage() {
   const fetchRapports = async () => {
     try {
       setLoadingRapports(true);
-      const response = await fetch(`/data/rapports.xml?t=${Date.now()}`);
+      const response = await fetch(`/data/rapport.xml?t=${Date.now()}`);
       if (!response.ok) {
         setRapports([]);
         return;
@@ -444,17 +507,18 @@ export default function RespMPage() {
     fetchReclamations();
     fetchTrashCans();
     fetchVehicules();
+    fetchUsers();
     fetchTournees();
     fetchRapports();
     fetchNotifications();
   }, []);
 
+  // Delete functions remain the same
   const deleteReclamation = async (reclamationId: string) => {
     if (!confirm('Êtes-vous sûr de vouloir supprimer cette réclamation ?')) return;
 
     try {
       setDeletingId(reclamationId);
-      // New unified TS route expects id in query param
       const response = await fetch(`/api/reclamations?id=${reclamationId}`, {
         method: 'DELETE',
       });
@@ -475,7 +539,6 @@ export default function RespMPage() {
 
     try {
       setUpdatingId(reclamationId);
-      // New unified TS route expects JSON body with id and status
       const response = await fetch(`/api/reclamations`, {
         method: 'PUT',
         headers: { 'Content-Type': 'application/json' },
@@ -873,6 +936,8 @@ export default function RespMPage() {
             onSave={updateTournee}
             onCancel={closeModificationPage}
             isEditing={true}
+            vehicules={vehicules}
+            ouvriers={ouvriers}
           />
         );
       case 'ajouter-tournee':
@@ -881,6 +946,8 @@ export default function RespMPage() {
             onSave={addTournee}
             onCancel={closeModificationPage}
             isEditing={false}
+            vehicules={vehicules}
+            ouvriers={ouvriers}
           />
         );
       case 'consulter-rapports':
@@ -919,7 +986,6 @@ export default function RespMPage() {
 
   return (
     <>
-      {/* Header moved OUTSIDE the container div to span full width */}
       <Header />
       
       <div className="container">

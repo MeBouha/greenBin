@@ -6,14 +6,6 @@ interface Tournee {
   ouvrierIds: string[];
 }
 
-interface TourneeFormData {
-  id: string;
-  zone: string;
-  date: string;
-  vehiculeId: string;
-  ouvrierIds: string[];
-}
-
 interface GererTourneesProps {
   tournees: Tournee[];
   loading: boolean;
@@ -41,6 +33,14 @@ export default function GererTournees({
     );
   }
 
+  const formatDate = (dateString: string) => {
+    try {
+      return new Date(dateString).toLocaleDateString('fr-FR');
+    } catch {
+      return dateString;
+    }
+  };
+
   return (
     <div>
       <div className="content-card">
@@ -55,7 +55,7 @@ export default function GererTournees({
             className="btn btn-primary"
             onClick={onAddTournee}
           >
-            + Ajouter
+            + Ajouter une Tournée
           </button>
         </div>
         
@@ -63,6 +63,12 @@ export default function GererTournees({
           <div className="empty-state">
             <h3>Aucune tournée trouvée</h3>
             <p>Il n'y a aucune tournée à afficher pour le moment.</p>
+            <button 
+              className="btn btn-primary mt-3"
+              onClick={onAddTournee}
+            >
+              Créer une première tournée
+            </button>
           </div>
         ) : (
           <div className="table-container">
@@ -73,7 +79,7 @@ export default function GererTournees({
                   <th>Zone</th>
                   <th>Date</th>
                   <th>Véhicule ID</th>
-                  <th>Ouvriers</th>
+                  <th>Nombre d'Ouvriers</th>
                   <th>Actions</th>
                 </tr>
               </thead>
@@ -84,14 +90,15 @@ export default function GererTournees({
                     <td>
                       <span className="type-badge">{tournee.zone}</span>
                     </td>
-                    <td className="date-cell">{tournee.date}</td>
+                    <td className="date-cell">{formatDate(tournee.date)}</td>
                     <td>
-                      <span className="type-badge">#{tournee.vehiculeId}</span>
+                      <span className="type-badge vehicle-badge">Véhicule #{tournee.vehiculeId}</span>
                     </td>
                     <td>
                       <div className="items-list">
+                        <span className="item-badge">{tournee.ouvrierIds.length} ouvrier{tournee.ouvrierIds.length !== 1 ? 's' : ''}</span>
                         {tournee.ouvrierIds.map(id => (
-                          <span key={id} className="item-badge">#{id}</span>
+                          <span key={id} className="item-badge small-badge">#{id}</span>
                         ))}
                       </div>
                     </td>
@@ -132,6 +139,12 @@ export default function GererTournees({
               const today = new Date().toISOString().split('T')[0];
               return t.date === today;
             }).length}
+          </div>
+        </div>
+        <div className="stat-card">
+          <h3>Ouvriers Totaux</h3>
+          <div className="value">
+            {Array.from(new Set(tournees.flatMap(t => t.ouvrierIds))).length}
           </div>
         </div>
       </div>

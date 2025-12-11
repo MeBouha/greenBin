@@ -638,4 +638,54 @@ header {
   width: 100%;
   position: relative;
   z-index: 100;
+}.form-group select[multiple] {
+  height: auto;
+  min-height: 120px;
+}
+
+.form-help.text-warning {
+  color: #f39c12;
+}
+
+.badge.bg-primary {
+  background-color: #3498db;
+  color: white;
+  padding: 4px 8px;
+  border-radius: 4px;
+  margin: 2px;
+}
+
+.list-unstyled {
+  padding: 0;
+  margin: 0;
+  list-style: none;
+}
+
+.vehicle-badge {
+  background-color: #2ecc71;
+  color: white;
+}
+
+.small-badge {
+  font-size: 0.8em;
+  padding: 2px 6px;
+  margin: 1px;
+}
+
+.items-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px;
+}
+
+.mt-2 {
+  margin-top: 0.5rem;
+}
+
+.mt-3 {
+  margin-top: 1rem;
+}
+
+.me-1 {
+  margin-right: 0.25rem;
 }

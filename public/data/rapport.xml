@@ -1,131 +1,99 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<rapports xmlns:xs="http://www.w3.org/2001/XMLSchema-instance"
-           xs:noNamespaceSchemaLocation="greenBin.xsd">
-    <rapport id="1"> <!-- id: key -->
-        <date>2024-06-10</date>
-        <tournee id="1"/>
-        <employees>
-            <chefTourne id="1"/>
-            <ouvriers>
-                <ouvrier id="3">
-                    <nom>Smith</nom>
-                    <prenom>Jane</prenom>
-                    <status>present</status> <!-- Présent ou Absent -->
-                </ouvrier>
-            </ouvriers>
-        </employees>
-        <dechetsCollecte>
-            <trashCan id="1" quantite="50"/>
-            <trashCan id="2" quantite="30"/>
-        </dechetsCollecte>
-        <kilometrage>120</kilometrage>
-        <co2Emis>25.5</co2Emis>
-        <carburantConsomme>15.2</carburantConsomme>
-    </rapport>
-    <rapport id="2"> <!-- id: key -->
-        <date>2025-11-29</date>
-        <tournee id="1"/>
-        <employees>
-            <chefTourne/>
-            <ouvriers>
-                <ouvrier id="2">
-                    <nom>nomCT</nom>
-                    <prenom>prenomCT</prenom>
-                    <status>present</status>
-                </ouvrier>
-                <ouvrier id="3">
-                    <nom>user</nom>
-                    <prenom>lastname</prenom>
-                    <status>absent</status>
-                </ouvrier>
-            </ouvriers>
-        </employees>
-        <dechetsCollecte>
-            <trashCan id="1" quantite="5"/>
-        </dechetsCollecte>
-        <kilometrage>85</kilometrage>
-        <co2Emis>18.3</co2Emis>
-        <carburantConsomme>10.7</carburantConsomme>
-    </rapport>
-
-    
-
-    <rapport id="3"> <!-- id: key -->
-        <date>2025-12-10</date>
-        <tournee id="1"/>
-        <employees>
-            <chefTourne id="2"/>
-            <ouvriers>
-                <ouvrier id="1">
-                    <nom>-</nom>
-                    <prenom>user</prenom>
-                    <status>present</status>
-                </ouvrier>
-                <ouvrier id="2">
-                    <nom>-</nom>
-                    <prenom>user2</prenom>
-                    <status>present</status>
-                </ouvrier>
-            </ouvriers>
-        </employees>
-        <dechetsCollecte>
-            <trashCan id="1" quantite="2"/>
-            <trashCan id="5" quantite="3"/>
-        </dechetsCollecte>
-        <kilometrage>2.23</kilometrage>
-        <co2Emis>3.12</co2Emis>
-        <carburantConsomme>66.90</carburantConsomme>
-    </rapport>
-
-    <rapport id="4">
-        <date>2026-12-25</date>
-        <tournee id="1"/>
-        <employees>
-            <chefTourne id="2"/>
-            <ouvriers>
-                <ouvrier id="1">
-                    <nom>-</nom>
-                    <prenom>user2</prenom>
-                    <status>present</status>
-                </ouvrier>
-                <ouvrier id="101">
-                    <nom>-</nom>
-                    <prenom>user</prenom>
-                    <status>absent</status>
-                </ouvrier>
-            </ouvriers>
-        </employees>
-        <dechetsCollecte>
-            <trashCan id="5" quantite="7"/>
-        </dechetsCollecte>
-        <kilometrage>2.23</kilometrage>
-        <co2Emis>3.12</co2Emis>
-        <carburantConsomme>66.90</carburantConsomme>
-    </rapport>
-
-    <rapport id="5">
-        <date>2025-12-25</date>
-        <tournee id="1"/>
-        <employees>
-            <chefTourne id="2"/>
-            <ouvriers>
-                <ouvrier id="1">
-                    <nom>-</nom>
-                    <prenom>user2</prenom>
-                    <status>present</status>
-                </ouvrier>
-                <ouvrier id="101">
-                    <nom>-</nom>
-                    <prenom>user</prenom>
-                    <status>absent</status>
-                </ouvrier>
-            </ouvriers>
-        </employees>
-        <dechetsCollecte>
-            <trashCan id="4" quantite="50"/>
-        </dechetsCollecte>
-        <kilometrage>1.39</kilometrage>
-        <co2Emis>1.95</co2Emis>
-        <carburantConsomme>41.70</carburantConsomme>
-    </rapport>
+<rapports xmlns:xs="http://www.w3.org/2001/XMLSchema-instance" xs:noNamespaceSchemaLocation="greenBin.xsd">
+  <rapport id="1">
+    <date>2024-06-10</date>
+    <tournee id="1"></tournee>
+    <employees>
+      <chefTourne id="1"></chefTourne>
+      <ouvriers>
+        <ouvrier id="3">
+          <nom>Smith</nom>
+          <prenom>Jane</prenom>
+          <status>present</status>
+        </ouvrier>
+      </ouvriers>
+    </employees>
+    <dechetsCollecte>
+      <trashCan id="1" quantite="50"></trashCan>
+      <trashCan id="2" quantite="30"></trashCan>
+    </dechetsCollecte>
+    <kilometrage>120</kilometrage>
+    <co2Emis>25.5</co2Emis>
+    <carburantConsomme>15.2</carburantConsomme>
+  </rapport>
+  <rapport id="2">
+    <date>2025-11-29</date>
+    <tournee id="1"></tournee>
+    <employees>
+      <chefTourne></chefTourne>
+      <ouvriers>
+        <ouvrier id="2">
+          <nom>nomCT</nom>
+          <prenom>prenomCT</prenom>
+          <status>present</status>
+        </ouvrier>
+        <ouvrier id="3">
+          <nom>user</nom>
+          <prenom>lastname</prenom>
+          <status>absent</status>
+        </ouvrier>
+      </ouvriers>
+    </employees>
+    <dechetsCollecte>
+      <trashCan id="1" quantite="5"></trashCan>
+    </dechetsCollecte>
+    <kilometrage>85</kilometrage>
+    <co2Emis>18.3</co2Emis>
+    <carburantConsomme>10.7</carburantConsomme>
+  </rapport>
+  <rapport id="4">
+    <date>2026-12-25</date>
+    <tournee id="1"></tournee>
+    <employees>
+      <chefTourne id="2"></chefTourne>
+      <ouvriers>
+        <ouvrier id="1">
+          <nom>-</nom>
+          <prenom>user2</prenom>
+          <status>present</status>
+        </ouvrier>
+        <ouvrier id="101">
+          <nom>-</nom>
+          <prenom>user</prenom>
+          <status>absent</status>
+        </ouvrier>
+      </ouvriers>
+    </employees>
+    <dechetsCollecte>
+      <trashCan id="5" quantite="7"></trashCan>
+    </dechetsCollecte>
+    <kilometrage>2.23</kilometrage>
+    <co2Emis>3.12</co2Emis>
+    <carburantConsomme>66.9</carburantConsomme>
+  </rapport>
+  <rapport id="5">
+    <date>2025-12-25</date>
+    <tournee id="1"></tournee>
+    <employees>
+      <chefTourne id="2"></chefTourne>
+      <ouvriers>
+        <ouvrier id="1">
+          <nom>-</nom>
+          <prenom>user2</prenom>
+          <status>present</status>
+        </ouvrier>
+        <ouvrier id="101">
+          <nom>-</nom>
+          <prenom>user</prenom>
+          <status>absent</status>
+        </ouvrier>
+      </ouvriers>
+    </employees>
+    <dechetsCollecte>
+      <trashCan id="4" quantite="50"></trashCan>
+    </dechetsCollecte>
+    <kilometrage>1.39</kilometrage>
+    <co2Emis>1.95</co2Emis>
+    <carburantConsomme>41.7</carburantConsomme>
+  </rapport>
 </rapports>
