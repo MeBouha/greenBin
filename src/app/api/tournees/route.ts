@@ -112,22 +112,23 @@ export class TourneeService {
     return tournees.tournees.find(t => t.id === id) ?? null;
   }
 
-  async addOrUpdate(tournee: Tournee): Promise<number> {
+  async addTournee(tournee: Tournee): Promise<number> {
     const tournees = await this.load();
-    if (!tournee.id || tournee.id <= 0) {
-      const maxId = Math.max(0, ...tournees.tournees.map(t => t.id));
-      tournee.id = maxId + 1;
-    }
-
-    const index = tournees.tournees.findIndex(t => t.id === tournee.id);
-    if (index >= 0) {
-      tournees.tournees[index] = tournee;
-    } else {
-      tournees.tournees.push(tournee);
-    }
-
+    const maxId = Math.max(0, ...tournees.tournees.map(t => t.id));
+    tournee.id = maxId + 1;
+    tournees.tournees.push(tournee);
     await this.save(tournees);
     return tournee.id;
+  }
+
+  async updateTournee(tournee: Tournee): Promise<void> {
+    const tournees = await this.load();
+    const index = tournees.tournees.findIndex(t => t.id === tournee.id);
+    if (index < 0) {
+      throw new Error('Tournee not found');
+    }
+    tournees.tournees[index] = tournee;
+    await this.save(tournees);
   }
 
   async delete(id: number): Promise<boolean> {
@@ -261,7 +262,7 @@ export async function POST(request: Request) {
       if (existing) return NextResponse.json({ error: 'Tournee existe déjà' }, { status: 400 });
     }
 
-    await tourneeService.addOrUpdate(tournee);
+    await tourneeService.addTournee(tournee);
     return NextResponse.json(await tourneeService.getAll());
   } catch {
     return NextResponse.json({ error: 'Failed to save tournee' }, { status: 500 });
@@ -278,7 +279,7 @@ export async function PUT(request: Request) {
     const exists = await tourneeService.getById(tournee.id);
     if (!exists) return NextResponse.json({ error: 'Tournee non trouvée' }, { status: 404 });
 
-    await tourneeService.addOrUpdate(tournee);
+    await tourneeService.updateTournee(tournee);
     return NextResponse.json(await tourneeService.getAll());
   } catch {
     return NextResponse.json({ error: 'Failed to update tournee' }, { status: 500 });

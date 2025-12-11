@@ -102,30 +102,37 @@ export class UserService {
     return users.users.find(u => u.id === id) ?? null;
   }
 
-  async addOrUpdate(user: User) {
+  async addUser(user: User): Promise<number> {
+    const users = await this.load();
+    // add new user - use addCompte to create compte
+    user.id = Math.max(0, ...users.users.map(u => u.id)) + 1; // new ID
+    user.compte = await this.addCompte(user.compte.login, user.compte.password);
+    users.users.push(user);
+    await this.save(users);
+    return user.id;
+  }
+
+  async updateUser(user: User): Promise<void> {
     const users = await this.load();
     const index = users.users.findIndex(u => u.id === user.id);
-    if (index >= 0) {
-      // update existing user - use modifierCompte for compte changes
-      const existingUser = users.users[index];
-      if (user.compte.login !== existingUser.compte.login || 
-          user.compte.password !== existingUser.compte.password) {
-        await this.modifierCompte(user.id, user.compte.login, user.compte.password);
-        user.compte.etat = existingUser.compte.etat; // preserve etat
-      }
-      // use activerCompte if etat is being set to 'actif'
-      if (user.compte.etat === 'actif' && existingUser.compte.etat !== 'actif') {
-        await this.activerCompte(user.id);
-      } else {
-        user.compte.etat = existingUser.compte.etat;
-      }
-      users.users[index] = user;
-    } else {
-      // add new user - use addCompte to create compte
-      user.id = Math.max(0, ...users.users.map(u => u.id)) + 1; // new ID
-      user.compte = await this.addCompte(user.compte.login, user.compte.password);
-      users.users.push(user);
+    if (index < 0) {
+      throw new Error('User not found');
     }
+    
+    // update existing user - use modifierCompte for compte changes
+    const existingUser = users.users[index];
+    if (user.compte.login !== existingUser.compte.login || 
+        user.compte.password !== existingUser.compte.password) {
+      await this.modifierCompte(user.id, user.compte.login, user.compte.password);
+      user.compte.etat = existingUser.compte.etat; // preserve etat
+    }
+    // use activerCompte if etat is being set to 'actif'
+    if (user.compte.etat === 'actif' && existingUser.compte.etat !== 'actif') {
+      await this.activerCompte(user.id);
+    } else {
+      user.compte.etat = existingUser.compte.etat;
+    }
+    users.users[index] = user;
     await this.save(users);
   }
 
@@ -204,7 +211,15 @@ export async function PUT(request: Request) {
     const body = await request.json();
     if (!body) return NextResponse.json({ error: 'No body' }, { status: 400 });
     const user = new User(body);
-    await service.addOrUpdate(user);
+    
+    // Check if user exists
+    const existingUser = await service.getById(user.id);
+    if (existingUser) {
+      await service.updateUser(user);
+    } else {
+      await service.addUser(user);
+    }
+    
     return NextResponse.json(await service.getAll());
   } catch {
     return NextResponse.json({ error: 'Failed to save user' }, { status: 500 });

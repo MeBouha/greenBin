@@ -91,22 +91,23 @@ export class TravauxService {
         return travaux.travaux.filter(t => t.adresse === adresse);
     }
 
-    async addOrUpdate(travail: Travail): Promise<number> {
+    async addTravail(travail: Travail): Promise<number> {
         const travaux = await this.load();
-        if (!travail.id || travail.id <= 0) {
-            const maxId = Math.max(0, ...travaux.travaux.map(t => t.id));
-            travail.id = maxId + 1;
-        }
-
-        const index = travaux.travaux.findIndex(t => t.id === travail.id);
-        if (index >= 0) {
-            travaux.travaux[index] = travail;
-        } else {
-            travaux.travaux.push(travail);
-        }
-
+        const maxId = Math.max(0, ...travaux.travaux.map(t => t.id));
+        travail.id = maxId + 1;
+        travaux.travaux.push(travail);
         await this.save(travaux);
         return travail.id;
+    }
+
+    async updateTravail(travail: Travail): Promise<void> {
+        const travaux = await this.load();
+        const index = travaux.travaux.findIndex(t => t.id === travail.id);
+        if (index < 0) {
+            throw new Error('Travail not found');
+        }
+        travaux.travaux[index] = travail;
+        await this.save(travaux);
     }
 
     async delete(id: number): Promise<boolean> {
@@ -154,7 +155,7 @@ export async function POST(request: Request) {
         const error = validateTravail(travail);
         if (error) return NextResponse.json({ error }, { status: 400 });
 
-        await travauxService.addOrUpdate(travail);
+        await travauxService.addTravail(travail);
         return NextResponse.json(await travauxService.getAll());
     } catch {
         return NextResponse.json({ error: 'Failed to add travail' }, { status: 500 });
@@ -171,7 +172,7 @@ export async function PUT(request: Request) {
         const exists = (await travauxService.getAll()).some(t => t.id === travail.id);
         if (!exists) return NextResponse.json({ error: 'Travail non trouvé' }, { status: 404 });
 
-        await travauxService.addOrUpdate(travail);
+        await travauxService.updateTravail(travail);
         return NextResponse.json(await travauxService.getAll());
     } catch {
         return NextResponse.json({ error: 'Failed to update travail' }, { status: 500 });
