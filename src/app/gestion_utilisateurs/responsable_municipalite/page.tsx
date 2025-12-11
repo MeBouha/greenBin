@@ -11,10 +11,10 @@ import GererVehicule from '../../gestion_tournees/gestion_vehicules/GererVehicul
 import GererTournees from '../../gestion_tournees/GererTournees';
 import ConsulterRapports from '../../gestion_tournees/ConsulterRapports';
 import EnvoyerNotification from '../../gestion_tournees/EnvoyerNotification';
-import ModifierPointCollecte from '../../gestion_tournees/gestion_ts_collectes/ModifierPointCollecte';
 import ModifierVehicule from '../../gestion_tournees/gestion_vehicules/ModifierVehicule';
 import ModifierTournee from '../../gestion_tournees/ModifierTournee';
 import ModifierNotification from '../../gestion_tournees/ModifierNotification';
+import GestionEmployees from '../gestion_employees';
 
 // Définition des interfaces
 export interface Reclamation {
@@ -42,6 +42,11 @@ export interface Vehicule {
   chauffeur: string;
   chauffeurId: string;
   disponibilite: string;
+}
+
+interface ChauffeurOption {
+  id: string;
+  name: string;
 }
 
 export interface Tournee {
@@ -90,17 +95,8 @@ export interface Notification {
 }
 
 // Form data interfaces
-export interface TrashCanFormData {
-  id: string;
-  adresse: string;
-  latitude: string;
-  longitude: string;
-  typeDechet: string;
-  status: string;
-}
-
 export interface VehiculeFormData {
-  id: string;
+  id?: string;
   matricule: string;
   chauffeurId: string;
   disponibilite: string;
@@ -138,6 +134,7 @@ export default function RespMPage() {
   const [loadingTournees, setLoadingTournees] = useState(true);
   const [loadingRapports, setLoadingRapports] = useState(true);
   const [loadingNotifications, setLoadingNotifications] = useState(true);
+  const [chauffeurOptions, setChauffeurOptions] = useState<ChauffeurOption[]>([]);
   const [deletingId, setDeletingId] = useState<string | null>(null);
   const [updatingId, setUpdatingId] = useState<string | null>(null);
   const [deletingTrashCanId, setDeletingTrashCanId] = useState<string | null>(null);
@@ -145,11 +142,9 @@ export default function RespMPage() {
   const [deletingTourneeId, setDeletingTourneeId] = useState<string | null>(null);
   const [deletingRapportId, setDeletingRapportId] = useState<string | null>(null);
   const [deletingNotificationId, setDeletingNotificationId] = useState<string | null>(null);
-  const [selectedTrashCan, setSelectedTrashCan] = useState<TrashCan | null>(null);
   const [selectedVehicule, setSelectedVehicule] = useState<Vehicule | null>(null);
   const [selectedTournee, setSelectedTournee] = useState<Tournee | null>(null);
   const [selectedNotification, setSelectedNotification] = useState<Notification | null>(null);
-  const [isAddingTrashCan, setIsAddingTrashCan] = useState(false);
   const [isAddingVehicule, setIsAddingVehicule] = useState(false);
   const [isAddingTournee, setIsAddingTournee] = useState(false);
 
@@ -157,6 +152,7 @@ export default function RespMPage() {
     { id: 'consulter-reclamations', label: 'Consulter les réclamations' },
     { id: 'gerer-points-collecte', label: 'Gérer les points de collecte' },
     { id: 'gerer-vehicule', label: 'Gérer les véhicules' },
+    { id: 'gerer-employes', label: 'Gérer les employés' },
     { id: 'gerer-tournees', label: 'Gérer les tournées' },
     { id: 'consulter-rapports', label: 'Consulter les rapports' },
     { id: 'envoyer-notification', label: 'Envoyer une notification' },
@@ -301,9 +297,10 @@ export default function RespMPage() {
     }
   };
 
-  const fetchVehicules = async () => {
+  const fetchVehicules = async (optionsOverride?: ChauffeurOption[]) => {
     try {
       setLoadingVehicules(true);
+      const options = optionsOverride ?? chauffeurOptions;
       const response = await fetch(`/data/vehicule.xml?t=${Date.now()}`);
       if (!response.ok) throw new Error(`HTTP error! status: ${response.status}`);
       
@@ -322,12 +319,14 @@ export default function RespMPage() {
         const matricule = node.getElementsByTagName('matricule')[0];
         const chauffeur = node.getElementsByTagName('chauffeur')[0];
         const disponibilite = node.getElementsByTagName('disponibilite')[0];
+        const chauffeurId = chauffeur ? chauffeur.getAttribute('id') || '' : '';
+        const chauffeurName = options.find((c) => c.id === chauffeurId)?.name || (chauffeur ? chauffeur.textContent || '' : 'N/A');
         
         vehiculesData.push({
           id: node.getAttribute('id') || '',
           matricule: matricule ? matricule.textContent || '' : 'N/A',
-          chauffeur: chauffeur ? chauffeur.textContent || '' : 'N/A',
-          chauffeurId: chauffeur ? chauffeur.getAttribute('id') || '' : 'N/A',
+          chauffeur: chauffeurName,
+          chauffeurId: chauffeurId || 'N/A',
           disponibilite: disponibilite ? disponibilite.textContent || '' : 'disponible'
         });
       }
@@ -384,6 +383,38 @@ export default function RespMPage() {
       console.error('Error fetching tournees:', error);
     } finally {
       setLoadingTournees(false);
+    }
+  };
+
+  const fetchChauffeurs = async () => {
+    try {
+      const response = await fetch(`/data/users.xml?t=${Date.now()}`);
+      if (!response.ok) throw new Error(`HTTP error! status: ${response.status}`);
+      const xmlText = await response.text();
+      const parser = new DOMParser();
+      const xmlDoc = parser.parseFromString(xmlText, "text/xml");
+      const parseError = xmlDoc.getElementsByTagName("parsererror");
+      if (parseError.length > 0) throw new Error('Error parsing XML');
+
+      const userNodes = xmlDoc.getElementsByTagName('user');
+      const options: ChauffeurOption[] = [];
+      for (let i = 0; i < userNodes.length; i++) {
+        const node = userNodes[i];
+        const role = node.getElementsByTagName('role')[0];
+        const nom = node.getElementsByTagName('nom')[0];
+        const prenom = node.getElementsByTagName('prenom')[0];
+        const id = node.getAttribute('id') || '';
+        const roleText = role ? (role.textContent || '').toLowerCase() : '';
+        if (roleText === 'chef trajet' || roleText === 'chef de tournee') {
+          const fullName = `${prenom?.textContent || ''} ${nom?.textContent || ''}`.trim();
+          options.push({ id, name: fullName || `Chef ${id}` });
+        }
+      }
+      setChauffeurOptions(options);
+      return options;
+    } catch (error) {
+      console.error('Error fetching chauffeurs:', error);
+      return [] as ChauffeurOption[];
     }
   };
 
@@ -507,7 +538,6 @@ export default function RespMPage() {
     fetchReclamations();
     fetchTrashCans();
     fetchVehicules();
-    fetchUsers();
     fetchTournees();
     fetchRapports();
     fetchNotifications();
@@ -656,24 +686,6 @@ export default function RespMPage() {
     }
   };
 
-  const addTrashCan = async (newData: TrashCanFormData) => {
-    try {
-      const response = await fetch(`/api/trashcans`, {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(newData),
-      });
-
-      if (!response.ok) throw new Error(`HTTP error! status: ${response.status}`);
-      await fetchTrashCans();
-      alert('Point de collecte ajouté avec succès');
-      setIsAddingTrashCan(false);
-    } catch (error) {
-      console.error('Error adding trash can:', error);
-      alert(`Erreur lors de l'ajout: ${(error as Error).message}`);
-    }
-  };
-
   const addVehicule = async (newData: VehiculeFormData) => {
     try {
       const response = await fetch(`/api/vehicules`, {
@@ -724,24 +736,6 @@ export default function RespMPage() {
     } catch (error) {
       console.error('Error adding notification:', error);
       alert(`Erreur lors de l'envoi: ${(error as Error).message}`);
-    }
-  };
-
-  const updateTrashCan = async (updatedData: TrashCanFormData) => {
-    try {
-      const response = await fetch(`/api/trashcans`, {
-        method: 'PUT',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(updatedData),
-      });
-
-      if (!response.ok) throw new Error(`HTTP error! status: ${response.status}`);
-      await fetchTrashCans();
-      alert('Point de collecte modifié avec succès');
-      closeModificationPage();
-    } catch (error) {
-      console.error('Error updating trash can:', error);
-      alert(`Erreur lors de la modification: ${(error as Error).message}`);
     }
   };
 
@@ -799,11 +793,6 @@ export default function RespMPage() {
     }
   };
 
-  const openModificationPageTrashCan = (trashCan: TrashCan) => {
-    setSelectedTrashCan(trashCan);
-    setActiveSection('modifier-point-collecte');
-  };
-
   const openModificationPageVehicule = (vehicule: Vehicule) => {
     setSelectedVehicule(vehicule);
     setActiveSection('modifier-vehicule');
@@ -819,11 +808,6 @@ export default function RespMPage() {
     setActiveSection('modifier-notification');
   };
 
-  const openAddPageTrashCan = () => {
-    setIsAddingTrashCan(true);
-    setActiveSection('ajouter-point-collecte');
-  };
-
   const openAddPageVehicule = () => {
     setIsAddingVehicule(true);
     setActiveSection('ajouter-vehicule');
@@ -835,11 +819,9 @@ export default function RespMPage() {
   };
 
   const closeModificationPage = () => {
-    setSelectedTrashCan(null);
     setSelectedVehicule(null);
     setSelectedTournee(null);
     setSelectedNotification(null);
-    setIsAddingTrashCan(false);
     setIsAddingVehicule(false);
     setIsAddingTournee(false);
     
@@ -868,26 +850,9 @@ export default function RespMPage() {
             trashCans={trashCans} 
             loading={loadingTrashCans}
             onDeleteTrashCan={deleteTrashCan}
-            onModifyTrashCan={openModificationPageTrashCan}
-            onAddTrashCan={openAddPageTrashCan}
+            onModifyTrashCan={() => {}}
+            onAddTrashCan={() => {}}
             deletingTrashCanId={deletingTrashCanId}
-          />
-        );
-      case 'modifier-point-collecte':
-        return (
-          <ModifierPointCollecte 
-            trashCan={selectedTrashCan}
-            onSave={updateTrashCan}
-            onCancel={closeModificationPage}
-            isEditing={true}
-          />
-        );
-      case 'ajouter-point-collecte':
-        return (
-          <ModifierPointCollecte 
-            onSave={addTrashCan}
-            onCancel={closeModificationPage}
-            isEditing={false}
           />
         );
       case 'gerer-vehicule':
@@ -901,6 +866,8 @@ export default function RespMPage() {
             deletingVehiculeId={deletingVehiculeId}
           />
         );
+      case 'gerer-employes':
+        return <GestionEmployees />;
       case 'modifier-vehicule':
         return (
           <ModifierVehicule 
@@ -908,6 +875,7 @@ export default function RespMPage() {
             onSave={updateVehicule}
             onCancel={closeModificationPage}
             isEditing={true}
+            chauffeurOptions={chauffeurOptions}
           />
         );
       case 'ajouter-vehicule':
@@ -916,6 +884,7 @@ export default function RespMPage() {
             onSave={addVehicule}
             onCancel={closeModificationPage}
             isEditing={false}
+            chauffeurOptions={chauffeurOptions}
           />
         );
       case 'gerer-tournees':

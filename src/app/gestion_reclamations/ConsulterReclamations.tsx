@@ -1,4 +1,4 @@
-import { Reclamation } from '../page';
+import type { Reclamation } from '../gestion_utilisateurs/responsable_municipalite/page';
 
 interface ConsulterReclamationsProps {
   reclamations: Reclamation[];
@@ -91,7 +91,7 @@ export default function ConsulterReclamations({
                       {getStatusBadge(reclamation.status)}
                     </td>
                     <td>
-                      <div className="action-buttons">
+                      <div className="action-buttons" style={{ display: 'flex', flexDirection: 'column', gap: 6 }}>
                         {reclamation.status !== 'resolved' && (
                           <button 
                             className="btn btn-resolve"

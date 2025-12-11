@@ -1,93 +1,102 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <users xmlns:xs="http://www.w3.org/2001/XMLSchema-instance" xs:noNamespaceSchemaLocation="greenBin.xsd">
   <user id="1">
+    <nom>nom</nom>
+    <prenom>prenom</prenom>
+    <role>admin</role>
     <compte>
       <login>admin1</login>
       <password>admin123</password>
       <etat>actif</etat>
     </compte>
-    <nom>nom</nom>
-    <prenom>prenom</prenom>
-    <role>admin</role>
+    <disponibilite>disponible</disponibilite>
   </user>
   <user id="2">
+    <nom>nomCT</nom>
+    <prenom>prenomCT</prenom>
+    <role>chef de tournee</role>
     <compte>
       <login>user</login>
       <password>12345678</password>
       <etat>actif</etat>
     </compte>
-    <nom>nomCT</nom>
-    <prenom>prenomCT</prenom>
-    <role>chef de tournee</role>
+    <disponibilite>disponible</disponibilite>
   </user>
   <user id="3">
+    <nom>nomCT2</nom>
+    <prenom>prenomCT2</prenom>
+    <role>chef de tournee</role>
     <compte>
       <login>user2</login>
       <password>12345678</password>
       <etat>actif</etat>
     </compte>
-    <nom>nomCT</nom>
-    <prenom>prenomCT</prenom>
-    <role>chef de tournee</role>
+    <disponibilite>disponible</disponibilite>
   </user>
   <user id="4">
+    <nom>user</nom>
+    <prenom>lastname</prenom>
+    <role>ouvrier</role>
     <compte>
       <login>ouvrier1</login>
       <password>112345678</password>
       <etat>actif</etat>
     </compte>
+    <disponibilite>disponible</disponibilite>
+  </user>
+  <user id="5">
     <nom>user</nom>
     <prenom>lastname</prenom>
     <role>ouvrier</role>
-  </user>
-  <user id="5">
     <compte>
       <login>ouvrier2</login>
       <password>12345678</password>
       <etat>actif</etat>
     </compte>
-    <nom>user</nom>
-    <prenom>lastname</prenom>
-    <role>ouvrier</role>
+    <disponibilite>disponible</disponibilite>
   </user>
   <user id="6">
+    <nom>user</nom>
+    <prenom>lastname</prenom>
+    <role>responsable municipalite</role>
     <compte>
       <login>respM</login>
       <password>12345678</password>
       <etat>actif</etat>
     </compte>
-    <nom>user</nom>
-    <prenom>lastname</prenom>
-    <role>responsable municipalite</role>
+    <disponibilite>disponible</disponibilite>
   </user>
   <user id="7">
+    <nom>user</nom>
+    <prenom>lastname</prenom>
+    <role>responsable service d&apos;environnement</role>
     <compte>
       <login>respSE</login>
       <password>12345678</password>
       <etat>actif</etat>
     </compte>
-    <nom>user</nom>
-    <prenom>lastname</prenom>
-    <role>responsable service d&apos;environnement</role>
+    <disponibilite>disponible</disponibilite>
   </user>
   <user id="8">
+    <nom>user</nom>
+    <prenom>lastname</prenom>
+    <role>responsable service de voirie</role>
     <compte>
       <login>respSV</login>
       <password>12345678</password>
       <etat>actif</etat>
     </compte>
-    <nom>user</nom>
-    <prenom>lastname</prenom>
-    <role>responsable service de voirie</role>
+    <disponibilite>disponible</disponibilite>
   </user>
   <user id="9">
+    <nom>usr</nom>
+    <prenom>user</prenom>
+    <role>chef de tournee</role>
     <compte>
       <login>user</login>
       <password>12345678</password>
       <etat>actif</etat>
     </compte>
-    <nom>usr</nom>
-    <prenom>user</prenom>
-    <role>chef de tournee</role>
+    <disponibilite>disponible</disponibilite>
   </user>
 </users>

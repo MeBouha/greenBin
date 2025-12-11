@@ -98,24 +98,6 @@ class NotificationService {
     return notif;
   }
 
-  async update(data: NotificationDTO) {
-    if (!data.id) throw new Error('Missing id');
-    const items = await this.load();
-    const idx = items.findIndex((n) => n.id === Number(data.id));
-    if (idx === -1) throw new Error('Not found');
-    const current = items[idx];
-    const updated = new Notification({
-      id: current.id,
-      chefTourneeId: data.chefTourneeId ?? current.chefTourneeId,
-      travailId: data.travailId ?? current.travailId,
-      contenu: data.contenu ?? current.contenu,
-      status: data.status ?? current.status,
-    });
-    items[idx] = updated;
-    await this.save(items);
-    return updated;
-  }
-
   async delete(id: number) {
     const items = await this.load();
     const filtered = items.filter((n) => n.id !== id);
@@ -150,21 +132,6 @@ export async function POST(request: Request) {
     }
     console.error('POST /notifications error', err);
     return NextResponse.json({ error: 'Failed to add notification' }, { status: 500 });
-  }
-}
-
-export async function PUT(request: Request) {
-  try {
-    const body = (await request.json()) as NotificationDTO;
-    if (!body.id) return NextResponse.json({ error: 'id is required' }, { status: 400 });
-    const updated = await service.update(body);
-    return NextResponse.json(updated);
-  } catch (err: any) {
-    if (err?.message === 'Not found') {
-      return NextResponse.json({ error: 'Not found' }, { status: 404 });
-    }
-    console.error('PUT /notifications error', err);
-    return NextResponse.json({ error: 'Failed to update notification' }, { status: 500 });
   }
 }
 

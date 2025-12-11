@@ -93,6 +93,11 @@ class TrashCanService {
     return this.load();
   }
 
+  async getTrashCans(zone: string): Promise<TrashCan[]> {
+    const items = await this.load();
+    return items.filter((t) => t.adresse.toLowerCase() === zone.toLowerCase());
+  }
+
   async add(data: TrashCanDTO) {
     const items = await this.load();
     const nextId = data.id !== undefined ? Number(data.id) : Math.max(0, ...items.map((t) => t.id)) + 1;
@@ -163,6 +168,14 @@ export async function getTrashCansAdresse(adresse: string) {
 
 export async function setTrashcanStatus(id: number, status: Status) {
   return service.updateStatus(id, status);
+}
+
+// Helper to retrieve trash can type by id (shared with other routes)
+export async function getTrashCanType(id: number): Promise<TypeDechet> {
+  const list = await service.getAll();
+  const found = list.find((t) => t.id === id);
+  const type = (found?.typeDechet || 'autre').toLowerCase();
+  return type as TypeDechet;
 }
 
 // Handlers
