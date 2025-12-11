@@ -20,32 +20,52 @@ export class Compte {
 
 export class User {
   id: number;
-  compte: Compte;
+  compte?: Compte;
   nom: string;
   prenom: string;
   role: string;
+  disponibilite?: string;
 
   constructor(data: any) {
     // accept id coming from body or from xml attribute
     this.id = Number(data.id ?? data['@_id'] ?? 0);
     this.nom = String(data.nom ?? '');
     this.prenom = String(data.prenom ?? '');
-    this.compte = new Compte(data.compte ?? {});
+    // Only create compte if data.compte exists
+    if (data.compte) {
+      this.compte = new Compte(data.compte);
+    }
     this.role = String(data.role ?? '');
+    // Include disponibilite if present
+    if (data.disponibilite) {
+      this.disponibilite = String(data.disponibilite);
+    }
+    // Ignore any extra fields
   }
 
   toXML(): any {
-    return {
+    const result: any = {
       '@_id': String(this.id),
-      compte: {
-        login: this.compte.login,
-        password: this.compte.password,
-        etat: this.compte.etat,
-      },
       nom: this.nom,
       prenom: this.prenom,
       role: this.role,
     };
+    
+    // Only include compte in XML if it exists and has non-empty data
+    if (this.compte && (this.compte.login || this.compte.password)) {
+      result.compte = {
+        login: this.compte.login,
+        password: this.compte.password,
+        etat: this.compte.etat || 'actif', // Ensure etat is always present
+      };
+    }
+    
+    // Always include disponibilite in the proper order (after compte)
+    if (this.disponibilite) {
+      result.disponibilite = this.disponibilite;
+    }
+    
+    return result;
   }
 }
 
@@ -104,9 +124,26 @@ export class UserService {
 
   async addUser(user: User): Promise<number> {
     const users = await this.load();
-    // add new user - use addCompte to create compte
+    // add new user
     user.id = Math.max(0, ...users.users.map(u => u.id)) + 1; // new ID
-    user.compte = await this.addCompte(user.compte.login, user.compte.password);
+    
+    // If role != 'citoyen', set disponibilite to 'disponible' by default
+    if (user.role !== 'citoyen') {
+      user.disponibilite = 'disponible';
+    }
+    
+    // Only create compte if login and password are provided
+    if (user.compte?.login && user.compte?.password) {
+      user.compte = new Compte({
+        login: user.compte.login,
+        password: user.compte.password,
+        etat: 'actif'
+      });
+    } else {
+      // No compte if login/password not provided
+      user.compte = undefined;
+    }
+    
     users.users.push(user);
     await this.save(users);
     return user.id;
@@ -121,16 +158,24 @@ export class UserService {
     
     // update existing user - use modifierCompte for compte changes
     const existingUser = users.users[index];
-    if (user.compte.login !== existingUser.compte.login || 
-        user.compte.password !== existingUser.compte.password) {
-      await this.modifierCompte(user.id, user.compte.login, user.compte.password);
-      user.compte.etat = existingUser.compte.etat; // preserve etat
+    
+    // Preserve disponibilite from existing user if not provided
+    if (!user.disponibilite && existingUser.disponibilite) {
+      user.disponibilite = existingUser.disponibilite;
     }
-    // use activerCompte if etat is being set to 'actif'
-    if (user.compte.etat === 'actif' && existingUser.compte.etat !== 'actif') {
-      await this.activerCompte(user.id);
-    } else {
-      user.compte.etat = existingUser.compte.etat;
+    
+    if (user.compte && existingUser.compte) {
+      if (user.compte.login !== existingUser.compte.login || 
+          user.compte.password !== existingUser.compte.password) {
+        await this.modifierCompte(user.id, user.compte.login, user.compte.password);
+        user.compte.etat = existingUser.compte.etat; // preserve etat
+      }
+      // use activerCompte if etat is being set to 'actif'
+      if (user.compte.etat === 'actif' && existingUser.compte.etat !== 'actif') {
+        await this.activerCompte(user.id);
+      } else {
+        user.compte.etat = existingUser.compte.etat;
+      }
     }
     users.users[index] = user;
     await this.save(users);
@@ -155,16 +200,18 @@ export class UserService {
     const users = await this.load();
     const user = users.users.find(u => u.id === id);
     if (!user) throw new Error('User not found');
+    if (!user.compte) throw new Error('User has no compte');
     user.compte.login = login;
     user.compte.password = password;
     await this.save(users);
     return user;
   }
-
+    
   async activerCompte(id: number) {
     const users = await this.load();
     const user = users.users.find(u => u.id === id);
     if (!user) throw new Error('User not found');
+    if (!user.compte) throw new Error('User has no compte');
     user.compte.etat = 'actif';
     await this.save(users);
     return user;
@@ -177,7 +224,10 @@ export class UserService {
 
     for (const empId of employes) {
       const user = users.users.find(u => u.id === empId);
-      if (user && user.compte.etat === 'actif') {
+      // Un utilisateur est disponible si:
+      // - il n'a pas de compte (disponible par défaut)
+      // - ou son compte a l'état 'actif'
+      if (user && (!user.compte || user.compte.etat === 'actif')) {
         disponibles.push(user);
       } else {
         indisponibles.push(empId);
@@ -192,6 +242,27 @@ export class UserService {
 export async function getUserById(id: number): Promise<User | null> {
   const service = new UserService(filePath);
   return service.getById(id);
+}
+
+// Helper to lookup a user by id or matching login/nom/prenom (for cross-route usage)
+export async function lookupUserByName(name: string) {
+  try {
+    const xml = await fs.readFile(filePath, 'utf8');
+    const matches = Array.from(xml.matchAll(/<user[^>]*id="(\d+)"[^>]*>[\s\S]*?<login>(.*?)<\/login>[\s\S]*?<nom>(.*?)<\/nom>[\s\S]*?<prenom>(.*?)<\/prenom>[\s\S]*?<\/user>/g));
+    for (const m of matches) {
+      const id = m[1].trim();
+      const login = (m[2] || '').trim();
+      const nom = (m[3] || '').trim();
+      const prenom = (m[4] || '').trim();
+      if (String(id) === String(name)) return { id, nom, prenom };
+      if ([login, nom, prenom].some((s) => s && s.toLowerCase() === name.toLowerCase())) {
+        return { id, nom, prenom };
+      }
+    }
+  } catch {
+    // ignore and fall through
+  }
+  return null;
 }
 
 // === API Next.js ===
@@ -223,6 +294,19 @@ export async function PUT(request: Request) {
     return NextResponse.json(await service.getAll());
   } catch {
     return NextResponse.json({ error: 'Failed to save user' }, { status: 500 });
+  }
+}
+
+export async function POST(request: Request) {
+  try {
+    const body = await request.json();
+    if (!body) return NextResponse.json({ error: 'No body' }, { status: 400 });
+    const user = new User(body);
+    await service.addUser(user);
+    return NextResponse.json(await service.getAll());
+  } catch (err) {
+    console.error('POST /api/users error:', err);
+    return NextResponse.json({ error: 'Failed to create user' }, { status: 500 });
   }
 }
 

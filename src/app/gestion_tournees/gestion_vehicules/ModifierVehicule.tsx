@@ -8,7 +8,7 @@ interface Vehicule {
 }
 
 interface VehiculeFormData {
-  id: string;
+  id?: string;
   matricule: string;
   chauffeurId: string;
   disponibilite: string;
@@ -19,16 +19,18 @@ interface ModifierVehiculeProps {
   onSave: (data: VehiculeFormData) => void;
   onCancel: () => void;
   isEditing: boolean;
+  chauffeurOptions: { id: string; name: string }[];
 }
 
 export default function ModifierVehicule({
   vehicule,
   onSave,
   onCancel,
-  isEditing
+  isEditing,
+  chauffeurOptions
 }: ModifierVehiculeProps) {
   const [formData, setFormData] = useState<VehiculeFormData>({
-    id: vehicule?.id || '',
+    id: vehicule?.id,
     matricule: vehicule?.matricule || '',
     chauffeurId: vehicule?.chauffeurId || '',
     disponibilite: vehicule?.disponibilite || 'disponible'
@@ -60,21 +62,6 @@ export default function ModifierVehicule({
       <h2>{isEditing ? `Modifier le Véhicule #${vehicule?.id}` : 'Ajouter un Véhicule'}</h2>
       
       <form onSubmit={handleSubmit}>
-        {!isEditing && (
-          <div className="form-group">
-            <label>ID</label>
-            <input
-              type="text"
-              name="id"
-              value={formData.id}
-              onChange={handleChange}
-              className="form-control"
-              required
-              placeholder="Entrez l'ID du véhicule"
-            />
-          </div>
-        )}
-
         <div className="form-group">
           <label>Matricule</label>
           <input
@@ -91,16 +78,19 @@ export default function ModifierVehicule({
         </div>
 
         <div className="form-group">
-          <label>ID du Chauffeur</label>
-          <input
-            type="text"
+          <label>Chauffeur</label>
+          <select
             name="chauffeurId"
             value={formData.chauffeurId}
             onChange={handleChange}
             className="form-control"
             required
-            placeholder="Entrez l'ID du chauffeur"
-          />
+          >
+            <option value="">-- Sélectionner --</option>
+            {chauffeurOptions.map((opt) => (
+              <option key={opt.id} value={opt.id}>{opt.name}</option>
+            ))}
+          </select>
         </div>
 
         <div className="form-group">

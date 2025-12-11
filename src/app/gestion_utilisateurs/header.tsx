@@ -77,22 +77,23 @@ export default function Header() {
         </div>
       )}
 
-      {showProfilePopup && user && (
-        <div style={{ position:'fixed', right:16, top:60, zIndex:1000 }}>
+      {mounted && showProfilePopup && user && (
+        <div style={{ position:'fixed', right:24, top:56, zIndex:10000 }}>
           <div style={{
             width:300,
             background:'white',
-            border:'1px solid #ccc',
-            padding:12,
+            border:'1px solid #e5e7eb',
+            padding:16,
             borderRadius:8,
-            boxShadow:'0 8px 24px rgba(0,0,0,0.12)'
+            boxShadow:'0 10px 25px rgba(0,0,0,0.15)'
           }}>
-            <div style={{ fontSize:16, fontWeight:700, marginBottom:6 }}>Connecté</div>
-            <div style={{ marginBottom:8 }}>{user.prenom} {user.nom}</div>
-            <div style={{ marginBottom:12, color:'#666' }}>{user.role}</div>
+            <div style={{ fontSize:16, fontWeight:700, marginBottom:12 }}>Connecté</div>
+            <div style={{ marginBottom:4, fontWeight:500, color:'#1f2937' }}>{user.prenom} {user.nom}</div>
+            <div style={{ marginBottom:16, fontSize:14, color:'#6b7280' }}>{user.role}</div>
+            <hr style={{ margin:'12px 0', border:'none', borderTop:'1px solid #e5e7eb' }} />
             <div style={{ display:'flex', gap:8, justifyContent:'flex-end' }}>
-              <button type="button" onClick={() => setShowProfilePopup(false)} className="btn">Annuler</button>
-              <button type="button" onClick={handleLogout} className="btn" style={{ background:'#dc2626', color:'#fff' }}>
+              <button type="button" onClick={() => setShowProfilePopup(false)} className="btn" style={{ background:'#f3f4f6', color:'#374151', border:'1px solid #d1d5db', padding:'8px 16px', fontSize:14 }}>Annuler</button>
+              <button type="button" onClick={handleLogout} className="btn" style={{ background:'#ef4444', color:'#fff', border:'none', padding:'8px 16px', fontSize:14 }}>
                 Se déconnecter
               </button>
             </div>

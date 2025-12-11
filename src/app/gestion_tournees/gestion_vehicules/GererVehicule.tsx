@@ -79,7 +79,7 @@ export default function GererVehicule({
                 <tr>
                   <th>ID</th>
                   <th>Matricule</th>
-                  <th>Chauffeur ID</th>
+                  <th>Chauffeur</th>
                   <th>Disponibilité</th>
                   <th>Actions</th>
                 </tr>
@@ -92,7 +92,7 @@ export default function GererVehicule({
                       <div className="matricule-text">{vehicule.matricule}</div>
                     </td>
                     <td className="chauffeur-cell">
-                      <div className="chauffeur-id">ID: {vehicule.chauffeurId}</div>
+                      <div className="chauffeur-id">{vehicule.chauffeur || 'Non attribué'}</div>
                     </td>
                     <td>
                       {getStatusBadge(vehicule.disponibilite)}

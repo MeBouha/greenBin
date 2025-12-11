@@ -19,21 +19,23 @@ body {
   display: flex;
   min-height: 100vh;
   position: relative; /* Added for proper z-index context */
+  flex-direction: row;
 }
 
-/* Fixed Sidebar - Lower z-index */
+/* Fixed Sidebar - Light theme with green accent, positioned left */
 .sidebar {
-  width: 280px;
-  margin-top: 60px;
-  background-color: #1e293b;
-  color: white;
-  padding: 20px 0;
+  width: 240px;
+  flex-shrink: 0;
+  background-color: #f3f4f6;
+  color: #374151;
+  padding: 0;
   position: fixed;
-  height: 100vh;
-  overflow-y: auto;
   left: 0;
-  top: 0px; /* Moved sidebar down by 70px */
-  z-index: 50; /* Lower z-index than header */
+  top: 60px; /* aligns below header */
+  height: calc(100vh - 60px);
+  overflow-y: auto;
+  border-right: 1px solid #e5e7eb;
+  z-index: 50;
 }
 
 /* Remove sidebar-header completely since we don't need it */
@@ -44,41 +46,43 @@ body {
 .sidebar-nav {
   display: flex;
   flex-direction: column;
-  gap: 5px;
-  padding: 0 15px;
+  gap: 8px;
+  padding: 0;
 }
 
 .nav-item {
   background: none;
   border: none;
-  color: white;
+  color: #374151;
   text-align: left;
-  padding: 15px 20px;
+  padding: 12px 16px;
   cursor: pointer;
-  transition: all 0.2s;
-  border-radius: 8px;
-  border-left: 3px solid transparent;
-  font-size: 0.95rem;
+  transition: background 0.2s;
+  border-radius: 6px;
+  border-left: none;
+  font-size: 14px;
+  font-weight: 600;
+  background-color: #f3f4f6;
 }
 
 .nav-item:hover {
-  background-color: #334155;
+  background-color: #e5e7eb;
 }
 
 .nav-item.active {
-  background-color: #71c08d;
-  border-left: 3px solid #5aa67a;
-  color: white;
+  background-color: #10b981;
+  border-left: none;
+  color: #fff;
   font-weight: 600;
 }
 
-/* Main Content - Fixed width calculation */
+/* Main Content - Flex layout without fixed sidebar */
 .main-content {
   flex: 1;
-  margin-left: 280px;
+  margin-left: 240px; /* space for fixed sidebar */
   padding: 30px;
-  width: calc(100% - 280px);
-  max-width: calc(100vw - 280px); /* Ensure it doesn't exceed viewport */
+  width: calc(100% - 240px);
+  max-width: calc(100vw - 240px);
   position: relative;
   margin-top: 0;
   box-sizing: border-box;

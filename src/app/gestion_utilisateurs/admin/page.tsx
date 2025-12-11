@@ -3,7 +3,7 @@
 import Header from '../header';
 import dynamic from 'next/dynamic';
 
-const GestionUsers = dynamic(() => import('../gestion_employees'), { ssr: false });
+const GestionUsers = dynamic(() => import('../gestion_users'), { ssr: false });
 
 export default function AdminPage() {
   return (

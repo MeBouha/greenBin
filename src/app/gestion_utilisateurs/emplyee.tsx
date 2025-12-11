@@ -9,6 +9,7 @@ interface Employee {
 	  nom: string;
 	  prenom: string;
 	  role: string;
+	  disponibilite?: string;
 };
 
 type Props = {
@@ -119,7 +120,14 @@ export default function UserForm({ id }: Props) {
 						<option value="ouvrier">ouvrier</option>
                 	</select>
 				</label>
-
+				<label>
+				Disponibilité
+				<input 
+					value={user.disponibilite} 
+					onChange={e => handleChange('disponibilite', e.target.value)} 
+					className="input" 
+				/>
+				</label>
 				<div style={{ display: 'flex', gap: 8, marginTop: 8 }}>
 					<button onClick={() => router.back()} className="btn" type="button">Annuler</button>
 					<button onClick={handleSave} className="btn" type="button">Enregistrer</button>

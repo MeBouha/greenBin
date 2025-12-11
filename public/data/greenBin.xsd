@@ -48,10 +48,10 @@
     <!-- Type user -->
     <xs:complexType name="TypeUser">
         <xs:sequence>
-            <xs:element name="compte" type="TypeCompte"/>
             <xs:element name="nom" type="xs:string"/>
             <xs:element name="prenom" type="xs:string"/>
             <xs:element name="role" type="TypeRole"/>
+            <xs:element name="compte" type="TypeCompte" minOccurs="0"/>
             <xs:element name="disponibilite" type="TypeDispo" minOccurs="0"/>
         </xs:sequence>
         <xs:attribute name="id" type="xs:int" use="required"/>

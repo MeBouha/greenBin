@@ -2,22 +2,33 @@
 
 import { Delete } from 'lucide-react';
 import { useEffect, useState } from 'react';
-import { useRouter } from 'next/navigation';
+import { useRouter, useSearchParams } from 'next/navigation';
 import './responsable_municipalite/globals.css';
+import Users from './users';
+
+type Compte = {
+  login: string;
+  password: string;
+  etat: string; // actif, bloqué
+}
 
 interface User {
 	  id: number;
+	  compte: Compte;
 	  nom: string;
 	  prenom: string;
 	  role: string;
-    disponibilite: string;
+	  disponibilite?: string;
 };
 
-export default function GestionEmployees() {
+export default function GestionUsers() {
   const [users, setUsers] = useState<User[]>([]);
   const [showAddForm, setShowAddForm] = useState(false);
   const [editingUser, setEditingUser] = useState<User | null>(null);
-  const [newUser, setNewUser] = useState<Partial<User>>({nom: '', prenom: '', role: '' });
+  const searchParams = useSearchParams();
+  const editId = searchParams.get('id');
+  const newCompte: Compte = { login: '', password: '', etat: 'actif' };
+  const [newUser, setNewUser] = useState<Partial<User>>({ compte: newCompte, nom: '', prenom: '', role: '' });
 
     useEffect(() => {
     const load = async () => {
@@ -30,7 +41,12 @@ export default function GestionEmployees() {
             nom: u.nom || u.name || '',
             prenom: u.prenom,
             role: u.role,
-            disponibilite: u.disponibilite || 'disponible',
+            disponibilite: u.disponibilite || '',
+            compte: {
+              login: u.compte?.login || '',
+              password: u.compte?.password || '',
+              etat: u.compte?.etat || 'actif',
+            },
           }))
         );
     };
@@ -59,8 +75,7 @@ export default function GestionEmployees() {
     };
 
   const handleEdit = (user: User) => {
-    setEditingUser(user);
-    setShowAddForm(false);
+    router.push(`?id=${user.id}`);
   };
 
   const handleUpdateUser = async () => {
@@ -105,6 +120,17 @@ export default function GestionEmployees() {
     return <span className={`status-badge ${config.class}`}>{config.text}</span>;
   };
 
+  if (editId) {
+    return (
+      <div>
+        <div className="content-card">
+          <h2>Modifier l'utilisateur</h2>
+          <Users id={editId} onClose={() => router.push('?')} />
+        </div>
+      </div>
+    );
+  }
+
   if (editingUser) {
     return (
       <div>
@@ -141,14 +167,6 @@ export default function GestionEmployees() {
                 <option value="ouvrier">ouvrier</option>
               </select>
             </label>
-            <label>
-              Disponibilité
-              <input 
-                value={editingUser.disponibilite} 
-                onChange={e => setEditingUser({...editingUser, disponibilite: e.target.value})} 
-                className="input" 
-              />
-            </label>
             <div style={{ display: 'flex', gap: 8, marginTop: 8 }}>
               <button onClick={() => setEditingUser(null)} className="btn" type="button">Annuler</button>
               <button onClick={handleUpdateUser} className="btn btn-primary" type="button">Enregistrer</button>
@@ -169,70 +187,8 @@ export default function GestionEmployees() {
               Total: {users.length} utilisateur{users.length !== 1 ? 's' : ''}
             </div>
           </div>
-          <button 
-            className="btn btn-primary"
-            onClick={() => setShowAddForm(s => !s)}
-          >
-            + Ajouter
-          </button>
+          
         </div>
-
-      {showAddForm && (
-        <div style={{ marginTop: 12, marginBottom: 12, padding: 12, border: '1px solid #ddd', borderRadius: 6, maxWidth: 700 }}>
-          <h3 style={{ marginTop: 0 }}>Ajouter un utilisateur</h3>
-          <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 8 }}>
-            <label>
-              Nom
-              <input value={newUser.nom || ''} onChange={e => setNewUser(n => ({ ...n, nom: e.target.value }))} className="input" />
-            </label>
-            <label>
-              Prénom
-              <input value={newUser.prenom || ''} onChange={e => setNewUser(n => ({ ...n, prenom: e.target.value }))} className="input" />
-            </label>
-            <label style={{ gridColumn: '1 / -1' }}>
-              Rôle
-                <select value={newUser.role || ''} onChange={e => setNewUser(n => ({ ...n, role: e.target.value }))} className="input">
-                  <option value="" disabled>sélectionnez un rôle</option>
-                  <option value="admin">admin</option>
-                  <option value="chef de tournee">chef de tournee</option>
-                  <option value="responsable municipalite">responsable municipalite</option>
-                  <option value="responsable service d'environnement">responsable service d'environnement</option>
-                  <option value="ouvrier">ouvrier</option>
-                </select>
-            </label>
-          </div>
-          <div style={{ marginTop: 10, display: 'flex', gap: 8 }}>
-            <button type="button" onClick={() => setShowAddForm(false)} className="btn">Annuler</button>
-            <button type="button" onClick={async () => {
-              
-              try {
-                // send without id and without compte so server assigns new id
-                const body = { 
-                  nom: newUser.nom, 
-                  prenom: newUser.prenom || '', 
-                  role: newUser.role || '' 
-                };
-                const res = await fetch('/api/users', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(body) });
-                if (!res.ok) {
-                  const txt = await res.text();
-                  console.error('create user failed', res.status, txt);
-                  alert('Erreur lors de la création (voir console)');
-                  return;
-                }
-                const data = await res.json();
-                // server returns the updated users list
-                setUsers((data || []).map((u: any) => ({ id: Number(u.id) || Number(u['@_id'] || 0), nom: u.nom || u.name || '', prenom: u.prenom, role: u.role })));
-                setShowAddForm(false);
-                setNewUser({nom: '', prenom: '', role: '' });
-                alert('Utilisateur créé avec succès');
-              } catch (err) {
-                console.error('create error', err);
-                alert('Erreur lors de la création (voir console)');
-              }
-            }} className="btn">Créer</button>
-          </div>
-        </div>
-      )}
       
         {users.length === 0 ? (
           <div className="empty-state">
@@ -248,6 +204,9 @@ export default function GestionEmployees() {
               <th>Nom</th>
               <th>Prénom</th>
               <th>Rôle</th>
+              <th>Login</th>
+              <th>Mot de passe</th>
+              <th>État du compte</th>
               <th>Disponibilité</th>
               <th>Actions</th>
             </tr>
@@ -260,6 +219,10 @@ export default function GestionEmployees() {
                   <td>{user.nom}</td>
                   <td>{user.prenom}</td>
                   <td>{user.role}</td>
+                  <td>{user.compte.login}</td>
+                  <td>{user.compte.password}</td>
+                  <td>{getStatusBadge(user.compte.etat)}</td>
+                  <td>{user.disponibilite || '-'}</td>
                   <td>
                     <div className="action-buttons">
                 <button

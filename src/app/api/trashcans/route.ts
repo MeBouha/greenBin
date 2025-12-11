@@ -170,6 +170,14 @@ export async function setTrashcanStatus(id: number, status: Status) {
   return service.updateStatus(id, status);
 }
 
+// Helper to retrieve trash can type by id (shared with other routes)
+export async function getTrashCanType(id: number): Promise<TypeDechet> {
+  const list = await service.getAll();
+  const found = list.find((t) => t.id === id);
+  const type = (found?.typeDechet || 'autre').toLowerCase();
+  return type as TypeDechet;
+}
+
 // Handlers
 export async function GET() {
   try {

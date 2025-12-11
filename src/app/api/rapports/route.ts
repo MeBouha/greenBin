@@ -2,30 +2,11 @@ import { NextResponse } from 'next/server';
 import fs from 'fs/promises';
 import path from 'path';
 import { XMLBuilder, XMLParser } from 'fast-xml-parser';
+import { lookupUserByName } from '../users/route';
+import { getTrashCanType } from '../trashcans/route';
 
 const filePath = path.join(process.cwd(), 'public', 'data', 'rapport.xml');
 
-// Helper to lookup user details from users.xml
-async function lookupUserByName(name: string) {
-  const usersPath = path.join(process.cwd(), 'public', 'data', 'users.xml');
-  try {
-    const raw = await fs.readFile(usersPath, 'utf8');
-    const userMatches = Array.from(raw.matchAll(/<user[^>]*id="(\d+)"[^>]*>[\s\S]*?<login>(.*?)<\/login>[\s\S]*?<nom>(.*?)<\/nom>[\s\S]*?<prenom>(.*?)<\/prenom>[\s\S]*?<\/user>/g));
-    for (const m of userMatches) {
-      const id = m[1].trim();
-      const login = (m[2] || '').trim();
-      const nom = (m[3] || '').trim();
-      const prenom = (m[4] || '').trim();
-      if (String(id) === String(name)) return { id, nom, prenom };
-      if ([login, nom, prenom].some(s => s && s.toLowerCase() === name.toLowerCase())) {
-        return { id, nom, prenom };
-      }
-    }
-  } catch (err) {
-    // ignore
-  }
-  return null;
-}
 
 /**
  * Save a report payload to `public/data/rapport.xml` by inserting a new <rapport> element.
@@ -236,11 +217,147 @@ async function getRapportsDetailed(id?: number): Promise<any[]> {
   }
 }
 
+async function getPourcentageCO2Mois() : Promise<number> {
+  const rapports = await getRapportsDetailed();
+  if (rapports.length === 0) return 0;
+  const totalCo2 = rapports.reduce((sum, r) => sum + (r.co2Emis || 0), 0);
+  const avgCo2 = totalCo2 / rapports.length;
+  return avgCo2;
+}
+
+async function getCO2ByWeek(): Promise<any[]> {
+  const rapports = await getRapportsDetailed();
+  if (rapports.length === 0) return [];
+
+  // Group rapports by week (Monday to Sunday)
+  const weekMap = new Map<string, { weekStart: string; weekEnd: string; totalCO2: number; rapportCount: number }>();
+
+  for (const rapport of rapports) {
+    const date = new Date(rapport.date);
+    if (isNaN(date.getTime())) continue;
+
+    // Calculate Monday of the week
+    const day = date.getDay();
+    const diff = date.getDate() - day + (day === 0 ? -6 : 1); // adjust to Monday
+    const monday = new Date(date.setDate(diff));
+    monday.setHours(0, 0, 0, 0);
+
+    // Calculate Sunday of the week
+    const sunday = new Date(monday);
+    sunday.setDate(sunday.getDate() + 6);
+
+    const mondayStr = monday.toISOString().split('T')[0];
+    const sundayStr = sunday.toISOString().split('T')[0];
+    const weekKey = `${mondayStr}_${sundayStr}`;
+
+    if (!weekMap.has(weekKey)) {
+      weekMap.set(weekKey, { weekStart: mondayStr, weekEnd: sundayStr, totalCO2: 0, rapportCount: 0 });
+    }
+
+    const week = weekMap.get(weekKey)!;
+    week.totalCO2 += rapport.co2Emis || 0;
+    week.rapportCount += 1;
+  }
+
+  // Convert map to sorted array
+  const result = Array.from(weekMap.entries())
+    .map(([_, data]) => data)
+    .sort((a, b) => new Date(a.weekStart).getTime() - new Date(b.weekStart).getTime());
+
+  return result;
+}
+
+
+async function getDechetByWeek(): Promise<any[]> {
+  const rapports = await getRapportsDetailed();
+  if (rapports.length === 0) return [];
+
+  // Group rapports by week (Monday to Sunday)
+  const weekMap = new Map<string, {
+    weekStart: string;
+    weekEnd: string;
+    total: number;
+    papier: number;
+    plastique: number;
+    verre: number;
+    autre: number;
+  }>();
+
+  for (const rapport of rapports) {
+    const date = new Date(rapport.date);
+    if (isNaN(date.getTime())) continue;
+
+    // Calculate Monday of the week
+    const day = date.getDay();
+    const diff = date.getDate() - day + (day === 0 ? -6 : 1);
+    const monday = new Date(date.setDate(diff));
+    monday.setHours(0, 0, 0, 0);
+
+    // Calculate Sunday of the week
+    const sunday = new Date(monday);
+    sunday.setDate(sunday.getDate() + 6);
+
+    const mondayStr = monday.toISOString().split('T')[0];
+    const sundayStr = sunday.toISOString().split('T')[0];
+    const weekKey = `${mondayStr}_${sundayStr}`;
+
+    if (!weekMap.has(weekKey)) {
+      weekMap.set(weekKey, {
+        weekStart: mondayStr,
+        weekEnd: sundayStr,
+        total: 0,
+        papier: 0,
+        plastique: 0,
+        verre: 0,
+        autre: 0,
+      });
+    }
+
+    const week = weekMap.get(weekKey)!;
+
+    // Add quantities for each trash can
+    for (const trashcan of rapport.selectedTrashcans) {
+      const type = await getTrashCanType(trashcan.id);
+      const quantite = trashcan.quantite || 0;
+      week.total += quantite;
+
+      if (type === 'papier') {
+        week.papier += quantite;
+      } else if (type === 'plastique') {
+        week.plastique += quantite;
+      } else if (type === 'verre') {
+        week.verre += quantite;
+      } else {
+        week.autre += quantite;
+      }
+    }
+  }
+
+  // Convert map to sorted array
+  const result = Array.from(weekMap.entries())
+    .map(([_, data]) => data)
+    .sort((a, b) => new Date(a.weekStart).getTime() - new Date(b.weekStart).getTime());
+
+  return result;
+}
+
 export async function GET(request: Request) {
   try {
     const url = new URL(request.url);
     const format = url.searchParams.get('format');
     const rapportId = url.searchParams.get('id');
+    
+    // If format=co2-by-week, return CO2 emissions grouped by week
+    if (format === 'co2-by-week') {
+      const weeks = await getCO2ByWeek();
+      return NextResponse.json(weeks);
+    }
+
+    // If format=dechets-by-week, return recyclable waste grouped by week
+    if (format === 'dechets-by-week') {
+      const weeks = await getDechetByWeek();
+      return NextResponse.json(weeks);
+    }
     
     // If format=detailed, return parsed rapports
     if (format === 'detailed') {
