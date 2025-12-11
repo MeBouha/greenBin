@@ -106,10 +106,25 @@ export class UserService {
     const users = await this.load();
     const index = users.users.findIndex(u => u.id === user.id);
     if (index >= 0) {
-      users.users[index] = user; // update
+      // update existing user - use modifierCompte for compte changes
+      const existingUser = users.users[index];
+      if (user.compte.login !== existingUser.compte.login || 
+          user.compte.password !== existingUser.compte.password) {
+        await this.modifierCompte(user.id, user.compte.login, user.compte.password);
+        user.compte.etat = existingUser.compte.etat; // preserve etat
+      }
+      // use activerCompte if etat is being set to 'actif'
+      if (user.compte.etat === 'actif' && existingUser.compte.etat !== 'actif') {
+        await this.activerCompte(user.id);
+      } else {
+        user.compte.etat = existingUser.compte.etat;
+      }
+      users.users[index] = user;
     } else {
+      // add new user - use addCompte to create compte
       user.id = Math.max(0, ...users.users.map(u => u.id)) + 1; // new ID
-      users.users.push(user); // add
+      user.compte = await this.addCompte(user.compte.login, user.compte.password);
+      users.users.push(user);
     }
     await this.save(users);
   }
@@ -146,6 +161,23 @@ export class UserService {
     user.compte.etat = 'actif';
     await this.save(users);
     return user;
+  }
+
+  async verifierDisponibilite(employes: number[]): Promise<{ disponibles: User[], indisponibles: number[] }> {
+    const users = await this.load();
+    const disponibles: User[] = [];
+    const indisponibles: number[] = [];
+
+    for (const empId of employes) {
+      const user = users.users.find(u => u.id === empId);
+      if (user && user.compte.etat === 'actif') {
+        disponibles.push(user);
+      } else {
+        indisponibles.push(empId);
+      }
+    }
+
+    return { disponibles, indisponibles };
   }
 }
 

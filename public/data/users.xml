@@ -19,6 +19,7 @@
     <nom>nomCT</nom>
     <prenom>prenomCT</prenom>
     <role>chef de tournee</role>
+    <disponibilite>en service</disponibilite>
   </user>
   <user id="3">
     <compte>
@@ -29,6 +30,7 @@
     <nom>nomCT</nom>
     <prenom>prenomCT</prenom>
     <role>chef de tournee</role>
+    <disponibilite>disponible</disponibilite>
   </user>
   <user id="4">
     <compte>
@@ -39,6 +41,7 @@
     <nom>user</nom>
     <prenom>lastname</prenom>
     <role>ouvrier</role>
+    <disponibilite>disponible</disponibilite>
   </user>
   <user id="5">
     <compte>
@@ -49,6 +52,7 @@
     <nom>user</nom>
     <prenom>lastname</prenom>
     <role>ouvrier</role>
+    <disponibilite>disponible</disponibilite>
   </user>
   <user id="6">
     <compte>
@@ -59,6 +63,7 @@
     <nom>user</nom>
     <prenom>lastname</prenom>
     <role>responsable municipalite</role>
+    <disponibilite>disponible</disponibilite>
   </user>
   <user id="7">
     <compte>

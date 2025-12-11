@@ -1,5 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema">
+
+    <!-- valeurs possibles de disponibilite -->
+    <xs:simpleType name="TypeDispo">
+        <xs:restriction base="xs:string">
+            <xs:enumeration value="disponible"/>
+            <xs:enumeration value="en service"/>
+        </xs:restriction>
+    </xs:simpleType>
+
     <!-- Password restriction -->
     <xs:simpleType name="TypePassword">
         <xs:restriction base="xs:string">
@@ -43,6 +52,7 @@
             <xs:element name="nom" type="xs:string"/>
             <xs:element name="prenom" type="xs:string"/>
             <xs:element name="role" type="TypeRole"/>
+            <xs:element name="disponibilite" type="TypeDispo" minOccurs="0"/>
         </xs:sequence>
         <xs:attribute name="id" type="xs:int" use="required"/>
     </xs:complexType>
@@ -76,14 +86,6 @@
     <xs:simpleType name="TypeMat">
         <xs:restriction base="xs:string">
             <xs:pattern value="[0-9]{3}TUN[0-9]{4}"/>
-        </xs:restriction>
-    </xs:simpleType>
-
-    <!-- valeurs possibles de disponibilite -->
-    <xs:simpleType name="TypeDispo">
-        <xs:restriction base="xs:string">
-            <xs:enumeration value="disponible"/>
-            <xs:enumeration value="en service"/>
         </xs:restriction>
     </xs:simpleType>
 

@@ -93,6 +93,11 @@ class TrashCanService {
     return this.load();
   }
 
+  async getTrashCans(zone: string): Promise<TrashCan[]> {
+    const items = await this.load();
+    return items.filter((t) => t.adresse.toLowerCase() === zone.toLowerCase());
+  }
+
   async add(data: TrashCanDTO) {
     const items = await this.load();
     const nextId = data.id !== undefined ? Number(data.id) : Math.max(0, ...items.map((t) => t.id)) + 1;

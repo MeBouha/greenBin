@@ -138,6 +138,37 @@ export class TourneeService {
     await this.save(tournees);
     return true;
   }
+
+  async affecterEmployes(tourneeId: number, employeIds: number[]): Promise<Tournee | null> {
+    const tournees = await this.load();
+    const tournee = tournees.tournees.find(t => t.id === tourneeId);
+    if (!tournee) return null;
+    
+    tournee.ouvrierIds = employeIds;
+    await this.save(tournees);
+    return tournee;
+  }
+
+  async affecterVehicule(vehiculeId: number, tourneeId: number): Promise<Tournee | null> {
+    const tournees = await this.load();
+    const tournee = tournees.tournees.find(t => t.id === tourneeId);
+    if (!tournee) return null;
+    
+    tournee.vehiculeId = vehiculeId;
+    await this.save(tournees);
+    return tournee;
+  }
+
+  async verifyConstraint(tourneeId: number): Promise<boolean> {
+    const tournee = await this.getById(tourneeId);
+    if (!tournee) return false;
+    
+    const dateSysteme = new Date();
+    const dateTournee = new Date(tournee.date);
+    
+    // Retourne true si la date système est inférieure à la date de tournée
+    return dateSysteme < dateTournee;
+  }
 }
 
 export const tourneeService = new TourneeService(filePath);

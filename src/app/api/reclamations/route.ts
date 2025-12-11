@@ -131,12 +131,13 @@ class ReclamationService {
     return updated;
   }
 
-  async delete(id: number) {
-    const items = await this.load();
-    const filtered = items.filter((r) => r.id !== id);
-    if (filtered.length === items.length) throw new Error('Not found');
-    await this.save(filtered);
-  }
+  async delete(id: number): Promise<{ success: boolean }> {
+  const items = await this.load();
+  const filtered = items.filter((r) => r.id !== id);
+  if (filtered.length === items.length) throw new Error('Not found');
+  await this.save(filtered);
+  return { success: true };
+}
 }
 
 const service = new ReclamationService(filePath);

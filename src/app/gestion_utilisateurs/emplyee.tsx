@@ -3,15 +3,9 @@
 import React, { useEffect, useState } from 'react';
 import { useRouter, useSearchParams } from 'next/navigation';
 
-type Compte = {
-  login: string;
-  password: string;
-  etat: string; // actif, bloqué
-}
 
-interface User {
+interface Employee {
 	  id: number;
-	  compte: Compte;
 	  nom: string;
 	  prenom: string;
 	  role: string;
@@ -26,7 +20,7 @@ export default function UserForm({ id }: Props) {
 	const searchParams = useSearchParams();
 	const inferredId = id ?? searchParams.get('id') ?? undefined;
 
-	const [user, setUser] = useState<User | null>(null);
+	const [user, setUser] = useState<Employee | null>(null);
 	const [loading, setLoading] = useState(true);
 
 	useEffect(() => {
@@ -45,11 +39,6 @@ export default function UserForm({ id }: Props) {
 						nom: found.nom || found.name || '',
 						prenom: found.prenom || '',
 						role: found.role || '',
-						compte: {
-							login: found.compte?.login || found.login || '',
-							password: found.compte?.password || found.password || '',
-							etat: found.compte?.etat || 'actif',
-						},
 					});
 				} else {
 					setUser(null);
@@ -64,13 +53,10 @@ export default function UserForm({ id }: Props) {
 		load();
 	}, [inferredId]);
 
-	const handleChange = (field: keyof User | keyof Compte, value: string) => {
+	const handleChange = (field: keyof Employee, value: string) => {
 		setUser(prev => {
 			if (!prev) return prev;
-			if (field === 'login' || field === 'password' || field === 'etat') {
-				return { ...prev, compte: { ...prev.compte, [field]: value } };
-			}
-			return { ...prev, [field]: value } as User;
+			return { ...prev, [field]: value } as Employee;
 		});
 	};
 
@@ -131,24 +117,6 @@ export default function UserForm({ id }: Props) {
 						<option value="responsable municipalite">responsable municipalite</option>
 						<option value="responsable service d'environnement">responsable service d'environnement</option>
 						<option value="ouvrier">ouvrier</option>
-                	</select>
-				</label>
-
-				<label>
-					Login
-					<input value={user.compte.login || ''} onChange={e => handleChange('login', e.target.value)} className="input" />
-				</label>
-
-				<label>
-					Password
-					<input value={user.compte.password || ''} onChange={e => handleChange('password', e.target.value)} className="input" />
-				</label>
-
-				<label>
-					Etat du compte 
-					<select value={user.compte.etat} onChange={e => handleChange('etat', e.target.value)} className="input" >
-						<option value="actif">actif</option>
-						<option value="bloqué">bloqué</option>
                 	</select>
 				</label>
 

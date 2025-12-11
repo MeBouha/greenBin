@@ -15,6 +15,7 @@ import ModifierPointCollecte from '../../gestion_tournees/gestion_ts_collectes/M
 import ModifierVehicule from '../../gestion_tournees/gestion_vehicules/ModifierVehicule';
 import ModifierTournee from '../../gestion_tournees/ModifierTournee';
 import ModifierNotification from '../../gestion_tournees/ModifierNotification';
+import GestionEmployees from '../gestion_employees';
 
 // Définition des interfaces
 export interface Reclamation {
@@ -145,6 +146,7 @@ export default function RespMPage() {
     { id: 'consulter-reclamations', label: 'Consulter les réclamations' },
     { id: 'gerer-points-collecte', label: 'Gérer les points de collecte' },
     { id: 'gerer-vehicule', label: 'Gérer les véhicules' },
+    { id: 'gerer-employes', label: 'Gérer les employés' },
     { id: 'gerer-tournees', label: 'Gérer les tournées' },
     { id: 'consulter-rapports', label: 'Consulter les rapports' },
     { id: 'envoyer-notification', label: 'Envoyer une notification' },
@@ -838,6 +840,8 @@ export default function RespMPage() {
             deletingVehiculeId={deletingVehiculeId}
           />
         );
+      case 'gerer-employes':
+        return <GestionEmployees />;
       case 'modifier-vehicule':
         return (
           <ModifierVehicule 
