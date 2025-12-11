@@ -4,72 +4,165 @@ import path from 'path';
 import { XMLParser, XMLBuilder } from 'fast-xml-parser';
 
 const filePath = path.join(process.cwd(), 'public', 'data', 'users.xml');
-type RawUser = any;
 
-export async function getUsers(): Promise<Array<{ id: number; nom: string; prenom: string; role: string; login: string; password: string;}>> {
-    const filePath = path.join(process.cwd(), 'public', 'data', 'users.xml');
-    const xml = await fs.readFile(filePath, 'utf8');
+// === Définition des classes (comme JAXB) ===
 
-    const parser = new XMLParser({ ignoreAttributes: false, attributeNamePrefix: '@_' });
-    const parsed = parser.parse(xml);
+export class Compte {
+  login: string;
+  password: string;
+  etat: string; // actif, bloqué
+  constructor(data: any) {
+    this.login = String(data.login ?? '');
+    this.password = String(data.password ?? '');
+    this.etat = String(data.etat ?? 'actif');
+  }
+}
 
-    const users = parsed?.users?.user ?? [];
-    const items = Array.isArray(users) ? users : [users];
+export class User {
+  id: number;
+  compte: Compte;
+  nom: string;
+  prenom: string;
+  role: string;
 
-    const mapped = items.map((u: any) => {
-    const id = parseInt(u['@_id'] ?? (u.id as any) ?? '0', 10);
-    const nom = String(u.nom );
-    const prenom = String(u.prenom );
-    const role = String(u.role );
-    const login = String(u.login );
-    const password = String(u.password );
+  constructor(data: any) {
+    // accept id coming from body or from xml attribute
+    this.id = Number(data.id ?? data['@_id'] ?? 0);
+    this.nom = String(data.nom ?? '');
+    this.prenom = String(data.prenom ?? '');
+    this.compte = new Compte(data.compte ?? {});
+    this.role = String(data.role ?? '');
+  }
 
+  toXML(): any {
     return {
-        id, nom, prenom, role, login, password,
+      '@_id': String(this.id),
+      compte: {
+        login: this.compte.login,
+        password: this.compte.password,
+        etat: this.compte.etat,
+      },
+      nom: this.nom,
+      prenom: this.prenom,
+      role: this.role,
     };
-  });
-  return mapped;
+  }
 }
 
-export async function getUserById(id: number): Promise<
-  Array<{ id: number; nom: string; prenom: string; role: string; login: string; password: string;}>> {
-    const filePath = path.join(process.cwd(), 'public', 'data', 'users.xml');
-  const xml = await fs.readFile(filePath, 'utf8');
+export class Users {
+  users: User[];
 
-  const parser = new XMLParser({ ignoreAttributes: false, attributeNamePrefix: '@_' });
-  const parsed = parser.parse(xml) as { users?: { user?: RawUser } };
-  const raw = parsed?.users?.user ?? [];
-  const items = Array.isArray(raw) ? raw : [raw];
+  constructor(data: any) {
+    const rawUsers = data?.users?.user ?? [];
+    const items = Array.isArray(rawUsers) ? rawUsers : [rawUsers];
+    this.users = items.map(u => new User(u));
+  }
 
-  const filtered = items.map((u: any) => {
-      const idUser =parseInt(u['@_id']);
-      // filtrer par adresse
-      if (idUser !== id) return null;
-          const nom = String(u.nom );
-          const prenom = String(u.prenom );
-          const role = String(u.role );
-          const login = String(u.login );
-          const password = String(u.password );
-
-      return {
-        id: idUser,
-        nom: nom,
-        prenom: prenom,
-        role: role,
-        login: login,
-        password: password,
-      };
-    })
-    .filter(Boolean) as Array<{ id: number; nom: string; prenom: string; role: string; login: string; password: string }>; // supprime les nulls
-
-  return filtered;
+  toXML(): any {
+    return { user: this.users.map(u => u.toXML()) };
+  }
 }
+
+// === Service XML (analogue à JAXBContext/Marshaller/Unmarshaller) ===
+export class UserService {
+  filePath: string;
+  parser = new XMLParser({ ignoreAttributes: false, attributeNamePrefix: '@_' });
+  builder = new XMLBuilder({ ignoreAttributes: false, attributeNamePrefix: '@_', format: true });
+
+  constructor(filePath: string) {
+    this.filePath = filePath;
+  }
+
+  async load(): Promise<Users> {
+    const xml = await fs.readFile(this.filePath, 'utf8');
+    const parsed = this.parser.parse(xml) || {};
+    return new Users(parsed);
+  }
+
+  async save(users: Users) {
+    const xmlObj = { 
+      users: {
+        '@_xmlns:xs': 'http://www.w3.org/2001/XMLSchema-instance',
+        '@_xs:noNamespaceSchemaLocation': 'greenBin.xsd',
+        ...users.toXML()
+      }
+    };
+    const xmlBody = this.builder.build(xmlObj);
+    const xmlWithHeader = `<?xml version="1.0" encoding="UTF-8"?>\n${xmlBody}`;
+    await fs.writeFile(this.filePath, xmlWithHeader, 'utf8');
+  }
+
+  async getAll(): Promise<User[]> {
+    const users = await this.load();
+    return users.users;
+  }
+
+  async getById(id: number): Promise<User | null> {
+    const users = await this.load();
+    return users.users.find(u => u.id === id) ?? null;
+  }
+
+  async addOrUpdate(user: User) {
+    const users = await this.load();
+    const index = users.users.findIndex(u => u.id === user.id);
+    if (index >= 0) {
+      users.users[index] = user; // update
+    } else {
+      user.id = Math.max(0, ...users.users.map(u => u.id)) + 1; // new ID
+      users.users.push(user); // add
+    }
+    await this.save(users);
+  }
+
+  async delete(id: number) {
+    const users = await this.load();
+    users.users = users.users.filter(u => u.id !== id);
+    await this.save(users);
+  }
+
+  async addCompte(login: string, password: string): Promise<Compte> {
+    const newCompte = new Compte({
+      login,
+      password,
+      etat: 'actif'
+    });
+    return newCompte;
+  }
+
+  async modifierCompte(id: number, login: string, password: string) {
+    const users = await this.load();
+    const user = users.users.find(u => u.id === id);
+    if (!user) throw new Error('User not found');
+    user.compte.login = login;
+    user.compte.password = password;
+    await this.save(users);
+    return user;
+  }
+
+  async activerCompte(id: number) {
+    const users = await this.load();
+    const user = users.users.find(u => u.id === id);
+    if (!user) throw new Error('User not found');
+    user.compte.etat = 'actif';
+    await this.save(users);
+    return user;
+  }
+}
+
+// === Exported helper function ===
+export async function getUserById(id: number): Promise<User | null> {
+  const service = new UserService(filePath);
+  return service.getById(id);
+}
+
+// === API Next.js ===
+const service = new UserService(filePath);
 
 export async function GET() {
   try {
-    const data = await getUsers();
+    const data = await service.getAll();
     return NextResponse.json(data);
-  } catch (err) {
+  } catch {
     return NextResponse.json({ error: 'Failed to load users' }, { status: 500 });
   }
 }
@@ -78,80 +171,10 @@ export async function PUT(request: Request) {
   try {
     const body = await request.json();
     if (!body) return NextResponse.json({ error: 'No body' }, { status: 400 });
-
-    const xml = await fs.readFile(filePath, 'utf8');
-    const parser = new XMLParser({ ignoreAttributes: false, attributeNamePrefix: '@_' });
-    const parsed = parser.parse(xml) || {};
-
-    let usersNode: any = parsed?.users ?? {};
-    const rootAttrs: any = {};
-    // preserve root attributes like xmlns if present
-    Object.keys(usersNode).forEach(k => {
-      if (k.startsWith('@_')) rootAttrs[k] = usersNode[k];
-    });
-
-    let items = usersNode.user ?? [];
-    if (!Array.isArray(items)) items = [items].filter(Boolean);
-
-    const incomingId = Number(body.id) || 0;
-
-    if (incomingId > 0) {
-      // update existing
-      let found = false;
-      items = items.map((u: any) => {
-        const uid = Number(u['@_id'] ?? u.id ?? 0);
-        if (uid === incomingId) {
-          found = true;
-          return {
-            '@_id': String(incomingId),
-            login: body.login || '',
-            password: body.password || '',
-            nom: body.nom || '',
-            prenom: body.prenom || '',
-            role: body.role || '',
-          };
-        }
-        return u;
-      });
-      if (!found) {
-        // add as new
-        items.push({
-          '@_id': String(incomingId),
-          login: body.login || '',
-          password: body.password || '',
-          nom: body.nom || '',
-          prenom: body.prenom || '',
-          role: body.role || '',
-        });
-      }
-    } else {
-      // create new id
-      const maxId = items.reduce((m: number, u: any) => Math.max(m, Number(u['@_id'] ?? u.id ?? 0)), 0);
-      const newId = maxId + 1;
-      items.push({
-        '@_id': String(newId),
-        login: body.login || '',
-        password: body.password || '',
-        nom: body.nom || '',
-        prenom: body.prenom || '',
-        role: body.role || '',
-      });
-    }
-
-    // rebuild object
-    const builderObj: any = { users: {} };
-    // reattach preserved root attrs
-    Object.keys(rootAttrs).forEach(k => (builderObj.users[k] = rootAttrs[k]));
-    builderObj.users.user = items;
-
-    const builder = new XMLBuilder({ ignoreAttributes: false, attributeNamePrefix: '@_', format: true });
-    const newXml = builder.build(builderObj);
-    await fs.writeFile(filePath, newXml, 'utf8');
-
-    const data = await getUsers();
-    return NextResponse.json(data);
-  } catch (err) {
-    console.error('PUT /api/users error', err);
+    const user = new User(body);
+    await service.addOrUpdate(user);
+    return NextResponse.json(await service.getAll());
+  } catch {
     return NextResponse.json({ error: 'Failed to save user' }, { status: 500 });
   }
 }
@@ -159,28 +182,11 @@ export async function PUT(request: Request) {
 export async function DELETE(request: Request) {
   try {
     const url = new URL(request.url);
-    const id = url.searchParams.get('id');
+    const id = Number(url.searchParams.get('id'));
     if (!id) return NextResponse.json({ error: 'Missing id' }, { status: 400 });
-
-    const xml = await fs.readFile(filePath, 'utf8');
-    const parser = new XMLParser({ ignoreAttributes: false, attributeNamePrefix: '@_' });
-    const parsed = parser.parse(xml) || {};
-
-    let items = parsed?.users?.user ?? [];
-    if (!Array.isArray(items)) items = [items].filter(Boolean);
-
-    const newItems = items.filter((u: any) => String(u['@_id'] ?? u.id ?? '') !== String(id));
-
-    const builderObj: any = { users: {} };
-    builderObj.users.user = newItems;
-    const builder = new XMLBuilder({ ignoreAttributes: false, attributeNamePrefix: '@_', format: true });
-    const newXml = builder.build(builderObj);
-    await fs.writeFile(filePath, newXml, 'utf8');
-
-    const data = await getUsers();
-    return NextResponse.json(data);
-  } catch (err) {
-    console.error('DELETE /api/users error', err);
+    await service.delete(id);
+    return NextResponse.json(await service.getAll());
+  } catch {
     return NextResponse.json({ error: 'Failed to delete user' }, { status: 500 });
   }
 }

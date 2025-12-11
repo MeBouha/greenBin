@@ -30,14 +30,16 @@ export default function Tournee() {
     const [error, setError] = useState<string | null>(null);
     const router = useRouter();
     const [showAdd, setShowAdd] = useState(false);
+    const [showReclamations, setShowReclamations] = useState(false);
     const [AddComponent, setAddComponent] = useState<any>(null);
+    const [ReclamationComponent, setReclamationComponent] = useState<any>(null);
 
     useEffect(() => {
         let mounted = true;
         const load = async () => {
             setLoading(true);
             try {
-                const res = await fetch('/api/tournee');
+                const res = await fetch('/api/tournees?enriched=true');
                 if (!res.ok) throw new Error(`HTTP ${res.status}`);
                 const data = await res.json();
                 if (mounted) setTournees(Array.isArray(data) ? data : []);
@@ -83,7 +85,7 @@ export default function Tournee() {
                     </div>
                 ))}
             </div>
-            <div style={{ display: 'flex', justifyContent: 'center', marginTop: 18 }}>
+            <div style={{ display: 'flex', justifyContent: 'center', gap: 12, marginTop: 18 }}>
                 <button
                     type="button"
                     onClick={async () => {
@@ -112,12 +114,48 @@ export default function Tournee() {
                 >
                     Envoyer une réclamation
                 </button>
+                <button
+                    type="button"
+                    onClick={async () => {
+                        if (!ReclamationComponent) {
+                            try {
+                                const m = await import('../gestion_reclamations/reclamation');
+                                setReclamationComponent(() => (m.default ?? m));
+                            } catch (e) {
+                                console.error('Failed to load Reclamation component', e);
+                                return;
+                            }
+                        }
+                        setShowReclamations(true);
+                    }}
+                    aria-label="Consulter les réclamations"
+                    style={{
+                        backgroundColor: '#2563eb',
+                        color: '#fff',
+                        padding: '10px 18px',
+                        borderRadius: 10,
+                        border: 'none',
+                        cursor: 'pointer',
+                        fontWeight: 700,
+                        boxShadow: '0 6px 18px rgba(37,99,235,0.14)',
+                    }}
+                >
+                    Consulter les réclamations
+                </button>
             </div>
 
             {showAdd && (
                 <div style={{position:'fixed',inset:0,display:'flex',alignItems:'center',justifyContent:'center',background:'rgba(0,0,0,0.4)',zIndex:2000}}>
                     <div style={{width:'min(900px,96%)',maxHeight:'90vh',overflow:'auto',background:'#fff',borderRadius:8,padding:12}}>
                         {AddComponent ? <AddComponent onClose={() => setShowAdd(false)} /> : <div>Loading...</div>}
+                    </div>
+                </div>
+            )}
+
+            {showReclamations && (
+                <div style={{position:'fixed',inset:0,display:'flex',alignItems:'stretch',justifyContent:'stretch',background:'rgba(0,0,0,0.4)',zIndex:2000}}>
+                    <div style={{width:'100%',height:'100%',background:'#fff',overflow:'auto'}} onClick={(e) => e.stopPropagation()}>
+                        {ReclamationComponent ? <ReclamationComponent onClose={() => setShowReclamations(false)} /> : <div style={{padding:20}}>Loading...</div>}
                     </div>
                 </div>
             )}

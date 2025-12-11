@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<travaux xmlns:xs="http://www.w3.org/2001/XMLSchema-instance" xs:noNamespaceSchemaLocation="greenBin.xsd">
+<travaux>
   <travail id="2">
     <date>2025-12-10</date>
     <lieu>Route el Ain klm1</lieu>

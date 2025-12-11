@@ -1,172 +1,157 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<trashCans xmlns:xs="http://www.w3.org/2001/XMLSchema-instance"
-           xs:noNamespaceSchemaLocation="greenBin.xsd">
-    <trashCan id="1">
-        <lieu>
-            <adresse>Sfax centre</adresse>
-            <coordonnees>
-                <latitude>34.740</latitude>
-                <longitude>10.760</longitude>
-            </coordonnees>
-        </lieu>
-        <typeDechet>plastique</typeDechet>
-        <status>pleine</status>
-    </trashCan>
-
-    <trashCan id="2">
-        <lieu>
-            <adresse>Sfax centre</adresse>
-            <coordonnees>
-                <latitude>34.742</latitude>
-                <longitude>10.760</longitude>
-            </coordonnees>
-        </lieu>
-        <typeDechet>plastique</typeDechet>
-        <status>vide</status>
-    </trashCan>
-
-    <trashCan id="3">
-        <lieu>
-            <adresse>Sfax centre</adresse>
-            <coordonnees>
-                <latitude>34.731</latitude>
-                <longitude>10.770</longitude>
-            </coordonnees>
-        </lieu>
-        <typeDechet>plastique</typeDechet>
-        <status>vide</status>
-    </trashCan>
-
-    <trashCan id="4">
-        <lieu>
-            <adresse>Sfax centre</adresse>
-            <coordonnees>
-                <latitude>34.741</latitude>
-                <longitude>10.752</longitude>
-            </coordonnees>
-        </lieu>
-        <typeDechet>plastique</typeDechet>
-        <status>pleine</status>
-    </trashCan>
-
-    <trashCan id="5">
-        <lieu>
-            <adresse>Sfax centre</adresse>
-            <coordonnees>
-                <latitude>34.739</latitude>
-                <longitude>10.766</longitude>
-            </coordonnees>
-        </lieu>
-        <typeDechet>plastique</typeDechet>
-        <status>moitie</status>
-    </trashCan>
-
-    <trashCan id="6">
-        <lieu>
-            <adresse>Sfax centre</adresse>
-            <coordonnees>
-                <latitude>34.743</latitude>
-                <longitude>10.758</longitude>
-            </coordonnees>
-        </lieu>
-        <typeDechet>plastique</typeDechet>
-        <status>vide</status>
-    </trashCan>
-
-    <trashCan id="7">
-        <lieu>
-            <adresse>Sakiet Ezzit</adresse>
-            <coordonnees>
-                <latitude>34.771</latitude>
-                <longitude>10.740</longitude>
-            </coordonnees>
-        </lieu>
-        <typeDechet>plastique</typeDechet>
-        <status>moitie</status>
-    </trashCan>
-
-    <trashCan id="8">
-        <lieu>
-            <adresse>Sakiet Eddaier</adresse>
-            <coordonnees>
-                <latitude>34.757</latitude>
-                <longitude>10.800</longitude>
-            </coordonnees>
-        </lieu>
-        <typeDechet>plastique</typeDechet>
-        <status>pleine</status>
-    </trashCan>
-
-    <trashCan id="9">
-        <lieu>
-            <adresse>Route Taniour</adresse>
-            <coordonnees>
-                <latitude>34.735</latitude>
-                <longitude>10.780</longitude>
-            </coordonnees>
-        </lieu>
-        <typeDechet>plastique</typeDechet>
-        <status>vide</status>
-    </trashCan>
-
-    <trashCan id="10">
-        <lieu>
-            <adresse>Route Gremda</adresse>
-            <coordonnees>
-                <latitude>34.730</latitude>
-                <longitude>10.750</longitude>
-            </coordonnees>
-        </lieu>
-        <typeDechet>plastique</typeDechet>
-        <status>moitie</status>
-    </trashCan>
-
-        <trashCan id="11">
-        <lieu>
-            <adresse>Sakiet Ezzit</adresse>
-            <coordonnees>
-                <latitude>34.773</latitude>
-                <longitude>10.742</longitude>
-            </coordonnees>
-        </lieu>
-        <typeDechet>plastique</typeDechet>
-        <status>pleine</status>
-    </trashCan>
-
-    <trashCan id="12">
-        <lieu>
-            <adresse>Sakiet Eddaier</adresse>
-            <coordonnees>
-                <latitude>34.759</latitude>
-                <longitude>10.803</longitude>
-            </coordonnees>
-        </lieu>
-        <typeDechet>papier</typeDechet>
-        <status>vide</status>
-    </trashCan>
-
-    <trashCan id="13">
-        <lieu>
-            <adresse>Route Gremda</adresse>
-            <coordonnees>
-                <latitude>34.728</latitude>
-                <longitude>10.748</longitude>
-            </coordonnees>
-        </lieu>
-        <typeDechet>plastique</typeDechet>
-        <status>vide</status>
-    </trashCan>
-
-    <trashCan id="14">
-        <lieu>
-            <adresse>Route Gremda</adresse>
-            <coordonnees>
-                <latitude>34.732</latitude>
-                <longitude>10.752</longitude>
-            </coordonnees>
-        </lieu>
-        <typeDechet>papier</typeDechet>
-        <status>moitie</status>
-    </trashCan>
-
+<trashCans xmlns:xs="http://www.w3.org/2001/XMLSchema-instance" xs:noNamespaceSchemaLocation="greenBin.xsd">
+  <trashCan id="1">
+    <lieu>
+      <adresse>Sfax centre</adresse>
+      <coordonnees>
+        <latitude>34.74</latitude>
+        <longitude>10.76</longitude>
+      </coordonnees>
+    </lieu>
+    <typeDechet>verre</typeDechet>
+    <status>vide</status>
+  </trashCan>
+  <trashCan id="2">
+    <lieu>
+      <adresse>Sfax centre</adresse>
+      <coordonnees>
+        <latitude>34.742</latitude>
+        <longitude>10.76</longitude>
+      </coordonnees>
+    </lieu>
+    <typeDechet>plastique</typeDechet>
+    <status>vide</status>
+  </trashCan>
+  <trashCan id="3">
+    <lieu>
+      <adresse>Sfax centre</adresse>
+      <coordonnees>
+        <latitude>34.731</latitude>
+        <longitude>10.77</longitude>
+      </coordonnees>
+    </lieu>
+    <typeDechet>plastique</typeDechet>
+    <status>vide</status>
+  </trashCan>
+  <trashCan id="4">
+    <lieu>
+      <adresse>Sfax centre</adresse>
+      <coordonnees>
+        <latitude>34.741</latitude>
+        <longitude>10.752</longitude>
+      </coordonnees>
+    </lieu>
+    <typeDechet>plastique</typeDechet>
+    <status>pleine</status>
+  </trashCan>
+  <trashCan id="5">
+    <lieu>
+      <adresse>Sfax centre</adresse>
+      <coordonnees>
+        <latitude>34.739</latitude>
+        <longitude>10.766</longitude>
+      </coordonnees>
+    </lieu>
+    <typeDechet>plastique</typeDechet>
+    <status>moitie</status>
+  </trashCan>
+  <trashCan id="6">
+    <lieu>
+      <adresse>Sfax centre</adresse>
+      <coordonnees>
+        <latitude>34.743</latitude>
+        <longitude>10.758</longitude>
+      </coordonnees>
+    </lieu>
+    <typeDechet>plastique</typeDechet>
+    <status>vide</status>
+  </trashCan>
+  <trashCan id="7">
+    <lieu>
+      <adresse>Sakiet Ezzit</adresse>
+      <coordonnees>
+        <latitude>34.771</latitude>
+        <longitude>10.74</longitude>
+      </coordonnees>
+    </lieu>
+    <typeDechet>plastique</typeDechet>
+    <status>moitie</status>
+  </trashCan>
+  <trashCan id="8">
+    <lieu>
+      <adresse>Sakiet Eddaier</adresse>
+      <coordonnees>
+        <latitude>34.757</latitude>
+        <longitude>10.8</longitude>
+      </coordonnees>
+    </lieu>
+    <typeDechet>plastique</typeDechet>
+    <status>pleine</status>
+  </trashCan>
+  <trashCan id="9">
+    <lieu>
+      <adresse>Route Taniour</adresse>
+      <coordonnees>
+        <latitude>34.735</latitude>
+        <longitude>10.78</longitude>
+      </coordonnees>
+    </lieu>
+    <typeDechet>plastique</typeDechet>
+    <status>vide</status>
+  </trashCan>
+  <trashCan id="10">
+    <lieu>
+      <adresse>Route Gremda</adresse>
+      <coordonnees>
+        <latitude>34.73</latitude>
+        <longitude>10.75</longitude>
+      </coordonnees>
+    </lieu>
+    <typeDechet>plastique</typeDechet>
+    <status>moitie</status>
+  </trashCan>
+  <trashCan id="11">
+    <lieu>
+      <adresse>Sakiet Ezzit</adresse>
+      <coordonnees>
+        <latitude>34.773</latitude>
+        <longitude>10.742</longitude>
+      </coordonnees>
+    </lieu>
+    <typeDechet>plastique</typeDechet>
+    <status>pleine</status>
+  </trashCan>
+  <trashCan id="12">
+    <lieu>
+      <adresse>Sakiet Eddaier</adresse>
+      <coordonnees>
+        <latitude>34.759</latitude>
+        <longitude>10.803</longitude>
+      </coordonnees>
+    </lieu>
+    <typeDechet>papier</typeDechet>
+    <status>vide</status>
+  </trashCan>
+  <trashCan id="13">
+    <lieu>
+      <adresse>Route Gremda</adresse>
+      <coordonnees>
+        <latitude>34.728</latitude>
+        <longitude>10.748</longitude>
+      </coordonnees>
+    </lieu>
+    <typeDechet>plastique</typeDechet>
+    <status>vide</status>
+  </trashCan>
+  <trashCan id="14">
+    <lieu>
+      <adresse>Route Gremda</adresse>
+      <coordonnees>
+        <latitude>34.732</latitude>
+        <longitude>10.752</longitude>
+      </coordonnees>
+    </lieu>
+    <typeDechet>papier</typeDechet>
+    <status>moitie</status>
+  </trashCan>
 </trashCans>

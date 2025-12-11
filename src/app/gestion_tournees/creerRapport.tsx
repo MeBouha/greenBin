@@ -1,6 +1,7 @@
 "use client";
 
 import React, { useState, useEffect } from 'react';
+import Header from '../gestion_utilisateurs/header';
 
 // employees will be loaded from `public/data/tournee.xml` and resolved against `public/data/users.xml`
 const TYPES_DECHETS = ["Plastique", "Papier", "Verre", "Autre"];
@@ -227,6 +228,17 @@ export default function RapportPage() {
 
   const handleSubmit = async (e?: React.FormEvent) => {
     if (e) e.preventDefault();
+    
+    // Validate required fields
+    if (idTournee === '') {
+      alert('Veuillez sélectionner une tournée');
+      return;
+    }
+    if (!date) {
+      alert('Veuillez sélectionner une date');
+      return;
+    }
+    
     setLoading(true);
     // build payload: include connected chef, present and absent workers, and selected trashcans from map
     let chef = null;
@@ -272,6 +284,7 @@ export default function RapportPage() {
 
   return (
     <div>
+      <Header />
       <main className="container" style={{marginTop:16}}>
         <div style={{display:'flex',flexDirection:'row',gap:20,alignItems:'flex-start'}}>
 

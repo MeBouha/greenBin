@@ -81,7 +81,7 @@ export default function TrashMapChef() {
 
         if (userId !== null) {
           // fetch tournees which already include trashCans for their zone
-          const tRes = await fetch('/api/tournee');
+          const tRes = await fetch('/api/tournees?enriched=true');
           if (tRes.ok) {
             const tournees = await tRes.json();
             // filter tournees whose vehicule.chauffeurId matches the logged-in user
@@ -186,10 +186,10 @@ export default function TrashMapChef() {
     setActiveId(id);
 
     try {
-      const res = await fetch('/api/trashcans/update', {
-        method: 'POST',
+      const res = await fetch('/api/trashcans', {
+        method: 'PUT',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ id }),
+        body: JSON.stringify({ id, status: 'vide' }),
       });
 
       if (!res.ok) {
@@ -273,6 +273,16 @@ export default function TrashMapChef() {
       show: true,
     }).addTo(mapRef.current);
 
+    // Extract distance and save to sessionStorage
+    routing.on('routesfound', (e: any) => {
+      if (e.routes && e.routes.length > 0) {
+        const distanceKm = (e.routes[0].summary?.totalDistance || 0) / 1000;
+        if (typeof window !== 'undefined') {
+          sessionStorage.setItem('routeDistance', distanceKm.toFixed(2));
+        }
+      }
+    });
+
     // Style du panneau de route
     const container = routing.getContainer?.();
     if (container) {
@@ -306,7 +316,7 @@ export default function TrashMapChef() {
       <div style={{ position: 'absolute', bottom: 20, right: 20, zIndex: 1000 }}>
         <button
           type="button"
-          onClick={() => router.push('/rapport')}
+          onClick={() => router.push('/gestion_tournees/rapport')}
           style={{
             backgroundColor: '#2563eb',
             color: '#fff',

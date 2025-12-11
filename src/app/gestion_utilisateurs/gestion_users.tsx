@@ -4,19 +4,25 @@ import { Delete } from 'lucide-react';
 import { useEffect, useState } from 'react';
 import { useRouter } from 'next/navigation';
 
-interface User {
-    id: number;
-    nom: string;
-    prenom: string;
-    role: string;
-    login?: string;     // optionnel si tu veux
-    password?: string;  // optionnel mais affichage déconseillé
+type Compte = {
+  login: string;
+  password: string;
+  etat: string; // actif, bloqué
 }
 
+interface User {
+	  id: number;
+	  compte: Compte;
+	  nom: string;
+	  prenom: string;
+	  role: string;
+};
+
 export default function GestionUsers() {
-    const [users, setUsers] = useState<User[]>([]);
+  const [users, setUsers] = useState<User[]>([]);
   const [showAddForm, setShowAddForm] = useState(false);
-  const [newUser, setNewUser] = useState<Partial<User>>({ login: '', password: '', nom: '', prenom: '', role: '' });
+  const newCompte: Compte = { login: '', password: '', etat: 'actif' };
+  const [newUser, setNewUser] = useState<Partial<User>>({ compte: newCompte, nom: '', prenom: '', role: '' });
 
     useEffect(() => {
     const load = async () => {
@@ -29,8 +35,11 @@ export default function GestionUsers() {
             nom: u.nom || u.name || '',
             prenom: u.prenom,
             role: u.role,
-            login: u.login,
-            password: u.password,
+            compte: {
+              login: u.compte?.login || '',
+              password: u.compte?.password || '',
+              etat: u.compte?.etat || 'actif',
+            },
           }))
         );
     };
@@ -77,11 +86,19 @@ export default function GestionUsers() {
           <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 8 }}>
             <label>
               Login
-              <input value={newUser.login || ''} onChange={e => setNewUser(n => ({ ...n, login: e.target.value }))} className="input" />
+              <input
+                value={newUser.compte?.login || ''}
+                onChange={e => setNewUser(n => ({ ...n, compte: { ...(n.compte || newCompte), login: e.target.value } }))}
+                className="input"
+              />
             </label>
             <label>
               Password
-              <input value={newUser.password || ''} onChange={e => setNewUser(n => ({ ...n, password: e.target.value }))} className="input" />
+              <input
+                value={newUser.compte?.password || ''}
+                onChange={e => setNewUser(n => ({ ...n, compte: { ...(n.compte || newCompte), password: e.target.value } }))}
+                className="input"
+              />
             </label>
             <label>
               Nom
@@ -94,7 +111,8 @@ export default function GestionUsers() {
             <label style={{ gridColumn: '1 / -1' }}>
               Rôle
                 <select value={newUser.role || ''} onChange={e => setNewUser(n => ({ ...n, role: e.target.value }))} className="input">
-              <option value="admin">admin</option>
+                  <option value="" disabled>sélectionnez un rôle</option>
+                  <option value="admin">admin</option>
                   <option value="chef de tournee">chef de tournee</option>
                   <option value="responsable municipalite">responsable municipalite</option>
                   <option value="responsable service d'environnement">responsable service d'environnement</option>
@@ -106,13 +124,22 @@ export default function GestionUsers() {
             <button type="button" onClick={() => setShowAddForm(false)} className="btn">Annuler</button>
             <button type="button" onClick={async () => {
               // basic validation
-              if (!newUser.login || !newUser.password || !newUser.nom) {
+              if (!newUser.compte?.login || !newUser.compte?.password || !newUser.nom) {
                 alert('Veuillez renseigner au moins login, password et nom');
                 return;
               }
               try {
                 // send without id so server assigns new id
-                const body = { login: newUser.login, password: newUser.password, nom: newUser.nom, prenom: newUser.prenom || '', role: newUser.role || '' };
+                const body = { 
+                  compte: { 
+                    login: newUser.compte?.login, 
+                    password: newUser.compte?.password,
+                    etat: 'actif'
+                  }, 
+                  nom: newUser.nom, 
+                  prenom: newUser.prenom || '', 
+                  role: newUser.role || '' 
+                };
                 const res = await fetch('/api/users', { method: 'PUT', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(body) });
                 if (!res.ok) {
                   const txt = await res.text();
@@ -122,9 +149,9 @@ export default function GestionUsers() {
                 }
                 const data = await res.json();
                 // server returns the updated users list
-                setUsers((data || []).map((u: any) => ({ id: Number(u.id) || Number(u['@_id'] || 0), nom: u.nom || u.name || '', prenom: u.prenom, role: u.role, login: u.login, password: u.password })));
+                setUsers((data || []).map((u: any) => ({ id: Number(u.id) || Number(u['@_id'] || 0), nom: u.nom || u.name || '', prenom: u.prenom, role: u.role, compte: { login: u.compte?.login || '', password: u.compte?.password || '', etat: u.compte?.etat || 'actif' } })));
                 setShowAddForm(false);
-                setNewUser({ login: '', password: '', nom: '', prenom: '', role: '' });
+                setNewUser({ compte: { login: '', password: '', etat: 'actif' }, nom: '', prenom: '', role: '' });
               } catch (err) {
                 console.error('create error', err);
                 alert('Erreur lors de la création (voir console)');
@@ -148,6 +175,7 @@ export default function GestionUsers() {
             <th style={{ border: "1px solid #ccc", padding: "8px" }}>Rôle</th>
             <th style={{ border: "1px solid #ccc", padding: "8px" }}>Login</th>
             <th style={{ border: "1px solid #ccc", padding: "8px" }}>Password</th>
+            <th style={{ border: "1px solid #ccc", padding: "8px" }}>Etat du compte</th>
             <th style={{ border: "1px solid #ccc", padding: "8px" }}>Actions</th>
           </tr>
         </thead>
@@ -159,8 +187,9 @@ export default function GestionUsers() {
                 <td style={{ border: "1px solid #ccc", padding: "8px" }}>{user.nom}</td>
                 <td style={{ border: "1px solid #ccc", padding: "8px" }}>{user.prenom}</td>
                 <td style={{ border: "1px solid #ccc", padding: "8px" }}>{user.role}</td>
-                <td style={{ border: "1px solid #ccc", padding: "8px" }}>{user.login}</td>
-                <td style={{ border: "1px solid #ccc", padding: "8px" }}>{user.password}</td>
+                <td style={{ border: "1px solid #ccc", padding: "8px" }}>{user.compte.login}</td>
+                <td style={{ border: "1px solid #ccc", padding: "8px" }}>{user.compte.password}</td>
+                <td style={{ border: "1px solid #ccc", padding: "8px" }}>{user.compte.etat}</td>
                 <td
                     style={{
                     border: "1px solid #ccc",
@@ -172,7 +201,7 @@ export default function GestionUsers() {
                 >
                 <button
                   type="button"
-                  onClick={() => router.push('/users/edit/' + user.id)}
+                  onClick={() => router.push('/gestion_utilisateurs/user?id=' + user.id)}
                   style={{
                   backgroundColor: '#26dc41ff',
                   color: '#fff',

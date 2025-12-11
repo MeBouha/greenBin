@@ -1,24 +1,21 @@
-<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<?xml version="1.0" encoding="UTF-8"?>
 <tournees xmlns:xs="http://www.w3.org/2001/XMLSchema-instance" xs:noNamespaceSchemaLocation="greenBin.xsd">
-  <tournee id="1"><!--  id: key  -->
-  <zone>Sfax centre</zone>
-  <!-- <employees> -->
-  <!--   <chefTourne id="1"/> deja mawjoud fl vehicule -->
-  <ouvriers>
-  <ouvrier id="2"/>
-  <ouvrier id="3"/>
-  </ouvriers>
-  <!-- </employees> -->
-  <vehicule id="1"/>
-  <date>2024-06-15</date>
+  <tournee id="1">
+    <zone>Sfax centre</zone>
+    <ouvriers>
+      <ouvrier id="2"></ouvrier>
+      <ouvrier id="3"></ouvrier>
+    </ouvriers>
+    <vehicule id="1"></vehicule>
+    <date>2024-06-15</date>
   </tournee>
   <tournee id="2">
     <zone>Sakiet Ezzit</zone>
     <ouvriers>
-      <ouvrier id="2"/>
-      <ouvrier id="3"/>
+      <ouvrier id="2"></ouvrier>
+      <ouvrier id="3"></ouvrier>
     </ouvriers>
-    <vehicule id="2"/>
+    <vehicule id="2"></vehicule>
     <date>2024-06-15</date>
   </tournee>
 </tournees>

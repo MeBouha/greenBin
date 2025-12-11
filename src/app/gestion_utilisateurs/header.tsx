@@ -41,18 +41,14 @@ export default function Header() {
 
   return (
     <>
-      <header className="card" style={{display:'flex',justifyContent:'space-between',alignItems:'center',gap:12}}>
+      <header style={{display:'flex',justifyContent:'space-between',alignItems:'center',gap:12,width:'100%',margin:0,borderRadius:0,position:'sticky',top:0,zIndex:999,backgroundColor:'white',padding:'12px 24px',boxShadow:'0 1px 3px rgba(0,0,0,0.1)'}}>
         <div style={{display:'flex',alignItems:'center',gap:12}}>
-          <div style={{width:36,height:36,borderRadius:18,background:'#10b981',color:'#fff',display:'flex',alignItems:'center',justifyContent:'center',fontWeight:700}}>GB</div>
-          <div style={{fontWeight:600}}>GreenBin</div>
+          <div style={{width:36,height:36,borderRadius:18,background:'#10b981',color:'#fff',display:'flex',alignItems:'center',justifyContent:'center',fontWeight:700,fontSize:14}}>GB</div>
+          <div style={{fontWeight:600,fontSize:16,color:'#333'}}>GreenBin</div>
         </div>
 
-        {/* ✅ SAFE NOW — NO HYDRATION ERROR */}
-        <div style={{fontWeight:600}}>
-          Dashboard {mounted && user ? user.role : ''}
-        </div>
-
-        <div>
+        <div style={{display:'flex',alignItems:'center',gap:16}}>
+          {/* Profile Picture */}
           <img
             src="/profile_pic.png"
             alt="profile"

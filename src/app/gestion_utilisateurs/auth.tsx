@@ -6,7 +6,7 @@ import { useRouter } from 'next/navigation';
 import { Eye, EyeOff } from 'lucide-react';
 // Images are served from the `public/` folder — reference by path instead of importing
 // (importing from /public is not supported by Next.js)
-import { validateUserCredentials } from './auth.util';
+import { validateUserCredentials, AuthResult } from '../api/users/auth/auth';
 
 export default function AuthPage({ onClose }: { onClose?: () => void }) {
   const [showPassword, setShowPassword] = useState(false);
@@ -28,9 +28,9 @@ export default function AuthPage({ onClose }: { onClose?: () => void }) {
       return;
     }
 
-    const user = await validateUserCredentials(username, password);
-    
-    if (user) {
+    const result: AuthResult = await validateUserCredentials(username, password);
+    if (result.user) {
+      const user = result.user;
       console.log('User connecté:', user);
       const role = (user.role || '').toLowerCase().trim();
       // store user in session so dashboard pages can read it
@@ -39,7 +39,7 @@ export default function AuthPage({ onClose }: { onClose?: () => void }) {
       // map role to route under /gestion_utilisateurs
       let path = '/';
       if (role.includes('admin')) path = '/gestion_utilisateurs/admin';
-      else if (role.includes('responsable municipalite') || role.includes('responsable municipalité') || role.includes('responsable municipalité')) path = '/gestion_utilisateurs/responsable-municipalite';
+      else if (role.includes('responsable municipalite') || role.includes('responsable municipalité') || role.includes('responsable municipalité')) path = '/gestion_utilisateurs/responsable_municipalite';
       else if (role.includes('responsable service de voirie') || role.includes('voirie')) path = '/gestion_utilisateurs/responsable-service-voirie';
       else if (role.includes("responsable service d'environnement") || role.includes('environnement')) path = '/gestion_utilisateurs/responsable-service-environnement';
       else if (role.includes('chef de tournee') || role.includes('chef de tournée') || role.includes('chef')) path = '/gestion_utilisateurs/chef-de-tournee';
@@ -49,7 +49,7 @@ export default function AuthPage({ onClose }: { onClose?: () => void }) {
 
       router.push(path);
     } else {
-      setError('Identifiants incorrects ou compte inactif');
+      setError(result.error || 'Identifiants incorrects ou compte inactif');
     }
   };
 

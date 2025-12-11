@@ -1,29 +1,30 @@
 "use client";
 
 import React, { useEffect, useState } from 'react';
-import { usePathname, useRouter } from 'next/navigation';
+import { useRouter, useSearchParams } from 'next/navigation';
 
-interface User {
-	id: number;
-	nom: string;
-	prenom: string;
-	role: string;
-	login?: string;
-	password?: string;
+type Compte = {
+  login: string;
+  password: string;
+  etat: string; // actif, bloqué
 }
 
+interface User {
+	  id: number;
+	  compte: Compte;
+	  nom: string;
+	  prenom: string;
+	  role: string;
+};
+
 type Props = {
-	id?: string | number;
+  id?: string;
 };
 
 export default function UserForm({ id }: Props) {
-	const pathname = usePathname?.() || '';
 	const router = useRouter();
-	const inferredId = id ?? (() => {
-		const segs = pathname.split('/').filter(Boolean);
-		// try last segment
-		return segs.length ? segs[segs.length - 1] : undefined;
-	})();
+	const searchParams = useSearchParams();
+	const inferredId = id ?? searchParams.get('id') ?? undefined;
 
 	const [user, setUser] = useState<User | null>(null);
 	const [loading, setLoading] = useState(true);
@@ -44,8 +45,11 @@ export default function UserForm({ id }: Props) {
 						nom: found.nom || found.name || '',
 						prenom: found.prenom || '',
 						role: found.role || '',
-						login: found.login || '',
-						password: found.password || '',
+						compte: {
+							login: found.compte?.login || found.login || '',
+							password: found.compte?.password || found.password || '',
+							etat: found.compte?.etat || 'actif',
+						},
 					});
 				} else {
 					setUser(null);
@@ -60,8 +64,14 @@ export default function UserForm({ id }: Props) {
 		load();
 	}, [inferredId]);
 
-	const handleChange = (field: keyof User, value: string) => {
-		setUser(prev => prev ? { ...prev, [field]: value } : prev);
+	const handleChange = (field: keyof User | keyof Compte, value: string) => {
+		setUser(prev => {
+			if (!prev) return prev;
+			if (field === 'login' || field === 'password' || field === 'etat') {
+				return { ...prev, compte: { ...prev.compte, [field]: value } };
+			}
+			return { ...prev, [field]: value } as User;
+		});
 	};
 
 	const handleSave = async () => {
@@ -115,17 +125,31 @@ export default function UserForm({ id }: Props) {
 
 				<label>
 					Rôle
-					<input value={user.role} onChange={e => handleChange('role', e.target.value)} className="input" />
+					<select value={user.role} onChange={e => handleChange('role', e.target.value)} className="input" >
+						<option value="admin">admin</option>
+						<option value="chef de tournee">chef de tournee</option>
+						<option value="responsable municipalite">responsable municipalite</option>
+						<option value="responsable service d'environnement">responsable service d'environnement</option>
+						<option value="ouvrier">ouvrier</option>
+                	</select>
 				</label>
 
 				<label>
 					Login
-					<input value={user.login || ''} onChange={e => handleChange('login', e.target.value)} className="input" />
+					<input value={user.compte.login || ''} onChange={e => handleChange('login', e.target.value)} className="input" />
 				</label>
 
 				<label>
 					Password
-					<input value={user.password || ''} onChange={e => handleChange('password', e.target.value)} className="input" />
+					<input value={user.compte.password || ''} onChange={e => handleChange('password', e.target.value)} className="input" />
+				</label>
+
+				<label>
+					Etat du compte 
+					<select value={user.compte.etat} onChange={e => handleChange('etat', e.target.value)} className="input" >
+						<option value="actif">actif</option>
+						<option value="bloqué">bloqué</option>
+                	</select>
 				</label>
 
 				<div style={{ display: 'flex', gap: 8, marginTop: 8 }}>

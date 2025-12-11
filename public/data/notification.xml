@@ -1,8 +1,13 @@
-<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<?xml version="1.0" encoding="UTF-8"?>
 <notifications xmlns:xs="http://www.w3.org/2001/XMLSchema-instance" xs:noNamespaceSchemaLocation="greenBin.xsd">
   <notification id="1">
-    <chefTournee id="1"/>
-    <travail id="1"/>
+    <chefTournee id="1"></chefTournee>
+    <travail id="1"></travail>
     <contenu>mtbga</contenu>
+  </notification>
+  <notification id="2">
+    <chefTournee id="1"></chefTournee>
+    <travail id="1"></travail>
+    <contenu>travauxx</contenu>
   </notification>
 </notifications>
