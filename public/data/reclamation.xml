@@ -14,23 +14,23 @@
     <status>resolved</status>
     <type>Sanitaire</type>
   </reclamation>
-  <reclamation id="7">
-    <citoyen id="7">prenom nom</citoyen>
-    <contenu>content</contenu>
-    <date>2025-12-06</date>
-    <status>new</status>
-    <type>Sanitaire</type>
-  </reclamation>
-  <reclamation id="8">
-    <citoyen id="9">user user</citoyen>
-    <contenu>contenu de reclamation</contenu>
-    <date>2025-12-06</date>
-    <status>new</status>
-    <type>Autre</type>
-  </reclamation>
   <reclamation id="9">
     <citoyen id="9">mohamed</citoyen>
     <contenu>zebla taycha</contenu>
+    <date>2025-12-12</date>
+    <status>new</status>
+    <type>Collecte</type>
+  </reclamation>
+  <reclamation id="10">
+    <citoyen id="10">bouhamed</citoyen>
+    <contenu>zeblaa brchaa</contenu>
+    <date>2025-12-12</date>
+    <status>new</status>
+    <type>Collecte</type>
+  </reclamation>
+  <reclamation id="11">
+    <citoyen id="11">daouad</citoyen>
+    <contenu>zbla zbla</contenu>
     <date>2025-12-12</date>
     <status>new</status>
     <type>Collecte</type>

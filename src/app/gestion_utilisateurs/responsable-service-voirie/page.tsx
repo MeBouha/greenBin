@@ -230,6 +230,7 @@ return (
       padding: '24px', 
       maxWidth: '1200px', 
       margin: '0 auto', 
+            marginTop:'100px',
       minHeight: '100vh',
       backgroundColor: '#f9fafb',
     }}>

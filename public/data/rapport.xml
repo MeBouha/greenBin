@@ -117,4 +117,31 @@
         <co2Emis>0.91</co2Emis>
         <carburantConsomme>19.50</carburantConsomme>
     </rapport>
+
+    <rapport id="7">
+        <date>2025-12-12</date>
+        <tournee id="3"/>
+        <employees>
+            <chefTourne id="2"/>
+            <ouvriers>
+                <ouvrier id="101">
+                    <nom>-</nom>
+                    <prenom>ouvrier1</prenom>
+                    <status>absent</status>
+                </ouvrier>
+                <ouvrier id="102">
+                    <nom>-</nom>
+                    <prenom>ouvrier2</prenom>
+                    <status>absent</status>
+                </ouvrier>
+            </ouvriers>
+        </employees>
+        <dechetsCollecte>
+            <trashCan id="40" quantite="0"/>
+            <trashCan id="37" quantite="100"/>
+        </dechetsCollecte>
+        <kilometrage>1.82</kilometrage>
+        <co2Emis>2.55</co2Emis>
+        <carburantConsomme>54.60</carburantConsomme>
+    </rapport>
 </rapports>
