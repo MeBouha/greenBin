@@ -190,9 +190,12 @@ export default function Header() {
           background: white;
           border-bottom: 1px solid #e2e8f0;
           box-shadow: 0 2px 12px rgba(0, 0, 0, 0.05);
-          position: sticky;
+          position: fixed; /* Changed from sticky to fixed */
           top: 0;
-          z-index: 100;
+          left: 0;
+          right: 0;
+          z-index: 1000; /* Increased z-index to ensure it's on top */
+          width: 100%;
         }
 
         .header {
@@ -203,6 +206,7 @@ export default function Header() {
           display: flex;
           align-items: center;
           justify-content: space-between;
+          background: white; /* Ensure background covers */
         }
 
         .header-left {
@@ -333,10 +337,10 @@ export default function Header() {
         /* Welcome Notification */
         .welcome-notification {
           position: fixed;
-          top: 92px;
+          top: 92px; /* Adjusted to account for fixed header */
           left: 50%;
           transform: translateX(-50%);
-          z-index: 1000;
+          z-index: 999; /* Lower than header but higher than content */
           width: min(640px, 92%);
           animation: slideDown 0.5s ease-out;
         }
@@ -413,7 +417,7 @@ export default function Header() {
           display: flex;
           align-items: flex-start;
           justify-content: flex-end;
-          z-index: 10000;
+          z-index: 10000; /* Highest z-index for overlay */
           padding-top: 80px;
           padding-right: 24px;
           backdrop-filter: blur(4px);
