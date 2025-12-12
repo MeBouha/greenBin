@@ -1,6 +1,6 @@
 "use client";
   
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { useRouter } from 'next/navigation';
 import Tournee from '../gestion_tournees/tournee';
 import Footer from './footer';
@@ -11,12 +11,209 @@ export default function Citoyen() {
   const [showAuth, setShowAuth] = useState(false);
   const [AuthComponent, setAuthComponent] = useState<any>(null);
   const [selectedService, setSelectedService] = useState<string | null>(null);
+  const [isLoading, setIsLoading] = useState(true);
+  
   const services = [
     { img: '/icons/service_proprete.png', alt: 'service propreté', label: 'service propreté' },
     { img: '/icons/service_administratif.png', alt: 'service administratif', label: 'service administratif' },
     { img: '/icons/Service_citoyen.png', alt: 'service citoyen', label: 'service citoyen' },
     { img: '/icons/service_urbanisme.png', alt: 'service urbanisme', label: 'service urbanisme' },
   ];
+
+  useEffect(() => {
+    // Simulate initial loading with a timer
+    const timer = setTimeout(() => {
+      setIsLoading(false);
+    }, 1500); // 1.5 seconds splash screen
+
+    return () => clearTimeout(timer);
+  }, []);
+
+  if (isLoading) {
+    return (
+      <div className="splash-screen">
+        <div className="splash-logo-container">
+          <div className="splash-logo">GB</div>
+          <div className="splash-text">
+            <h1 className="splash-title">GreenBin</h1>
+            <p className="splash-subtitle">Municipal Services</p>
+          </div>
+        </div>
+        <div className="splash-loader"></div>
+        
+        <style jsx>{`
+          .splash-screen {
+            position: fixed;
+            inset: 0;
+            background: linear-gradient(135deg, #f0fdf4 0%, #dcfce7 100%);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            z-index: 9999;
+            animation: fadeOut 0.5s ease 1.5s forwards;
+          }
+
+          .splash-logo-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 24px;
+            animation: slideUp 0.8s ease-out;
+          }
+
+          .splash-logo {
+            width: 100px;
+            height: 100px;
+            border-radius: 24px;
+            background: linear-gradient(135deg, #10b981 0%, #34d399 100%);
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 800;
+            font-size: 48px;
+            box-shadow: 0 12px 32px rgba(16, 185, 129, 0.3);
+            animation: pulse 2s infinite;
+          }
+
+          .splash-text {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            animation: fadeIn 0.8s ease 0.3s both;
+          }
+
+          .splash-title {
+            font-size: 48px;
+            font-weight: 800;
+            color: #047857;
+            margin: 0;
+            letter-spacing: -1px;
+            line-height: 1;
+            text-align: center;
+          }
+
+          .splash-subtitle {
+            font-size: 16px;
+            color: #10b981;
+            font-weight: 500;
+            margin: 12px 0 0 0;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            text-align: center;
+          }
+
+          .splash-loader {
+            width: 60px;
+            height: 4px;
+            background: rgba(16, 185, 129, 0.2);
+            border-radius: 2px;
+            margin-top: 48px;
+            position: relative;
+            overflow: hidden;
+            animation: fadeIn 0.8s ease 0.6s both;
+          }
+
+          .splash-loader::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -60px;
+            width: 60px;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, #10b981, transparent);
+            animation: loading 1.5s ease-in-out infinite;
+          }
+
+          @keyframes loading {
+            0% {
+              left: -60px;
+            }
+            100% {
+              left: calc(100% + 60px);
+            }
+          }
+
+          @keyframes pulse {
+            0%, 100% {
+              transform: scale(1);
+              box-shadow: 0 12px 32px rgba(16, 185, 129, 0.3);
+            }
+            50% {
+              transform: scale(1.05);
+              box-shadow: 0 16px 40px rgba(16, 185, 129, 0.4);
+            }
+          }
+
+          @keyframes slideUp {
+            from {
+              opacity: 0;
+              transform: translateY(30px);
+            }
+            to {
+              opacity: 1;
+              transform: translateY(0);
+            }
+          }
+
+          @keyframes fadeIn {
+            from {
+              opacity: 0;
+            }
+            to {
+              opacity: 1;
+            }
+          }
+
+          @keyframes fadeOut {
+            to {
+              opacity: 0;
+              visibility: hidden;
+            }
+          }
+
+          @media (max-width: 768px) {
+            .splash-logo {
+              width: 80px;
+              height: 80px;
+              font-size: 36px;
+              border-radius: 20px;
+            }
+            
+            .splash-title {
+              font-size: 36px;
+            }
+            
+            .splash-subtitle {
+              font-size: 14px;
+            }
+          }
+
+          @media (max-width: 480px) {
+            .splash-logo {
+              width: 60px;
+              height: 60px;
+              font-size: 28px;
+              border-radius: 16px;
+            }
+            
+            .splash-title {
+              font-size: 28px;
+            }
+            
+            .splash-subtitle {
+              font-size: 12px;
+            }
+            
+            .splash-logo-container {
+              gap: 16px;
+            }
+          }
+        `}</style>
+      </div>
+    );
+  }
   
   return (
     <>
@@ -114,6 +311,7 @@ export default function Citoyen() {
           position: sticky;
           top: 0;
           z-index: 100;
+          animation: slideDown 0.5s ease;
         }
 
         .header {
@@ -135,6 +333,7 @@ export default function Citoyen() {
           display: flex;
           align-items: center;
           gap: 16px;
+          animation: fadeInLogo 0.6s ease 0.1s both;
         }
 
         .logo-icon {
@@ -193,6 +392,7 @@ export default function Citoyen() {
           border-radius: 12px;
           transition: all 0.3s ease;
           cursor: pointer;
+          animation: fadeInLogo 0.6s ease 0.2s both;
         }
 
         .header-user:hover {
@@ -247,6 +447,27 @@ export default function Citoyen() {
           background: #10b981;
           border: 2px solid white;
           box-shadow: 0 1px 4px rgba(0, 0, 0, 0.2);
+        }
+
+        /* Animations */
+        @keyframes slideDown {
+          from {
+            opacity: 0;
+            transform: translateY(-20px);
+          }
+          to {
+            opacity: 1;
+            transform: translateY(0);
+          }
+        }
+
+        @keyframes fadeInLogo {
+          from {
+            opacity: 0;
+          }
+          to {
+            opacity: 1;
+          }
         }
 
         /* Responsive Design */
