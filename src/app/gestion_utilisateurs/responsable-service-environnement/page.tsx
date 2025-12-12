@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useState } from 'react';
+import { useRouter } from 'next/navigation';
 import Header from '../header';
 
 interface WeekData {
@@ -39,12 +40,42 @@ interface MonthlyWasteData {
 }
 
 export default function RespEnvironnement() {
+  const router = useRouter();
   const [monthlyData, setMonthlyData] = useState<MonthlyData[]>([]);
   const [monthlyWasteData, setMonthlyWasteData] = useState<MonthlyWasteData[]>([]);
   const [loading, setLoading] = useState(true);
   const [activeSection, setActiveSection] = useState<'co2' | 'waste'>('co2');
+  const [currentUser, setCurrentUser] = useState<any>(null);
+  const [mounted, setMounted] = useState(false);
 
+  // Check authentication on mount
   useEffect(() => {
+    setMounted(true);
+    try {
+      const raw = sessionStorage.getItem('user');
+      if (raw) {
+        const userData = JSON.parse(raw);
+        setCurrentUser(userData);
+        
+        // Check if user has permission to access this page
+        const allowedRoles = ['responsable service d\'environnement', 'admin', 'responsable municipalite'];
+        if (!allowedRoles.includes(userData.role?.toLowerCase())) {
+          router.push('/gestion_utilisateurs');
+        }
+      } else {
+        // No user logged in, redirect to login
+        router.push('/gestion_utilisateurs');
+      }
+    } catch (e) {
+      console.error('Error reading user from sessionStorage:', e);
+      router.push('/gestion_utilisateurs');
+    }
+  }, [router]);
+
+  // Only fetch data if user is authenticated
+  useEffect(() => {
+    if (!currentUser) return;
+
     const fetchData = async () => {
       try {
         // Fetch CO2 data
@@ -122,16 +153,48 @@ export default function RespEnvironnement() {
     };
 
     fetchData();
-  }, []);
+  }, [currentUser]);
+
+  // Don't render anything until mounted to avoid hydration mismatch
+  if (!mounted) {
+    return (
+      <div>
+        <Header />
+        <div style={{ display: 'flex', minHeight: 'calc(100vh - 60px)' }}>
+          <main style={{ flex: 1, padding: 20, overflowY: 'auto' }}>
+            <h1>Responsable Service d'Environnement Dashboard</h1>
+            <p>Chargement...</p>
+          </main>
+        </div>
+      </div>
+    );
+  }
+
+  // If not authenticated, show loading or redirect
+  if (!currentUser) {
+    return (
+      <div>
+        <Header />
+        <div style={{ display: 'flex', minHeight: 'calc(100vh - 60px)' }}>
+          <main style={{ flex: 1, padding: 20, overflowY: 'auto' }}>
+            <h1>Responsable Service d'Environnement Dashboard</h1>
+            <p>Redirection vers la page de connexion...</p>
+          </main>
+        </div>
+      </div>
+    );
+  }
 
   if (loading) {
     return (
       <div>
         <Header />
-        <main style={{ padding: 20 }}>
-          <h1>Responsable Service d'Environnement Dashboard</h1>
-          <p>Chargement des données...</p>
-        </main>
+        <div style={{ display: 'flex', minHeight: 'calc(100vh - 60px)' }}>
+          <main style={{ flex: 1, padding: 20, overflowY: 'auto' }}>
+            <h1>Responsable Service d'Environnement Dashboard</h1>
+            <p>Chargement des données...</p>
+          </main>
+        </div>
       </div>
     );
   }
