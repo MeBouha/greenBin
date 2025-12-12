@@ -19,7 +19,7 @@
         <longitude>10.763759</longitude>
       </coordonnees>
     </lieu>
-    <typeDechet>plastique</typeDechet>
+    <typeDechet>verre</typeDechet>
     <status>moitie</status>
   </trashCan>
   <trashCan id="3">
@@ -30,7 +30,7 @@
         <longitude>10.765519</longitude>
       </coordonnees>
     </lieu>
-    <typeDechet>plastique</typeDechet>
+    <typeDechet>autre</typeDechet>
     <status>pleine</status>
   </trashCan>
   <trashCan id="4">
