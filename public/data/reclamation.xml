@@ -1,12 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <reclamations xmlns:xs="http://www.w3.org/2001/XMLSchema-instance" xs:noNamespaceSchemaLocation="greenBin.xsd">
-  <reclamation id="4">
-    <citoyen id="4">Sophie Bernard</citoyen>
-    <contenu>Déchets non collectés malgré le dépôt aux heures réglementaires</contenu>
-    <date>2024-01-12</date>
-    <status>resolved</status>
-    <type>Collecte</type>
-  </reclamation>
   <reclamation id="5">
     <citoyen id="5">Michel Dubois</citoyen>
     <contenu>Odeur nauséabonde provenant du point de collecte du quartier</contenu>
@@ -18,7 +11,7 @@
     <citoyen id="6">prenom nom</citoyen>
     <contenu>content</contenu>
     <date>2025-12-06</date>
-    <status>new</status>
+    <status>resolved</status>
     <type>Sanitaire</type>
   </reclamation>
   <reclamation id="7">
@@ -34,5 +27,12 @@
     <date>2025-12-06</date>
     <status>new</status>
     <type>Autre</type>
+  </reclamation>
+  <reclamation id="9">
+    <citoyen id="9">mohamed</citoyen>
+    <contenu>zebla taycha</contenu>
+    <date>2025-12-12</date>
+    <status>new</status>
+    <type>Collecte</type>
   </reclamation>
 </reclamations>

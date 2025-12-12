@@ -96,4 +96,25 @@
     <co2Emis>1.95</co2Emis>
     <carburantConsomme>41.7</carburantConsomme>
   </rapport>
+
+    <rapport id="6">
+        <date>2025-12-12</date>
+        <tournee id="1"/>
+        <employees>
+            <chefTourne id="2"/>
+            <ouvriers>
+                <ouvrier id="101">
+                    <nom>-</nom>
+                    <prenom>ouvrier2</prenom>
+                    <status>absent</status>
+                </ouvrier>
+            </ouvriers>
+        </employees>
+        <dechetsCollecte>
+            
+        </dechetsCollecte>
+        <kilometrage>0.65</kilometrage>
+        <co2Emis>0.91</co2Emis>
+        <carburantConsomme>19.50</carburantConsomme>
+    </rapport>
 </rapports>
