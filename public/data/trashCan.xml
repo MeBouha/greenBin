@@ -8,7 +8,7 @@
         <longitude>10.77</longitude>
       </coordonnees>
     </lieu>
-    <typeDechet>plastique</typeDechet>
+    <typeDechet>autre</typeDechet>
     <status>vide</status>
   </trashCan>
   <trashCan id="2">
@@ -30,7 +30,7 @@
         <longitude>10.765519</longitude>
       </coordonnees>
     </lieu>
-    <typeDechet>autre</typeDechet>
+    <typeDechet>plastique</typeDechet>
     <status>pleine</status>
   </trashCan>
   <trashCan id="4">
@@ -41,7 +41,7 @@
         <longitude>10.76627</longitude>
       </coordonnees>
     </lieu>
-    <typeDechet>plastique</typeDechet>
+    <typeDechet>papier</typeDechet>
     <status>moitie</status>
   </trashCan>
   <trashCan id="5">
@@ -52,7 +52,7 @@
         <longitude>10.765927</longitude>
       </coordonnees>
     </lieu>
-    <typeDechet>plastique</typeDechet>
+    <typeDechet>verre</typeDechet>
     <status>moitie</status>
   </trashCan>
   <trashCan id="6">
@@ -63,7 +63,7 @@
         <longitude>10.767708</longitude>
       </coordonnees>
     </lieu>
-    <typeDechet>plastique</typeDechet>
+    <typeDechet>papier</typeDechet>
     <status>vide</status>
   </trashCan>
   <trashCan id="7">
@@ -74,7 +74,7 @@
         <longitude>10.76744</longitude>
       </coordonnees>
     </lieu>
-    <typeDechet>plastique</typeDechet>
+    <typeDechet>autre</typeDechet>
     <status>vide</status>
   </trashCan>
   <trashCan id="8">
@@ -96,7 +96,7 @@
         <longitude>10.7626</longitude>
       </coordonnees>
     </lieu>
-    <typeDechet>plastique</typeDechet>
+    <typeDechet>papier</typeDechet>
     <status>pleine</status>
   </trashCan>
   <trashCan id="10">
@@ -107,7 +107,7 @@
         <longitude>10.764049</longitude>
       </coordonnees>
     </lieu>
-    <typeDechet>plastique</typeDechet>
+    <typeDechet>verre</typeDechet>
     <status>moitie</status>
   </trashCan>
   <trashCan id="11">
@@ -118,7 +118,7 @@
         <longitude>10.765058</longitude>
       </coordonnees>
     </lieu>
-    <typeDechet>plastique</typeDechet>
+    <typeDechet>autre</typeDechet>
     <status>pleine</status>
   </trashCan>
   <trashCan id="12">
@@ -140,7 +140,7 @@
         <longitude>10.761495</longitude>
       </coordonnees>
     </lieu>
-    <typeDechet>plastique</typeDechet>
+    <typeDechet>papier</typeDechet>
     <status>vide</status>
   </trashCan>
   <trashCan id="14">
@@ -151,7 +151,7 @@
         <longitude>10.760787</longitude>
       </coordonnees>
     </lieu>
-    <typeDechet>plastique</typeDechet>
+    <typeDechet>verre</typeDechet>
     <status>moitie</status>
   </trashCan>
   <trashCan id="15">
@@ -173,7 +173,7 @@
         <longitude>10.760256</longitude>
       </coordonnees>
     </lieu>
-    <typeDechet>plastique</typeDechet>
+    <typeDechet>autre</typeDechet>
     <status>moitie</status>
   </trashCan>
   <trashCan id="17">
@@ -184,7 +184,7 @@
         <longitude>10.760144</longitude>
       </coordonnees>
     </lieu>
-    <typeDechet>plastique</typeDechet>
+    <typeDechet>papier</typeDechet>
     <status>vide</status>
   </trashCan>
   <trashCan id="18">
@@ -195,7 +195,7 @@
         <longitude>10.75715</longitude>
       </coordonnees>
     </lieu>
-    <typeDechet>plastique</typeDechet>
+    <typeDechet>verre</typeDechet>
     <status>vide</status>
   </trashCan>
   <trashCan id="19">
@@ -217,7 +217,7 @@
         <longitude>10.754854</longitude>
       </coordonnees>
     </lieu>
-    <typeDechet>plastique</typeDechet>
+    <typeDechet>papier</typeDechet>
     <status>pleine</status>
   </trashCan>
   <trashCan id="21">
@@ -228,7 +228,7 @@
         <longitude>10.757526</longitude>
       </coordonnees>
     </lieu>
-    <typeDechet>plastique</typeDechet>
+    <typeDechet>autre</typeDechet>
     <status>moitie</status>
   </trashCan>
   <trashCan id="22">
@@ -250,7 +250,7 @@
         <longitude>10.751281</longitude>
       </coordonnees>
     </lieu>
-    <typeDechet>plastique</typeDechet>
+    <typeDechet>verre</typeDechet>
     <status>vide</status>
   </trashCan>
   <trashCan id="24">
@@ -261,7 +261,7 @@
         <longitude>10.751806</longitude>
       </coordonnees>
     </lieu>
-    <typeDechet>plastique</typeDechet>
+    <typeDechet>papier</typeDechet>
     <status>moitie</status>
   </trashCan>
   <trashCan id="25">
@@ -272,7 +272,7 @@
         <longitude>10.74936</longitude>
       </coordonnees>
     </lieu>
-    <typeDechet>plastique</typeDechet>
+    <typeDechet>autre</typeDechet>
     <status>moitie</status>
   </trashCan>
   <trashCan id="26">
@@ -294,7 +294,7 @@
         <longitude>10.756742</longitude>
       </coordonnees>
     </lieu>
-    <typeDechet>plastique</typeDechet>
+    <typeDechet>verre</typeDechet>
     <status>moitie</status>
   </trashCan>
   <trashCan id="28">
@@ -305,7 +305,7 @@
         <longitude>10.75598</longitude>
       </coordonnees>
     </lieu>
-    <typeDechet>plastique</typeDechet>
+    <typeDechet>papier</typeDechet>
     <status>pleine</status>
   </trashCan>
   <trashCan id="29">
@@ -316,7 +316,7 @@
         <longitude>10.751173</longitude>
       </coordonnees>
     </lieu>
-    <typeDechet>plastique</typeDechet>
+    <typeDechet>autre</typeDechet>
     <status>moitie</status>
   </trashCan>
   <trashCan id="30">
@@ -338,7 +338,7 @@
         <longitude>10.753963</longitude>
       </coordonnees>
     </lieu>
-    <typeDechet>plastique</typeDechet>
+    <typeDechet>verre</typeDechet>
     <status>vide</status>
   </trashCan>
   <trashCan id="32">
@@ -349,7 +349,7 @@
         <longitude>10.75318</longitude>
       </coordonnees>
     </lieu>
-    <typeDechet>plastique</typeDechet>
+    <typeDechet>papier</typeDechet>
     <status>pleine</status>
   </trashCan>
   <trashCan id="33">
@@ -360,7 +360,7 @@
         <longitude>10.757805</longitude>
       </coordonnees>
     </lieu>
-    <typeDechet>plastique</typeDechet>
+    <typeDechet>autre</typeDechet>
     <status>vide</status>
   </trashCan>
   <trashCan id="34">
@@ -382,7 +382,7 @@
         <longitude>10.753855</longitude>
       </coordonnees>
     </lieu>
-    <typeDechet>plastique</typeDechet>
+    <typeDechet>verre</typeDechet>
     <status>moitie</status>
   </trashCan>
   <trashCan id="36">
@@ -393,7 +393,7 @@
         <longitude>10.760218</longitude>
       </coordonnees>
     </lieu>
-    <typeDechet>plastique</typeDechet>
+    <typeDechet>papier</typeDechet>
     <status>vide</status>
   </trashCan>
   <trashCan id="37">
@@ -404,7 +404,7 @@
         <longitude>10.760969</longitude>
       </coordonnees>
     </lieu>
-    <typeDechet>plastique</typeDechet>
+    <typeDechet>autre</typeDechet>
     <status>pleine</status>
   </trashCan>
   <trashCan id="38">
@@ -426,7 +426,7 @@
         <longitude>10.7579</longitude>
       </coordonnees>
     </lieu>
-    <typeDechet>plastique</typeDechet>
+    <typeDechet>verre</typeDechet>
     <status>pleine</status>
   </trashCan>
   <trashCan id="40">
@@ -437,7 +437,7 @@
         <longitude>10.75555</longitude>
       </coordonnees>
     </lieu>
-    <typeDechet>plastique</typeDechet>
+    <typeDechet>papier</typeDechet>
     <status>pleine</status>
   </trashCan>
   <trashCan id="41">
@@ -448,7 +448,7 @@
         <longitude>10.763319</longitude>
       </coordonnees>
     </lieu>
-    <typeDechet>plastique</typeDechet>
+    <typeDechet>autre</typeDechet>
     <status>vide</status>
   </trashCan>
   <trashCan id="42">
@@ -470,7 +470,7 @@
         <longitude>10.761506</longitude>
       </coordonnees>
     </lieu>
-    <typeDechet>plastique</typeDechet>
+    <typeDechet>verre</typeDechet>
     <status>vide</status>
   </trashCan>
   <trashCan id="44">
@@ -481,7 +481,7 @@
         <longitude>10.763609</longitude>
       </coordonnees>
     </lieu>
-    <typeDechet>plastique</typeDechet>
+    <typeDechet>papier</typeDechet>
     <status>pleine</status>
   </trashCan>
   <trashCan id="45">
@@ -492,7 +492,7 @@
         <longitude>10.761795</longitude>
       </coordonnees>
     </lieu>
-    <typeDechet>plastique</typeDechet>
+    <typeDechet>autre</typeDechet>
     <status>vide</status>
   </trashCan>
   <trashCan id="46">
@@ -514,7 +514,7 @@
         <longitude>10.755583</longitude>
       </coordonnees>
     </lieu>
-    <typeDechet>plastique</typeDechet>
+    <typeDechet>verre</typeDechet>
     <status>vide</status>
   </trashCan>
   <trashCan id="48">
@@ -525,7 +525,7 @@
         <longitude>10.75422</longitude>
       </coordonnees>
     </lieu>
-    <typeDechet>plastique</typeDechet>
+    <typeDechet>papier</typeDechet>
     <status>pleine</status>
   </trashCan>
   <trashCan id="49">
@@ -536,7 +536,7 @@
         <longitude>10.753415</longitude>
       </coordonnees>
     </lieu>
-    <typeDechet>plastique</typeDechet>
+    <typeDechet>autre</typeDechet>
     <status>vide</status>
   </trashCan>
   <trashCan id="50">
@@ -558,7 +558,7 @@
         <longitude>10.751408</longitude>
       </coordonnees>
     </lieu>
-    <typeDechet>plastique</typeDechet>
+    <typeDechet>verre</typeDechet>
     <status>vide</status>
   </trashCan>
   <trashCan id="52">
@@ -569,7 +569,7 @@
         <longitude>10.752417</longitude>
       </coordonnees>
     </lieu>
-    <typeDechet>plastique</typeDechet>
+    <typeDechet>papier</typeDechet>
     <status>vide</status>
   </trashCan>
   <trashCan id="53">
@@ -580,7 +580,7 @@
         <longitude>10.749853</longitude>
       </coordonnees>
     </lieu>
-    <typeDechet>plastique</typeDechet>
+    <typeDechet>autre</typeDechet>
     <status>moitie</status>
   </trashCan>
   <trashCan id="54">
@@ -602,7 +602,7 @@
         <longitude>10.750014</longitude>
       </coordonnees>
     </lieu>
-    <typeDechet>plastique</typeDechet>
+    <typeDechet>verre</typeDechet>
     <status>pleine</status>
   </trashCan>
   <trashCan id="56">
@@ -613,7 +613,7 @@
         <longitude>10.748286</longitude>
       </coordonnees>
     </lieu>
-    <typeDechet>plastique</typeDechet>
+    <typeDechet>papier</typeDechet>
     <status>moitie</status>
   </trashCan>
   <trashCan id="57">
@@ -624,7 +624,7 @@
         <longitude>10.75099</longitude>
       </coordonnees>
     </lieu>
-    <typeDechet>plastique</typeDechet>
+    <typeDechet>autre</typeDechet>
     <status>pleine</status>
   </trashCan>
   <trashCan id="58">
@@ -646,7 +646,7 @@
         <longitude>10.746022</longitude>
       </coordonnees>
     </lieu>
-    <typeDechet>plastique</typeDechet>
+    <typeDechet>verre</typeDechet>
     <status>pleine</status>
   </trashCan>
   <trashCan id="60">
@@ -657,7 +657,7 @@
         <longitude>10.746183</longitude>
       </coordonnees>
     </lieu>
-    <typeDechet>plastique</typeDechet>
+    <typeDechet>papier</typeDechet>
     <status>pleine</status>
   </trashCan>
   <trashCan id="61">
@@ -668,7 +668,7 @@
         <longitude>10.744337</longitude>
       </coordonnees>
     </lieu>
-    <typeDechet>plastique</typeDechet>
+    <typeDechet>autre</typeDechet>
     <status>moitie</status>
   </trashCan>
   <trashCan id="62">
@@ -690,7 +690,7 @@
         <longitude>10.749423</longitude>
       </coordonnees>
     </lieu>
-    <typeDechet>plastique</typeDechet>
+    <typeDechet>verre</typeDechet>
     <status>vide</status>
   </trashCan>
   <trashCan id="64">
@@ -701,7 +701,7 @@
         <longitude>10.740635</longitude>
       </coordonnees>
     </lieu>
-    <typeDechet>plastique</typeDechet>
+    <typeDechet>papier</typeDechet>
     <status>pleine</status>
   </trashCan>
   <trashCan id="65">
@@ -712,7 +712,7 @@
         <longitude>10.746269</longitude>
       </coordonnees>
     </lieu>
-    <typeDechet>plastique</typeDechet>
+    <typeDechet>autre</typeDechet>
     <status>vide</status>
   </trashCan>
   <trashCan id="66">
@@ -734,7 +734,7 @@
         <longitude>10.739798</longitude>
       </coordonnees>
     </lieu>
-    <typeDechet>plastique</typeDechet>
+    <typeDechet>verre</typeDechet>
     <status>vide</status>
   </trashCan>
   <trashCan id="68">
@@ -745,7 +745,7 @@
         <longitude>10.745239</longitude>
       </coordonnees>
     </lieu>
-    <typeDechet>plastique</typeDechet>
+    <typeDechet>papier</typeDechet>
     <status>vide</status>
   </trashCan>
   <trashCan id="69">
@@ -756,7 +756,7 @@
         <longitude>10.738661</longitude>
       </coordonnees>
     </lieu>
-    <typeDechet>plastique</typeDechet>
+    <typeDechet>autre</typeDechet>
     <status>pleine</status>
   </trashCan>
   <trashCan id="70">
@@ -778,7 +778,7 @@
         <longitude>10.737227</longitude>
       </coordonnees>
     </lieu>
-    <typeDechet>plastique</typeDechet>
+    <typeDechet>verre</typeDechet>
     <status>vide</status>
   </trashCan>
   <trashCan id="72">
@@ -789,7 +789,7 @@
         <longitude>10.734308</longitude>
       </coordonnees>
     </lieu>
-    <typeDechet>plastique</typeDechet>
+    <typeDechet>papier</typeDechet>
     <status>pleine</status>
   </trashCan>
   <trashCan id="73">
@@ -800,7 +800,7 @@
         <longitude>10.733987</longitude>
       </coordonnees>
     </lieu>
-    <typeDechet>plastique</typeDechet>
+    <typeDechet>autre</typeDechet>
     <status>moitie</status>
   </trashCan>
   <trashCan id="74">
@@ -822,7 +822,7 @@
         <longitude>10.729297</longitude>
       </coordonnees>
     </lieu>
-    <typeDechet>plastique</typeDechet>
+    <typeDechet>verre</typeDechet>
     <status>pleine</status>
   </trashCan>
   <trashCan id="76">
@@ -833,7 +833,7 @@
         <longitude>10.725971</longitude>
       </coordonnees>
     </lieu>
-    <typeDechet>plastique</typeDechet>
+    <typeDechet>papier</typeDechet>
     <status>pleine</status>
   </trashCan>
   <trashCan id="77">
@@ -844,7 +844,7 @@
         <longitude>10.726025</longitude>
       </coordonnees>
     </lieu>
-    <typeDechet>plastique</typeDechet>
+    <typeDechet>autre</typeDechet>
     <status>moitie</status>
   </trashCan>
   <trashCan id="78">
@@ -866,7 +866,7 @@
         <longitude>10.727849</longitude>
       </coordonnees>
     </lieu>
-    <typeDechet>plastique</typeDechet>
+    <typeDechet>verre</typeDechet>
     <status>pleine</status>
   </trashCan>
   <trashCan id="80">
@@ -877,7 +877,7 @@
         <longitude>10.732817</longitude>
       </coordonnees>
     </lieu>
-    <typeDechet>plastique</typeDechet>
+    <typeDechet>papier</typeDechet>
     <status>vide</status>
   </trashCan>
   <trashCan id="81">
@@ -888,7 +888,7 @@
         <longitude>10.735639</longitude>
       </coordonnees>
     </lieu>
-    <typeDechet>plastique</typeDechet>
+    <typeDechet>autre</typeDechet>
     <status>pleine</status>
   </trashCan>
   <trashCan id="82">
@@ -910,7 +910,7 @@
         <longitude>10.726488</longitude>
       </coordonnees>
     </lieu>
-    <typeDechet>plastique</typeDechet>
+    <typeDechet>verre</typeDechet>
     <status>moitie</status>
   </trashCan>
   <trashCan id="84">
@@ -921,7 +921,7 @@
         <longitude>10.728269</longitude>
       </coordonnees>
     </lieu>
-    <typeDechet>plastique</typeDechet>
+    <typeDechet>papier</typeDechet>
     <status>moitie</status>
   </trashCan>
   <trashCan id="85">
@@ -932,7 +932,7 @@
         <longitude>10.746294</longitude>
       </coordonnees>
     </lieu>
-    <typeDechet>plastique</typeDechet>
+    <typeDechet>autre</typeDechet>
     <status>vide</status>
   </trashCan>
   <trashCan id="86">
@@ -954,7 +954,7 @@
         <longitude>10.742581</longitude>
       </coordonnees>
     </lieu>
-    <typeDechet>plastique</typeDechet>
+    <typeDechet>verre</typeDechet>
     <status>vide</status>
   </trashCan>
   <trashCan id="88">
@@ -965,7 +965,7 @@
         <longitude>10.738654</longitude>
       </coordonnees>
     </lieu>
-    <typeDechet>plastique</typeDechet>
+    <typeDechet>papier</typeDechet>
     <status>pleine</status>
   </trashCan>
   <trashCan id="89">
@@ -976,7 +976,7 @@
         <longitude>10.743869</longitude>
       </coordonnees>
     </lieu>
-    <typeDechet>plastique</typeDechet>
+    <typeDechet>autre</typeDechet>
     <status>pleine</status>
   </trashCan>
   <trashCan id="90">
@@ -998,7 +998,7 @@
         <longitude>10.74257</longitude>
       </coordonnees>
     </lieu>
-    <typeDechet>plastique</typeDechet>
+    <typeDechet>verre</typeDechet>
     <status>vide</status>
   </trashCan>
   <trashCan id="92">
@@ -1009,7 +1009,7 @@
         <longitude>10.755125</longitude>
       </coordonnees>
     </lieu>
-    <typeDechet>plastique</typeDechet>
+    <typeDechet>papier</typeDechet>
     <status>moitie</status>
   </trashCan>
   <trashCan id="93">
@@ -1020,7 +1020,7 @@
         <longitude>10.760629</longitude>
       </coordonnees>
     </lieu>
-    <typeDechet>plastique</typeDechet>
+    <typeDechet>autre</typeDechet>
     <status>vide</status>
   </trashCan>
   <trashCan id="94">
@@ -1042,7 +1042,7 @@
         <longitude>10.766142</longitude>
       </coordonnees>
     </lieu>
-    <typeDechet>plastique</typeDechet>
+    <typeDechet>verre</typeDechet>
     <status>vide</status>
   </trashCan>
   <trashCan id="96">
@@ -1053,7 +1053,7 @@
         <longitude>10.768909</longitude>
       </coordonnees>
     </lieu>
-    <typeDechet>plastique</typeDechet>
+    <typeDechet>papier</typeDechet>
     <status>vide</status>
   </trashCan>
   <trashCan id="97">
@@ -1064,7 +1064,7 @@
         <longitude>10.737473</longitude>
       </coordonnees>
     </lieu>
-    <typeDechet>plastique</typeDechet>
+    <typeDechet>autre</typeDechet>
     <status>moitie</status>
   </trashCan>
   <trashCan id="98">
@@ -1086,7 +1086,7 @@
         <longitude>10.728642</longitude>
       </coordonnees>
     </lieu>
-    <typeDechet>plastique</typeDechet>
+    <typeDechet>verre</typeDechet>
     <status>vide</status>
   </trashCan>
   <trashCan id="100">
@@ -1097,7 +1097,7 @@
         <longitude>10.726538</longitude>
       </coordonnees>
     </lieu>
-    <typeDechet>plastique</typeDechet>
+    <typeDechet>papier</typeDechet>
     <status>moitie</status>
   </trashCan>
   <trashCan id="101">
@@ -1108,7 +1108,7 @@
         <longitude>10.735208</longitude>
       </coordonnees>
     </lieu>
-    <typeDechet>plastique</typeDechet>
+    <typeDechet>autre</typeDechet>
     <status>pleine</status>
   </trashCan>
   <trashCan id="102">
@@ -1130,7 +1130,7 @@
         <longitude>10.733555</longitude>
       </coordonnees>
     </lieu>
-    <typeDechet>plastique</typeDechet>
+    <typeDechet>verre</typeDechet>
     <status>moitie</status>
   </trashCan>
   <trashCan id="104">
@@ -1141,7 +1141,7 @@
         <longitude>10.73127</longitude>
       </coordonnees>
     </lieu>
-    <typeDechet>plastique</typeDechet>
+    <typeDechet>papier</typeDechet>
     <status>moitie</status>
   </trashCan>
   <trashCan id="105">
@@ -1152,7 +1152,7 @@
         <longitude>10.730122</longitude>
       </coordonnees>
     </lieu>
-    <typeDechet>plastique</typeDechet>
+    <typeDechet>autre</typeDechet>
     <status>pleine</status>
   </trashCan>
   <trashCan id="106">
@@ -1174,7 +1174,7 @@
         <longitude>10.737364</longitude>
       </coordonnees>
     </lieu>
-    <typeDechet>plastique</typeDechet>
+    <typeDechet>verre</typeDechet>
     <status>moitie</status>
   </trashCan>
   <trashCan id="108">
@@ -1185,7 +1185,7 @@
         <longitude>10.736517</longitude>
       </coordonnees>
     </lieu>
-    <typeDechet>plastique</typeDechet>
+    <typeDechet>papier</typeDechet>
     <status>pleine</status>
   </trashCan>
   <trashCan id="109">
@@ -1196,7 +1196,7 @@
         <longitude>10.739886</longitude>
       </coordonnees>
     </lieu>
-    <typeDechet>plastique</typeDechet>
+    <typeDechet>autre</typeDechet>
     <status>moitie</status>
   </trashCan>
   <trashCan id="110">
@@ -1218,7 +1218,7 @@
         <longitude>10.734038</longitude>
       </coordonnees>
     </lieu>
-    <typeDechet>plastique</typeDechet>
+    <typeDechet>verre</typeDechet>
     <status>vide</status>
   </trashCan>
   <trashCan id="112">
@@ -1229,7 +1229,7 @@
         <longitude>10.731302</longitude>
       </coordonnees>
     </lieu>
-    <typeDechet>plastique</typeDechet>
+    <typeDechet>papier</typeDechet>
     <status>vide</status>
   </trashCan>
   <trashCan id="113">
@@ -1240,7 +1240,7 @@
         <longitude>10.732203</longitude>
       </coordonnees>
     </lieu>
-    <typeDechet>plastique</typeDechet>
+    <typeDechet>autre</typeDechet>
     <status>vide</status>
   </trashCan>
   <trashCan id="114">
@@ -1262,7 +1262,7 @@
         <longitude>10.74245</longitude>
       </coordonnees>
     </lieu>
-    <typeDechet>plastique</typeDechet>
+    <typeDechet>verre</typeDechet>
     <status>pleine</status>
   </trashCan>
   <trashCan id="116">
@@ -1273,7 +1273,7 @@
         <longitude>10.738738</longitude>
       </coordonnees>
     </lieu>
-    <typeDechet>plastique</typeDechet>
+    <typeDechet>papier</typeDechet>
     <status>moitie</status>
   </trashCan>
   <trashCan id="117">
@@ -1284,7 +1284,7 @@
         <longitude>10.737289</longitude>
       </coordonnees>
     </lieu>
-    <typeDechet>plastique</typeDechet>
+    <typeDechet>autre</typeDechet>
     <status>pleine</status>
   </trashCan>
   <trashCan id="118">
@@ -1306,7 +1306,7 @@
         <longitude>10.736313</longitude>
       </coordonnees>
     </lieu>
-    <typeDechet>plastique</typeDechet>
+    <typeDechet>verre</typeDechet>
     <status>moitie</status>
   </trashCan>
   <trashCan id="120">
@@ -1317,7 +1317,7 @@
         <longitude>10.74744</longitude>
       </coordonnees>
     </lieu>
-    <typeDechet>plastique</typeDechet>
+    <typeDechet>papier</typeDechet>
     <status>vide</status>
   </trashCan>
   <trashCan id="121">
@@ -1328,7 +1328,7 @@
         <longitude>10.747322</longitude>
       </coordonnees>
     </lieu>
-    <typeDechet>plastique</typeDechet>
+    <typeDechet>autre</typeDechet>
     <status>moitie</status>
   </trashCan>
   <trashCan id="122">
@@ -1350,7 +1350,7 @@
         <longitude>10.74465</longitude>
       </coordonnees>
     </lieu>
-    <typeDechet>plastique</typeDechet>
+    <typeDechet>verre</typeDechet>
     <status>moitie</status>
   </trashCan>
   <trashCan id="124">
@@ -1361,7 +1361,7 @@
         <longitude>10.742493</longitude>
       </coordonnees>
     </lieu>
-    <typeDechet>plastique</typeDechet>
+    <typeDechet>papier</typeDechet>
     <status>vide</status>
   </trashCan>
   <trashCan id="125">
@@ -1372,7 +1372,7 @@
         <longitude>10.739671</longitude>
       </coordonnees>
     </lieu>
-    <typeDechet>plastique</typeDechet>
+    <typeDechet>autre</typeDechet>
     <status>moitie</status>
   </trashCan>
   <trashCan id="126">
@@ -1394,7 +1394,7 @@
         <longitude>10.736559</longitude>
       </coordonnees>
     </lieu>
-    <typeDechet>plastique</typeDechet>
+    <typeDechet>verre</typeDechet>
     <status>moitie</status>
   </trashCan>
   <trashCan id="128">
@@ -1405,7 +1405,7 @@
         <longitude>10.741764</longitude>
       </coordonnees>
     </lieu>
-    <typeDechet>plastique</typeDechet>
+    <typeDechet>papier</typeDechet>
     <status>vide</status>
   </trashCan>
   <trashCan id="129">
@@ -1416,7 +1416,7 @@
         <longitude>10.7423</longitude>
       </coordonnees>
     </lieu>
-    <typeDechet>plastique</typeDechet>
+    <typeDechet>autre</typeDechet>
     <status>pleine</status>
   </trashCan>
   <trashCan id="130">
@@ -1438,7 +1438,7 @@
         <longitude>10.747087</longitude>
       </coordonnees>
     </lieu>
-    <typeDechet>plastique</typeDechet>
+    <typeDechet>verre</typeDechet>
     <status>pleine</status>
   </trashCan>
   <trashCan id="132">
@@ -1449,7 +1449,7 @@
         <longitude>10.745155</longitude>
       </coordonnees>
     </lieu>
-    <typeDechet>plastique</typeDechet>
+    <typeDechet>papier</typeDechet>
     <status>vide</status>
   </trashCan>
   <trashCan id="133">
@@ -1460,7 +1460,7 @@
         <longitude>10.742913</longitude>
       </coordonnees>
     </lieu>
-    <typeDechet>plastique</typeDechet>
+    <typeDechet>autre</typeDechet>
     <status>pleine</status>
   </trashCan>
   <trashCan id="134">
@@ -1482,7 +1482,7 @@
         <longitude>10.74507</longitude>
       </coordonnees>
     </lieu>
-    <typeDechet>plastique</typeDechet>
+    <typeDechet>verre</typeDechet>
     <status>vide</status>
   </trashCan>
   <trashCan id="136">
@@ -1493,7 +1493,7 @@
         <longitude>10.748095</longitude>
       </coordonnees>
     </lieu>
-    <typeDechet>plastique</typeDechet>
+    <typeDechet>papier</typeDechet>
     <status>pleine</status>
   </trashCan>
   <trashCan id="137">
@@ -1504,7 +1504,7 @@
         <longitude>10.750671</longitude>
       </coordonnees>
     </lieu>
-    <typeDechet>plastique</typeDechet>
+    <typeDechet>autre</typeDechet>
     <status>moitie</status>
   </trashCan>
   <trashCan id="138">
@@ -1526,7 +1526,7 @@
         <longitude>10.75242</longitude>
       </coordonnees>
     </lieu>
-    <typeDechet>plastique</typeDechet>
+    <typeDechet>verre</typeDechet>
     <status>moitie</status>
   </trashCan>
   <trashCan id="140">
@@ -1537,7 +1537,7 @@
         <longitude>10.745853</longitude>
       </coordonnees>
     </lieu>
-    <typeDechet>plastique</typeDechet>
+    <typeDechet>papier</typeDechet>
     <status>moitie</status>
   </trashCan>
   <trashCan id="141">
@@ -1548,7 +1548,7 @@
         <longitude>10.748589</longitude>
       </coordonnees>
     </lieu>
-    <typeDechet>plastique</typeDechet>
+    <typeDechet>autre</typeDechet>
     <status>vide</status>
   </trashCan>
   <trashCan id="142">
@@ -1570,7 +1570,7 @@
         <longitude>10.7589</longitude>
       </coordonnees>
     </lieu>
-    <typeDechet>plastique</typeDechet>
+    <typeDechet>verre</typeDechet>
     <status>vide</status>
   </trashCan>
   <trashCan id="144">
@@ -1581,7 +1581,7 @@
         <longitude>10.756228</longitude>
       </coordonnees>
     </lieu>
-    <typeDechet>plastique</typeDechet>
+    <typeDechet>papier</typeDechet>
     <status>vide</status>
   </trashCan>
   <trashCan id="145">
@@ -1592,7 +1592,7 @@
         <longitude>10.752279</longitude>
       </coordonnees>
     </lieu>
-    <typeDechet>plastique</typeDechet>
+    <typeDechet>autre</typeDechet>
     <status>vide</status>
   </trashCan>
   <trashCan id="146">
@@ -1614,7 +1614,7 @@
         <longitude>10.748491</longitude>
       </coordonnees>
     </lieu>
-    <typeDechet>plastique</typeDechet>
+    <typeDechet>verre</typeDechet>
     <status>vide</status>
   </trashCan>
   <trashCan id="148">
@@ -1625,7 +1625,7 @@
         <longitude>10.749843</longitude>
       </coordonnees>
     </lieu>
-    <typeDechet>plastique</typeDechet>
+    <typeDechet>papier</typeDechet>
     <status>moitie</status>
   </trashCan>
   <trashCan id="149">
@@ -1636,7 +1636,7 @@
         <longitude>10.753771</longitude>
       </coordonnees>
     </lieu>
-    <typeDechet>plastique</typeDechet>
+    <typeDechet>autre</typeDechet>
     <status>vide</status>
   </trashCan>
   <trashCan id="150">
@@ -1658,7 +1658,7 @@
         <longitude>10.752601</longitude>
       </coordonnees>
     </lieu>
-    <typeDechet>plastique</typeDechet>
+    <typeDechet>verre</typeDechet>
     <status>moitie</status>
   </trashCan>
   <trashCan id="152">
@@ -1669,7 +1669,7 @@
         <longitude>10.753653</longitude>
       </coordonnees>
     </lieu>
-    <typeDechet>plastique</typeDechet>
+    <typeDechet>papier</typeDechet>
     <status>pleine</status>
   </trashCan>
   <trashCan id="153">
@@ -1680,7 +1680,7 @@
         <longitude>10.754565</longitude>
       </coordonnees>
     </lieu>
-    <typeDechet>plastique</typeDechet>
+    <typeDechet>autre</typeDechet>
     <status>pleine</status>
   </trashCan>
   <trashCan id="154">
@@ -1702,7 +1702,7 @@
         <longitude>10.758331</longitude>
       </coordonnees>
     </lieu>
-    <typeDechet>plastique</typeDechet>
+    <typeDechet>verre</typeDechet>
     <status>vide</status>
   </trashCan>
   <trashCan id="156">
@@ -1713,7 +1713,7 @@
         <longitude>10.759941</longitude>
       </coordonnees>
     </lieu>
-    <typeDechet>plastique</typeDechet>
+    <typeDechet>papier</typeDechet>
     <status>vide</status>
   </trashCan>
   <trashCan id="157">
@@ -1724,7 +1724,7 @@
         <longitude>10.756325</longitude>
       </coordonnees>
     </lieu>
-    <typeDechet>plastique</typeDechet>
+    <typeDechet>autre</typeDechet>
     <status>moitie</status>
   </trashCan>
   <trashCan id="158">
@@ -1746,7 +1746,7 @@
         <longitude>10.759662</longitude>
       </coordonnees>
     </lieu>
-    <typeDechet>plastique</typeDechet>
+    <typeDechet>verre</typeDechet>
     <status>pleine</status>
   </trashCan>
   <trashCan id="160">
@@ -1757,7 +1757,7 @@
         <longitude>10.759833</longitude>
       </coordonnees>
     </lieu>
-    <typeDechet>plastique</typeDechet>
+    <typeDechet>papier</typeDechet>
     <status>moitie</status>
   </trashCan>
   <trashCan id="161">
@@ -1768,7 +1768,7 @@
         <longitude>10.761303</longitude>
       </coordonnees>
     </lieu>
-    <typeDechet>plastique</typeDechet>
+    <typeDechet>autre</typeDechet>
     <status>pleine</status>
   </trashCan>
   <trashCan id="162">
@@ -1790,7 +1790,7 @@
         <longitude>10.762301</longitude>
       </coordonnees>
     </lieu>
-    <typeDechet>plastique</typeDechet>
+    <typeDechet>verre</typeDechet>
     <status>pleine</status>
   </trashCan>
   <trashCan id="164">
@@ -1801,7 +1801,7 @@
         <longitude>10.762783</longitude>
       </coordonnees>
     </lieu>
-    <typeDechet>plastique</typeDechet>
+    <typeDechet>papier</typeDechet>
     <status>pleine</status>
   </trashCan>
   <trashCan id="165">
@@ -1812,7 +1812,7 @@
         <longitude>10.762</longitude>
       </coordonnees>
     </lieu>
-    <typeDechet>plastique</typeDechet>
+    <typeDechet>autre</typeDechet>
     <status>vide</status>
   </trashCan>
   <trashCan id="166">
@@ -1834,7 +1834,7 @@
         <longitude>10.762869</longitude>
       </coordonnees>
     </lieu>
-    <typeDechet>plastique</typeDechet>
+    <typeDechet>verre</typeDechet>
     <status>vide</status>
   </trashCan>
   <trashCan id="168">
@@ -1845,7 +1845,7 @@
         <longitude>10.765327</longitude>
       </coordonnees>
     </lieu>
-    <typeDechet>plastique</typeDechet>
+    <typeDechet>papier</typeDechet>
     <status>moitie</status>
   </trashCan>
   <trashCan id="169">
@@ -1856,7 +1856,7 @@
         <longitude>10.763867</longitude>
       </coordonnees>
     </lieu>
-    <typeDechet>plastique</typeDechet>
+    <typeDechet>autre</typeDechet>
     <status>vide</status>
   </trashCan>
   <trashCan id="170">
@@ -1878,7 +1878,7 @@
         <longitude>10.759843</longitude>
       </coordonnees>
     </lieu>
-    <typeDechet>plastique</typeDechet>
+    <typeDechet>verre</typeDechet>
     <status>moitie</status>
   </trashCan>
   <trashCan id="172">
@@ -1889,7 +1889,7 @@
         <longitude>10.762687</longitude>
       </coordonnees>
     </lieu>
-    <typeDechet>plastique</typeDechet>
+    <typeDechet>papier</typeDechet>
     <status>pleine</status>
   </trashCan>
   <trashCan id="173">
@@ -1900,7 +1900,7 @@
         <longitude>10.765262</longitude>
       </coordonnees>
     </lieu>
-    <typeDechet>plastique</typeDechet>
+    <typeDechet>autre</typeDechet>
     <status>vide</status>
   </trashCan>
   <trashCan id="174">
@@ -1922,7 +1922,7 @@
         <longitude>10.765563</longitude>
       </coordonnees>
     </lieu>
-    <typeDechet>plastique</typeDechet>
+    <typeDechet>verre</typeDechet>
     <status>moitie</status>
   </trashCan>
   <trashCan id="176">
@@ -1933,7 +1933,7 @@
         <longitude>10.765026</longitude>
       </coordonnees>
     </lieu>
-    <typeDechet>plastique</typeDechet>
+    <typeDechet>papier</typeDechet>
     <status>vide</status>
   </trashCan>
   <trashCan id="177">
@@ -1944,7 +1944,7 @@
         <longitude>10.765584</longitude>
       </coordonnees>
     </lieu>
-    <typeDechet>plastique</typeDechet>
+    <typeDechet>autre</typeDechet>
     <status>pleine</status>
   </trashCan>
   <trashCan id="178">
@@ -1966,7 +1966,7 @@
         <longitude>10.769361</longitude>
       </coordonnees>
     </lieu>
-    <typeDechet>plastique</typeDechet>
+    <typeDechet>verre</typeDechet>
     <status>vide</status>
   </trashCan>
   <trashCan id="180">
@@ -1977,7 +1977,7 @@
         <longitude>10.768363</longitude>
       </coordonnees>
     </lieu>
-    <typeDechet>plastique</typeDechet>
+    <typeDechet>papier</typeDechet>
     <status>pleine</status>
   </trashCan>
   <trashCan id="181">
@@ -1988,7 +1988,7 @@
         <longitude>10.767752</longitude>
       </coordonnees>
     </lieu>
-    <typeDechet>plastique</typeDechet>
+    <typeDechet>autre</typeDechet>
     <status>pleine</status>
   </trashCan>
   <trashCan id="182">
@@ -2010,7 +2010,7 @@
         <longitude>10.766506</longitude>
       </coordonnees>
     </lieu>
-    <typeDechet>plastique</typeDechet>
+    <typeDechet>verre</typeDechet>
     <status>vide</status>
   </trashCan>
   <trashCan id="184">
@@ -2021,7 +2021,7 @@
         <longitude>10.771442</longitude>
       </coordonnees>
     </lieu>
-    <typeDechet>plastique</typeDechet>
+    <typeDechet>papier</typeDechet>
     <status>pleine</status>
   </trashCan>
   <trashCan id="185">
@@ -2032,7 +2032,7 @@
         <longitude>10.767869</longitude>
       </coordonnees>
     </lieu>
-    <typeDechet>plastique</typeDechet>
+    <typeDechet>autre</typeDechet>
     <status>pleine</status>
   </trashCan>
   <trashCan id="186">
@@ -2054,7 +2054,7 @@
         <longitude>10.766968</longitude>
       </coordonnees>
     </lieu>
-    <typeDechet>plastique</typeDechet>
+    <typeDechet>verre</typeDechet>
     <status>moitie</status>
   </trashCan>
   <trashCan id="188">
@@ -2065,7 +2065,7 @@
         <longitude>10.770927</longitude>
       </coordonnees>
     </lieu>
-    <typeDechet>plastique</typeDechet>
+    <typeDechet>papier</typeDechet>
     <status>moitie</status>
   </trashCan>
   <trashCan id="189">
@@ -2076,7 +2076,7 @@
         <longitude>10.772719</longitude>
       </coordonnees>
     </lieu>
-    <typeDechet>plastique</typeDechet>
+    <typeDechet>autre</typeDechet>
     <status>moitie</status>
   </trashCan>
   <trashCan id="190">
@@ -2098,7 +2098,7 @@
         <longitude>10.770744</longitude>
       </coordonnees>
     </lieu>
-    <typeDechet>plastique</typeDechet>
+    <typeDechet>verre</typeDechet>
     <status>vide</status>
   </trashCan>
   <trashCan id="192">
@@ -2109,7 +2109,7 @@
         <longitude>10.763823</longitude>
       </coordonnees>
     </lieu>
-    <typeDechet>plastique</typeDechet>
+    <typeDechet>papier</typeDechet>
     <status>moitie</status>
   </trashCan>
   <trashCan id="193">
@@ -2120,7 +2120,7 @@
         <longitude>10.765572</longitude>
       </coordonnees>
     </lieu>
-    <typeDechet>plastique</typeDechet>
+    <typeDechet>autre</typeDechet>
     <status>moitie</status>
   </trashCan>
   <trashCan id="194">
@@ -2142,7 +2142,7 @@
         <longitude>10.764789</longitude>
       </coordonnees>
     </lieu>
-    <typeDechet>plastique</typeDechet>
+    <typeDechet>verre</typeDechet>
     <status>vide</status>
   </trashCan>
   <trashCan id="196">
@@ -2153,7 +2153,7 @@
         <longitude>10.769178</longitude>
       </coordonnees>
     </lieu>
-    <typeDechet>plastique</typeDechet>
+    <typeDechet>papier</typeDechet>
     <status>moitie</status>
   </trashCan>
   <trashCan id="197">
@@ -2164,7 +2164,7 @@
         <longitude>10.767139</longitude>
       </coordonnees>
     </lieu>
-    <typeDechet>plastique</typeDechet>
+    <typeDechet>autre</typeDechet>
     <status>pleine</status>
   </trashCan>
   <trashCan id="198">
@@ -2186,7 +2186,7 @@
         <longitude>10.7698</longitude>
       </coordonnees>
     </lieu>
-    <typeDechet>plastique</typeDechet>
+    <typeDechet>verre</typeDechet>
     <status>pleine</status>
   </trashCan>
   <trashCan id="200">
@@ -2197,7 +2197,7 @@
         <longitude>10.773942</longitude>
       </coordonnees>
     </lieu>
-    <typeDechet>plastique</typeDechet>
+    <typeDechet>papier</typeDechet>
     <status>vide</status>
   </trashCan>
   <trashCan id="201">
@@ -2208,7 +2208,7 @@
         <longitude>10.778073</longitude>
       </coordonnees>
     </lieu>
-    <typeDechet>plastique</typeDechet>
+    <typeDechet>autre</typeDechet>
     <status>pleine</status>
   </trashCan>
   <trashCan id="202">
@@ -2230,7 +2230,7 @@
         <longitude>10.771345</longitude>
       </coordonnees>
     </lieu>
-    <typeDechet>plastique</typeDechet>
+    <typeDechet>verre</typeDechet>
     <status>moitie</status>
   </trashCan>
   <trashCan id="204">
@@ -2241,7 +2241,7 @@
         <longitude>10.781035</longitude>
       </coordonnees>
     </lieu>
-    <typeDechet>plastique</typeDechet>
+    <typeDechet>papier</typeDechet>
     <status>moitie</status>
   </trashCan>
   <trashCan id="205">
@@ -2252,7 +2252,7 @@
         <longitude>10.768868</longitude>
       </coordonnees>
     </lieu>
-    <typeDechet>plastique</typeDechet>
+    <typeDechet>autre</typeDechet>
     <status>pleine</status>
   </trashCan>
   <trashCan id="206">
@@ -2274,7 +2274,7 @@
         <longitude>10.770948</longitude>
       </coordonnees>
     </lieu>
-    <typeDechet>plastique</typeDechet>
+    <typeDechet>verre</typeDechet>
     <status>vide</status>
   </trashCan>
   <trashCan id="208">
@@ -2285,7 +2285,7 @@
         <longitude>10.772826</longitude>
       </coordonnees>
     </lieu>
-    <typeDechet>plastique</typeDechet>
+    <typeDechet>papier</typeDechet>
     <status>moitie</status>
   </trashCan>
   <trashCan id="209">
@@ -2296,7 +2296,7 @@
         <longitude>10.774189</longitude>
       </coordonnees>
     </lieu>
-    <typeDechet>plastique</typeDechet>
+    <typeDechet>autre</typeDechet>
     <status>vide</status>
   </trashCan>
   <trashCan id="210">
@@ -2318,7 +2318,7 @@
         <longitude>10.77347</longitude>
       </coordonnees>
     </lieu>
-    <typeDechet>plastique</typeDechet>
+    <typeDechet>verre</typeDechet>
     <status>pleine</status>
   </trashCan>
   <trashCan id="212">
@@ -2329,7 +2329,7 @@
         <longitude>10.774478</longitude>
       </coordonnees>
     </lieu>
-    <typeDechet>plastique</typeDechet>
+    <typeDechet>papier</typeDechet>
     <status>pleine</status>
   </trashCan>
   <trashCan id="213">
@@ -2340,7 +2340,7 @@
         <longitude>10.776324</longitude>
       </coordonnees>
     </lieu>
-    <typeDechet>plastique</typeDechet>
+    <typeDechet>autre</typeDechet>
     <status>pleine</status>
   </trashCan>
   <trashCan id="214">
@@ -2362,7 +2362,7 @@
         <longitude>10.775412</longitude>
       </coordonnees>
     </lieu>
-    <typeDechet>plastique</typeDechet>
+    <typeDechet>verre</typeDechet>
     <status>vide</status>
   </trashCan>
   <trashCan id="216">
@@ -2373,7 +2373,7 @@
         <longitude>10.772987</longitude>
       </coordonnees>
     </lieu>
-    <typeDechet>plastique</typeDechet>
+    <typeDechet>papier</typeDechet>
     <status>pleine</status>
   </trashCan>
   <trashCan id="217">
@@ -2384,7 +2384,7 @@
         <longitude>10.777119</longitude>
       </coordonnees>
     </lieu>
-    <typeDechet>plastique</typeDechet>
+    <typeDechet>autre</typeDechet>
     <status>moitie</status>
   </trashCan>
   <trashCan id="218">
@@ -2406,7 +2406,7 @@
         <longitude>10.78583</longitude>
       </coordonnees>
     </lieu>
-    <typeDechet>plastique</typeDechet>
+    <typeDechet>verre</typeDechet>
     <status>pleine</status>
   </trashCan>
   <trashCan id="220">
@@ -2417,7 +2417,7 @@
         <longitude>10.787333</longitude>
       </coordonnees>
     </lieu>
-    <typeDechet>plastique</typeDechet>
+    <typeDechet>papier</typeDechet>
     <status>vide</status>
   </trashCan>
   <trashCan id="221">
@@ -2428,7 +2428,7 @@
         <longitude>10.786408</longitude>
       </coordonnees>
     </lieu>
-    <typeDechet>plastique</typeDechet>
+    <typeDechet>autre</typeDechet>
     <status>moitie</status>
   </trashCan>
   <trashCan id="222">
@@ -2450,7 +2450,7 @@
         <longitude>10.783522</longitude>
       </coordonnees>
     </lieu>
-    <typeDechet>plastique</typeDechet>
+    <typeDechet>verre</typeDechet>
     <status>pleine</status>
   </trashCan>
   <trashCan id="224">
@@ -2461,7 +2461,7 @@
         <longitude>10.781569</longitude>
       </coordonnees>
     </lieu>
-    <typeDechet>plastique</typeDechet>
+    <typeDechet>papier</typeDechet>
     <status>moitie</status>
   </trashCan>
   <trashCan id="225">
@@ -2472,7 +2472,7 @@
         <longitude>10.779943</longitude>
       </coordonnees>
     </lieu>
-    <typeDechet>plastique</typeDechet>
+    <typeDechet>autre</typeDechet>
     <status>moitie</status>
   </trashCan>
   <trashCan id="226">
@@ -2494,7 +2494,7 @@
         <longitude>10.772459</longitude>
       </coordonnees>
     </lieu>
-    <typeDechet>plastique</typeDechet>
+    <typeDechet>verre</typeDechet>
     <status>vide</status>
   </trashCan>
   <trashCan id="228">
@@ -2505,7 +2505,7 @@
         <longitude>10.770077</longitude>
       </coordonnees>
     </lieu>
-    <typeDechet>plastique</typeDechet>
+    <typeDechet>papier</typeDechet>
     <status>pleine</status>
   </trashCan>
   <trashCan id="229">
@@ -2516,7 +2516,7 @@
         <longitude>10.768221</longitude>
       </coordonnees>
     </lieu>
-    <typeDechet>plastique</typeDechet>
+    <typeDechet>autre</typeDechet>
     <status>vide</status>
   </trashCan>
   <trashCan id="230">
@@ -2538,7 +2538,7 @@
         <longitude>10.754411</longitude>
       </coordonnees>
     </lieu>
-    <typeDechet>plastique</typeDechet>
+    <typeDechet>verre</typeDechet>
     <status>moitie</status>
   </trashCan>
   <trashCan id="232">
@@ -2549,7 +2549,7 @@
         <longitude>10.750204</longitude>
       </coordonnees>
     </lieu>
-    <typeDechet>plastique</typeDechet>
+    <typeDechet>papier</typeDechet>
     <status>pleine</status>
   </trashCan>
   <trashCan id="233">
@@ -2560,7 +2560,7 @@
         <longitude>10.741781</longitude>
       </coordonnees>
     </lieu>
-    <typeDechet>plastique</typeDechet>
+    <typeDechet>autre</typeDechet>
     <status>vide</status>
   </trashCan>
   <trashCan id="234">
@@ -2582,7 +2582,7 @@
         <longitude>10.7331</longitude>
       </coordonnees>
     </lieu>
-    <typeDechet>plastique</typeDechet>
+    <typeDechet>verre</typeDechet>
     <status>vide</status>
   </trashCan>
   <trashCan id="236">
@@ -2593,7 +2593,7 @@
         <longitude>10.728798</longitude>
       </coordonnees>
     </lieu>
-    <typeDechet>plastique</typeDechet>
+    <typeDechet>papier</typeDechet>
     <status>pleine</status>
   </trashCan>
   <trashCan id="237">
@@ -2604,7 +2604,7 @@
         <longitude>10.724387</longitude>
       </coordonnees>
     </lieu>
-    <typeDechet>plastique</typeDechet>
+    <typeDechet>autre</typeDechet>
     <status>pleine</status>
   </trashCan>
   <trashCan id="238">
@@ -2626,7 +2626,7 @@
         <longitude>10.728186</longitude>
       </coordonnees>
     </lieu>
-    <typeDechet>plastique</typeDechet>
+    <typeDechet>verre</typeDechet>
     <status>moitie</status>
   </trashCan>
   <trashCan id="240">
@@ -2637,7 +2637,7 @@
         <longitude>10.724471</longitude>
       </coordonnees>
     </lieu>
-    <typeDechet>plastique</typeDechet>
+    <typeDechet>papier</typeDechet>
     <status>moitie</status>
   </trashCan>
   <trashCan id="241">
@@ -2648,7 +2648,7 @@
         <longitude>10.727851</longitude>
       </coordonnees>
     </lieu>
-    <typeDechet>plastique</typeDechet>
+    <typeDechet>autre</typeDechet>
     <status>pleine</status>
   </trashCan>
   <trashCan id="242">
@@ -2670,7 +2670,7 @@
         <longitude>10.728472</longitude>
       </coordonnees>
     </lieu>
-    <typeDechet>plastique</typeDechet>
+    <typeDechet>verre</typeDechet>
     <status>pleine</status>
   </trashCan>
   <trashCan id="244">
@@ -2681,7 +2681,7 @@
         <longitude>10.728022</longitude>
       </coordonnees>
     </lieu>
-    <typeDechet>plastique</typeDechet>
+    <typeDechet>papier</typeDechet>
     <status>vide</status>
   </trashCan>
   <trashCan id="245">
@@ -2692,7 +2692,7 @@
         <longitude>10.729685</longitude>
       </coordonnees>
     </lieu>
-    <typeDechet>plastique</typeDechet>
+    <typeDechet>autre</typeDechet>
     <status>pleine</status>
   </trashCan>
   <trashCan id="246">
@@ -2714,7 +2714,7 @@
         <longitude>10.789563</longitude>
       </coordonnees>
     </lieu>
-    <typeDechet>plastique</typeDechet>
+    <typeDechet>verre</typeDechet>
     <status>moitie</status>
   </trashCan>
   <trashCan id="248">
@@ -2725,7 +2725,7 @@
         <longitude>10.789144</longitude>
       </coordonnees>
     </lieu>
-    <typeDechet>plastique</typeDechet>
+    <typeDechet>papier</typeDechet>
     <status>vide</status>
   </trashCan>
   <trashCan id="249">
@@ -2736,7 +2736,7 @@
         <longitude>10.78747</longitude>
       </coordonnees>
     </lieu>
-    <typeDechet>plastique</typeDechet>
+    <typeDechet>autre</typeDechet>
     <status>pleine</status>
   </trashCan>
   <trashCan id="250">
@@ -2758,7 +2758,7 @@
         <longitude>10.787427</longitude>
       </coordonnees>
     </lieu>
-    <typeDechet>plastique</typeDechet>
+    <typeDechet>verre</typeDechet>
     <status>moitie</status>
   </trashCan>
   <trashCan id="252">
@@ -2769,7 +2769,7 @@
         <longitude>10.791333</longitude>
       </coordonnees>
     </lieu>
-    <typeDechet>plastique</typeDechet>
+    <typeDechet>papier</typeDechet>
     <status>moitie</status>
   </trashCan>
   <trashCan id="253">
@@ -2780,7 +2780,7 @@
         <longitude>10.793146</longitude>
       </coordonnees>
     </lieu>
-    <typeDechet>plastique</typeDechet>
+    <typeDechet>autre</typeDechet>
     <status>vide</status>
   </trashCan>
   <trashCan id="254">
@@ -2802,7 +2802,7 @@
         <longitude>10.797932</longitude>
       </coordonnees>
     </lieu>
-    <typeDechet>plastique</typeDechet>
+    <typeDechet>verre</typeDechet>
     <status>pleine</status>
   </trashCan>
   <trashCan id="256">
@@ -2813,7 +2813,7 @@
         <longitude>10.795228</longitude>
       </coordonnees>
     </lieu>
-    <typeDechet>plastique</typeDechet>
+    <typeDechet>papier</typeDechet>
     <status>vide</status>
   </trashCan>
   <trashCan id="257">
@@ -2824,7 +2824,7 @@
         <longitude>10.796279</longitude>
       </coordonnees>
     </lieu>
-    <typeDechet>plastique</typeDechet>
+    <typeDechet>autre</typeDechet>
     <status>pleine</status>
   </trashCan>
   <trashCan id="258">
@@ -2846,7 +2846,7 @@
         <longitude>10.790818</longitude>
       </coordonnees>
     </lieu>
-    <typeDechet>plastique</typeDechet>
+    <typeDechet>verre</typeDechet>
     <status>pleine</status>
   </trashCan>
   <trashCan id="260">
@@ -2857,7 +2857,7 @@
         <longitude>10.791408</longitude>
       </coordonnees>
     </lieu>
-    <typeDechet>plastique</typeDechet>
+    <typeDechet>papier</typeDechet>
     <status>moitie</status>
   </trashCan>
   <trashCan id="261">
@@ -2868,7 +2868,7 @@
         <longitude>10.79438</longitude>
       </coordonnees>
     </lieu>
-    <typeDechet>plastique</typeDechet>
+    <typeDechet>autre</typeDechet>
     <status>pleine</status>
   </trashCan>
   <trashCan id="262">
@@ -2890,7 +2890,7 @@
         <longitude>10.79306</longitude>
       </coordonnees>
     </lieu>
-    <typeDechet>plastique</typeDechet>
+    <typeDechet>verre</typeDechet>
     <status>pleine</status>
   </trashCan>
   <trashCan id="264">
@@ -2901,7 +2901,7 @@
         <longitude>10.789336</longitude>
       </coordonnees>
     </lieu>
-    <typeDechet>plastique</typeDechet>
+    <typeDechet>papier</typeDechet>
     <status>pleine</status>
   </trashCan>
   <trashCan id="265">
@@ -2912,7 +2912,7 @@
         <longitude>10.799026</longitude>
       </coordonnees>
     </lieu>
-    <typeDechet>plastique</typeDechet>
+    <typeDechet>autre</typeDechet>
     <status>vide</status>
   </trashCan>
   <trashCan id="266">
@@ -2934,7 +2934,7 @@
         <longitude>10.794573</longitude>
       </coordonnees>
     </lieu>
-    <typeDechet>plastique</typeDechet>
+    <typeDechet>verre</typeDechet>
     <status>pleine</status>
   </trashCan>
   <trashCan id="268">
@@ -2945,7 +2945,7 @@
         <longitude>10.790426</longitude>
       </coordonnees>
     </lieu>
-    <typeDechet>plastique</typeDechet>
+    <typeDechet>papier</typeDechet>
     <status>moitie</status>
   </trashCan>
   <trashCan id="269">
@@ -2956,7 +2956,7 @@
         <longitude>10.786493</longitude>
       </coordonnees>
     </lieu>
-    <typeDechet>plastique</typeDechet>
+    <typeDechet>autre</typeDechet>
     <status>vide</status>
   </trashCan>
   <trashCan id="270">
@@ -2978,7 +2978,7 @@
         <longitude>10.8005</longitude>
       </coordonnees>
     </lieu>
-    <typeDechet>plastique</typeDechet>
+    <typeDechet>verre</typeDechet>
     <status>pleine</status>
   </trashCan>
   <trashCan id="272">
@@ -2989,7 +2989,7 @@
         <longitude>10.799481</longitude>
       </coordonnees>
     </lieu>
-    <typeDechet>plastique</typeDechet>
+    <typeDechet>papier</typeDechet>
     <status>moitie</status>
   </trashCan>
   <trashCan id="273">
@@ -3000,7 +3000,7 @@
         <longitude>10.798429</longitude>
       </coordonnees>
     </lieu>
-    <typeDechet>plastique</typeDechet>
+    <typeDechet>autre</typeDechet>
     <status>vide</status>
   </trashCan>
   <trashCan id="274">
@@ -3022,7 +3022,7 @@
         <longitude>10.787899</longitude>
       </coordonnees>
     </lieu>
-    <typeDechet>plastique</typeDechet>
+    <typeDechet>verre</typeDechet>
     <status>moitie</status>
   </trashCan>
   <trashCan id="276">
@@ -3033,7 +3033,7 @@
         <longitude>10.783801</longitude>
       </coordonnees>
     </lieu>
-    <typeDechet>plastique</typeDechet>
+    <typeDechet>papier</typeDechet>
     <status>vide</status>
   </trashCan>
   <trashCan id="277">
@@ -3044,7 +3044,7 @@
         <longitude>10.791858</longitude>
       </coordonnees>
     </lieu>
-    <typeDechet>plastique</typeDechet>
+    <typeDechet>autre</typeDechet>
     <status>pleine</status>
   </trashCan>
   <trashCan id="278">
@@ -3066,7 +3066,7 @@
         <longitude>10.794262</longitude>
       </coordonnees>
     </lieu>
-    <typeDechet>plastique</typeDechet>
+    <typeDechet>verre</typeDechet>
     <status>pleine</status>
   </trashCan>
   <trashCan id="280">
@@ -3077,7 +3077,7 @@
         <longitude>10.797062</longitude>
       </coordonnees>
     </lieu>
-    <typeDechet>plastique</typeDechet>
+    <typeDechet>papier</typeDechet>
     <status>moitie</status>
   </trashCan>
   <trashCan id="281">
@@ -3088,7 +3088,7 @@
         <longitude>10.800753</longitude>
       </coordonnees>
     </lieu>
-    <typeDechet>plastique</typeDechet>
+    <typeDechet>autre</typeDechet>
     <status>pleine</status>
   </trashCan>
   <trashCan id="282">
@@ -3110,7 +3110,7 @@
         <longitude>10.796579</longitude>
       </coordonnees>
     </lieu>
-    <typeDechet>plastique</typeDechet>
+    <typeDechet>verre</typeDechet>
     <status>vide</status>
   </trashCan>
   <trashCan id="284">
@@ -3121,7 +3121,7 @@
         <longitude>10.795635</longitude>
       </coordonnees>
     </lieu>
-    <typeDechet>plastique</typeDechet>
+    <typeDechet>papier</typeDechet>
     <status>moitie</status>
   </trashCan>
   <trashCan id="285">
@@ -3132,7 +3132,7 @@
         <longitude>10.800142</longitude>
       </coordonnees>
     </lieu>
-    <typeDechet>plastique</typeDechet>
+    <typeDechet>autre</typeDechet>
     <status>moitie</status>
   </trashCan>
   <trashCan id="286">
@@ -3154,7 +3154,7 @@
         <longitude>10.804423</longitude>
       </coordonnees>
     </lieu>
-    <typeDechet>plastique</typeDechet>
+    <typeDechet>verre</typeDechet>
     <status>moitie</status>
   </trashCan>
   <trashCan id="288">
@@ -3165,7 +3165,7 @@
         <longitude>10.808308</longitude>
       </coordonnees>
     </lieu>
-    <typeDechet>plastique</typeDechet>
+    <typeDechet>papier</typeDechet>
     <status>pleine</status>
   </trashCan>
   <trashCan id="289">
@@ -3176,7 +3176,7 @@
         <longitude>10.802352</longitude>
       </coordonnees>
     </lieu>
-    <typeDechet>plastique</typeDechet>
+    <typeDechet>autre</typeDechet>
     <status>pleine</status>
   </trashCan>
   <trashCan id="290">
@@ -3198,7 +3198,7 @@
         <longitude>10.801354</longitude>
       </coordonnees>
     </lieu>
-    <typeDechet>plastique</typeDechet>
+    <typeDechet>verre</typeDechet>
     <status>moitie</status>
   </trashCan>
   <trashCan id="292">
@@ -3209,7 +3209,7 @@
         <longitude>10.799251</longitude>
       </coordonnees>
     </lieu>
-    <typeDechet>plastique</typeDechet>
+    <typeDechet>papier</typeDechet>
     <status>moitie</status>
   </trashCan>
   <trashCan id="293">
@@ -3220,7 +3220,7 @@
         <longitude>10.796869</longitude>
       </coordonnees>
     </lieu>
-    <typeDechet>plastique</typeDechet>
+    <typeDechet>autre</typeDechet>
     <status>vide</status>
   </trashCan>
   <trashCan id="294">
@@ -3242,7 +3242,7 @@
         <longitude>10.807374</longitude>
       </coordonnees>
     </lieu>
-    <typeDechet>plastique</typeDechet>
+    <typeDechet>verre</typeDechet>
     <status>vide</status>
   </trashCan>
   <trashCan id="296">
@@ -3253,7 +3253,7 @@
         <longitude>10.811001</longitude>
       </coordonnees>
     </lieu>
-    <typeDechet>plastique</typeDechet>
+    <typeDechet>papier</typeDechet>
     <status>vide</status>
   </trashCan>
   <trashCan id="297">
@@ -3264,7 +3264,7 @@
         <longitude>10.807106</longitude>
       </coordonnees>
     </lieu>
-    <typeDechet>plastique</typeDechet>
+    <typeDechet>autre</typeDechet>
     <status>pleine</status>
   </trashCan>
   <trashCan id="298">
@@ -3286,7 +3286,7 @@
         <longitude>10.810282</longitude>
       </coordonnees>
     </lieu>
-    <typeDechet>plastique</typeDechet>
+    <typeDechet>verre</typeDechet>
     <status>pleine</status>
   </trashCan>
   <trashCan id="300">
@@ -3297,7 +3297,7 @@
         <longitude>10.812149</longitude>
       </coordonnees>
     </lieu>
-    <typeDechet>plastique</typeDechet>
+    <typeDechet>papier</typeDechet>
     <status>pleine</status>
   </trashCan>
   <trashCan id="301">
@@ -3308,7 +3308,7 @@
         <longitude>10.80922</longitude>
       </coordonnees>
     </lieu>
-    <typeDechet>plastique</typeDechet>
+    <typeDechet>autre</typeDechet>
     <status>vide</status>
   </trashCan>
   <trashCan id="302">
@@ -3330,7 +3330,7 @@
         <longitude>10.817063</longitude>
       </coordonnees>
     </lieu>
-    <typeDechet>plastique</typeDechet>
+    <typeDechet>verre</typeDechet>
     <status>moitie</status>
   </trashCan>
   <trashCan id="304">
@@ -3341,7 +3341,7 @@
         <longitude>10.819667</longitude>
       </coordonnees>
     </lieu>
-    <typeDechet>plastique</typeDechet>
+    <typeDechet>papier</typeDechet>
     <status>moitie</status>
   </trashCan>
   <trashCan id="305">
@@ -3352,7 +3352,7 @@
         <longitude>10.823187</longitude>
       </coordonnees>
     </lieu>
-    <typeDechet>plastique</typeDechet>
+    <typeDechet>autre</typeDechet>
     <status>vide</status>
   </trashCan>
   <trashCan id="306">
@@ -3374,7 +3374,7 @@
         <longitude>10.834743</longitude>
       </coordonnees>
     </lieu>
-    <typeDechet>plastique</typeDechet>
+    <typeDechet>verre</typeDechet>
     <status>moitie</status>
   </trashCan>
   <trashCan id="308">
@@ -3385,7 +3385,7 @@
         <longitude>10.808455</longitude>
       </coordonnees>
     </lieu>
-    <typeDechet>plastique</typeDechet>
+    <typeDechet>papier</typeDechet>
     <status>vide</status>
   </trashCan>
   <trashCan id="309">
@@ -3396,7 +3396,7 @@
         <longitude>10.807522</longitude>
       </coordonnees>
     </lieu>
-    <typeDechet>plastique</typeDechet>
+    <typeDechet>autre</typeDechet>
     <status>moitie</status>
   </trashCan>
   <trashCan id="310">
@@ -3418,7 +3418,7 @@
         <longitude>10.810141</longitude>
       </coordonnees>
     </lieu>
-    <typeDechet>plastique</typeDechet>
+    <typeDechet>verre</typeDechet>
     <status>pleine</status>
   </trashCan>
   <trashCan id="312">
@@ -3429,7 +3429,7 @@
         <longitude>10.810623</longitude>
       </coordonnees>
     </lieu>
-    <typeDechet>plastique</typeDechet>
+    <typeDechet>papier</typeDechet>
     <status>moitie</status>
   </trashCan>
   <trashCan id="313">
@@ -3440,7 +3440,7 @@
         <longitude>10.813509</longitude>
       </coordonnees>
     </lieu>
-    <typeDechet>plastique</typeDechet>
+    <typeDechet>autre</typeDechet>
     <status>vide</status>
   </trashCan>
   <trashCan id="314">
@@ -3462,7 +3462,7 @@
         <longitude>10.8194</longitude>
       </coordonnees>
     </lieu>
-    <typeDechet>plastique</typeDechet>
+    <typeDechet>verre</typeDechet>
     <status>vide</status>
   </trashCan>
   <trashCan id="316">
@@ -3473,7 +3473,7 @@
         <longitude>10.822877</longitude>
       </coordonnees>
     </lieu>
-    <typeDechet>plastique</typeDechet>
+    <typeDechet>papier</typeDechet>
     <status>moitie</status>
   </trashCan>
   <trashCan id="317">
@@ -3484,7 +3484,7 @@
         <longitude>10.827115</longitude>
       </coordonnees>
     </lieu>
-    <typeDechet>plastique</typeDechet>
+    <typeDechet>autre</typeDechet>
     <status>vide</status>
   </trashCan>
   <trashCan id="318">
@@ -3506,7 +3506,7 @@
         <longitude>10.81418</longitude>
       </coordonnees>
     </lieu>
-    <typeDechet>plastique</typeDechet>
+    <typeDechet>verre</typeDechet>
     <status>moitie</status>
   </trashCan>
   <trashCan id="320">
@@ -3517,7 +3517,7 @@
         <longitude>10.814652</longitude>
       </coordonnees>
     </lieu>
-    <typeDechet>plastique</typeDechet>
+    <typeDechet>papier</typeDechet>
     <status>vide</status>
   </trashCan>
   <trashCan id="321">
@@ -3528,7 +3528,7 @@
         <longitude>10.814888</longitude>
       </coordonnees>
     </lieu>
-    <typeDechet>plastique</typeDechet>
+    <typeDechet>autre</typeDechet>
     <status>pleine</status>
   </trashCan>
   <trashCan id="322">
@@ -3550,7 +3550,7 @@
         <longitude>10.822893</longitude>
       </coordonnees>
     </lieu>
-    <typeDechet>plastique</typeDechet>
+    <typeDechet>verre</typeDechet>
     <status>moitie</status>
   </trashCan>
   <trashCan id="324">
@@ -3561,7 +3561,7 @@
         <longitude>10.81976</longitude>
       </coordonnees>
     </lieu>
-    <typeDechet>plastique</typeDechet>
+    <typeDechet>papier</typeDechet>
     <status>vide</status>
   </trashCan>
   <trashCan id="325">
@@ -3572,7 +3572,7 @@
         <longitude>10.825529</longitude>
       </coordonnees>
     </lieu>
-    <typeDechet>plastique</typeDechet>
+    <typeDechet>autre</typeDechet>
     <status>pleine</status>
   </trashCan>
   <trashCan id="326">
@@ -3594,7 +3594,7 @@
         <longitude>10.834856</longitude>
       </coordonnees>
     </lieu>
-    <typeDechet>plastique</typeDechet>
+    <typeDechet>verre</typeDechet>
     <status>pleine</status>
   </trashCan>
   <trashCan id="328">
@@ -3605,7 +3605,7 @@
         <longitude>10.830735</longitude>
       </coordonnees>
     </lieu>
-    <typeDechet>plastique</typeDechet>
+    <typeDechet>papier</typeDechet>
     <status>pleine</status>
   </trashCan>
   <trashCan id="329">
@@ -3616,7 +3616,7 @@
         <longitude>10.825833</longitude>
       </coordonnees>
     </lieu>
-    <typeDechet>plastique</typeDechet>
+    <typeDechet>autre</typeDechet>
     <status>moitie</status>
   </trashCan>
   <trashCan id="330">
@@ -3638,7 +3638,7 @@
         <longitude>10.819103</longitude>
       </coordonnees>
     </lieu>
-    <typeDechet>plastique</typeDechet>
+    <typeDechet>verre</typeDechet>
     <status>vide</status>
   </trashCan>
   <trashCan id="332">
@@ -3649,7 +3649,7 @@
         <longitude>10.780256</longitude>
       </coordonnees>
     </lieu>
-    <typeDechet>plastique</typeDechet>
+    <typeDechet>papier</typeDechet>
     <status>vide</status>
   </trashCan>
   <trashCan id="333">
@@ -3660,7 +3660,7 @@
         <longitude>10.778861</longitude>
       </coordonnees>
     </lieu>
-    <typeDechet>plastique</typeDechet>
+    <typeDechet>autre</typeDechet>
     <status>moitie</status>
   </trashCan>
   <trashCan id="334">
@@ -3682,7 +3682,7 @@
         <longitude>10.782766</longitude>
       </coordonnees>
     </lieu>
-    <typeDechet>plastique</typeDechet>
+    <typeDechet>verre</typeDechet>
     <status>moitie</status>
   </trashCan>
   <trashCan id="336">
@@ -3693,7 +3693,7 @@
         <longitude>10.782251</longitude>
       </coordonnees>
     </lieu>
-    <typeDechet>plastique</typeDechet>
+    <typeDechet>papier</typeDechet>
     <status>pleine</status>
   </trashCan>
   <trashCan id="337">
@@ -3704,7 +3704,7 @@
         <longitude>10.779397</longitude>
       </coordonnees>
     </lieu>
-    <typeDechet>plastique</typeDechet>
+    <typeDechet>autre</typeDechet>
     <status>moitie</status>
   </trashCan>
   <trashCan id="338">
@@ -3726,7 +3726,7 @@
         <longitude>10.784011</longitude>
       </coordonnees>
     </lieu>
-    <typeDechet>plastique</typeDechet>
+    <typeDechet>verre</typeDechet>
     <status>vide</status>
   </trashCan>
   <trashCan id="340">
@@ -3737,7 +3737,7 @@
         <longitude>10.781457</longitude>
       </coordonnees>
     </lieu>
-    <typeDechet>plastique</typeDechet>
+    <typeDechet>papier</typeDechet>
     <status>moitie</status>
   </trashCan>
   <trashCan id="341">
@@ -3748,7 +3748,7 @@
         <longitude>10.779934</longitude>
       </coordonnees>
     </lieu>
-    <typeDechet>plastique</typeDechet>
+    <typeDechet>autre</typeDechet>
     <status>moitie</status>
   </trashCan>
   <trashCan id="342">
@@ -3770,7 +3770,7 @@
         <longitude>10.786865</longitude>
       </coordonnees>
     </lieu>
-    <typeDechet>plastique</typeDechet>
+    <typeDechet>verre</typeDechet>
     <status>pleine</status>
   </trashCan>
   <trashCan id="344">
@@ -3781,7 +3781,7 @@
         <longitude>10.786758</longitude>
       </coordonnees>
     </lieu>
-    <typeDechet>plastique</typeDechet>
+    <typeDechet>papier</typeDechet>
     <status>vide</status>
   </trashCan>
   <trashCan id="345">
@@ -3792,7 +3792,7 @@
         <longitude>10.783496</longitude>
       </coordonnees>
     </lieu>
-    <typeDechet>plastique</typeDechet>
+    <typeDechet>autre</typeDechet>
     <status>moitie</status>
   </trashCan>
   <trashCan id="346">
@@ -3814,7 +3814,7 @@
         <longitude>10.786479</longitude>
       </coordonnees>
     </lieu>
-    <typeDechet>plastique</typeDechet>
+    <typeDechet>verre</typeDechet>
     <status>vide</status>
   </trashCan>
   <trashCan id="348">
@@ -3825,7 +3825,7 @@
         <longitude>10.783646</longitude>
       </coordonnees>
     </lieu>
-    <typeDechet>plastique</typeDechet>
+    <typeDechet>papier</typeDechet>
     <status>vide</status>
   </trashCan>
   <trashCan id="349">
@@ -3836,7 +3836,7 @@
         <longitude>10.781608</longitude>
       </coordonnees>
     </lieu>
-    <typeDechet>plastique</typeDechet>
+    <typeDechet>autre</typeDechet>
     <status>moitie</status>
   </trashCan>
   <trashCan id="350">
@@ -3858,7 +3858,7 @@
         <longitude>10.784521</longitude>
       </coordonnees>
     </lieu>
-    <typeDechet>plastique</typeDechet>
+    <typeDechet>verre</typeDechet>
     <status>moitie</status>
   </trashCan>
   <trashCan id="352">
@@ -3869,7 +3869,7 @@
         <longitude>10.792054</longitude>
       </coordonnees>
     </lieu>
-    <typeDechet>plastique</typeDechet>
+    <typeDechet>papier</typeDechet>
     <status>moitie</status>
   </trashCan>
   <trashCan id="353">
@@ -3880,7 +3880,7 @@
         <longitude>10.788749</longitude>
       </coordonnees>
     </lieu>
-    <typeDechet>plastique</typeDechet>
+    <typeDechet>autre</typeDechet>
     <status>moitie</status>
   </trashCan>
   <trashCan id="354">
@@ -3902,7 +3902,7 @@
         <longitude>10.793191</longitude>
       </coordonnees>
     </lieu>
-    <typeDechet>plastique</typeDechet>
+    <typeDechet>verre</typeDechet>
     <status>pleine</status>
   </trashCan>
   <trashCan id="356">
@@ -3913,7 +3913,7 @@
         <longitude>10.795702</longitude>
       </coordonnees>
     </lieu>
-    <typeDechet>plastique</typeDechet>
+    <typeDechet>papier</typeDechet>
     <status>moitie</status>
   </trashCan>
   <trashCan id="357">
@@ -3924,7 +3924,7 @@
         <longitude>10.799479</longitude>
       </coordonnees>
     </lieu>
-    <typeDechet>plastique</typeDechet>
+    <typeDechet>autre</typeDechet>
     <status>pleine</status>
   </trashCan>
   <trashCan id="358">
@@ -3946,7 +3946,7 @@
         <longitude>10.793964</longitude>
       </coordonnees>
     </lieu>
-    <typeDechet>plastique</typeDechet>
+    <typeDechet>verre</typeDechet>
     <status>vide</status>
   </trashCan>
   <trashCan id="360">
@@ -3957,7 +3957,7 @@
         <longitude>10.786967</longitude>
       </coordonnees>
     </lieu>
-    <typeDechet>plastique</typeDechet>
+    <typeDechet>papier</typeDechet>
     <status>moitie</status>
   </trashCan>
   <trashCan id="361">
@@ -3968,7 +3968,7 @@
         <longitude>10.78377</longitude>
       </coordonnees>
     </lieu>
-    <typeDechet>plastique</typeDechet>
+    <typeDechet>autre</typeDechet>
     <status>vide</status>
   </trashCan>
   <trashCan id="362">
@@ -3990,7 +3990,7 @@
         <longitude>10.784821</longitude>
       </coordonnees>
     </lieu>
-    <typeDechet>plastique</typeDechet>
+    <typeDechet>verre</typeDechet>
     <status>vide</status>
   </trashCan>
   <trashCan id="364">
@@ -4001,7 +4001,7 @@
         <longitude>10.792011</longitude>
       </coordonnees>
     </lieu>
-    <typeDechet>plastique</typeDechet>
+    <typeDechet>papier</typeDechet>
     <status>vide</status>
   </trashCan>
   <trashCan id="365">
@@ -4012,7 +4012,7 @@
         <longitude>10.795101</longitude>
       </coordonnees>
     </lieu>
-    <typeDechet>plastique</typeDechet>
+    <typeDechet>autre</typeDechet>
     <status>moitie</status>
   </trashCan>
   <trashCan id="366">
@@ -4034,7 +4034,7 @@
         <longitude>10.80553</longitude>
       </coordonnees>
     </lieu>
-    <typeDechet>plastique</typeDechet>
+    <typeDechet>verre</typeDechet>
     <status>pleine</status>
   </trashCan>
   <trashCan id="368">
@@ -4045,7 +4045,7 @@
         <longitude>10.809178</longitude>
       </coordonnees>
     </lieu>
-    <typeDechet>plastique</typeDechet>
+    <typeDechet>papier</typeDechet>
     <status>vide</status>
   </trashCan>
   <trashCan id="369">
@@ -4056,7 +4056,7 @@
         <longitude>10.802654</longitude>
       </coordonnees>
     </lieu>
-    <typeDechet>plastique</typeDechet>
+    <typeDechet>autre</typeDechet>
     <status>pleine</status>
   </trashCan>
   <trashCan id="370">
@@ -4078,7 +4078,7 @@
         <longitude>10.801472</longitude>
       </coordonnees>
     </lieu>
-    <typeDechet>plastique</typeDechet>
+    <typeDechet>verre</typeDechet>
     <status>vide</status>
   </trashCan>
   <trashCan id="372">
@@ -4089,7 +4089,7 @@
         <longitude>10.807502</longitude>
       </coordonnees>
     </lieu>
-    <typeDechet>plastique</typeDechet>
+    <typeDechet>papier</typeDechet>
     <status>pleine</status>
   </trashCan>
   <trashCan id="373">
@@ -4100,7 +4100,7 @@
         <longitude>10.790935</longitude>
       </coordonnees>
     </lieu>
-    <typeDechet>plastique</typeDechet>
+    <typeDechet>autre</typeDechet>
     <status>vide</status>
   </trashCan>
   <trashCan id="374">
@@ -4122,7 +4122,7 @@
         <longitude>10.809541</longitude>
       </coordonnees>
     </lieu>
-    <typeDechet>plastique</typeDechet>
+    <typeDechet>verre</typeDechet>
     <status>vide</status>
   </trashCan>
   <trashCan id="376">
@@ -4133,7 +4133,7 @@
         <longitude>10.800252</longitude>
       </coordonnees>
     </lieu>
-    <typeDechet>plastique</typeDechet>
+    <typeDechet>papier</typeDechet>
     <status>moitie</status>
   </trashCan>
   <trashCan id="377">
@@ -4144,7 +4144,7 @@
         <longitude>10.811755</longitude>
       </coordonnees>
     </lieu>
-    <typeDechet>plastique</typeDechet>
+    <typeDechet>autre</typeDechet>
     <status>pleine</status>
   </trashCan>
   <trashCan id="378">
@@ -4166,7 +4166,7 @@
         <longitude>10.767098</longitude>
       </coordonnees>
     </lieu>
-    <typeDechet>plastique</typeDechet>
+    <typeDechet>verre</typeDechet>
     <status>vide</status>
   </trashCan>
   <trashCan id="380">
@@ -4177,7 +4177,7 @@
         <longitude>10.773514</longitude>
       </coordonnees>
     </lieu>
-    <typeDechet>plastique</typeDechet>
+    <typeDechet>papier</typeDechet>
     <status>moitie</status>
   </trashCan>
   <trashCan id="381">
@@ -4188,7 +4188,7 @@
         <longitude>10.770016</longitude>
       </coordonnees>
     </lieu>
-    <typeDechet>plastique</typeDechet>
+    <typeDechet>autre</typeDechet>
     <status>vide</status>
   </trashCan>
   <trashCan id="382">
@@ -4210,7 +4210,7 @@
         <longitude>10.768922</longitude>
       </coordonnees>
     </lieu>
-    <typeDechet>plastique</typeDechet>
+    <typeDechet>verre</typeDechet>
     <status>pleine</status>
   </trashCan>
   <trashCan id="384">
@@ -4221,7 +4221,7 @@
         <longitude>10.770789</longitude>
       </coordonnees>
     </lieu>
-    <typeDechet>plastique</typeDechet>
+    <typeDechet>papier</typeDechet>
     <status>vide</status>
   </trashCan>
   <trashCan id="385">
@@ -4232,7 +4232,7 @@
         <longitude>10.766518</longitude>
       </coordonnees>
     </lieu>
-    <typeDechet>plastique</typeDechet>
+    <typeDechet>autre</typeDechet>
     <status>moitie</status>
   </trashCan>
   <trashCan id="386">
@@ -4254,7 +4254,7 @@
         <longitude>10.770102</longitude>
       </coordonnees>
     </lieu>
-    <typeDechet>plastique</typeDechet>
+    <typeDechet>verre</typeDechet>
     <status>vide</status>
   </trashCan>
   <trashCan id="388">
@@ -4265,7 +4265,7 @@
         <longitude>10.766049</longitude>
       </coordonnees>
     </lieu>
-    <typeDechet>plastique</typeDechet>
+    <typeDechet>papier</typeDechet>
     <status>moitie</status>
   </trashCan>
   <trashCan id="389">
@@ -4276,7 +4276,7 @@
         <longitude>10.763474</longitude>
       </coordonnees>
     </lieu>
-    <typeDechet>plastique</typeDechet>
+    <typeDechet>autre</typeDechet>
     <status>moitie</status>
   </trashCan>
   <trashCan id="390">
@@ -4298,7 +4298,7 @@
         <longitude>10.778839</longitude>
       </coordonnees>
     </lieu>
-    <typeDechet>plastique</typeDechet>
+    <typeDechet>verre</typeDechet>
     <status>vide</status>
   </trashCan>
   <trashCan id="392">
@@ -4309,7 +4309,7 @@
         <longitude>10.777808</longitude>
       </coordonnees>
     </lieu>
-    <typeDechet>plastique</typeDechet>
+    <typeDechet>papier</typeDechet>
     <status>pleine</status>
   </trashCan>
   <trashCan id="393">
@@ -4320,7 +4320,7 @@
         <longitude>10.773988</longitude>
       </coordonnees>
     </lieu>
-    <typeDechet>plastique</typeDechet>
+    <typeDechet>autre</typeDechet>
     <status>vide</status>
   </trashCan>
   <trashCan id="394">
@@ -4342,7 +4342,7 @@
         <longitude>10.771627</longitude>
       </coordonnees>
     </lieu>
-    <typeDechet>plastique</typeDechet>
+    <typeDechet>verre</typeDechet>
     <status>pleine</status>
   </trashCan>
   <trashCan id="396">
@@ -4353,7 +4353,7 @@
         <longitude>10.77725</longitude>
       </coordonnees>
     </lieu>
-    <typeDechet>plastique</typeDechet>
+    <typeDechet>papier</typeDechet>
     <status>moitie</status>
   </trashCan>
   <trashCan id="397">
@@ -4364,7 +4364,7 @@
         <longitude>10.775018</longitude>
       </coordonnees>
     </lieu>
-    <typeDechet>plastique</typeDechet>
+    <typeDechet>autre</typeDechet>
     <status>vide</status>
   </trashCan>
   <trashCan id="398">
@@ -4386,7 +4386,7 @@
         <longitude>10.783173</longitude>
       </coordonnees>
     </lieu>
-    <typeDechet>plastique</typeDechet>
+    <typeDechet>verre</typeDechet>
     <status>moitie</status>
   </trashCan>
   <trashCan id="400">
@@ -4397,7 +4397,7 @@
         <longitude>10.784761</longitude>
       </coordonnees>
     </lieu>
-    <typeDechet>plastique</typeDechet>
+    <typeDechet>papier</typeDechet>
     <status>vide</status>
   </trashCan>
   <trashCan id="401">
@@ -4408,7 +4408,7 @@
         <longitude>10.783473</longitude>
       </coordonnees>
     </lieu>
-    <typeDechet>plastique</typeDechet>
+    <typeDechet>autre</typeDechet>
     <status>pleine</status>
   </trashCan>
   <trashCan id="402">
@@ -4430,7 +4430,7 @@
         <longitude>10.776949</longitude>
       </coordonnees>
     </lieu>
-    <typeDechet>plastique</typeDechet>
+    <typeDechet>verre</typeDechet>
     <status>pleine</status>
   </trashCan>
   <trashCan id="404">
@@ -4441,7 +4441,7 @@
         <longitude>10.770897</longitude>
       </coordonnees>
     </lieu>
-    <typeDechet>plastique</typeDechet>
+    <typeDechet>papier</typeDechet>
     <status>vide</status>
   </trashCan>
   <trashCan id="405">
@@ -4452,7 +4452,7 @@
         <longitude>10.774245</longitude>
       </coordonnees>
     </lieu>
-    <typeDechet>plastique</typeDechet>
+    <typeDechet>autre</typeDechet>
     <status>moitie</status>
   </trashCan>
   <trashCan id="406">
@@ -4474,7 +4474,7 @@
         <longitude>10.769008</longitude>
       </coordonnees>
     </lieu>
-    <typeDechet>plastique</typeDechet>
+    <typeDechet>verre</typeDechet>
     <status>pleine</status>
   </trashCan>
   <trashCan id="408">
@@ -4485,7 +4485,7 @@
         <longitude>10.792269</longitude>
       </coordonnees>
     </lieu>
-    <typeDechet>plastique</typeDechet>
+    <typeDechet>papier</typeDechet>
     <status>moitie</status>
   </trashCan>
   <trashCan id="409">
@@ -4496,7 +4496,7 @@
         <longitude>10.790853</longitude>
       </coordonnees>
     </lieu>
-    <typeDechet>plastique</typeDechet>
+    <typeDechet>autre</typeDechet>
     <status>moitie</status>
   </trashCan>
   <trashCan id="410">
@@ -4518,7 +4518,7 @@
         <longitude>10.767246</longitude>
       </coordonnees>
     </lieu>
-    <typeDechet>plastique</typeDechet>
+    <typeDechet>verre</typeDechet>
     <status>pleine</status>
   </trashCan>
   <trashCan id="412">
@@ -4529,7 +4529,7 @@
         <longitude>10.770423</longitude>
       </coordonnees>
     </lieu>
-    <typeDechet>plastique</typeDechet>
+    <typeDechet>papier</typeDechet>
     <status>pleine</status>
   </trashCan>
   <trashCan id="413">
@@ -4540,7 +4540,7 @@
         <longitude>10.76952</longitude>
       </coordonnees>
     </lieu>
-    <typeDechet>plastique</typeDechet>
+    <typeDechet>autre</typeDechet>
     <status>pleine</status>
   </trashCan>
   <trashCan id="414">
@@ -4562,7 +4562,7 @@
         <longitude>10.764499</longitude>
       </coordonnees>
     </lieu>
-    <typeDechet>plastique</typeDechet>
+    <typeDechet>verre</typeDechet>
     <status>moitie</status>
   </trashCan>
   <trashCan id="416">
@@ -4573,7 +4573,7 @@
         <longitude>10.760292</longitude>
       </coordonnees>
     </lieu>
-    <typeDechet>plastique</typeDechet>
+    <typeDechet>papier</typeDechet>
     <status>vide</status>
   </trashCan>
   <trashCan id="417">
@@ -4584,7 +4584,7 @@
         <longitude>10.754627</longitude>
       </coordonnees>
     </lieu>
-    <typeDechet>plastique</typeDechet>
+    <typeDechet>autre</typeDechet>
     <status>vide</status>
   </trashCan>
   <trashCan id="418">
@@ -4606,7 +4606,7 @@
         <longitude>10.741493</longitude>
       </coordonnees>
     </lieu>
-    <typeDechet>plastique</typeDechet>
+    <typeDechet>verre</typeDechet>
     <status>vide</status>
   </trashCan>
   <trashCan id="420">
@@ -4617,7 +4617,7 @@
         <longitude>10.734196</longitude>
       </coordonnees>
     </lieu>
-    <typeDechet>plastique</typeDechet>
+    <typeDechet>papier</typeDechet>
     <status>moitie</status>
   </trashCan>
   <trashCan id="421">
@@ -4628,7 +4628,7 @@
         <longitude>10.726728</longitude>
       </coordonnees>
     </lieu>
-    <typeDechet>plastique</typeDechet>
+    <typeDechet>autre</typeDechet>
     <status>pleine</status>
   </trashCan>
   <trashCan id="422">
@@ -4650,7 +4650,7 @@
         <longitude>10.714238</longitude>
       </coordonnees>
     </lieu>
-    <typeDechet>plastique</typeDechet>
+    <typeDechet>verre</typeDechet>
     <status>vide</status>
   </trashCan>
   <trashCan id="424">
@@ -4661,7 +4661,7 @@
         <longitude>10.71192</longitude>
       </coordonnees>
     </lieu>
-    <typeDechet>plastique</typeDechet>
+    <typeDechet>papier</typeDechet>
     <status>pleine</status>
   </trashCan>
   <trashCan id="425">
@@ -4672,7 +4672,7 @@
         <longitude>10.705139</longitude>
       </coordonnees>
     </lieu>
-    <typeDechet>plastique</typeDechet>
+    <typeDechet>autre</typeDechet>
     <status>vide</status>
   </trashCan>
   <trashCan id="426">
@@ -4694,7 +4694,7 @@
         <longitude>10.686511</longitude>
       </coordonnees>
     </lieu>
-    <typeDechet>plastique</typeDechet>
+    <typeDechet>verre</typeDechet>
     <status>pleine</status>
   </trashCan>
   <trashCan id="428">
@@ -4705,7 +4705,7 @@
         <longitude>10.68076</longitude>
       </coordonnees>
     </lieu>
-    <typeDechet>plastique</typeDechet>
+    <typeDechet>papier</typeDechet>
     <status>vide</status>
   </trashCan>
   <trashCan id="429">
@@ -4716,7 +4716,7 @@
         <longitude>10.678099</longitude>
       </coordonnees>
     </lieu>
-    <typeDechet>plastique</typeDechet>
+    <typeDechet>autre</typeDechet>
     <status>moitie</status>
   </trashCan>
   <trashCan id="430">
@@ -4738,7 +4738,7 @@
         <longitude>10.666302</longitude>
       </coordonnees>
     </lieu>
-    <typeDechet>plastique</typeDechet>
+    <typeDechet>verre</typeDechet>
     <status>moitie</status>
   </trashCan>
   <trashCan id="432">
@@ -4749,7 +4749,7 @@
         <longitude>10.666945</longitude>
       </coordonnees>
     </lieu>
-    <typeDechet>plastique</typeDechet>
+    <typeDechet>papier</typeDechet>
     <status>vide</status>
   </trashCan>
   <trashCan id="433">
@@ -4760,7 +4760,7 @@
         <longitude>10.674006</longitude>
       </coordonnees>
     </lieu>
-    <typeDechet>plastique</typeDechet>
+    <typeDechet>autre</typeDechet>
     <status>vide</status>
   </trashCan>
   <trashCan id="434">
@@ -4782,7 +4782,7 @@
         <longitude>10.708269</longitude>
       </coordonnees>
     </lieu>
-    <typeDechet>plastique</typeDechet>
+    <typeDechet>verre</typeDechet>
     <status>moitie</status>
   </trashCan>
   <trashCan id="436">
@@ -4793,7 +4793,7 @@
         <longitude>10.715051</longitude>
       </coordonnees>
     </lieu>
-    <typeDechet>plastique</typeDechet>
+    <typeDechet>papier</typeDechet>
     <status>moitie</status>
   </trashCan>
   <trashCan id="437">
@@ -4804,7 +4804,7 @@
         <longitude>10.755076</longitude>
       </coordonnees>
     </lieu>
-    <typeDechet>plastique</typeDechet>
+    <typeDechet>autre</typeDechet>
     <status>pleine</status>
   </trashCan>
   <trashCan id="438">
@@ -4826,7 +4826,7 @@
         <longitude>10.757888</longitude>
       </coordonnees>
     </lieu>
-    <typeDechet>plastique</typeDechet>
+    <typeDechet>verre</typeDechet>
     <status>vide</status>
   </trashCan>
   <trashCan id="440">
@@ -4837,7 +4837,7 @@
         <longitude>10.757888</longitude>
       </coordonnees>
     </lieu>
-    <typeDechet>plastique</typeDechet>
+    <typeDechet>papier</typeDechet>
     <status>vide</status>
   </trashCan>
   <trashCan id="441">
@@ -4848,7 +4848,7 @@
         <longitude>10.760248</longitude>
       </coordonnees>
     </lieu>
-    <typeDechet>plastique</typeDechet>
+    <typeDechet>autre</typeDechet>
     <status>vide</status>
   </trashCan>
   <trashCan id="442">
@@ -4870,7 +4870,7 @@
         <longitude>10.760703</longitude>
       </coordonnees>
     </lieu>
-    <typeDechet>plastique</typeDechet>
+    <typeDechet>verre</typeDechet>
     <status>vide</status>
   </trashCan>
   <trashCan id="444">
@@ -4881,7 +4881,7 @@
         <longitude>10.761433</longitude>
       </coordonnees>
     </lieu>
-    <typeDechet>plastique</typeDechet>
+    <typeDechet>papier</typeDechet>
     <status>moitie</status>
   </trashCan>
   <trashCan id="445">
@@ -4892,7 +4892,7 @@
         <longitude>10.762187</longitude>
       </coordonnees>
     </lieu>
-    <typeDechet>plastique</typeDechet>
+    <typeDechet>autre</typeDechet>
     <status>moitie</status>
   </trashCan>
   <trashCan id="446">
@@ -4914,7 +4914,7 @@
         <longitude>10.752592</longitude>
       </coordonnees>
     </lieu>
-    <typeDechet>plastique</typeDechet>
+    <typeDechet>verre</typeDechet>
     <status>vide</status>
   </trashCan>
   <trashCan id="448">
@@ -4925,7 +4925,7 @@
         <longitude>10.752399</longitude>
       </coordonnees>
     </lieu>
-    <typeDechet>plastique</typeDechet>
+    <typeDechet>papier</typeDechet>
     <status>vide</status>
   </trashCan>
   <trashCan id="449">
@@ -4936,7 +4936,7 @@
         <longitude>10.758</longitude>
       </coordonnees>
     </lieu>
-    <typeDechet>plastique</typeDechet>
+    <typeDechet>autre</typeDechet>
     <status>moitie</status>
   </trashCan>
   <trashCan id="450">
@@ -4958,7 +4958,7 @@
         <longitude>10.747635</longitude>
       </coordonnees>
     </lieu>
-    <typeDechet>plastique</typeDechet>
+    <typeDechet>verre</typeDechet>
     <status>moitie</status>
   </trashCan>
   <trashCan id="452">
@@ -4969,7 +4969,7 @@
         <longitude>10.757571</longitude>
       </coordonnees>
     </lieu>
-    <typeDechet>plastique</typeDechet>
+    <typeDechet>papier</typeDechet>
     <status>vide</status>
   </trashCan>
   <trashCan id="453">
@@ -4980,7 +4980,7 @@
         <longitude>10.753214</longitude>
       </coordonnees>
     </lieu>
-    <typeDechet>plastique</typeDechet>
+    <typeDechet>autre</typeDechet>
     <status>moitie</status>
   </trashCan>
   <trashCan id="454">
@@ -5002,7 +5002,7 @@
         <longitude>10.756219</longitude>
       </coordonnees>
     </lieu>
-    <typeDechet>plastique</typeDechet>
+    <typeDechet>verre</typeDechet>
     <status>vide</status>
   </trashCan>
   <trashCan id="456">
@@ -5013,7 +5013,7 @@
         <longitude>10.747978</longitude>
       </coordonnees>
     </lieu>
-    <typeDechet>plastique</typeDechet>
+    <typeDechet>papier</typeDechet>
     <status>pleine</status>
   </trashCan>
   <trashCan id="457">
@@ -5024,7 +5024,7 @@
         <longitude>10.751562</longitude>
       </coordonnees>
     </lieu>
-    <typeDechet>plastique</typeDechet>
+    <typeDechet>autre</typeDechet>
     <status>pleine</status>
   </trashCan>
   <trashCan id="458">
@@ -5046,7 +5046,7 @@
         <longitude>10.743235</longitude>
       </coordonnees>
     </lieu>
-    <typeDechet>plastique</typeDechet>
+    <typeDechet>verre</typeDechet>
     <status>pleine</status>
   </trashCan>
   <trashCan id="460">
@@ -5057,7 +5057,7 @@
         <longitude>10.757828</longitude>
       </coordonnees>
     </lieu>
-    <typeDechet>plastique</typeDechet>
+    <typeDechet>papier</typeDechet>
     <status>vide</status>
   </trashCan>
   <trashCan id="461">
@@ -5068,7 +5068,7 @@
         <longitude>10.759674</longitude>
       </coordonnees>
     </lieu>
-    <typeDechet>plastique</typeDechet>
+    <typeDechet>autre</typeDechet>
     <status>pleine</status>
   </trashCan>
   <trashCan id="462">
@@ -5090,7 +5090,7 @@
         <longitude>10.756736</longitude>
       </coordonnees>
     </lieu>
-    <typeDechet>plastique</typeDechet>
+    <typeDechet>verre</typeDechet>
     <status>pleine</status>
   </trashCan>
   <trashCan id="464">
@@ -5101,7 +5101,7 @@
         <longitude>10.756393</longitude>
       </coordonnees>
     </lieu>
-    <typeDechet>plastique</typeDechet>
+    <typeDechet>papier</typeDechet>
     <status>pleine</status>
   </trashCan>
   <trashCan id="465">
@@ -5112,7 +5112,7 @@
         <longitude>10.744246</longitude>
       </coordonnees>
     </lieu>
-    <typeDechet>plastique</typeDechet>
+    <typeDechet>autre</typeDechet>
     <status>pleine</status>
   </trashCan>
   <trashCan id="466">
@@ -5134,7 +5134,7 @@
         <longitude>10.671676</longitude>
       </coordonnees>
     </lieu>
-    <typeDechet>plastique</typeDechet>
+    <typeDechet>verre</typeDechet>
     <status>vide</status>
   </trashCan>
   <trashCan id="468">
@@ -5145,7 +5145,7 @@
         <longitude>10.733303</longitude>
       </coordonnees>
     </lieu>
-    <typeDechet>plastique</typeDechet>
+    <typeDechet>papier</typeDechet>
     <status>moitie</status>
   </trashCan>
   <trashCan id="469">
@@ -5156,7 +5156,7 @@
         <longitude>10.730856</longitude>
       </coordonnees>
     </lieu>
-    <typeDechet>plastique</typeDechet>
+    <typeDechet>autre</typeDechet>
     <status>vide</status>
   </trashCan>
   <trashCan id="470">
@@ -5178,7 +5178,7 @@
         <longitude>10.724483</longitude>
       </coordonnees>
     </lieu>
-    <typeDechet>plastique</typeDechet>
+    <typeDechet>verre</typeDechet>
     <status>moitie</status>
   </trashCan>
   <trashCan id="472">
@@ -5189,7 +5189,7 @@
         <longitude>10.721757</longitude>
       </coordonnees>
     </lieu>
-    <typeDechet>plastique</typeDechet>
+    <typeDechet>papier</typeDechet>
     <status>pleine</status>
   </trashCan>
   <trashCan id="473">
@@ -5200,7 +5200,7 @@
         <longitude>10.751199</longitude>
       </coordonnees>
     </lieu>
-    <typeDechet>plastique</typeDechet>
+    <typeDechet>autre</typeDechet>
     <status>vide</status>
   </trashCan>
   <trashCan id="474">
@@ -5222,7 +5222,7 @@
         <longitude>10.746049</longitude>
       </coordonnees>
     </lieu>
-    <typeDechet>plastique</typeDechet>
+    <typeDechet>verre</typeDechet>
     <status>pleine</status>
   </trashCan>
   <trashCan id="476">
@@ -5233,7 +5233,7 @@
         <longitude>10.74313</longitude>
       </coordonnees>
     </lieu>
-    <typeDechet>plastique</typeDechet>
+    <typeDechet>papier</typeDechet>
     <status>vide</status>
   </trashCan>
   <trashCan id="477">
@@ -5244,7 +5244,7 @@
         <longitude>10.739911</longitude>
       </coordonnees>
     </lieu>
-    <typeDechet>plastique</typeDechet>
+    <typeDechet>autre</typeDechet>
     <status>vide</status>
   </trashCan>
   <trashCan id="478">
@@ -5266,7 +5266,7 @@
         <longitude>10.740168</longitude>
       </coordonnees>
     </lieu>
-    <typeDechet>plastique</typeDechet>
+    <typeDechet>verre</typeDechet>
     <status>vide</status>
   </trashCan>
   <trashCan id="480">
@@ -5277,7 +5277,7 @@
         <longitude>10.738194</longitude>
       </coordonnees>
     </lieu>
-    <typeDechet>plastique</typeDechet>
+    <typeDechet>papier</typeDechet>
     <status>pleine</status>
   </trashCan>
   <trashCan id="481">
@@ -5288,7 +5288,7 @@
         <longitude>10.733666</longitude>
       </coordonnees>
     </lieu>
-    <typeDechet>plastique</typeDechet>
+    <typeDechet>autre</typeDechet>
     <status>moitie</status>
   </trashCan>
   <trashCan id="482">
@@ -5310,7 +5310,7 @@
         <longitude>10.747701</longitude>
       </coordonnees>
     </lieu>
-    <typeDechet>plastique</typeDechet>
+    <typeDechet>verre</typeDechet>
     <status>moitie</status>
   </trashCan>
   <trashCan id="484">
@@ -5321,7 +5321,7 @@
         <longitude>10.738494</longitude>
       </coordonnees>
     </lieu>
-    <typeDechet>plastique</typeDechet>
+    <typeDechet>papier</typeDechet>
     <status>moitie</status>
   </trashCan>
   <trashCan id="485">
@@ -5332,7 +5332,7 @@
         <longitude>10.746137</longitude>
       </coordonnees>
     </lieu>
-    <typeDechet>plastique</typeDechet>
+    <typeDechet>autre</typeDechet>
     <status>pleine</status>
   </trashCan>
   <trashCan id="486">
@@ -5354,7 +5354,7 @@
         <longitude>10.733066</longitude>
       </coordonnees>
     </lieu>
-    <typeDechet>plastique</typeDechet>
+    <typeDechet>verre</typeDechet>
     <status>vide</status>
   </trashCan>
   <trashCan id="488">
@@ -5365,7 +5365,7 @@
         <longitude>10.717167</longitude>
       </coordonnees>
     </lieu>
-    <typeDechet>plastique</typeDechet>
+    <typeDechet>papier</typeDechet>
     <status>vide</status>
   </trashCan>
   <trashCan id="489">
@@ -5376,7 +5376,7 @@
         <longitude>10.722832</longitude>
       </coordonnees>
     </lieu>
-    <typeDechet>plastique</typeDechet>
+    <typeDechet>autre</typeDechet>
     <status>pleine</status>
   </trashCan>
   <trashCan id="490">
@@ -5398,7 +5398,7 @@
         <longitude>10.737682</longitude>
       </coordonnees>
     </lieu>
-    <typeDechet>plastique</typeDechet>
+    <typeDechet>verre</typeDechet>
     <status>vide</status>
   </trashCan>
   <trashCan id="492">
@@ -5409,7 +5409,7 @@
         <longitude>10.732704</longitude>
       </coordonnees>
     </lieu>
-    <typeDechet>plastique</typeDechet>
+    <typeDechet>papier</typeDechet>
     <status>pleine</status>
   </trashCan>
   <trashCan id="493">
@@ -5420,7 +5420,7 @@
         <longitude>10.724806</longitude>
       </coordonnees>
     </lieu>
-    <typeDechet>plastique</typeDechet>
+    <typeDechet>autre</typeDechet>
     <status>moitie</status>
   </trashCan>
   <trashCan id="494">
@@ -5442,7 +5442,7 @@
         <longitude>10.731073</longitude>
       </coordonnees>
     </lieu>
-    <typeDechet>plastique</typeDechet>
+    <typeDechet>verre</typeDechet>
     <status>pleine</status>
   </trashCan>
   <trashCan id="496">
@@ -5453,7 +5453,7 @@
         <longitude>10.730944</longitude>
       </coordonnees>
     </lieu>
-    <typeDechet>plastique</typeDechet>
+    <typeDechet>papier</typeDechet>
     <status>moitie</status>
   </trashCan>
   <trashCan id="497">
@@ -5464,7 +5464,7 @@
         <longitude>10.729234</longitude>
       </coordonnees>
     </lieu>
-    <typeDechet>plastique</typeDechet>
+    <typeDechet>autre</typeDechet>
     <status>vide</status>
   </trashCan>
   <trashCan id="498">
@@ -5486,7 +5486,7 @@
         <longitude>10.72652</longitude>
       </coordonnees>
     </lieu>
-    <typeDechet>plastique</typeDechet>
+    <typeDechet>verre</typeDechet>
     <status>pleine</status>
   </trashCan>
   <trashCan id="500">
@@ -5497,7 +5497,7 @@
         <longitude>10.720983</longitude>
       </coordonnees>
     </lieu>
-    <typeDechet>plastique</typeDechet>
+    <typeDechet>papier</typeDechet>
     <status>vide</status>
   </trashCan>
   <trashCan id="501">
@@ -5508,7 +5508,7 @@
         <longitude>10.722723</longitude>
       </coordonnees>
     </lieu>
-    <typeDechet>plastique</typeDechet>
+    <typeDechet>autre</typeDechet>
     <status>moitie</status>
   </trashCan>
   <trashCan id="502">
@@ -5530,7 +5530,7 @@
         <longitude>10.718581</longitude>
       </coordonnees>
     </lieu>
-    <typeDechet>plastique</typeDechet>
+    <typeDechet>verre</typeDechet>
     <status>pleine</status>
   </trashCan>
   <trashCan id="504">
@@ -5541,7 +5541,7 @@
         <longitude>10.718581</longitude>
       </coordonnees>
     </lieu>
-    <typeDechet>plastique</typeDechet>
+    <typeDechet>papier</typeDechet>
     <status>vide</status>
   </trashCan>
   <trashCan id="505">
@@ -5552,7 +5552,7 @@
         <longitude>10.713237</longitude>
       </coordonnees>
     </lieu>
-    <typeDechet>plastique</typeDechet>
+    <typeDechet>autre</typeDechet>
     <status>vide</status>
   </trashCan>
   <trashCan id="506">
@@ -5574,7 +5574,7 @@
         <longitude>10.710361</longitude>
       </coordonnees>
     </lieu>
-    <typeDechet>plastique</typeDechet>
+    <typeDechet>verre</typeDechet>
     <status>pleine</status>
   </trashCan>
   <trashCan id="508">
@@ -5585,7 +5585,7 @@
         <longitude>10.710404</longitude>
       </coordonnees>
     </lieu>
-    <typeDechet>plastique</typeDechet>
+    <typeDechet>papier</typeDechet>
     <status>moitie</status>
   </trashCan>
   <trashCan id="509">
@@ -5596,7 +5596,7 @@
         <longitude>10.710018</longitude>
       </coordonnees>
     </lieu>
-    <typeDechet>plastique</typeDechet>
+    <typeDechet>autre</typeDechet>
     <status>pleine</status>
   </trashCan>
   <trashCan id="510">
@@ -5618,7 +5618,7 @@
         <longitude>10.70401</longitude>
       </coordonnees>
     </lieu>
-    <typeDechet>plastique</typeDechet>
+    <typeDechet>verre</typeDechet>
     <status>pleine</status>
   </trashCan>
   <trashCan id="512">
@@ -5629,7 +5629,7 @@
         <longitude>10.702467</longitude>
       </coordonnees>
     </lieu>
-    <typeDechet>plastique</typeDechet>
+    <typeDechet>papier</typeDechet>
     <status>pleine</status>
   </trashCan>
   <trashCan id="513">
@@ -5640,7 +5640,7 @@
         <longitude>10.728712</longitude>
       </coordonnees>
     </lieu>
-    <typeDechet>plastique</typeDechet>
+    <typeDechet>autre</typeDechet>
     <status>moitie</status>
   </trashCan>
   <trashCan id="514">
@@ -5662,7 +5662,7 @@
         <longitude>10.737167</longitude>
       </coordonnees>
     </lieu>
-    <typeDechet>plastique</typeDechet>
+    <typeDechet>verre</typeDechet>
     <status>pleine</status>
   </trashCan>
   <trashCan id="516">
@@ -5673,7 +5673,7 @@
         <longitude>10.729418</longitude>
       </coordonnees>
     </lieu>
-    <typeDechet>plastique</typeDechet>
+    <typeDechet>papier</typeDechet>
     <status>moitie</status>
   </trashCan>
   <trashCan id="517">
@@ -5684,7 +5684,7 @@
         <longitude>10.725727</longitude>
       </coordonnees>
     </lieu>
-    <typeDechet>plastique</typeDechet>
+    <typeDechet>autre</typeDechet>
     <status>vide</status>
   </trashCan>
   <trashCan id="518">
@@ -5706,7 +5706,7 @@
         <longitude>10.718151</longitude>
       </coordonnees>
     </lieu>
-    <typeDechet>plastique</typeDechet>
+    <typeDechet>verre</typeDechet>
     <status>pleine</status>
   </trashCan>
   <trashCan id="520">
@@ -5717,7 +5717,7 @@
         <longitude>10.71461</longitude>
       </coordonnees>
     </lieu>
-    <typeDechet>plastique</typeDechet>
+    <typeDechet>papier</typeDechet>
     <status>pleine</status>
   </trashCan>
   <trashCan id="521">
@@ -5728,7 +5728,7 @@
         <longitude>10.709031</longitude>
       </coordonnees>
     </lieu>
-    <typeDechet>plastique</typeDechet>
+    <typeDechet>autre</typeDechet>
     <status>vide</status>
   </trashCan>
   <trashCan id="522">
@@ -5750,7 +5750,7 @@
         <longitude>10.701415</longitude>
       </coordonnees>
     </lieu>
-    <typeDechet>plastique</typeDechet>
+    <typeDechet>verre</typeDechet>
     <status>vide</status>
   </trashCan>
   <trashCan id="524">
@@ -5761,7 +5761,7 @@
         <longitude>10.697059</longitude>
       </coordonnees>
     </lieu>
-    <typeDechet>plastique</typeDechet>
+    <typeDechet>papier</typeDechet>
     <status>moitie</status>
   </trashCan>
   <trashCan id="525">
@@ -5772,7 +5772,7 @@
         <longitude>10.694741</longitude>
       </coordonnees>
     </lieu>
-    <typeDechet>plastique</typeDechet>
+    <typeDechet>autre</typeDechet>
     <status>vide</status>
   </trashCan>
   <trashCan id="526">
@@ -5794,7 +5794,7 @@
         <longitude>10.695084</longitude>
       </coordonnees>
     </lieu>
-    <typeDechet>plastique</typeDechet>
+    <typeDechet>verre</typeDechet>
     <status>vide</status>
   </trashCan>
   <trashCan id="528">
@@ -5805,7 +5805,7 @@
         <longitude>10.700385</longitude>
       </coordonnees>
     </lieu>
-    <typeDechet>plastique</typeDechet>
+    <typeDechet>papier</typeDechet>
     <status>vide</status>
   </trashCan>
   <trashCan id="529">
@@ -5816,7 +5816,7 @@
         <longitude>10.70472</longitude>
       </coordonnees>
     </lieu>
-    <typeDechet>plastique</typeDechet>
+    <typeDechet>autre</typeDechet>
     <status>moitie</status>
   </trashCan>
   <trashCan id="530">
@@ -5838,7 +5838,7 @@
         <longitude>10.711137</longitude>
       </coordonnees>
     </lieu>
-    <typeDechet>plastique</typeDechet>
+    <typeDechet>verre</typeDechet>
     <status>pleine</status>
   </trashCan>
   <trashCan id="532">
@@ -5849,7 +5849,7 @@
         <longitude>10.717961</longitude>
       </coordonnees>
     </lieu>
-    <typeDechet>plastique</typeDechet>
+    <typeDechet>papier</typeDechet>
     <status>pleine</status>
   </trashCan>
   <trashCan id="533">
@@ -5860,7 +5860,7 @@
         <longitude>10.720792</longitude>
       </coordonnees>
     </lieu>
-    <typeDechet>plastique</typeDechet>
+    <typeDechet>autre</typeDechet>
     <status>moitie</status>
   </trashCan>
   <trashCan id="534">
@@ -5882,7 +5882,7 @@
         <longitude>10.721757</longitude>
       </coordonnees>
     </lieu>
-    <typeDechet>plastique</typeDechet>
+    <typeDechet>verre</typeDechet>
     <status>pleine</status>
   </trashCan>
   <trashCan id="536">
@@ -5893,7 +5893,7 @@
         <longitude>10.72753</longitude>
       </coordonnees>
     </lieu>
-    <typeDechet>plastique</typeDechet>
+    <typeDechet>papier</typeDechet>
     <status>vide</status>
   </trashCan>
   <trashCan id="537">
@@ -5904,7 +5904,7 @@
         <longitude>10.723689</longitude>
       </coordonnees>
     </lieu>
-    <typeDechet>plastique</typeDechet>
+    <typeDechet>autre</typeDechet>
     <status>moitie</status>
   </trashCan>
   <trashCan id="538">
@@ -5926,7 +5926,7 @@
         <longitude>10.713345</longitude>
       </coordonnees>
     </lieu>
-    <typeDechet>plastique</typeDechet>
+    <typeDechet>verre</typeDechet>
     <status>moitie</status>
   </trashCan>
   <trashCan id="540">
@@ -5937,7 +5937,7 @@
         <longitude>10.700082</longitude>
       </coordonnees>
     </lieu>
-    <typeDechet>plastique</typeDechet>
+    <typeDechet>papier</typeDechet>
     <status>pleine</status>
   </trashCan>
   <trashCan id="541">
@@ -5948,7 +5948,7 @@
         <longitude>10.689871</longitude>
       </coordonnees>
     </lieu>
-    <typeDechet>plastique</typeDechet>
+    <typeDechet>autre</typeDechet>
     <status>pleine</status>
   </trashCan>
   <trashCan id="542">
@@ -5970,7 +5970,7 @@
         <longitude>10.694851</longitude>
       </coordonnees>
     </lieu>
-    <typeDechet>plastique</typeDechet>
+    <typeDechet>verre</typeDechet>
     <status>pleine</status>
   </trashCan>
   <trashCan id="544">
@@ -5981,7 +5981,7 @@
         <longitude>10.698842</longitude>
       </coordonnees>
     </lieu>
-    <typeDechet>plastique</typeDechet>
+    <typeDechet>papier</typeDechet>
     <status>pleine</status>
   </trashCan>
   <trashCan id="545">
@@ -5992,7 +5992,7 @@
         <longitude>10.706652</longitude>
       </coordonnees>
     </lieu>
-    <typeDechet>plastique</typeDechet>
+    <typeDechet>autre</typeDechet>
     <status>pleine</status>
   </trashCan>
   <trashCan id="546">
@@ -6014,7 +6014,7 @@
         <longitude>10.724033</longitude>
       </coordonnees>
     </lieu>
-    <typeDechet>plastique</typeDechet>
+    <typeDechet>verre</typeDechet>
     <status>moitie</status>
   </trashCan>
   <trashCan id="548">
@@ -6025,7 +6025,7 @@
         <longitude>10.717874</longitude>
       </coordonnees>
     </lieu>
-    <typeDechet>plastique</typeDechet>
+    <typeDechet>papier</typeDechet>
     <status>pleine</status>
   </trashCan>
   <trashCan id="549">
@@ -6036,7 +6036,7 @@
         <longitude>10.706822</longitude>
       </coordonnees>
     </lieu>
-    <typeDechet>plastique</typeDechet>
+    <typeDechet>autre</typeDechet>
     <status>vide</status>
   </trashCan>
   <trashCan id="550">
@@ -6058,7 +6058,7 @@
         <longitude>10.70506</longitude>
       </coordonnees>
     </lieu>
-    <typeDechet>plastique</typeDechet>
+    <typeDechet>verre</typeDechet>
     <status>vide</status>
   </trashCan>
   <trashCan id="552">
@@ -6069,7 +6069,7 @@
         <longitude>10.689482</longitude>
       </coordonnees>
     </lieu>
-    <typeDechet>plastique</typeDechet>
+    <typeDechet>papier</typeDechet>
     <status>moitie</status>
   </trashCan>
   <trashCan id="553">
@@ -6080,7 +6080,7 @@
         <longitude>10.689182</longitude>
       </coordonnees>
     </lieu>
-    <typeDechet>plastique</typeDechet>
+    <typeDechet>autre</typeDechet>
     <status>moitie</status>
   </trashCan>
   <trashCan id="554">
@@ -6102,7 +6102,7 @@
         <longitude>10.687229</longitude>
       </coordonnees>
     </lieu>
-    <typeDechet>plastique</typeDechet>
+    <typeDechet>verre</typeDechet>
     <status>moitie</status>
   </trashCan>
   <trashCan id="556">
@@ -6113,7 +6113,7 @@
         <longitude>10.681649</longitude>
       </coordonnees>
     </lieu>
-    <typeDechet>plastique</typeDechet>
+    <typeDechet>papier</typeDechet>
     <status>vide</status>
   </trashCan>
   <trashCan id="557">
@@ -6124,7 +6124,7 @@
         <longitude>10.714804</longitude>
       </coordonnees>
     </lieu>
-    <typeDechet>plastique</typeDechet>
+    <typeDechet>autre</typeDechet>
     <status>pleine</status>
   </trashCan>
   <trashCan id="558">
@@ -6146,7 +6146,7 @@
         <longitude>10.69931</longitude>
       </coordonnees>
     </lieu>
-    <typeDechet>plastique</typeDechet>
+    <typeDechet>verre</typeDechet>
     <status>moitie</status>
   </trashCan>
   <trashCan id="560">
@@ -6157,7 +6157,7 @@
         <longitude>10.713002</longitude>
       </coordonnees>
     </lieu>
-    <typeDechet>plastique</typeDechet>
+    <typeDechet>papier</typeDechet>
     <status>pleine</status>
   </trashCan>
   <trashCan id="561">
@@ -6168,7 +6168,7 @@
         <longitude>10.707594</longitude>
       </coordonnees>
     </lieu>
-    <typeDechet>plastique</typeDechet>
+    <typeDechet>autre</typeDechet>
     <status>pleine</status>
   </trashCan>
   <trashCan id="562">
@@ -6190,7 +6190,7 @@
         <longitude>10.714503</longitude>
       </coordonnees>
     </lieu>
-    <typeDechet>plastique</typeDechet>
+    <typeDechet>verre</typeDechet>
     <status>vide</status>
   </trashCan>
   <trashCan id="564">
@@ -6201,7 +6201,7 @@
         <longitude>10.718216</longitude>
       </coordonnees>
     </lieu>
-    <typeDechet>plastique</typeDechet>
+    <typeDechet>papier</typeDechet>
     <status>vide</status>
   </trashCan>
   <trashCan id="565">
@@ -6212,7 +6212,7 @@
         <longitude>10.712679</longitude>
       </coordonnees>
     </lieu>
-    <typeDechet>plastique</typeDechet>
+    <typeDechet>autre</typeDechet>
     <status>pleine</status>
   </trashCan>
   <trashCan id="566">
@@ -6234,7 +6234,7 @@
         <longitude>10.711327</longitude>
       </coordonnees>
     </lieu>
-    <typeDechet>plastique</typeDechet>
+    <typeDechet>verre</typeDechet>
     <status>moitie</status>
   </trashCan>
   <trashCan id="568">
@@ -6245,7 +6245,7 @@
         <longitude>10.706434</longitude>
       </coordonnees>
     </lieu>
-    <typeDechet>plastique</typeDechet>
+    <typeDechet>papier</typeDechet>
     <status>vide</status>
   </trashCan>
   <trashCan id="569">
@@ -6256,7 +6256,7 @@
         <longitude>10.701455</longitude>
       </coordonnees>
     </lieu>
-    <typeDechet>plastique</typeDechet>
+    <typeDechet>autre</typeDechet>
     <status>vide</status>
   </trashCan>
   <trashCan id="570">
@@ -6278,7 +6278,7 @@
         <longitude>10.694459</longitude>
       </coordonnees>
     </lieu>
-    <typeDechet>plastique</typeDechet>
+    <typeDechet>verre</typeDechet>
     <status>pleine</status>
   </trashCan>
   <trashCan id="572">
@@ -6289,7 +6289,7 @@
         <longitude>10.694588</longitude>
       </coordonnees>
     </lieu>
-    <typeDechet>plastique</typeDechet>
+    <typeDechet>papier</typeDechet>
     <status>vide</status>
   </trashCan>
   <trashCan id="573">
@@ -6300,7 +6300,7 @@
         <longitude>10.692506</longitude>
       </coordonnees>
     </lieu>
-    <typeDechet>plastique</typeDechet>
+    <typeDechet>autre</typeDechet>
     <status>pleine</status>
   </trashCan>
   <trashCan id="574">
@@ -6322,7 +6322,7 @@
         <longitude>10.688085</longitude>
       </coordonnees>
     </lieu>
-    <typeDechet>plastique</typeDechet>
+    <typeDechet>verre</typeDechet>
     <status>moitie</status>
   </trashCan>
   <trashCan id="576">
@@ -6333,7 +6333,7 @@
         <longitude>10.683341</longitude>
       </coordonnees>
     </lieu>
-    <typeDechet>plastique</typeDechet>
+    <typeDechet>papier</typeDechet>
     <status>vide</status>
   </trashCan>
   <trashCan id="577">
@@ -6344,7 +6344,7 @@
         <longitude>10.678319</longitude>
       </coordonnees>
     </lieu>
-    <typeDechet>plastique</typeDechet>
+    <typeDechet>autre</typeDechet>
     <status>moitie</status>
   </trashCan>
   <trashCan id="578">
@@ -6366,7 +6366,7 @@
         <longitude>10.675361</longitude>
       </coordonnees>
     </lieu>
-    <typeDechet>plastique</typeDechet>
+    <typeDechet>verre</typeDechet>
     <status>moitie</status>
   </trashCan>
   <trashCan id="580">
@@ -6377,7 +6377,7 @@
         <longitude>10.676215</longitude>
       </coordonnees>
     </lieu>
-    <typeDechet>plastique</typeDechet>
+    <typeDechet>papier</typeDechet>
     <status>moitie</status>
   </trashCan>
   <trashCan id="581">
@@ -6388,7 +6388,7 @@
         <longitude>10.678576</longitude>
       </coordonnees>
     </lieu>
-    <typeDechet>plastique</typeDechet>
+    <typeDechet>autre</typeDechet>
     <status>vide</status>
   </trashCan>
   <trashCan id="582">
@@ -6410,7 +6410,7 @@
         <longitude>10.721926</longitude>
       </coordonnees>
     </lieu>
-    <typeDechet>plastique</typeDechet>
+    <typeDechet>verre</typeDechet>
     <status>vide</status>
   </trashCan>
   <trashCan id="584">
@@ -6421,7 +6421,7 @@
         <longitude>10.721307</longitude>
       </coordonnees>
     </lieu>
-    <typeDechet>plastique</typeDechet>
+    <typeDechet>papier</typeDechet>
     <status>pleine</status>
   </trashCan>
   <trashCan id="585">
@@ -6432,7 +6432,7 @@
         <longitude>10.716886</longitude>
       </coordonnees>
     </lieu>
-    <typeDechet>plastique</typeDechet>
+    <typeDechet>autre</typeDechet>
     <status>pleine</status>
   </trashCan>
   <trashCan id="586">
@@ -6454,7 +6454,7 @@
         <longitude>10.715341</longitude>
       </coordonnees>
     </lieu>
-    <typeDechet>plastique</typeDechet>
+    <typeDechet>verre</typeDechet>
     <status>vide</status>
   </trashCan>
   <trashCan id="588">
@@ -6465,7 +6465,7 @@
         <longitude>10.710276</longitude>
       </coordonnees>
     </lieu>
-    <typeDechet>plastique</typeDechet>
+    <typeDechet>papier</typeDechet>
     <status>pleine</status>
   </trashCan>
   <trashCan id="589">
@@ -6476,7 +6476,7 @@
         <longitude>10.711199</longitude>
       </coordonnees>
     </lieu>
-    <typeDechet>plastique</typeDechet>
+    <typeDechet>autre</typeDechet>
     <status>moitie</status>
   </trashCan>
   <trashCan id="590">
@@ -6498,7 +6498,7 @@
         <longitude>10.703881</longitude>
       </coordonnees>
     </lieu>
-    <typeDechet>plastique</typeDechet>
+    <typeDechet>verre</typeDechet>
     <status>pleine</status>
   </trashCan>
   <trashCan id="592">
@@ -6509,7 +6509,7 @@
         <longitude>10.704074</longitude>
       </coordonnees>
     </lieu>
-    <typeDechet>plastique</typeDechet>
+    <typeDechet>papier</typeDechet>
     <status>pleine</status>
   </trashCan>
   <trashCan id="593">
@@ -6520,7 +6520,7 @@
         <longitude>10.701241</longitude>
       </coordonnees>
     </lieu>
-    <typeDechet>plastique</typeDechet>
+    <typeDechet>autre</typeDechet>
     <status>moitie</status>
   </trashCan>
   <trashCan id="594">
@@ -6542,7 +6542,7 @@
         <longitude>10.697531</longitude>
       </coordonnees>
     </lieu>
-    <typeDechet>plastique</typeDechet>
+    <typeDechet>verre</typeDechet>
     <status>pleine</status>
   </trashCan>
   <trashCan id="596">
@@ -6553,7 +6553,7 @@
         <longitude>10.691437</longitude>
       </coordonnees>
     </lieu>
-    <typeDechet>plastique</typeDechet>
+    <typeDechet>papier</typeDechet>
     <status>moitie</status>
   </trashCan>
   <trashCan id="597">
@@ -6564,7 +6564,7 @@
         <longitude>10.688067</longitude>
       </coordonnees>
     </lieu>
-    <typeDechet>plastique</typeDechet>
+    <typeDechet>autre</typeDechet>
     <status>vide</status>
   </trashCan>
   <trashCan id="598">
@@ -6586,7 +6586,7 @@
         <longitude>10.7097</longitude>
       </coordonnees>
     </lieu>
-    <typeDechet>plastique</typeDechet>
+    <typeDechet>verre</typeDechet>
     <status>pleine</status>
   </trashCan>
   <trashCan id="600">
@@ -6597,7 +6597,7 @@
         <longitude>10.707853</longitude>
       </coordonnees>
     </lieu>
-    <typeDechet>plastique</typeDechet>
+    <typeDechet>papier</typeDechet>
     <status>moitie</status>
   </trashCan>
   <trashCan id="601">
@@ -6608,7 +6608,7 @@
         <longitude>10.707724</longitude>
       </coordonnees>
     </lieu>
-    <typeDechet>plastique</typeDechet>
+    <typeDechet>autre</typeDechet>
     <status>moitie</status>
   </trashCan>
   <trashCan id="602">
@@ -6630,7 +6630,7 @@
         <longitude>10.705299</longitude>
       </coordonnees>
     </lieu>
-    <typeDechet>plastique</typeDechet>
+    <typeDechet>verre</typeDechet>
     <status>moitie</status>
   </trashCan>
   <trashCan id="604">
@@ -6641,7 +6641,7 @@
         <longitude>10.702917</longitude>
       </coordonnees>
     </lieu>
-    <typeDechet>plastique</typeDechet>
+    <typeDechet>papier</typeDechet>
     <status>pleine</status>
   </trashCan>
   <trashCan id="605">
@@ -6652,7 +6652,7 @@
         <longitude>10.702122</longitude>
       </coordonnees>
     </lieu>
-    <typeDechet>plastique</typeDechet>
+    <typeDechet>autre</typeDechet>
     <status>moitie</status>
   </trashCan>
   <trashCan id="606">
@@ -6674,7 +6674,7 @@
         <longitude>10.69077</longitude>
       </coordonnees>
     </lieu>
-    <typeDechet>plastique</typeDechet>
+    <typeDechet>verre</typeDechet>
     <status>pleine</status>
   </trashCan>
   <trashCan id="608">
@@ -6685,7 +6685,7 @@
         <longitude>10.687379</longitude>
       </coordonnees>
     </lieu>
-    <typeDechet>plastique</typeDechet>
+    <typeDechet>papier</typeDechet>
     <status>vide</status>
   </trashCan>
   <trashCan id="609">
@@ -6696,7 +6696,7 @@
         <longitude>10.683522</longitude>
       </coordonnees>
     </lieu>
-    <typeDechet>plastique</typeDechet>
+    <typeDechet>autre</typeDechet>
     <status>vide</status>
   </trashCan>
   <trashCan id="610">
@@ -6718,7 +6718,7 @@
         <longitude>10.773018</longitude>
       </coordonnees>
     </lieu>
-    <typeDechet>plastique</typeDechet>
+    <typeDechet>verre</typeDechet>
     <status>pleine</status>
   </trashCan>
   <trashCan id="612">
@@ -6729,7 +6729,7 @@
         <longitude>10.715488</longitude>
       </coordonnees>
     </lieu>
-    <typeDechet>plastique</typeDechet>
+    <typeDechet>papier</typeDechet>
     <status>pleine</status>
   </trashCan>
   <trashCan id="613">
@@ -6740,7 +6740,7 @@
         <longitude>10.72051</longitude>
       </coordonnees>
     </lieu>
-    <typeDechet>plastique</typeDechet>
+    <typeDechet>autre</typeDechet>
     <status>moitie</status>
   </trashCan>
   <trashCan id="614">
@@ -6762,7 +6762,7 @@
         <longitude>10.715188</longitude>
       </coordonnees>
     </lieu>
-    <typeDechet>plastique</typeDechet>
+    <typeDechet>verre</typeDechet>
     <status>moitie</status>
   </trashCan>
   <trashCan id="616">
@@ -6773,7 +6773,7 @@
         <longitude>10.71081</longitude>
       </coordonnees>
     </lieu>
-    <typeDechet>plastique</typeDechet>
+    <typeDechet>papier</typeDechet>
     <status>moitie</status>
   </trashCan>
   <trashCan id="617">
@@ -6784,7 +6784,7 @@
         <longitude>10.70068</longitude>
       </coordonnees>
     </lieu>
-    <typeDechet>plastique</typeDechet>
+    <typeDechet>autre</typeDechet>
     <status>pleine</status>
   </trashCan>
   <trashCan id="618">
@@ -6806,7 +6806,7 @@
         <longitude>10.699307</longitude>
       </coordonnees>
     </lieu>
-    <typeDechet>plastique</typeDechet>
+    <typeDechet>verre</typeDechet>
     <status>vide</status>
   </trashCan>
   <trashCan id="620">
@@ -6817,7 +6817,7 @@
         <longitude>10.705834</longitude>
       </coordonnees>
     </lieu>
-    <typeDechet>plastique</typeDechet>
+    <typeDechet>papier</typeDechet>
     <status>vide</status>
   </trashCan>
   <trashCan id="621">
@@ -6828,7 +6828,7 @@
         <longitude>10.713355</longitude>
       </coordonnees>
     </lieu>
-    <typeDechet>plastique</typeDechet>
+    <typeDechet>autre</typeDechet>
     <status>pleine</status>
   </trashCan>
   <trashCan id="622">
@@ -6850,7 +6850,7 @@
         <longitude>10.715277</longitude>
       </coordonnees>
     </lieu>
-    <typeDechet>plastique</typeDechet>
+    <typeDechet>verre</typeDechet>
     <status>vide</status>
   </trashCan>
   <trashCan id="624">
@@ -6861,7 +6861,7 @@
         <longitude>10.705278</longitude>
       </coordonnees>
     </lieu>
-    <typeDechet>plastique</typeDechet>
+    <typeDechet>papier</typeDechet>
     <status>vide</status>
   </trashCan>
   <trashCan id="625">
@@ -6872,7 +6872,7 @@
         <longitude>10.698561</longitude>
       </coordonnees>
     </lieu>
-    <typeDechet>plastique</typeDechet>
+    <typeDechet>autre</typeDechet>
     <status>moitie</status>
   </trashCan>
   <trashCan id="626">
@@ -6894,7 +6894,7 @@
         <longitude>10.698668</longitude>
       </coordonnees>
     </lieu>
-    <typeDechet>plastique</typeDechet>
+    <typeDechet>verre</typeDechet>
     <status>pleine</status>
   </trashCan>
   <trashCan id="628">
@@ -6905,7 +6905,7 @@
         <longitude>10.681072</longitude>
       </coordonnees>
     </lieu>
-    <typeDechet>plastique</typeDechet>
+    <typeDechet>papier</typeDechet>
     <status>vide</status>
   </trashCan>
   <trashCan id="629">
@@ -6916,7 +6916,7 @@
         <longitude>10.672492</longitude>
       </coordonnees>
     </lieu>
-    <typeDechet>plastique</typeDechet>
+    <typeDechet>autre</typeDechet>
     <status>vide</status>
   </trashCan>
   <trashCan id="630">
@@ -6938,7 +6938,7 @@
         <longitude>10.658585</longitude>
       </coordonnees>
     </lieu>
-    <typeDechet>plastique</typeDechet>
+    <typeDechet>verre</typeDechet>
     <status>pleine</status>
   </trashCan>
   <trashCan id="632">
@@ -6949,7 +6949,7 @@
         <longitude>10.662448</longitude>
       </coordonnees>
     </lieu>
-    <typeDechet>plastique</typeDechet>
+    <typeDechet>papier</typeDechet>
     <status>pleine</status>
   </trashCan>
   <trashCan id="633">
@@ -6960,7 +6960,7 @@
         <longitude>10.656096</longitude>
       </coordonnees>
     </lieu>
-    <typeDechet>plastique</typeDechet>
+    <typeDechet>autre</typeDechet>
     <status>pleine</status>
   </trashCan>
   <trashCan id="634">
@@ -6982,7 +6982,7 @@
         <longitude>10.661976</longitude>
       </coordonnees>
     </lieu>
-    <typeDechet>plastique</typeDechet>
+    <typeDechet>verre</typeDechet>
     <status>moitie</status>
   </trashCan>
   <trashCan id="636">
@@ -6993,7 +6993,7 @@
         <longitude>10.657212</longitude>
       </coordonnees>
     </lieu>
-    <typeDechet>plastique</typeDechet>
+    <typeDechet>papier</typeDechet>
     <status>moitie</status>
   </trashCan>
   <trashCan id="637">
@@ -7004,7 +7004,7 @@
         <longitude>10.692364</longitude>
       </coordonnees>
     </lieu>
-    <typeDechet>plastique</typeDechet>
+    <typeDechet>autre</typeDechet>
     <status>vide</status>
   </trashCan>
   <trashCan id="638">
@@ -7026,7 +7026,7 @@
         <longitude>10.689361</longitude>
       </coordonnees>
     </lieu>
-    <typeDechet>plastique</typeDechet>
+    <typeDechet>verre</typeDechet>
     <status>moitie</status>
   </trashCan>
   <trashCan id="640">
@@ -7037,7 +7037,7 @@
         <longitude>10.690688</longitude>
       </coordonnees>
     </lieu>
-    <typeDechet>plastique</typeDechet>
+    <typeDechet>papier</typeDechet>
     <status>pleine</status>
   </trashCan>
   <trashCan id="641">
@@ -7048,7 +7048,7 @@
         <longitude>10.731887</longitude>
       </coordonnees>
     </lieu>
-    <typeDechet>plastique</typeDechet>
+    <typeDechet>autre</typeDechet>
     <status>pleine</status>
   </trashCan>
   <trashCan id="642">
@@ -7070,7 +7070,7 @@
         <longitude>10.727724</longitude>
       </coordonnees>
     </lieu>
-    <typeDechet>plastique</typeDechet>
+    <typeDechet>verre</typeDechet>
     <status>vide</status>
   </trashCan>
   <trashCan id="644">
@@ -7081,7 +7081,7 @@
         <longitude>10.72884</longitude>
       </coordonnees>
     </lieu>
-    <typeDechet>plastique</typeDechet>
+    <typeDechet>papier</typeDechet>
     <status>vide</status>
   </trashCan>
   <trashCan id="645">
@@ -7092,7 +7092,7 @@
         <longitude>10.680089</longitude>
       </coordonnees>
     </lieu>
-    <typeDechet>plastique</typeDechet>
+    <typeDechet>autre</typeDechet>
     <status>vide</status>
   </trashCan>
   <trashCan id="646">
@@ -7114,7 +7114,7 @@
         <longitude>10.685068</longitude>
       </coordonnees>
     </lieu>
-    <typeDechet>plastique</typeDechet>
+    <typeDechet>verre</typeDechet>
     <status>vide</status>
   </trashCan>
   <trashCan id="648">
@@ -7125,7 +7125,7 @@
         <longitude>10.66335</longitude>
       </coordonnees>
     </lieu>
-    <typeDechet>plastique</typeDechet>
+    <typeDechet>papier</typeDechet>
     <status>moitie</status>
   </trashCan>
   <trashCan id="649">
@@ -7136,7 +7136,7 @@
         <longitude>10.659229</longitude>
       </coordonnees>
     </lieu>
-    <typeDechet>plastique</typeDechet>
+    <typeDechet>autre</typeDechet>
     <status>moitie</status>
   </trashCan>
   <trashCan id="650">
@@ -7158,7 +7158,7 @@
         <longitude>10.675584</longitude>
       </coordonnees>
     </lieu>
-    <typeDechet>plastique</typeDechet>
+    <typeDechet>verre</typeDechet>
     <status>vide</status>
   </trashCan>
   <trashCan id="652">
@@ -7169,7 +7169,7 @@
         <longitude>10.819823</longitude>
       </coordonnees>
     </lieu>
-    <typeDechet>plastique</typeDechet>
+    <typeDechet>papier</typeDechet>
     <status>vide</status>
   </trashCan>
   <trashCan id="653">
@@ -7180,7 +7180,7 @@
         <longitude>10.816647</longitude>
       </coordonnees>
     </lieu>
-    <typeDechet>plastique</typeDechet>
+    <typeDechet>autre</typeDechet>
     <status>pleine</status>
   </trashCan>
   <trashCan id="654">
@@ -7202,7 +7202,7 @@
         <longitude>10.803514</longitude>
       </coordonnees>
     </lieu>
-    <typeDechet>plastique</typeDechet>
+    <typeDechet>verre</typeDechet>
     <status>vide</status>
   </trashCan>
   <trashCan id="656">
@@ -7213,7 +7213,7 @@
         <longitude>10.830218</longitude>
       </coordonnees>
     </lieu>
-    <typeDechet>plastique</typeDechet>
+    <typeDechet>papier</typeDechet>
     <status>moitie</status>
   </trashCan>
 </trashCans>
