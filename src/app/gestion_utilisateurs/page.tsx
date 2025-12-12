@@ -3,6 +3,8 @@
 import { useState } from 'react';
 import { useRouter } from 'next/navigation';
 import Tournee from '../gestion_tournees/tournee';
+import Footer from './footer'; // Add this import
+
 export default function Citoyen() {
   const router = useRouter();
   const [showAuth, setShowAuth] = useState(false);
@@ -14,6 +16,7 @@ export default function Citoyen() {
     { img: '/icons/Service_citoyen.png', alt: 'service citoyen', label: 'service citoyen' },
     { img: '/icons/service_urbanisme.png', alt: 'service urbanisme', label: 'service urbanisme' },
   ];
+  
   return (
     <>
       <header className="card" style={{display:'flex',justifyContent:'space-between',alignItems:'center',gap:12}}>
@@ -44,7 +47,8 @@ export default function Citoyen() {
           </div>
         </div>
       )}
-      <main style={{ padding: 20 }}>
+      
+      <main style={{ padding: 20, minHeight: 'calc(100vh - 200px)' }}>
         <section style={{ width: '100%', maxWidth: 1100, margin: '0 auto', padding: '24px 0' }}>
           {selectedService === 'service_proprete' ? (
             <div>
@@ -71,6 +75,9 @@ export default function Citoyen() {
           )}
         </section>
       </main>
+      
+
+      <Footer />
     </>
   );
 }
