@@ -239,14 +239,28 @@ export default function TrashMapChef() {
             cans = myTournees.flatMap((t: any) => t.trashCans || []);
             
             const travauxZones = myTournees.map((t: any) => t.zone).filter(Boolean);
-            if (travauxZones.length > 0) {
-              const travauxRes = await fetch('/api/travaux');
-              if (travauxRes.ok) {
-                const allTravaux = await travauxRes.json();
-                const filteredTravaux = allTravaux.filter((t: any) => 
-                  travauxZones.some((zone: string) => zone.toLowerCase() === t.adresse.toLowerCase())
-                );
+            
+            // Charger tous les travaux
+            const travauxRes = await fetch('/api/travaux');
+            if (travauxRes.ok) {
+              const allTravaux = await travauxRes.json();
+              
+              // Si le chef a des tournées, filtrer les travaux par zone
+              // Sinon, afficher tous les travaux
+              if (travauxZones.length > 0) {
+                const filteredTravaux = allTravaux.filter((t: any) => {
+                  const travauxAdresse = (t.adresse || '').toLowerCase().trim();
+                  return travauxZones.some((zone: string) => {
+                    const zoneNorm = zone.toLowerCase().trim();
+                    // Match exact ou si l'un contient l'autre
+                    return zoneNorm === travauxAdresse || 
+                           travauxAdresse.includes(zoneNorm) || 
+                           zoneNorm.includes(travauxAdresse);
+                  });
+                });
                 setTravaux(filteredTravaux);
+              } else {
+                setTravaux(allTravaux);
               }
             }
           }
