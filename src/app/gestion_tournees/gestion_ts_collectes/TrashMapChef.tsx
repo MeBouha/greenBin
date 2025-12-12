@@ -463,7 +463,7 @@ export default function TrashMapChef() {
 
   const getCurrentLocationIcon = (leaflet: any) =>
     leaflet.icon({
-      iconUrl: '/icons/location-green.png',
+      iconUrl: '/icons/location-red.png',
       iconSize: [40, 40], // Kept larger for visibility
       iconAnchor: [20, 40],
       popupAnchor: [0, -40],
@@ -472,7 +472,7 @@ export default function TrashMapChef() {
 
   const getDangerIcon = (leaflet: any) => {
     const icon = leaflet.icon({
-      iconUrl: '/icons/danger-green.png',
+      iconUrl: '/icons/danger.png',
       iconSize: [28, 28], // Fixed size without floating animation
       iconAnchor: [14, 28],
       popupAnchor: [0, -28],
