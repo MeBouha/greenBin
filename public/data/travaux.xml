@@ -1,15 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<travaux xmlns:xs="http://www.w3.org/2001/XMLSchema-instance"
-           xs:noNamespaceSchemaLocation="greenBin.xsd">
-    <travail id="1">
-        <date>2024-06-10</date>
-        <lieu>
-            <adresse>Sfax centre</adresse>  
-            <coordonnees>
-                <latitude>34.741</latitude>
-                <longitude>10.7612</longitude>
-            </coordonnees>
-        </lieu>
-        <etat>en cours</etat> <!-- en cours, Complet -->
-    </travail>
+<travaux xmlns:xs="http://www.w3.org/2001/XMLSchema-instance" xs:noNamespaceSchemaLocation="greenBin.xsd">
+  <travail id="1">
+    <date>2024-06-10</date>
+    <lieu>
+      <adresse>Sfax centre</adresse>
+      <coordonnees>
+        <latitude>34.742</latitude>
+        <longitude>10.7612</longitude>
+      </coordonnees>
+    </lieu>
+    <etat>en cours</etat>
+  </travail>
 </travaux>
