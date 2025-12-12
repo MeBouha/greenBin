@@ -88,31 +88,58 @@ export default function TrashMapChef() {
   const [routeControl, setRouteControl] = useState<any>(null);
   const [activeId, setActiveId] = useState<number | null>(null);
   const [currentUserId, setCurrentUserId] = useState<number | null>(null);
+  const [currentUser, setCurrentUser] = useState<any>(null);
+  const [mounted, setMounted] = useState(false);
   const mapRef = useRef<Map | null>(null);
   const router = useRouter();
 
   const start: LatLngTuple = [34.740461, 10.760018]; // point de départ
 
-  // Charger les données XML via l’API
+  // Authentication & authorization check - MUST BE BEFORE ANY CONDITIONAL RETURNS
   useEffect(() => {
+    setMounted(true);
+    try {
+      const raw = sessionStorage.getItem('user');
+      if (raw) {
+        const userData = JSON.parse(raw);
+        setCurrentUser(userData);
+
+        // Only allow specific roles to access this page
+        // Adjust roles based on who should have access to the trash map
+        const allowedRoles = ['chef de tournee']; // Add other roles as needed
+        if (!allowedRoles.map(r => r.toLowerCase()).includes(userData.role?.toLowerCase())) {
+          router.push('/gestion_utilisateurs'); // Redirect unauthorized users
+          return;
+        }
+        
+        const userId = userData?.id ? Number(userData.id) : null;
+        setCurrentUserId(userId);
+      } else {
+        router.push('/gestion_utilisateurs'); // Redirect unauthenticated users
+        return;
+      }
+    } catch (e) {
+      console.error('Auth check failed:', e);
+      router.push('/gestion_utilisateurs');
+    }
+  }, [router]);
+
+  // Charger les données XML via l'API
+  useEffect(() => {
+    if (!currentUser) return; // Only load data if user is authenticated
+
     const load = async () => {
       try {
-        // try to read logged-in user from sessionStorage (auth sets `user` on login)
-        const rawUser = typeof window !== 'undefined' ? sessionStorage.getItem('user') : null;
-        const user = rawUser ? JSON.parse(rawUser) : null;
-        const userId = user?.id ? Number(user.id) : null;
-        setCurrentUserId(userId);
-
         let cans: any[] = [];
 
-        if (userId !== null) {
+        if (currentUserId !== null) {
           // fetch tournees which already include trashCans for their zone
           const tRes = await fetch('/api/tournees?enriched=true');
           if (tRes.ok) {
             const tournees = await tRes.json();
             // filter tournees whose vehicule.chauffeurId matches the logged-in user
             const matched = (turne: any[] | undefined) => (turne || []).filter((t: any) => {
-              return !!t?.vehicule?.chauffeurId && Number(t.vehicule.chauffeurId) === userId;
+              return !!t?.vehicule?.chauffeurId && Number(t.vehicule.chauffeurId) === currentUserId;
             });
             const myTournees = matched(tournees);
             // collect their trashCans
@@ -164,12 +191,13 @@ export default function TrashMapChef() {
       }
     };
     load();
-  }, []);
+  }, [currentUser, currentUserId]);
 
   // Charger les notifications du chef connecté
   useEffect(() => {
+    if (!currentUser || currentUserId === null) return;
+    
     const loadNotifications = async () => {
-      if (currentUserId === null) return;
       try {
         const res = await fetch('/api/notifications');
         if (!res.ok) return;
@@ -181,7 +209,7 @@ export default function TrashMapChef() {
       }
     };
     loadNotifications();
-  }, [currentUserId]);
+  }, [currentUser, currentUserId]);
 
   // Charger Leaflet côté client
   useEffect(() => {
@@ -199,12 +227,6 @@ export default function TrashMapChef() {
     })();
   }, []);
 
-  const toggleSelect = (id: number) => {
-    setSelectedIds((prev) =>
-      prev.includes(id) ? prev.filter((x) => x !== id) : [...prev, id]
-    );
-  };
-
   // persist selected trashcans across navigation so the rapport page can read them
   useEffect(() => {
     try {
@@ -214,82 +236,9 @@ export default function TrashMapChef() {
     } catch {}
   }, [selectedIds]);
 
-  const handleEmpty = async (id: number) => {
-    // Optimistic update: mark as 'vide' locally; remember previous status to revert on error
-    let prevStatus: TrashStatus | null = null;
-    setTrashCans((prev) =>
-      prev.map((c) => {
-        if (c.id === id) {
-          prevStatus = c.status;
-          return { ...c, status: 'vide' };
-        }
-        return c;
-      })
-    );
-    setActiveId(id);
-
-    try {
-      const res = await fetch('/api/trashcans', {
-        method: 'PUT',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ id, status: 'vide' }),
-      });
-
-      if (!res.ok) {
-        const text = await res.text();
-        throw new Error(text || `Status ${res.status}`);
-      }
-      // success: server updated file
-    } catch (err) {
-      console.error('Failed to persist trashcan empty action', err);
-      // revert optimistic update on failure
-      if (prevStatus !== null) {
-        setTrashCans((prev) => prev.map((c) => (c.id === id ? { ...c, status: prevStatus! } : c)));
-      }
-      // optionally notify user
-    }
-  };
-
-  const getIcon = (status: TrashStatus, selected = false) => {
-    if (!leaflet) return null;
-    const iconUrl = {
-      pleine: '/icons/trash-red.png',
-      moitie: '/icons/trash-orange.png',
-      vide: '/icons/trash-green.png',
-    }[status];
-
-    if (!iconUrl) return null;
-
-    return leaflet.icon({
-      iconUrl,
-      iconSize: selected ? [45, 45] : [35, 35],
-      iconAnchor: selected ? [22, 45] : [17, 34],
-      popupAnchor: [0, -30],
-    });
-  };
-
-  const getCurrentLocationIcon = (leaflet: any) =>
-    leaflet.icon({
-      iconUrl: '/icons/location-red.png',
-      iconSize: [40, 40],
-      iconAnchor: [20, 40],
-      popupAnchor: [0, -30],
-    });
-
-  const getDangerIcon = (leaflet: any) => {
-    const icon = leaflet.icon({
-      iconUrl: '/icons/danger.png',
-      iconSize: [35, 35],
-      iconAnchor: [17, 34],
-      popupAnchor: [0, -30],
-      className: 'danger-marker-pulse',
-    });
-    return icon;
-  };
-
   // Mettre à jour la route
   useEffect(() => {
-    if (!leaflet || !mapRef.current) return;
+    if (!leaflet || !mapRef.current || !currentUser) return;
 
     if (routeControl) {
       try {
@@ -350,7 +299,102 @@ export default function TrashMapChef() {
     return () => {
       if (mapRef.current && routing) mapRef.current.removeControl(routing);
     };
-  }, [selectedIds, leaflet, trashCans]);
+  }, [selectedIds, leaflet, trashCans, currentUser]);
+
+  const toggleSelect = (id: number) => {
+    setSelectedIds((prev) =>
+      prev.includes(id) ? prev.filter((x) => x !== id) : [...prev, id]
+    );
+  };
+
+  const handleEmpty = async (id: number) => {
+    // Optimistic update: mark as 'vide' locally; remember previous status to revert on error
+    let prevStatus: TrashStatus | null = null;
+    setTrashCans((prev) =>
+      prev.map((c) => {
+        if (c.id === id) {
+          prevStatus = c.status;
+          return { ...c, status: 'vide' };
+        }
+        return c;
+      })
+    );
+    setActiveId(id);
+
+    try {
+      const res = await fetch('/api/trashcans', {
+        method: 'PUT',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ id, status: 'vide' }),
+      });
+
+      if (!res.ok) {
+        const text = await res.text();
+        throw new Error(text || `Status ${res.status}`);
+      }
+      // success: server updated file
+    } catch (err) {
+      console.error('Failed to persist trashcan empty action', err);
+      // revert optimistic update on failure
+      if (prevStatus !== null) {
+        setTrashCans((prev) => prev.map((c) => (c.id === id ? { ...c, status: prevStatus! } : c)));
+      }
+      // optionally notify user
+    }
+  };
+
+  const getIcon = (status: TrashStatus, selected = false) => {
+    if (!leaflet) return null;
+    const iconUrl = {
+      pleine: '/icons/trash-red.png',
+      moitie: '/icons/trash-orange.png',
+      vide: '/icons/trash-green.png',
+    }[status];
+
+    if (!iconUrl) return null;
+
+    return leaflet.icon({
+      iconUrl,
+      // Reduced from [35, 35] and [45, 45] to smaller sizes
+      iconSize: selected ? [35, 35] : [25, 25],
+      // Adjusted anchor points for smaller icons
+      iconAnchor: selected ? [17, 35] : [12, 25],
+      popupAnchor: [0, -25],
+    });
+  };
+
+  const getCurrentLocationIcon = (leaflet: any) =>
+    leaflet.icon({
+      iconUrl: '/icons/location-red.png',
+      iconSize: [30, 30], // Made this smaller too for consistency
+      iconAnchor: [15, 30],
+      popupAnchor: [0, -25],
+    });
+
+  const getDangerIcon = (leaflet: any) => {
+    const icon = leaflet.icon({
+      iconUrl: '/icons/danger.png',
+      iconSize: [25, 25], // Made danger icon smaller too
+      iconAnchor: [12, 25],
+      popupAnchor: [0, -25],
+      className: 'danger-marker-pulse',
+    });
+    return icon;
+  };
+
+  // Early return before mount (hydration safety)
+  if (!mounted) {
+    return (
+      <div style={{ height: '80vh', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+        <p>Chargement...</p>
+      </div>
+    );
+  }
+
+  // Show nothing or minimal UI while redirecting
+  if (!currentUser) {
+    return null;
+  }
 
   if (!leaflet) return <div>Loading map...</div>;
 
