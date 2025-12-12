@@ -12,6 +12,7 @@ interface TrashCanDTO {
   latitude?: number | string;
   longitude?: number | string;
   typeDechet?: TypeDechet;
+  capacite?: number | string;
   status?: Status;
 }
 
@@ -21,6 +22,7 @@ class TrashCan {
   latitude: number;
   longitude: number;
   typeDechet: TypeDechet;
+  capacite: number;
   status: Status;
 
   constructor(data: TrashCanDTO) {
@@ -29,6 +31,7 @@ class TrashCan {
     this.latitude = Number(data.latitude ?? 0);
     this.longitude = Number(data.longitude ?? 0);
     this.typeDechet = (data.typeDechet as TypeDechet) ?? 'autre';
+    this.capacite = Number(data.capacite ?? 0);
     this.status = (data.status as Status) ?? 'vide';
   }
 
@@ -43,6 +46,7 @@ class TrashCan {
         },
       },
       typeDechet: this.typeDechet,
+      capacite: this.capacite,
       status: this.status,
     };
   }
@@ -71,6 +75,7 @@ class TrashCanService {
           latitude: it.lieu?.coordonnees?.latitude,
           longitude: it.lieu?.coordonnees?.longitude,
           typeDechet: it.typeDechet,
+          capacite: it.capacite,
           status: it.status,
         })
       );
@@ -120,6 +125,7 @@ class TrashCanService {
       latitude: data.latitude ?? current.latitude,
       longitude: data.longitude ?? current.longitude,
       typeDechet: (data.typeDechet as TypeDechet) ?? current.typeDechet,
+      capacite: data.capacite ?? current.capacite,
       status: (data.status as Status) ?? current.status,
     });
     items[idx] = updated;
@@ -138,6 +144,7 @@ class TrashCanService {
       latitude: current.latitude,
       longitude: current.longitude,
       typeDechet: current.typeDechet,
+      capacite: current.capacite,
       status,
     });
     items[idx] = updated;
@@ -206,8 +213,8 @@ export async function DELETE(request: Request) {
 export async function POST(request: Request) {
   try {
     const body = (await request.json()) as TrashCanDTO;
-    if (!body.adresse || body.latitude === undefined || body.longitude === undefined || !body.typeDechet || !body.status) {
-      return NextResponse.json({ error: 'adresse, latitude, longitude, typeDechet, status are required' }, { status: 400 });
+    if (!body.adresse || body.latitude === undefined || body.longitude === undefined || body.capacite === undefined || !body.typeDechet || !body.status) {
+      return NextResponse.json({ error: 'adresse, latitude, longitude, capacite, typeDechet, status are required' }, { status: 400 });
     }
     const created = await service.add(body);
     return NextResponse.json(created, { status: 201 });

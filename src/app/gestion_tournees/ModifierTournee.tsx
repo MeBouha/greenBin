@@ -37,6 +37,50 @@ export default function ModifierTournee({
     ouvrierIds: tournee?.ouvrierIds?.join(', ') || ''
   });
 
+  const [vehicules, setVehicules] = useState<Array<{id:string, matricule:string}>>([]);
+  const [ouvriersDisponibles, setOuvriersDisponibles] = useState<Array<{id:string, nom:string, prenom:string}>>([]);
+
+  useEffect(() => {
+    // Load vehicules and users from XML
+    (async () => {
+      try {
+        // Vehicules: read id + matricule
+        const vRes = await fetch('/data/vehicule.xml');
+        const vText = await vRes.text();
+        const vDoc = new DOMParser().parseFromString(vText, 'application/xml');
+        const vEls = Array.from(vDoc.querySelectorAll('vehicule'));
+        const vList = vEls
+          .map(el => ({
+            id: (el.getAttribute('id') || '').trim(),
+            matricule: (el.querySelector('matricule')?.textContent || '').trim(),
+            disponibilite: (el.querySelector('disponibilite')?.textContent || '').trim().toLowerCase()
+          }))
+          .filter(v => v.id && v.matricule && (v.disponibilite === 'disponible' || v.disponibilite === ''))
+          .map(v => ({ id: v.id, matricule: v.matricule }));
+        setVehicules(vList);
+
+        // Users: filter role='ouvrier' and disponibilite='disponible'
+        const uRes = await fetch('/data/users.xml');
+        const uText = await uRes.text();
+        const uDoc = new DOMParser().parseFromString(uText, 'application/xml');
+        const uEls = Array.from(uDoc.querySelectorAll('user'));
+        const uList = uEls
+          .map(el => ({
+            id: (el.getAttribute('id') || '').trim(),
+            role: (el.querySelector('role')?.textContent || '').trim().toLowerCase(),
+            disponibilite: (el.querySelector('disponibilite')?.textContent || '').trim().toLowerCase(),
+            nom: (el.querySelector('nom')?.textContent || '').trim(),
+            prenom: (el.querySelector('prenom')?.textContent || '').trim(),
+          }))
+          .filter(u => u.role === 'ouvrier' && (u.disponibilite === 'disponible' || !u.disponibilite))
+          .map(u => ({ id: u.id, nom: u.nom, prenom: u.prenom }));
+        setOuvriersDisponibles(uList);
+      } catch (err) {
+        // silently ignore
+      }
+    })();
+  }, []);
+
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     const processedData = {
@@ -52,6 +96,13 @@ export default function ModifierTournee({
       ...prev,
       [name]: value
     }));
+  };
+
+  const toggleOuvrier = (id: string) => {
+    const currentIds = formData.ouvrierIds.split(',').map(s => s.trim()).filter(Boolean);
+    const exists = currentIds.includes(id);
+    const nextIds = exists ? currentIds.filter(x => x !== id) : [...currentIds, id];
+    setFormData(prev => ({ ...prev, ouvrierIds: nextIds.join(', ') }));
   };
 
   return (
@@ -92,21 +143,32 @@ export default function ModifierTournee({
             onChange={handleChange}
             className="form-control"
             required
-            placeholder="Entrez l'ID du véhicule"
-          />
+          >
+            <option value="">Sélectionner un véhicule</option>
+            {vehicules.map(v => (
+              <option key={v.id} value={v.id}>{v.matricule}</option>
+            ))}
+          </select>
         </div>
 
         <div className="form-group">
-          <label>IDs des Ouvriers</label>
-          <textarea
-            name="ouvrierIds"
-            value={formData.ouvrierIds}
-            onChange={handleChange}
-            className="form-control"
-            rows={2}
-            placeholder="2, 3"
-          />
-          <small className="form-help">Séparez les IDs par des virgules (ex: 2, 3)</small>
+          <label>Ouvriers disponibles</label>
+          <div style={{display:'flex',gap:8,flexWrap:'wrap'}}>
+            {ouvriersDisponibles.map(o => {
+              const active = formData.ouvrierIds.split(',').map(s=>s.trim()).filter(Boolean).includes(o.id);
+              return (
+                <button
+                  type="button"
+                  key={o.id}
+                  className={`chip ${active? 'active':''}`}
+                  onClick={() => toggleOuvrier(o.id)}
+                >
+                  {o.prenom && o.nom ? `${o.prenom} ${o.nom}` : o.id}
+                </button>
+              );
+            })}
+          </div>
+          <small className="form-help">Seuls les ouvriers avec disponibilité "disponible" sont affichés.</small>
         </div>
 
         <div className="form-actions">
@@ -116,7 +178,7 @@ export default function ModifierTournee({
           <button 
             type="submit" 
             className="btn btn-primary"
-            disabled={!formData.vehiculeId || formData.ouvrierIds.length === 0}
+            disabled={!formData.vehiculeId || formData.ouvrierIds.trim().length === 0}
           >
             {isEditing ? 'Enregistrer les modifications' : 'Ajouter la tournée'}
           </button>

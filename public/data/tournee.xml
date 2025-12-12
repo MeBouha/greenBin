@@ -17,4 +17,22 @@
     <vehicule id="2"></vehicule>
     <date>2024-06-15</date>
   </tournee>
+  <tournee id="3">
+    <zone>sakiet ezzit</zone>
+    <ouvriers>
+      <ouvrier id="4"></ouvrier>
+      <ouvrier id="5"></ouvrier>
+    </ouvriers>
+    <vehicule id="1"></vehicule>
+    <date>2027-12-24</date>
+  </tournee>
+  <tournee id="4">
+    <zone>sakiet ezzit</zone>
+    <ouvriers>
+      <ouvrier id="4"></ouvrier>
+      <ouvrier id="5"></ouvrier>
+    </ouvriers>
+    <vehicule id="1"></vehicule>
+    <date>2027-12-24</date>
+  </tournee>
 </tournees>

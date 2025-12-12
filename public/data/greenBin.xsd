@@ -160,6 +160,7 @@
         <xs:sequence>
             <xs:element name="lieu" type="TypeLieu"/>
             <xs:element name="typeDechet" type="TypeDechets"/>
+            <xs:element name="capacite" type="xs:int"/>
             <xs:element name="status" type="TypeStatus"/>
         </xs:sequence>
         <xs:attribute name="id"/>

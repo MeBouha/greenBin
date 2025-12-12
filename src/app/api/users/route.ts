@@ -236,6 +236,19 @@ export class UserService {
 
     return { disponibles, indisponibles };
   }
+
+  async setDisponibilite(ids: number[], value: string) {
+    const users = await this.load();
+    const idSet = new Set(ids.map(Number));
+    users.users = users.users.map(u => {
+      if (idSet.has(Number(u.id))) {
+        u.disponibilite = value;
+      }
+      return u;
+    });
+    await this.save(users);
+    return users.users.filter(u => idSet.has(Number(u.id)));
+  }
 }
 
 // === Exported helper function ===
@@ -301,6 +314,12 @@ export async function POST(request: Request) {
   try {
     const body = await request.json();
     if (!body) return NextResponse.json({ error: 'No body' }, { status: 400 });
+    // Special action: assign employees -> set disponibilite to 'en service'
+    if (Array.isArray(body.assignIds)) {
+      const ids = body.assignIds.map((x: any) => Number(x)).filter((n: number) => !isNaN(n));
+      const updated = await service.setDisponibilite(ids, body.value ?? 'en service');
+      return NextResponse.json({ updated });
+    }
     const user = new User(body);
     await service.addUser(user);
     return NextResponse.json(await service.getAll());

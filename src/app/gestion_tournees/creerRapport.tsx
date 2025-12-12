@@ -6,6 +6,12 @@ import Header from '../gestion_utilisateurs/header';
 // employees will be loaded from `public/data/tournee.xml` and resolved against `public/data/users.xml`
 const TYPES_DECHETS = ["Plastique", "Papier", "Verre", "Autre"];
 
+type TrashCanApi = {
+  id: number;
+  capacite?: number;
+  status?: string;
+};
+
 export default function RapportPage() {
   const [idTournee, setIdTournee] = useState<number | ''>('');
   const [vehicule, setVehicule] = useState('');
@@ -206,24 +212,85 @@ export default function RapportPage() {
   // load selected trashcans (ids) from sessionStorage and initialize quantities
   // also load route distance
   useEffect(() => {
-    try {
-      const raw = sessionStorage.getItem('selectedTrashcans');
-      if (raw) {
-        const ids = JSON.parse(raw) as number[];
-        if (Array.isArray(ids)) {
-          const arr = ids.map(id => ({ id: Number(id), quantite: 0 }));
-          setSelectedTrashcansData(arr);
+    const statusToQuantity = (status?: string, capacite?: number) => {
+      const cap = Number(capacite) || 0;
+      if (status === 'pleine') return cap;
+      if (status === 'moitie') return cap / 2;
+      return 0;
+    };
+
+    const load = async () => {
+      try {
+        const raw = sessionStorage.getItem('selectedTrashcans');
+        const ids = raw ? (JSON.parse(raw) as number[]) : [];
+        const parsedIds = Array.isArray(ids) ? ids.map(Number).filter(n => !isNaN(n)) : [];
+
+        // Prefer the snapshot saved BEFORE the user clicked "Vider"
+        // Expected shape: [{ id: number, status: 'vide'|'moitie'|'pleine', capacite: number }]
+        const preSnapshotStr = sessionStorage.getItem('trashcansPreVider');
+        const preSnapshot: Array<{id:number; status:string; capacite:number}> = preSnapshotStr ? JSON.parse(preSnapshotStr) : [];
+        const preMap = new Map<number, {status:string; capacite:number}>();
+        preSnapshot.forEach(x => preMap.set(Number(x.id), { status: x.status, capacite: Number(x.capacite) }));
+
+        let apiTrashcans: TrashCanApi[] = [];
+        try {
+          const res = await fetch('/api/trashcans');
+          if (res.ok) {
+            apiTrashcans = await res.json();
+          }
+        } catch (err) {
+          // ignore API errors and fall back to zeros
         }
+        let arr = parsedIds.map(id => {
+          // If snapshot exists for this ID, use it first
+          const snap = preMap.get(id);
+          if (snap) {
+            return { id, quantite: statusToQuantity(snap.status, snap.capacite) };
+          }
+          // Otherwise fall back to current API state
+          const t = apiTrashcans.find(tc => Number(tc.id) === id);
+          const capacite = Number(t?.capacite ?? 0);
+          const quantite = statusToQuantity(t?.status, capacite);
+          return { id, quantite };
+        });
+
+        // Fallback: read from XML if API missing data
+        if (!arr.length || arr.some(a => a.quantite === 0)) {
+          try {
+            const xmlRes = await fetch('/data/trashCan.xml');
+            const text = await xmlRes.text();
+            const doc = new DOMParser().parseFromString(text, 'application/xml');
+            const list = Array.from(doc.querySelectorAll('trashCan'));
+            const findInfo = (id: number) => {
+              const el = list.find(e => Number(e.getAttribute('id')) === id);
+              if (!el) return { capacite: 0, status: 'vide' } as { capacite: number; status: string };
+              const cap = Number(el.querySelector('capacite')?.textContent || '0');
+              const st = (el.querySelector('status')?.textContent || 'vide').trim();
+              return { capacite: cap, status: st };
+            };
+            arr = parsedIds.map(id => {
+              // Prefer pre-vider snapshot if available
+              const snap = preMap.get(id);
+              if (snap) {
+                return { id, quantite: statusToQuantity(snap.status, snap.capacite) };
+              }
+              const info = findInfo(id);
+              return { id, quantite: statusToQuantity(info.status, info.capacite) };
+            });
+          } catch {}
+        }
+        setSelectedTrashcansData(arr);
+
+        const distanceStr = sessionStorage.getItem('routeDistance');
+        if (distanceStr) {
+          setRouteDistance(Number(distanceStr));
+        }
+      } catch (err) {
+        // ignore
       }
-      
-      // Load route distance from sessionStorage
-      const distanceStr = sessionStorage.getItem('routeDistance');
-      if (distanceStr) {
-        setRouteDistance(Number(distanceStr));
-      }
-    } catch (err) {
-      // ignore
-    }
+    };
+
+    load();
   }, []);
 
   const handleSubmit = async (e?: React.FormEvent) => {
@@ -349,7 +416,7 @@ export default function RapportPage() {
                       <input className="input" type="number" value={t.quantite} min={0} onChange={e=>{
                         const q = Number(e.target.value) || 0;
                         setSelectedTrashcansData(prev => prev.map(p => p.id === t.id ? { ...p, quantite: q } : p));
-                      }} style={{width:100}} />
+                      }} style={{width:100}} readOnly/>
                     </div>
                   )) : <div style={{color:'#9ca3af'}}>Aucune benne sélectionnée depuis la carte</div>}
                 </div>

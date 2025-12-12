@@ -262,7 +262,42 @@ export async function POST(request: Request) {
       if (existing) return NextResponse.json({ error: 'Tournee existe déjà' }, { status: 400 });
     }
 
+    // Create the tournee
     await tourneeService.addTournee(tournee);
+
+    // After creation: set disponibilite = 'en service' for selected ouvriers, the chef (vehicule chauffeur), and the vehicule
+    try {
+      const ids: number[] = [...(tournee.ouvrierIds || [])];
+      const veh = await getVehiculeById(Number(tournee.vehiculeId));
+      if (veh?.chauffeurId && !Number.isNaN(veh.chauffeurId)) ids.push(Number(veh.chauffeurId));
+
+      if (ids.length) {
+        // Call the users API to batch update disponibilite
+        await fetch(`${process.env.NEXT_PUBLIC_BASE_URL || ''}/api/users`, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ assignIds: ids, value: 'en service' }),
+        }).catch(() => {});
+      }
+
+      // Also mark the vehicule as en service
+      if (veh) {
+        const vehBody = {
+          id: veh.id,
+          matricule: veh.matricule,
+          chauffeurId: veh.chauffeurId,
+          disponibilite: 'en service',
+        };
+        await fetch(`${process.env.NEXT_PUBLIC_BASE_URL || ''}/api/vehicules`, {
+          method: 'PUT',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(vehBody),
+        }).catch(() => {});
+      }
+    } catch {
+      // non-blocking
+    }
+
     return NextResponse.json(await tourneeService.getAll());
   } catch {
     return NextResponse.json({ error: 'Failed to save tournee' }, { status: 500 });
