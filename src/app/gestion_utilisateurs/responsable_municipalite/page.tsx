@@ -46,6 +46,12 @@ export interface Vehicule {
 
 interface ChauffeurOption {
   id: string;
+  nom: string;
+  prenom: string;
+}
+
+interface UserOption {
+  id: string;
   name: string;
 }
 
@@ -55,6 +61,8 @@ export interface Tournee {
   ouvrierIds: string[];
   vehiculeId: string;
   date: string;
+  vehiculeMatricule?: string;
+  ouvrierNames?: string[];
 }
 
 export interface User {
@@ -85,6 +93,8 @@ export interface Rapport {
   chefTourneId: string;
   ouvriers: Ouvrier[];
   dechetsCollecte: DechetCollecte[];
+  vehiculeMatricule?: string;
+  tourneeZone?: string;
 }
 
 export interface Notification {
@@ -92,6 +102,9 @@ export interface Notification {
   chefTourneeId: string;
   travailId: string;
   contenu: string;
+  chefNom?: string;
+  travailZone?: string;
+  travailDate?: string;
 }
 
 // Form data interfaces
@@ -135,6 +148,8 @@ export default function RespMPage() {
   const [loadingRapports, setLoadingRapports] = useState(true);
   const [loadingNotifications, setLoadingNotifications] = useState(true);
   const [chauffeurOptions, setChauffeurOptions] = useState<ChauffeurOption[]>([]);
+  const [ouvrierOptions, setOuvrierOptions] = useState<UserOption[]>([]);
+  const [allOuvrierOptions, setAllOuvrierOptions] = useState<UserOption[]>([]);
   const [deletingId, setDeletingId] = useState<string | null>(null);
   const [updatingId, setUpdatingId] = useState<string | null>(null);
   const [deletingTrashCanId, setDeletingTrashCanId] = useState<string | null>(null);
@@ -320,7 +335,8 @@ export default function RespMPage() {
         const chauffeur = node.getElementsByTagName('chauffeur')[0];
         const disponibilite = node.getElementsByTagName('disponibilite')[0];
         const chauffeurId = chauffeur ? chauffeur.getAttribute('id') || '' : '';
-        const chauffeurName = options.find((c) => c.id === chauffeurId)?.name || (chauffeur ? chauffeur.textContent || '' : 'N/A');
+        const chauffeurObj = options.find((c) => c.id === chauffeurId);
+        const chauffeurName = chauffeurObj ? `${chauffeurObj.prenom} ${chauffeurObj.nom}`.trim() : (chauffeur ? chauffeur.textContent || '' : 'N/A');
         
         vehiculesData.push({
           id: node.getAttribute('id') || '',
@@ -332,14 +348,16 @@ export default function RespMPage() {
       }
       
       setVehicules(vehiculesData);
+      return vehiculesData;
     } catch (error) {
       console.error('Error fetching vehicules:', error);
+      return [] as Vehicule[];
     } finally {
       setLoadingVehicules(false);
     }
   };
 
-  const fetchTournees = async () => {
+  const fetchTournees = async (vehiculesList?: Vehicule[], ouvriersList?: UserOption[]) => {
     try {
       setLoadingTournees(true);
       const response = await fetch(`/data/tournee.xml?t=${Date.now()}`);
@@ -368,13 +386,23 @@ export default function RespMPage() {
           const id = ouvrierElements[j].getAttribute('id');
           if (id) ouvrierIds.push(id);
         }
+
+        const vehiculeId = vehicule ? vehicule.getAttribute('id') || '' : 'N/A';
+        const vehiculeMatricule = (vehiculesList ?? vehicules).find(v => v.id === vehiculeId)?.matricule || 'N/A';
+        const ouvrierLookup = ouvriersList ?? ouvrierOptions;
+        const ouvrierNames = ouvrierIds.map(id => {
+          const found = ouvrierLookup.find(o => o.id === id);
+          return found?.name || `Ouvrier ${id}`;
+        });
         
         tourneesData.push({
           id: node.getAttribute('id') || '',
           zone: zone ? zone.textContent || '' : 'N/A',
           ouvrierIds: ouvrierIds,
-          vehiculeId: vehicule ? vehicule.getAttribute('id') || '' : 'N/A',
-          date: date ? date.textContent || '' : 'N/A'
+          vehiculeId,
+          date: date ? date.textContent || '' : 'N/A',
+          vehiculeMatricule,
+          ouvrierNames
         });
       }
       
@@ -397,31 +425,47 @@ export default function RespMPage() {
       if (parseError.length > 0) throw new Error('Error parsing XML');
 
       const userNodes = xmlDoc.getElementsByTagName('user');
-      const options: ChauffeurOption[] = [];
+      const chauffeurList: ChauffeurOption[] = [];
+      const ouvrierList: UserOption[] = [];
+      const allOuvrierList: UserOption[] = [];
       for (let i = 0; i < userNodes.length; i++) {
         const node = userNodes[i];
         const role = node.getElementsByTagName('role')[0];
         const nom = node.getElementsByTagName('nom')[0];
         const prenom = node.getElementsByTagName('prenom')[0];
+        const dispo = node.getElementsByTagName('disponibilite')[0];
         const id = node.getAttribute('id') || '';
         const roleText = role ? (role.textContent || '').toLowerCase() : '';
+        const dispoText = dispo ? (dispo.textContent || '').toLowerCase() : '';
         if (roleText === 'chef trajet' || roleText === 'chef de tournee') {
+          const nomText = nom?.textContent || '';
+          const prenomText = prenom?.textContent || '';
+          chauffeurList.push({ id, nom: nomText, prenom: prenomText });
+        }
+        if (roleText === 'ouvrier') {
           const fullName = `${prenom?.textContent || ''} ${nom?.textContent || ''}`.trim();
-          options.push({ id, name: fullName || `Chef ${id}` });
+          allOuvrierList.push({ id, name: fullName || `Ouvrier ${id}` });
+          if (dispoText === 'disponible') {
+            ouvrierList.push({ id, name: fullName || `Ouvrier ${id}` });
+          }
         }
       }
-      setChauffeurOptions(options);
-      return options;
+      setChauffeurOptions(chauffeurList);
+      setOuvrierOptions(ouvrierList);
+      setAllOuvrierOptions(allOuvrierList);
+      return { chauffeurs: chauffeurList, ouvriers: ouvrierList, allOuvriers: allOuvrierList };
     } catch (error) {
       console.error('Error fetching chauffeurs:', error);
-      return [] as ChauffeurOption[];
+      setOuvrierOptions([]);
+      setAllOuvrierOptions([]);
+      return { chauffeurs: [] as ChauffeurOption[], ouvriers: [] as UserOption[], allOuvriers: [] as UserOption[] };
     }
   };
 
   const fetchRapports = async () => {
     try {
       setLoadingRapports(true);
-      const response = await fetch(`/data/rapport.xml?t=${Date.now()}`);
+      const response = await fetch(`/data/rapports.xml?t=${Date.now()}`);
       if (!response.ok) {
         setRapports([]);
         return;
@@ -430,23 +474,51 @@ export default function RespMPage() {
       const xmlText = await response.text();
       const parser = new DOMParser();
       const xmlDoc = parser.parseFromString(xmlText, "text/xml");
-      
       const parseError = xmlDoc.getElementsByTagName("parsererror");
       if (parseError.length > 0) throw new Error('Error parsing XML');
-      
+
+      // Build tournee map
+      const tourneeMap = new Map<string, { zone: string; vehiculeId: string }>();
+      if (tourneeRes.ok) {
+        const tourXml = await tourneeRes.text();
+        const tourDoc = parser.parseFromString(tourXml, "text/xml");
+        const tourNodes = tourDoc.getElementsByTagName('tournee');
+        for (let i = 0; i < tourNodes.length; i++) {
+          const tNode = tourNodes[i];
+          const id = tNode.getAttribute('id') || '';
+          const zone = tNode.getElementsByTagName('zone')[0]?.textContent || 'N/A';
+          const vehiculeId = tNode.getElementsByTagName('vehicule')[0]?.getAttribute('id') || '';
+          if (id) tourneeMap.set(id, { zone, vehiculeId });
+        }
+      }
+
+      // Build vehicule map
+      const vehiculeMap = new Map<string, string>();
+      if (vehiculeRes.ok) {
+        const vehXml = await vehiculeRes.text();
+        const vehDoc = parser.parseFromString(vehXml, "text/xml");
+        const vehNodes = vehDoc.getElementsByTagName('vehicule');
+        for (let i = 0; i < vehNodes.length; i++) {
+          const vNode = vehNodes[i];
+          const id = vNode.getAttribute('id') || '';
+          const matricule = vNode.getElementsByTagName('matricule')[0]?.textContent || '';
+          if (id) vehiculeMap.set(id, matricule);
+        }
+      }
+
       const rapportNodes = xmlDoc.getElementsByTagName('rapport');
       const rapportsData: Rapport[] = [];
-      
+
       for (let i = 0; i < rapportNodes.length; i++) {
         const node = rapportNodes[i];
         const date = node.getElementsByTagName('date')[0];
         const tournee = node.getElementsByTagName('tournee')[0];
         const employees = node.getElementsByTagName('employees')[0];
         const dechetsCollecte = node.getElementsByTagName('dechetsCollecte')[0];
-        
+
         const chefTourne = employees ? employees.getElementsByTagName('chefTourne')[0] : null;
         const ouvriers = employees ? employees.getElementsByTagName('ouvriers')[0] : null;
-        
+
         const ouvrierElements = ouvriers ? ouvriers.getElementsByTagName('ouvrier') : [];
         const ouvriersData: Ouvrier[] = [];
         for (let j = 0; j < ouvrierElements.length; j++) {
@@ -454,7 +526,7 @@ export default function RespMPage() {
           const nom = ouvrier.getElementsByTagName('nom')[0];
           const prenom = ouvrier.getElementsByTagName('prenom')[0];
           const status = ouvrier.getElementsByTagName('status')[0];
-          
+
           ouvriersData.push({
             id: ouvrier.getAttribute('id') || '',
             nom: nom ? nom.textContent || '' : 'N/A',
@@ -462,7 +534,7 @@ export default function RespMPage() {
             status: status ? status.textContent || '' : 'N/A'
           });
         }
-        
+
         const trashCanElements = dechetsCollecte ? dechetsCollecte.getElementsByTagName('trashCan') : [];
         const dechetsData: DechetCollecte[] = [];
         for (let j = 0; j < trashCanElements.length; j++) {
@@ -472,17 +544,24 @@ export default function RespMPage() {
             quantite: trashCan.getAttribute('quantite') || '0'
           });
         }
-        
+
+        const tourneeId = tournee ? tournee.getAttribute('id') || '' : 'N/A';
+        const tourInfo = tourneeMap.get(tourneeId);
+        const vehMat = tourInfo ? vehiculeMap.get(tourInfo.vehiculeId) || 'N/A' : 'N/A';
+        const zone = tourInfo?.zone || 'N/A';
+
         rapportsData.push({
           id: node.getAttribute('id') || '',
           date: date ? date.textContent || '' : 'N/A',
-          tourneeId: tournee ? tournee.getAttribute('id') || '' : 'N/A',
+          tourneeId,
           chefTourneId: chefTourne ? chefTourne.getAttribute('id') || '' : 'N/A',
           ouvriers: ouvriersData,
-          dechetsCollecte: dechetsData
+          dechetsCollecte: dechetsData,
+          vehiculeMatricule: vehMat,
+          tourneeZone: zone
         });
       }
-      
+
       setRapports(rapportsData);
     } catch (error) {
       console.error('Error fetching rapports:', error);
@@ -495,18 +574,54 @@ export default function RespMPage() {
   const fetchNotifications = async () => {
     try {
       setLoadingNotifications(true);
-      const response = await fetch(`/data/notification.xml?t=${Date.now()}`);
-      if (!response.ok) {
+      const [notifRes, usersRes, travauxRes] = await Promise.all([
+        fetch(`/data/notification.xml?t=${Date.now()}`),
+        fetch(`/data/users.xml?t=${Date.now()}`),
+        fetch(`/data/travaux.xml?t=${Date.now()}`)
+      ]);
+
+      if (!notifRes.ok) {
         setNotifications([]);
         return;
       }
       
-      const xmlText = await response.text();
+      const xmlText = await notifRes.text();
       const parser = new DOMParser();
       const xmlDoc = parser.parseFromString(xmlText, "text/xml");
       
       const parseError = xmlDoc.getElementsByTagName("parsererror");
       if (parseError.length > 0) throw new Error('Error parsing XML');
+
+      // Build users map
+      const usersMap = new Map<string, string>();
+      if (usersRes.ok) {
+        const usersXml = await usersRes.text();
+        const usersDoc = parser.parseFromString(usersXml, "text/xml");
+        const userNodes = usersDoc.getElementsByTagName('user');
+        for (let i = 0; i < userNodes.length; i++) {
+          const uNode = userNodes[i];
+          const id = uNode.getAttribute('id') || '';
+          const nom = uNode.getElementsByTagName('nom')[0]?.textContent || '';
+          const prenom = uNode.getElementsByTagName('prenom')[0]?.textContent || '';
+          if (id) usersMap.set(id, `${prenom} ${nom}`.trim());
+        }
+      }
+
+      // Build travaux map
+      const travauxMap = new Map<string, { zone: string; date: string }>();
+      if (travauxRes.ok) {
+        const travauxXml = await travauxRes.text();
+        const travauxDoc = parser.parseFromString(travauxXml, "text/xml");
+        const travailNodes = travauxDoc.getElementsByTagName('travail');
+        for (let i = 0; i < travailNodes.length; i++) {
+          const tNode = travailNodes[i];
+          const id = tNode.getAttribute('id') || '';
+          const lieu = tNode.getElementsByTagName('lieu')[0];
+          const adresse = lieu?.getElementsByTagName('adresse')[0]?.textContent || '';
+          const date = tNode.getElementsByTagName('date')[0]?.textContent || '';
+          if (id) travauxMap.set(id, { zone: adresse, date });
+        }
+      }
       
       const notificationNodes = xmlDoc.getElementsByTagName('notification');
       const notificationsData: Notification[] = [];
@@ -517,11 +632,18 @@ export default function RespMPage() {
         const travail = node.getElementsByTagName('travail')[0];
         const contenu = node.getElementsByTagName('contenu')[0];
         
+        const chefId = chefTournee ? chefTournee.getAttribute('id') || '' : 'N/A';
+        const travailId = travail ? travail.getAttribute('id') || '' : 'N/A';
+        const travailInfo = travauxMap.get(travailId);
+
         notificationsData.push({
           id: node.getAttribute('id') || '',
-          chefTourneeId: chefTournee ? chefTournee.getAttribute('id') || '' : 'N/A',
-          travailId: travail ? travail.getAttribute('id') || '' : 'N/A',
-          contenu: contenu ? contenu.textContent || '' : 'N/A'
+          chefTourneeId: chefId,
+          travailId,
+          contenu: contenu ? contenu.textContent || '' : 'N/A',
+          chefNom: usersMap.get(chefId) || 'N/A',
+          travailZone: travailInfo?.zone || 'N/A',
+          travailDate: travailInfo?.date || 'N/A'
         });
       }
       
@@ -537,7 +659,7 @@ export default function RespMPage() {
   useEffect(() => {
     fetchReclamations();
     fetchTrashCans();
-    fetchVehicules();
+    fetchChauffeurs().then((options) => fetchVehicules(options));
     fetchTournees();
     fetchRapports();
     fetchNotifications();
@@ -905,8 +1027,6 @@ export default function RespMPage() {
             onSave={updateTournee}
             onCancel={closeModificationPage}
             isEditing={true}
-            vehicules={vehicules}
-            ouvriers={ouvriers}
           />
         );
       case 'ajouter-tournee':
@@ -915,8 +1035,6 @@ export default function RespMPage() {
             onSave={addTournee}
             onCancel={closeModificationPage}
             isEditing={false}
-            vehicules={vehicules}
-            ouvriers={ouvriers}
           />
         );
       case 'consulter-rapports':
@@ -937,6 +1055,7 @@ export default function RespMPage() {
             onModifyNotification={openModificationPageNotification}
             onAddNotification={addNotification}
             deletingNotificationId={deletingNotificationId}
+            chauffeurOptions={chauffeurOptions}
           />
         );
       case 'modifier-notification':

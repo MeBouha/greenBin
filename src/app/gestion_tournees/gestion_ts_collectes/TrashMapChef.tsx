@@ -27,6 +27,22 @@ const pulseStyles = `
     animation: pulse-triangle 1.5s infinite;
     filter: drop-shadow(0 0 4px rgba(220, 38, 38, 0.6));
   }
+
+  @keyframes notif-pulse {
+    0% {
+      box-shadow: 0 4px 14px rgba(249, 115, 22, 0.35);
+    }
+    50% {
+      box-shadow: 0 8px 24px rgba(249, 115, 22, 0.65);
+    }
+    100% {
+      box-shadow: 0 4px 14px rgba(249, 115, 22, 0.35);
+    }
+  }
+
+  .notif-popup {
+    animation: notif-pulse 1.6s ease-in-out infinite;
+  }
 `;
 
 
@@ -56,13 +72,22 @@ interface Travaux {
   etat: string;
 }
 
+interface Notification {
+  id: number;
+  chefTourneeId: number;
+  travailId: number;
+  contenu: string;
+}
+
 export default function TrashMapChef() {
   const [trashCans, setTrashCans] = useState<TrashCan[]>([]);
   const [travaux, setTravaux] = useState<Travaux[]>([]);
+  const [notifications, setNotifications] = useState<Notification[]>([]);
   const [selectedIds, setSelectedIds] = useState<number[]>([]);
   const [leaflet, setLeaflet] = useState<any>(null);
   const [routeControl, setRouteControl] = useState<any>(null);
   const [activeId, setActiveId] = useState<number | null>(null);
+  const [currentUserId, setCurrentUserId] = useState<number | null>(null);
   const mapRef = useRef<Map | null>(null);
   const router = useRouter();
 
@@ -76,6 +101,7 @@ export default function TrashMapChef() {
         const rawUser = typeof window !== 'undefined' ? sessionStorage.getItem('user') : null;
         const user = rawUser ? JSON.parse(rawUser) : null;
         const userId = user?.id ? Number(user.id) : null;
+        setCurrentUserId(userId);
 
         let cans: any[] = [];
 
@@ -139,6 +165,23 @@ export default function TrashMapChef() {
     };
     load();
   }, []);
+
+  // Charger les notifications du chef connecté
+  useEffect(() => {
+    const loadNotifications = async () => {
+      if (currentUserId === null) return;
+      try {
+        const res = await fetch('/api/notifications');
+        if (!res.ok) return;
+        const data = await res.json();
+        const mine = (data || []).filter((n: any) => Number(n.chefTourneeId) === currentUserId);
+        setNotifications(mine);
+      } catch (err) {
+        console.error('Failed to load notifications', err);
+      }
+    };
+    loadNotifications();
+  }, [currentUserId]);
 
   // Charger Leaflet côté client
   useEffect(() => {
@@ -313,6 +356,41 @@ export default function TrashMapChef() {
 
   return (
     <div style={{ position: 'relative' }}>
+      {notifications.length > 0 && (
+        <div
+          style={{
+            position: 'absolute',
+            bottom: 12,
+            left: 12,
+            zIndex: 1100,
+            display: 'flex',
+            flexDirection: 'column',
+            gap: 8,
+            maxWidth: 280
+          }}
+        >
+          {notifications.map((n) => (
+            <div
+              key={n.id}
+              className="notif-popup"
+              style={{
+                background: '#ffffff',
+                border: '1px solid #f97316',
+                borderRadius: 10,
+                padding: '10px 12px',
+                boxShadow: '0 6px 18px rgba(249, 115, 22, 0.45)',
+                fontSize: '0.9rem',
+                color: '#1f2937'
+              }}
+            >
+              <div style={{ fontWeight: 700, marginBottom: 4 }}>Notification</div>
+              <div style={{ fontSize: '0.92rem' }}>
+                {n.contenu && n.contenu.length > 160 ? `${n.contenu.slice(0, 157)}...` : (n.contenu || 'Aucun contenu')}
+              </div>
+            </div>
+          ))}
+        </div>
+      )}
       <div style={{ position: 'absolute', bottom: 20, right: 20, zIndex: 1000 }}>
         <button
           type="button"

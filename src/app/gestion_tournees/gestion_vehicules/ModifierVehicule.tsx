@@ -19,7 +19,7 @@ interface ModifierVehiculeProps {
   onSave: (data: VehiculeFormData) => void;
   onCancel: () => void;
   isEditing: boolean;
-  chauffeurOptions: { id: string; name: string }[];
+  chauffeurOptions: { id: string; nom: string; prenom: string }[];
 }
 
 export default function ModifierVehicule({
@@ -88,7 +88,7 @@ export default function ModifierVehicule({
           >
             <option value="">-- Sélectionner --</option>
             {chauffeurOptions.map((opt) => (
-              <option key={opt.id} value={opt.id}>{opt.name}</option>
+              <option key={opt.id} value={opt.id}>{opt.prenom} {opt.nom}</option>
             ))}
           </select>
         </div>

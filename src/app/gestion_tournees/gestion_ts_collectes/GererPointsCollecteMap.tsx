@@ -161,7 +161,7 @@ export default function GererPointsCollecte(_: LegacyProps) {
   const cancelAdd = () => { setTempPosition(null); setAdding(false); setNewTrashAddress(''); };
 
   return (
-    <div style={{ position: 'relative', height: '80vh', width: '100%' }}>
+    <div style={{ position: 'relative', height: '90vh', width: '100%' }}>
       {/* @ts-ignore - relax MapContainer typing for this usage in this project */}
       <MapContainer center={[34.74, 10.76] as unknown as L.LatLngExpression} zoom={13} style={{ height: '100%', width: '100%' }}>
         <TileLayer url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png" />

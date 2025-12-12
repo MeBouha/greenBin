@@ -1,4 +1,6 @@
 // Local interfaces to match /api/rapport payload shape
+import { useState } from 'react';
+
 interface Ouvrier {
   id: string;
   nom: string;
@@ -18,6 +20,8 @@ interface Rapport {
   chefTourneId: string;
   ouvriers: Ouvrier[];
   dechetsCollecte: DechetCollecte[];
+  vehiculeMatricule?: string;
+  tourneeZone?: string;
 }
 
 interface ConsulterRapportsProps {
@@ -33,6 +37,8 @@ export default function ConsulterRapports({
   onDeleteRapport,
   deletingRapportId
 }: ConsulterRapportsProps) {
+  const [selectedRapport, setSelectedRapport] = useState<Rapport | null>(null);
+
   const getStatusBadge = (status: string) => {
     const statusConfig: { [key: string]: { class: string; text: string } } = {
       'present': { class: 'status-resolved', text: 'Présent' },
@@ -42,6 +48,93 @@ export default function ConsulterRapports({
     const config = statusConfig[status] || { class: 'status-new', text: 'Inconnu' };
     return <span className={`status-badge ${config.class}`}>{config.text}</span>;
   };
+
+  if (selectedRapport) {
+    return (
+      <div className="content-card">
+        <div className="section-header">
+          <h2>Résumé récapitulatif - Rapport #{selectedRapport.id}</h2>
+          <button className="btn btn-cancel" onClick={() => setSelectedRapport(null)}>
+            Retour
+          </button>
+        </div>
+        
+        <div style={{ padding: '20px' }}>
+          <div style={{ marginBottom: '24px' }}>
+            <h3>Informations de la tournée</h3>
+            <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '16px', marginTop: '12px' }}>
+              <div>
+                <strong>Date:</strong> {selectedRapport.date}
+              </div>
+              <div>
+                <strong>Zone:</strong> {selectedRapport.tourneeZone || 'N/A'}
+              </div>
+              <div>
+                <strong>Véhicule:</strong> {selectedRapport.vehiculeMatricule || 'N/A'}
+              </div>
+              <div>
+                <strong>Chef de tournée ID:</strong> {selectedRapport.chefTourneId}
+              </div>
+            </div>
+          </div>
+
+          <div style={{ marginBottom: '24px' }}>
+            <h3>Ouvriers ({selectedRapport.ouvriers.length})</h3>
+            <div style={{ marginTop: '12px' }}>
+              {selectedRapport.ouvriers.length === 0 ? (
+                <p>Aucun ouvrier</p>
+              ) : (
+                <table className="table" style={{ marginTop: '8px' }}>
+                  <thead>
+                    <tr>
+                      <th>Nom</th>
+                      <th>Prénom</th>
+                      <th>Status</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    {selectedRapport.ouvriers.map(ouvrier => (
+                      <tr key={ouvrier.id}>
+                        <td>{ouvrier.nom}</td>
+                        <td>{ouvrier.prenom}</td>
+                        <td>{getStatusBadge(ouvrier.status)}</td>
+                      </tr>
+                    ))}
+                  </tbody>
+                </table>
+              )}
+            </div>
+          </div>
+
+          <div>
+            <h3>Déchets collectés ({selectedRapport.dechetsCollecte.length})</h3>
+            <div style={{ marginTop: '12px' }}>
+              {selectedRapport.dechetsCollecte.length === 0 ? (
+                <p>Aucun déchet collecté</p>
+              ) : (
+                <table className="table" style={{ marginTop: '8px' }}>
+                  <thead>
+                    <tr>
+                      <th>Point de collecte</th>
+                      <th>Quantité (kg)</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    {selectedRapport.dechetsCollecte.map(dechet => (
+                      <tr key={dechet.id}>
+                        <td>#{dechet.id}</td>
+                        <td>{dechet.quantite} kg</td>
+                      </tr>
+                    ))}
+                  </tbody>
+                </table>
+              )}
+            </div>
+          </div>
+        </div>
+      </div>
+    );
+  }
 
   if (loading) {
     return (
@@ -77,10 +170,8 @@ export default function ConsulterRapports({
                 <tr>
                   <th>ID</th>
                   <th>Date</th>
-                  <th>Tournée ID</th>
-                  <th>Chef de Tournée</th>
-                  <th>Ouvriers</th>
-                  <th>Déchets Collectés</th>
+                  <th>Matricule Véhicule</th>
+                  <th>Zone</th>
                   <th>Actions</th>
                 </tr>
               </thead>
@@ -90,41 +181,18 @@ export default function ConsulterRapports({
                     <td className="id-cell">#{rapport.id}</td>
                     <td className="date-cell">{rapport.date}</td>
                     <td>
-                      <span className="type-badge">#{rapport.tourneeId}</span>
+                      <span className="type-badge">{rapport.vehiculeMatricule || 'N/A'}</span>
                     </td>
                     <td>
-                      <div className="employee-info">
-                        <div className="employee-id">ID: {rapport.chefTourneId}</div>
-                      </div>
-                    </td>
-                    <td>
-                      <div className="employees-list">
-                        {rapport.ouvriers.map(ouvrier => (
-                          <div key={ouvrier.id} className="employee-item">
-                            <div className="employee-name">{ouvrier.prenom} {ouvrier.nom}</div>
-                            <div className="employee-status">{getStatusBadge(ouvrier.status)}</div>
-                          </div>
-                        ))}
-                      </div>
-                    </td>
-                    <td>
-                      <div className="dechets-list">
-                        {rapport.dechetsCollecte.map(dechet => (
-                          <div key={dechet.id} className="dechet-item">
-                            <span className="dechet-id">#{dechet.id}</span>
-                            <span className="dechet-quantite">{dechet.quantite}kg</span>
-                          </div>
-                        ))}
-                      </div>
+                      <span className="type-badge">{rapport.tourneeZone || 'N/A'}</span>
                     </td>
                     <td>
                       <div className="action-buttons">
                         <button 
-                          className="btn btn-delete"
-                          onClick={() => onDeleteRapport(rapport.id)}
-                          disabled={deletingRapportId === rapport.id}
+                          className="btn btn-primary"
+                          onClick={() => setSelectedRapport(rapport)}
                         >
-                          {deletingRapportId === rapport.id ? 'Suppression...' : 'Supprimer'}
+                          Visualiser
                         </button>
                       </div>
                     </td>
