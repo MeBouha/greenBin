@@ -3,7 +3,8 @@
 import { useState } from 'react';
 import { useRouter } from 'next/navigation';
 import Tournee from '../gestion_tournees/tournee';
-import Footer from './footer'; // Add this import
+import Footer from './footer';
+import Welcome from './welcome';
 
 export default function Citoyen() {
   const router = useRouter();
@@ -48,35 +49,42 @@ export default function Citoyen() {
         </div>
       )}
       
-      <main style={{ padding: 20, minHeight: 'calc(100vh - 200px)' }}>
-        <section style={{ width: '100%', maxWidth: 1100, margin: '0 auto', padding: '24px 0' }}>
-          {selectedService === 'service_proprete' ? (
-            <div>
-              <Tournee />
-            </div>
-          ) : (
-            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(160px, 1fr))', gap: 40, alignItems: 'start', justifyItems: 'center' }}>
-              {services.map((s) => (
-                <div
-                  key={s.img}
-                  style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', cursor: s.img.includes('service_proprete') ? 'pointer' : 'default' }}
-                  onClick={() => s.img.includes('service_proprete') && setSelectedService('service_proprete')}
-                  role={s.img.includes('service_proprete') ? 'button' : undefined}
-                  tabIndex={s.img.includes('service_proprete') ? 0 : undefined}
-                  onKeyDown={(e) => { if ((e.key === 'Enter' || e.key === ' ') && s.img.includes('service_proprete')) setSelectedService('service_proprete'); }}
-                >
-                  <div style={{ width: 80, height: 80, borderRadius: 9999, display: 'flex', alignItems: 'center', justifyContent: 'center', background: 'rgba(0,0,0,0.03)', marginBottom: 12 }}>
-                    <img src={s.img} alt={s.alt} style={{ width: 36, height: 36, objectFit: 'contain' }} />
-                  </div>
-                  <div style={{ fontSize: 14, fontWeight: 600 }}>{s.label}</div>
+      {/* Main Content Area */}
+      <main style={{ minHeight: 'calc(100vh - 200px)' }}>
+        {!selectedService ? (
+          <Welcome onSelectService={setSelectedService} />
+        ) : (
+          <div style={{ padding: 20 }}>
+            <section style={{ width: '100%', maxWidth: 1100, margin: '0 auto', padding: '24px 0' }}>
+              {selectedService === 'service_proprete' ? (
+                <div>
+                  <Tournee />
                 </div>
-              ))}
-            </div>
-          )}
-        </section>
+              ) : (
+                <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(160px, 1fr))', gap: 40, alignItems: 'start', justifyItems: 'center' }}>
+                  {services.map((s) => (
+                    <div
+                      key={s.img}
+                      style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', cursor: s.img.includes('service_proprete') ? 'pointer' : 'default' }}
+                      onClick={() => s.img.includes('service_proprete') && setSelectedService('service_proprete')}
+                      role={s.img.includes('service_proprete') ? 'button' : undefined}
+                      tabIndex={s.img.includes('service_proprete') ? 0 : undefined}
+                      onKeyDown={(e) => { if ((e.key === 'Enter' || e.key === ' ') && s.img.includes('service_proprete')) setSelectedService('service_proprete'); }}
+                    >
+                      <div style={{ width: 80, height: 80, borderRadius: 9999, display: 'flex', alignItems: 'center', justifyContent: 'center', background: 'rgba(0,0,0,0.03)', marginBottom: 12 }}>
+                        <img src={s.img} alt={s.alt} style={{ width: 36, height: 36, objectFit: 'contain' }} />
+                      </div>
+                      <div style={{ fontSize: 14, fontWeight: 600 }}>{s.label}</div>
+                    </div>
+                  ))}
+                </div>
+              )}
+            </section>
+          </div>
+        )}
       </main>
       
-
+      {/* Footer - Always shows at the bottom */}
       <Footer />
     </>
   );
