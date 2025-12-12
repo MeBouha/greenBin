@@ -41,7 +41,7 @@ interface LegacyProps {
   deletingTrashCanId?: string | null;
 }
 
-// Icône selon le status
+// Icône selon le status (smaller icons - changed from 40 to 30)
 const getTrashIcon = (status: ApiStatus) => {
   const iconUrl =
     status === 'pleine' ? '/icons/trash-red.png' :
@@ -50,9 +50,9 @@ const getTrashIcon = (status: ApiStatus) => {
 
   return new L.Icon({
     iconUrl,
-    iconSize: [40, 40],
-    iconAnchor: [20, 40],
-    popupAnchor: [0, -40],
+    iconSize: [15, 15], // Smaller: from [40, 40] to [30, 30]
+    iconAnchor: [15, 30], // Adjusted proportionally: from [20, 40] to [15, 30]
+    popupAnchor: [0, -30], // Adjusted proportionally: from [0, -40] to [0, -30]
   });
 };
 

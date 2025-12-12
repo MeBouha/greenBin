@@ -1,1203 +1,1202 @@
-<?xml version="1.0" encoding="UTF-8"?>
 <trashCans xmlns:xs="http://www.w3.org/2001/XMLSchema-instance" xs:noNamespaceSchemaLocation="greenBin.xsd">
-  <trashCan id="1">
-    <lieu>
-      <adresse>Sfax centre</adresse>
-      <coordonnees>
-        <latitude>34.780926</latitude>
-        <longitude>10.77</longitude>
-      </coordonnees>
-    </lieu>
-    <typeDechet>plastique</typeDechet>
-    <capacite>100</capacite>
-    <status>vide</status>
-  </trashCan>
-  <trashCan id="2">
-    <lieu>
-      <adresse>Sfax centre</adresse>
-      <coordonnees>
-        <latitude>34.729974</latitude>
-        <longitude>10.763759</longitude>
-      </coordonnees>
-    </lieu>
-    <typeDechet>plastique</typeDechet>
-    <capacite>100</capacite>
-    <status>moitie</status>
-  </trashCan>
-  <trashCan id="3">
-    <lieu>
-      <adresse>Sfax centre</adresse>
-      <coordonnees>
-        <latitude>34.729789</latitude>
-        <longitude>10.765519</longitude>
-      </coordonnees>
-    </lieu>
-    <typeDechet>plastique</typeDechet>
-    <capacite>100</capacite>
-    <status>pleine</status>
-  </trashCan>
-  <trashCan id="4">
-    <lieu>
-      <adresse>Sfax centre</adresse>
-      <coordonnees>
-        <latitude>34.730406</latitude>
-        <longitude>10.76627</longitude>
-      </coordonnees>
-    </lieu>
-    <typeDechet>plastique</typeDechet>
-    <capacite>100</capacite>
-    <status>moitie</status>
-  </trashCan>
-  <trashCan id="5">
-    <lieu>
-      <adresse>Sfax centre</adresse>
-      <coordonnees>
-        <latitude>34.731703</latitude>
-        <longitude>10.765927</longitude>
-      </coordonnees>
-    </lieu>
-    <typeDechet>plastique</typeDechet>
-    <capacite>100</capacite>
-    <status>moitie</status>
-  </trashCan>
-  <trashCan id="6">
-    <lieu>
-      <adresse>Sfax centre</adresse>
-      <coordonnees>
-        <latitude>34.731527</latitude>
-        <longitude>10.767708</longitude>
-      </coordonnees>
-    </lieu>
-    <typeDechet>plastique</typeDechet>
-    <capacite>100</capacite>
-    <status>vide</status>
-  </trashCan>
-  <trashCan id="7">
-    <lieu>
-      <adresse>Sfax centre</adresse>
-      <coordonnees>
-        <latitude>34.732903</latitude>
-        <longitude>10.76744</longitude>
-      </coordonnees>
-    </lieu>
-    <typeDechet>plastique</typeDechet>
-    <capacite>100</capacite>
-    <status>vide</status>
-  </trashCan>
-  <trashCan id="8">
-    <lieu>
-      <adresse>Sfax centre</adresse>
-      <coordonnees>
-        <latitude>34.732462</latitude>
-        <longitude>10.763899</longitude>
-      </coordonnees>
-    </lieu>
-    <typeDechet>plastique</typeDechet>
-    <capacite>100</capacite>
-    <status>pleine</status>
-  </trashCan>
-  <trashCan id="9">
-    <lieu>
-      <adresse>Sfax centre</adresse>
-      <coordonnees>
-        <latitude>34.731421</latitude>
-        <longitude>10.7626</longitude>
-      </coordonnees>
-    </lieu>
-    <typeDechet>plastique</typeDechet>
-    <capacite>100</capacite>
-    <status>pleine</status>
-  </trashCan>
-  <trashCan id="10">
-    <lieu>
-      <adresse>Sfax centre</adresse>
-      <coordonnees>
-        <latitude>34.733287</latitude>
-        <longitude>10.764049</longitude>
-      </coordonnees>
-    </lieu>
-    <typeDechet>plastique</typeDechet>
-    <capacite>100</capacite>
-    <status>moitie</status>
-  </trashCan>
-  <trashCan id="11">
-    <lieu>
-      <adresse>Sfax centre</adresse>
-      <coordonnees>
-        <latitude>34.734681</latitude>
-        <longitude>10.765058</longitude>
-      </coordonnees>
-    </lieu>
-    <typeDechet>plastique</typeDechet>
-    <capacite>100</capacite>
-    <status>pleine</status>
-  </trashCan>
-  <trashCan id="12">
-    <lieu>
-      <adresse>Sfax centre</adresse>
-      <coordonnees>
-        <latitude>34.731885</latitude>
-        <longitude>10.761452</longitude>
-      </coordonnees>
-    </lieu>
-    <typeDechet>plastique</typeDechet>
-    <capacite>100</capacite>
-    <status>moitie</status>
-  </trashCan>
-  <trashCan id="13">
-    <lieu>
-      <adresse>Sfax centre</adresse>
-      <coordonnees>
-        <latitude>34.732767</latitude>
-        <longitude>10.761495</longitude>
-      </coordonnees>
-    </lieu>
-    <typeDechet>plastique</typeDechet>
-    <capacite>100</capacite>
-    <status>vide</status>
-  </trashCan>
-  <trashCan id="14">
-    <lieu>
-      <adresse>Sfax centre</adresse>
-      <coordonnees>
-        <latitude>34.733411</latitude>
-        <longitude>10.760787</longitude>
-      </coordonnees>
-    </lieu>
-    <typeDechet>plastique</typeDechet>
-    <capacite>100</capacite>
-    <status>moitie</status>
-  </trashCan>
-  <trashCan id="15">
-    <lieu>
-      <adresse>Sfax centre</adresse>
-      <coordonnees>
-        <latitude>34.73252</latitude>
-        <longitude>10.759692</longitude>
-      </coordonnees>
-    </lieu>
-    <typeDechet>plastique</typeDechet>
-    <capacite>100</capacite>
-    <status>pleine</status>
-  </trashCan>
-  <trashCan id="16">
-    <lieu>
-      <adresse>Sfax centre</adresse>
-      <coordonnees>
-        <latitude>34.73111</latitude>
-        <longitude>10.760256</longitude>
-      </coordonnees>
-    </lieu>
-    <typeDechet>plastique</typeDechet>
-    <capacite>100</capacite>
-    <status>moitie</status>
-  </trashCan>
-  <trashCan id="17">
-    <lieu>
-      <adresse>Sfax centre</adresse>
-      <coordonnees>
-        <latitude>34.72942</latitude>
-        <longitude>10.760144</longitude>
-      </coordonnees>
-    </lieu>
-    <typeDechet>plastique</typeDechet>
-    <capacite>100</capacite>
-    <status>vide</status>
-  </trashCan>
-  <trashCan id="18">
-    <lieu>
-      <adresse>Sfax centre</adresse>
-      <coordonnees>
-        <latitude>34.732327</latitude>
-        <longitude>10.75715</longitude>
-      </coordonnees>
-    </lieu>
-    <typeDechet>plastique</typeDechet>
-    <capacite>100</capacite>
-    <status>vide</status>
-  </trashCan>
-  <trashCan id="19">
-    <lieu>
-      <adresse>Sfax centre</adresse>
-      <coordonnees>
-        <latitude>34.730562</latitude>
-        <longitude>10.756238</longitude>
-      </coordonnees>
-    </lieu>
-    <typeDechet>plastique</typeDechet>
-    <capacite>100</capacite>
-    <status>pleine</status>
-  </trashCan>
-  <trashCan id="20">
-    <lieu>
-      <adresse>Sfax centre</adresse>
-      <coordonnees>
-        <latitude>34.73215</latitude>
-        <longitude>10.754854</longitude>
-      </coordonnees>
-    </lieu>
-    <typeDechet>plastique</typeDechet>
-    <capacite>100</capacite>
-    <status>pleine</status>
-  </trashCan>
-  <trashCan id="21">
-    <lieu>
-      <adresse>Sfax centre</adresse>
-      <coordonnees>
-        <latitude>34.729353</latitude>
-        <longitude>10.757526</longitude>
-      </coordonnees>
-    </lieu>
-    <typeDechet>plastique</typeDechet>
-    <capacite>100</capacite>
-    <status>moitie</status>
-  </trashCan>
-  <trashCan id="22">
-    <lieu>
-      <adresse>Route Gremda</adresse>
-      <coordonnees>
-        <latitude>34.733129</latitude>
-        <longitude>10.751635</longitude>
-      </coordonnees>
-    </lieu>
-    <typeDechet>plastique</typeDechet>
-    <capacite>100</capacite>
-    <status>moitie</status>
-  </trashCan>
-  <trashCan id="23">
-    <lieu>
-      <adresse>Route Gremda</adresse>
-      <coordonnees>
-        <latitude>34.731797</latitude>
-        <longitude>10.751281</longitude>
-      </coordonnees>
-    </lieu>
-    <typeDechet>plastique</typeDechet>
-    <capacite>100</capacite>
-    <status>vide</status>
-  </trashCan>
-  <trashCan id="24">
-    <lieu>
-      <adresse>Route Gremda</adresse>
-      <coordonnees>
-        <latitude>34.729706</latitude>
-        <longitude>10.751806</longitude>
-      </coordonnees>
-    </lieu>
-    <typeDechet>plastique</typeDechet>
-    <capacite>100</capacite>
-    <status>moitie</status>
-  </trashCan>
-  <trashCan id="25">
-    <lieu>
-      <adresse>Route Gremda</adresse>
-      <coordonnees>
-        <latitude>34.730342</latitude>
-        <longitude>10.74936</longitude>
-      </coordonnees>
-    </lieu>
-    <typeDechet>plastique</typeDechet>
-    <capacite>100</capacite>
-    <status>moitie</status>
-  </trashCan>
-  <trashCan id="26">
-    <lieu>
-      <adresse>Sfax centre</adresse>
-      <coordonnees>
-        <latitude>34.734461</latitude>
-        <longitude>10.753588</longitude>
-      </coordonnees>
-    </lieu>
-    <typeDechet>plastique</typeDechet>
-    <capacite>100</capacite>
-    <status>pleine</status>
-  </trashCan>
-  <trashCan id="27">
-    <lieu>
-      <adresse>Sfax centre</adresse>
-      <coordonnees>
-        <latitude>34.734338</latitude>
-        <longitude>10.756742</longitude>
-      </coordonnees>
-    </lieu>
-    <typeDechet>plastique</typeDechet>
-    <capacite>100</capacite>
-    <status>moitie</status>
-  </trashCan>
-  <trashCan id="28">
-    <lieu>
-      <adresse>Sfax centre</adresse>
-      <coordonnees>
-        <latitude>34.73507</latitude>
-        <longitude>10.75598</longitude>
-      </coordonnees>
-    </lieu>
-    <typeDechet>plastique</typeDechet>
-    <capacite>100</capacite>
-    <status>pleine</status>
-  </trashCan>
-  <trashCan id="29">
-    <lieu>
-      <adresse>Route Gremda</adresse>
-      <coordonnees>
-        <latitude>34.736014</latitude>
-        <longitude>10.751173</longitude>
-      </coordonnees>
-    </lieu>
-    <typeDechet>plastique</typeDechet>
-    <capacite>100</capacite>
-    <status>moitie</status>
-  </trashCan>
-  <trashCan id="30">
-    <lieu>
-      <adresse>Route Gremda</adresse>
-      <coordonnees>
-        <latitude>34.736684</latitude>
-        <longitude>10.752686</longitude>
-      </coordonnees>
-    </lieu>
-    <typeDechet>plastique</typeDechet>
-    <capacite>100</capacite>
-    <status>vide</status>
-  </trashCan>
-  <trashCan id="31">
-    <lieu>
-      <adresse>Sfax centre</adresse>
-      <coordonnees>
-        <latitude>34.737523</latitude>
-        <longitude>10.753963</longitude>
-      </coordonnees>
-    </lieu>
-    <typeDechet>plastique</typeDechet>
-    <capacite>100</capacite>
-    <status>vide</status>
-  </trashCan>
-  <trashCan id="32">
-    <lieu>
-      <adresse>Sfax centre</adresse>
-      <coordonnees>
-        <latitude>34.739084</latitude>
-        <longitude>10.75318</longitude>
-      </coordonnees>
-    </lieu>
-    <typeDechet>plastique</typeDechet>
-    <capacite>100</capacite>
-    <status>pleine</status>
-  </trashCan>
-  <trashCan id="33">
-    <lieu>
-      <adresse>Sfax centre</adresse>
-      <coordonnees>
-        <latitude>34.739904</latitude>
-        <longitude>10.757805</longitude>
-      </coordonnees>
-    </lieu>
-    <typeDechet>plastique</typeDechet>
-    <capacite>100</capacite>
-    <status>vide</status>
-  </trashCan>
-  <trashCan id="34">
-    <lieu>
-      <adresse>Sfax centre</adresse>
-      <coordonnees>
-        <latitude>34.73709</latitude>
-        <longitude>10.756163</longitude>
-      </coordonnees>
-    </lieu>
-    <typeDechet>plastique</typeDechet>
-    <capacite>100</capacite>
-    <status>pleine</status>
-  </trashCan>
-  <trashCan id="35">
-    <lieu>
-      <adresse>Sfax centre</adresse>
-      <coordonnees>
-        <latitude>34.741234</latitude>
-        <longitude>10.753855</longitude>
-      </coordonnees>
-    </lieu>
-    <typeDechet>plastique</typeDechet>
-    <capacite>100</capacite>
-    <status>moitie</status>
-  </trashCan>
-  <trashCan id="36">
-    <lieu>
-      <adresse>Sfax centre</adresse>
-      <coordonnees>
-        <latitude>34.740343</latitude>
-        <longitude>10.760218</longitude>
-      </coordonnees>
-    </lieu>
-    <typeDechet>plastique</typeDechet>
-    <capacite>100</capacite>
-    <status>vide</status>
-  </trashCan>
-  <trashCan id="37">
-    <lieu>
-      <adresse>Sfax centre</adresse>
-      <coordonnees>
-        <latitude>34.74209</latitude>
-        <longitude>10.760969</longitude>
-      </coordonnees>
-    </lieu>
-    <typeDechet>plastique</typeDechet>
-    <capacite>100</capacite>
-    <status>pleine</status>
-  </trashCan>
-  <trashCan id="38">
-    <lieu>
-      <adresse>Sfax centre</adresse>
-      <coordonnees>
-        <latitude>34.742707</latitude>
-        <longitude>10.759714</longitude>
-      </coordonnees>
-    </lieu>
-    <typeDechet>plastique</typeDechet>
-    <capacite>100</capacite>
-    <status>moitie</status>
-  </trashCan>
-  <trashCan id="39">
-    <lieu>
-      <adresse>Sfax centre</adresse>
-      <coordonnees>
-        <latitude>34.740987</latitude>
-        <longitude>10.7579</longitude>
-      </coordonnees>
-    </lieu>
-    <typeDechet>plastique</typeDechet>
-    <capacite>100</capacite>
-    <status>pleine</status>
-  </trashCan>
-  <trashCan id="40">
-    <lieu>
-      <adresse>Sfax centre</adresse>
-      <coordonnees>
-        <latitude>34.74306</latitude>
-        <longitude>10.75555</longitude>
-      </coordonnees>
-    </lieu>
-    <typeDechet>plastique</typeDechet>
-    <capacite>100</capacite>
-    <status>pleine</status>
-  </trashCan>
-  <trashCan id="41">
-    <lieu>
-      <adresse>Sfax centre</adresse>
-      <coordonnees>
-        <latitude>34.741516</latitude>
-        <longitude>10.763319</longitude>
-      </coordonnees>
-    </lieu>
-    <typeDechet>plastique</typeDechet>
-    <capacite>100</capacite>
-    <status>vide</status>
-  </trashCan>
-  <trashCan id="42">
-    <lieu>
-      <adresse>Sfax centre</adresse>
-      <coordonnees>
-        <latitude>34.742919</latitude>
-        <longitude>10.760873</longitude>
-      </coordonnees>
-    </lieu>
-    <typeDechet>plastique</typeDechet>
-    <capacite>100</capacite>
-    <status>pleine</status>
-  </trashCan>
-  <trashCan id="43">
-    <lieu>
-      <adresse>Sfax centre</adresse>
-      <coordonnees>
-        <latitude>34.744842</latitude>
-        <longitude>10.761506</longitude>
-      </coordonnees>
-    </lieu>
-    <typeDechet>plastique</typeDechet>
-    <capacite>100</capacite>
-    <status>vide</status>
-  </trashCan>
-  <trashCan id="44">
-    <lieu>
-      <adresse>Sfax centre</adresse>
-      <coordonnees>
-        <latitude>34.745406</latitude>
-        <longitude>10.763609</longitude>
-      </coordonnees>
-    </lieu>
-    <typeDechet>plastique</typeDechet>
-    <capacite>100</capacite>
-    <status>pleine</status>
-  </trashCan>
-  <trashCan id="45">
-    <lieu>
-      <adresse>Sfax centre</adresse>
-      <coordonnees>
-        <latitude>34.746756</latitude>
-        <longitude>10.761795</longitude>
-      </coordonnees>
-    </lieu>
-    <typeDechet>plastique</typeDechet>
-    <capacite>100</capacite>
-    <status>vide</status>
-  </trashCan>
-  <trashCan id="46">
-    <lieu>
-      <adresse>Sfax centre</adresse>
-      <coordonnees>
-        <latitude>34.745786</latitude>
-        <longitude>10.757063</longitude>
-      </coordonnees>
-    </lieu>
-    <typeDechet>plastique</typeDechet>
-    <capacite>100</capacite>
-    <status>vide</status>
-  </trashCan>
-  <trashCan id="47">
-    <lieu>
-      <adresse>Sfax centre</adresse>
-      <coordonnees>
-        <latitude>34.746341</latitude>
-        <longitude>10.755583</longitude>
-      </coordonnees>
-    </lieu>
-    <typeDechet>plastique</typeDechet>
-    <capacite>100</capacite>
-    <status>vide</status>
-  </trashCan>
-  <trashCan id="48">
-    <lieu>
-      <adresse>Sfax centre</adresse>
-      <coordonnees>
-        <latitude>34.747709</latitude>
-        <longitude>10.75422</longitude>
-      </coordonnees>
-    </lieu>
-    <typeDechet>plastique</typeDechet>
-    <capacite>100</capacite>
-    <status>pleine</status>
-  </trashCan>
-  <trashCan id="49">
-    <lieu>
-      <adresse>Sfax centre</adresse>
-      <coordonnees>
-        <latitude>34.749234</latitude>
-        <longitude>10.753415</longitude>
-      </coordonnees>
-    </lieu>
-    <typeDechet>plastique</typeDechet>
-    <capacite>100</capacite>
-    <status>vide</status>
-  </trashCan>
-  <trashCan id="50">
-    <lieu>
-      <adresse>Sfax centre</adresse>
-      <coordonnees>
-        <latitude>34.748952</latitude>
-        <longitude>10.756312</longitude>
-      </coordonnees>
-    </lieu>
-    <typeDechet>plastique</typeDechet>
-    <capacite>100</capacite>
-    <status>vide</status>
-  </trashCan>
-  <trashCan id="51">
-    <lieu>
-      <adresse>Route Gremda</adresse>
-      <coordonnees>
-        <latitude>34.749711</latitude>
-        <longitude>10.751408</longitude>
-      </coordonnees>
-    </lieu>
-    <typeDechet>plastique</typeDechet>
-    <capacite>100</capacite>
-    <status>vide</status>
-  </trashCan>
-  <trashCan id="52">
-    <lieu>
-      <adresse>Route Gremda</adresse>
-      <coordonnees>
-        <latitude>34.746615</latitude>
-        <longitude>10.752417</longitude>
-      </coordonnees>
-    </lieu>
-    <typeDechet>plastique</typeDechet>
-    <capacite>100</capacite>
-    <status>vide</status>
-  </trashCan>
-  <trashCan id="53">
-    <lieu>
-      <adresse>Route Gremda</adresse>
-      <coordonnees>
-        <latitude>34.750055</latitude>
-        <longitude>10.749853</longitude>
-      </coordonnees>
-    </lieu>
-    <typeDechet>plastique</typeDechet>
-    <capacite>100</capacite>
-    <status>moitie</status>
-  </trashCan>
-  <trashCan id="54">
-    <lieu>
-      <adresse>Sfax centre</adresse>
-      <coordonnees>
-        <latitude>34.742919</latitude>
-        <longitude>10.751999</longitude>
-      </coordonnees>
-    </lieu>
-    <typeDechet>plastique</typeDechet>
-    <capacite>100</capacite>
-    <status>pleine</status>
-  </trashCan>
-  <trashCan id="55">
-    <lieu>
-      <adresse>Sfax centre</adresse>
-      <coordonnees>
-        <latitude>34.74411</latitude>
-        <longitude>10.750014</longitude>
-      </coordonnees>
-    </lieu>
-    <typeDechet>plastique</typeDechet>
-    <capacite>100</capacite>
-    <status>pleine</status>
-  </trashCan>
-  <trashCan id="56">
-    <lieu>
-      <adresse>Route Gremda</adresse>
-      <coordonnees>
-        <latitude>34.743651</latitude>
-        <longitude>10.748286</longitude>
-      </coordonnees>
-    </lieu>
-    <typeDechet>plastique</typeDechet>
-    <capacite>100</capacite>
-    <status>moitie</status>
-  </trashCan>
-  <trashCan id="57">
-    <lieu>
-      <adresse>Sfax centre</adresse>
-      <coordonnees>
-        <latitude>34.741931</latitude>
-        <longitude>10.75099</longitude>
-      </coordonnees>
-    </lieu>
-    <typeDechet>plastique</typeDechet>
-    <capacite>100</capacite>
-    <status>pleine</status>
-  </trashCan>
-  <trashCan id="58">
-    <lieu>
-      <adresse>Route Gremda</adresse>
-      <coordonnees>
-        <latitude>34.742478</latitude>
-        <longitude>10.749284</longitude>
-      </coordonnees>
-    </lieu>
-    <typeDechet>plastique</typeDechet>
-    <capacite>100</capacite>
-    <status>pleine</status>
-  </trashCan>
-  <trashCan id="59">
-    <lieu>
-      <adresse>Route Gremda</adresse>
-      <coordonnees>
-        <latitude>34.743933</latitude>
-        <longitude>10.746022</longitude>
-      </coordonnees>
-    </lieu>
-    <typeDechet>plastique</typeDechet>
-    <capacite>100</capacite>
-    <status>pleine</status>
-  </trashCan>
-  <trashCan id="60">
-    <lieu>
-      <adresse>Route Gremda</adresse>
-      <coordonnees>
-        <latitude>34.74164</latitude>
-        <longitude>10.746183</longitude>
-      </coordonnees>
-    </lieu>
-    <typeDechet>plastique</typeDechet>
-    <capacite>100</capacite>
-    <status>pleine</status>
-  </trashCan>
-  <trashCan id="61">
-    <lieu>
-      <adresse>Route Gremda</adresse>
-      <coordonnees>
-        <latitude>34.742513</latitude>
-        <longitude>10.744337</longitude>
-      </coordonnees>
-    </lieu>
-    <typeDechet>plastique</typeDechet>
-    <capacite>100</capacite>
-    <status>moitie</status>
-  </trashCan>
-  <trashCan id="62">
-    <lieu>
-      <adresse>Route Gremda</adresse>
-      <coordonnees>
-        <latitude>34.74022</latitude>
-        <longitude>10.743683</longitude>
-      </coordonnees>
-    </lieu>
-    <typeDechet>plastique</typeDechet>
-    <capacite>100</capacite>
-    <status>pleine</status>
-  </trashCan>
-  <trashCan id="63">
-    <lieu>
-      <adresse>Route Gremda</adresse>
-      <coordonnees>
-        <latitude>34.739496</latitude>
-        <longitude>10.749423</longitude>
-      </coordonnees>
-    </lieu>
-    <typeDechet>plastique</typeDechet>
-    <capacite>100</capacite>
-    <status>vide</status>
-  </trashCan>
-  <trashCan id="64">
-    <lieu>
-      <adresse>Route Gremda</adresse>
-      <coordonnees>
-        <latitude>34.740881</latitude>
-        <longitude>10.740635</longitude>
-      </coordonnees>
-    </lieu>
-    <typeDechet>plastique</typeDechet>
-    <capacite>100</capacite>
-    <status>pleine</status>
-  </trashCan>
-  <trashCan id="65">
-    <lieu>
-      <adresse>Route Gremda</adresse>
-      <coordonnees>
-        <latitude>34.737582</latitude>
-        <longitude>10.746269</longitude>
-      </coordonnees>
-    </lieu>
-    <typeDechet>plastique</typeDechet>
-    <capacite>100</capacite>
-    <status>vide</status>
-  </trashCan>
-  <trashCan id="66">
-    <lieu>
-      <adresse>Route Gremda</adresse>
-      <coordonnees>
-        <latitude>34.739611</latitude>
-        <longitude>10.741547</longitude>
-      </coordonnees>
-    </lieu>
-    <typeDechet>plastique</typeDechet>
-    <capacite>100</capacite>
-    <status>vide</status>
-  </trashCan>
-  <trashCan id="67">
-    <lieu>
-      <adresse>Route Gremda</adresse>
-      <coordonnees>
-        <latitude>34.738579</latitude>
-        <longitude>10.739798</longitude>
-      </coordonnees>
-    </lieu>
-    <typeDechet>plastique</typeDechet>
-    <capacite>100</capacite>
-    <status>vide</status>
-  </trashCan>
-  <trashCan id="68">
-    <lieu>
-      <adresse>Route Gremda</adresse>
-      <coordonnees>
-        <latitude>34.735712</latitude>
-        <longitude>10.745239</longitude>
-      </coordonnees>
-    </lieu>
-    <typeDechet>plastique</typeDechet>
-    <capacite>100</capacite>
-    <status>vide</status>
-  </trashCan>
-  <trashCan id="69">
-    <lieu>
-      <adresse>Route Gremda</adresse>
-      <coordonnees>
-        <latitude>34.73588</latitude>
-        <longitude>10.738661</longitude>
-      </coordonnees>
-    </lieu>
-    <typeDechet>plastique</typeDechet>
-    <capacite>100</capacite>
-    <status>pleine</status>
-  </trashCan>
-  <trashCan id="70">
-    <lieu>
-      <adresse>Route Gremda</adresse>
-      <coordonnees>
-        <latitude>34.737273</latitude>
-        <longitude>10.738289</longitude>
-      </coordonnees>
-    </lieu>
-    <typeDechet>plastique</typeDechet>
-    <capacite>100</capacite>
-    <status>moitie</status>
-  </trashCan>
-  <trashCan id="71">
-    <lieu>
-      <adresse>Route Gremda</adresse>
-      <coordonnees>
-        <latitude>34.739663</latitude>
-        <longitude>10.737227</longitude>
-      </coordonnees>
-    </lieu>
-    <typeDechet>plastique</typeDechet>
-    <capacite>100</capacite>
-    <status>vide</status>
-  </trashCan>
-  <trashCan id="72">
-    <lieu>
-      <adresse>Route Gremda</adresse>
-      <coordonnees>
-        <latitude>34.737529</latitude>
-        <longitude>10.734308</longitude>
-      </coordonnees>
-    </lieu>
-    <typeDechet>plastique</typeDechet>
-    <capacite>100</capacite>
-    <status>pleine</status>
-  </trashCan>
-  <trashCan id="73">
-    <lieu>
-      <adresse>Route Gremda</adresse>
-      <coordonnees>
-        <latitude>34.739063</latitude>
-        <longitude>10.733987</longitude>
-      </coordonnees>
-    </lieu>
-    <typeDechet>plastique</typeDechet>
-    <capacite>100</capacite>
-    <status>moitie</status>
-  </trashCan>
-  <trashCan id="74">
-    <lieu>
-      <adresse>Route Gremda</adresse>
-      <coordonnees>
-        <latitude>34.735429</latitude>
-        <longitude>10.733225</longitude>
-      </coordonnees>
-    </lieu>
-    <typeDechet>plastique</typeDechet>
-    <capacite>100</capacite>
-    <status>pleine</status>
-  </trashCan>
-    <trashCan id="75">
-    <lieu>
-      <adresse>Route Gremda</adresse>
-      <coordonnees>
-        <latitude>34.734644</latitude>
-        <longitude>10.729297</longitude>
-      </coordonnees>
-    </lieu>
-    <typeDechet>plastique</typeDechet>
-    <capacite>100</capacite>
-    <status>pleine</status>
-  </trashCan>
-  <trashCan id="76">
-    <lieu>
-      <adresse>Route Gremda</adresse>
-      <coordonnees>
-        <latitude>34.734891</latitude>
-        <longitude>10.725971</longitude>
-      </coordonnees>
-    </lieu>
-    <typeDechet>plastique</typeDechet>
-    <capacite>100</capacite>
-    <status>pleine</status>
-  </trashCan>
-  <trashCan id="77">
-    <lieu>
-      <adresse>Route Gremda</adresse>
-      <coordonnees>
-        <latitude>34.736832</latitude>
-        <longitude>10.726025</longitude>
-      </coordonnees>
-    </lieu>
-    <typeDechet>plastique</typeDechet>
-    <capacite>100</capacite>
-    <status>moitie</status>
-  </trashCan>
-  <trashCan id="78">
-    <lieu>
-      <adresse>Route Gremda</adresse>
-      <coordonnees>
-        <latitude>34.737758</latitude>
-        <longitude>10.727902</longitude>
-      </coordonnees>
-    </lieu>
-    <typeDechet>plastique</typeDechet>
-    <capacite>100</capacite>
-    <status>vide</status>
-  </trashCan>
-  <trashCan id="79">
-    <lieu>
-      <adresse>Route Gremda</adresse>
-      <coordonnees>
-        <latitude>34.739258</latitude>
-        <longitude>10.727849</longitude>
-      </coordonnees>
-    </lieu>
-    <typeDechet>plastique</typeDechet>
-    <capacite>100</capacite>
-    <status>pleine</status>
-  </trashCan>
-  <trashCan id="80">
-    <lieu>
-      <adresse>Route Gremda</adresse>
-      <coordonnees>
-        <latitude>34.741039</latitude>
-        <longitude>10.732817</longitude>
-      </coordonnees>
-    </lieu>
-    <typeDechet>plastique</typeDechet>
-    <capacite>100</capacite>
-    <status>vide</status>
-  </trashCan>
-  <trashCan id="81">
-    <lieu>
-      <adresse>Route Gremda</adresse>
-      <coordonnees>
-        <latitude>34.742124</latitude>
-        <longitude>10.735639</longitude>
-      </coordonnees>
-    </lieu>
-    <typeDechet>plastique</typeDechet>
-    <capacite>100</capacite>
-    <status>pleine</status>
-  </trashCan>
-  <trashCan id="82">
-    <lieu>
-      <adresse>Route Gremda</adresse>
-      <coordonnees>
-        <latitude>34.743242</latitude>
-        <longitude>10.73255</longitude>
-      </coordonnees>
-    </lieu>
-    <typeDechet>plastique</typeDechet>
-    <capacite>100</capacite>
-    <status>vide</status>
-  </trashCan>
-  <trashCan id="83">
-    <lieu>
-      <adresse>Route Gremda</adresse>
-      <coordonnees>
-        <latitude>34.743251</latitude>
-        <longitude>10.726488</longitude>
-      </coordonnees>
-    </lieu>
-    <typeDechet>plastique</typeDechet>
-    <capacite>100</capacite>
-    <status>moitie</status>
-  </trashCan>
-  <trashCan id="84">
-    <lieu>
-      <adresse>Route Gremda</adresse>
-      <coordonnees>
-        <latitude>34.745112</latitude>
-        <longitude>10.728269</longitude>
-      </coordonnees>
-    </lieu>
-    <typeDechet>plastique</typeDechet>
-    <capacite>100</capacite>
-    <status>moitie</status>
-  </trashCan>
-  <trashCan id="85">
-    <lieu>
-      <adresse>Route Gremda</adresse>
-      <coordonnees>
-        <latitude>34.731137</latitude>
-        <longitude>10.746294</longitude>
-      </coordonnees>
-    </lieu>
-    <typeDechet>plastique</typeDechet>
-    <capacite>100</capacite>
-    <status>vide</status>
-  </trashCan>
-  <trashCan id="86">
-    <lieu>
-      <adresse>Route Gremda</adresse>
-      <coordonnees>
-        <latitude>34.731975</latitude>
-        <longitude>10.745156</longitude>
-      </coordonnees>
-    </lieu>
-    <typeDechet>plastique</typeDechet>
-    <capacite>100</capacite>
-    <status>moitie</status>
-  </trashCan>
-  <trashCan id="87">
-    <lieu>
-      <adresse>Route Gremda</adresse>
-      <coordonnees>
-        <latitude>34.73044</latitude>
-        <longitude>10.742581</longitude>
-      </coordonnees>
-    </lieu>
-    <typeDechet>plastique</typeDechet>
-    <capacite>100</capacite>
-    <status>vide</status>
-  </trashCan>
-  <trashCan id="88">
-    <lieu>
-      <adresse>Route Gremda</adresse>
-      <coordonnees>
-        <latitude>34.728517</latitude>
-        <longitude>10.738654</longitude>
-      </coordonnees>
-    </lieu>
-    <typeDechet>plastique</typeDechet>
-    <capacite>100</capacite>
-    <status>pleine</status>
-  </trashCan>
-  <trashCan id="89">
-    <lieu>
-      <adresse>Route Gremda</adresse>
-      <coordonnees>
-        <latitude>34.72917</latitude>
-        <longitude>10.743869</longitude>
-      </coordonnees>
-    </lieu>
-    <typeDechet>plastique</typeDechet>
-    <capacite>100</capacite>
-    <status>pleine</status>
-  </trashCan>
-  <trashCan id="90">
-    <lieu>
-      <adresse>Route Gremda</adresse>
-      <coordonnees>
-        <latitude>34.725157</latitude>
-        <longitude>10.739738</longitude>
-      </coordonnees>
-    </lieu>
-    <typeDechet>plastique</typeDechet>
-    <capacite>100</capacite>
-    <status>vide</status>
-  </trashCan>
-  <trashCan id="91">
-    <lieu>
-      <adresse>Route Gremda</adresse>
-      <coordonnees>
-        <latitude>34.722097</latitude>
-        <longitude>10.74257</longitude>
-      </coordonnees>
-    </lieu>
-    <typeDechet>plastique</typeDechet>
-    <capacite>100</capacite>
-    <status>vide</status>
-  </trashCan>
-  <trashCan id="92">
-    <lieu>
-      <adresse>Sfax centre</adresse>
-      <coordonnees>
-        <latitude>34.726835</latitude>
-        <longitude>10.755125</longitude>
-      </coordonnees>
-    </lieu>
-    <typeDechet>plastique</typeDechet>
-    <capacite>100</capacite>
-    <status>moitie</status>
-  </trashCan>
-  <trashCan id="93">
-    <lieu>
-      <adresse>Sfax centre</adresse>
-      <coordonnees>
-        <latitude>34.721586</latitude>
-        <longitude>10.760629</longitude>
-      </coordonnees>
-    </lieu>
-    <typeDechet>plastique</typeDechet>
-    <capacite>100</capacite>
-    <status>vide</status>
-  </trashCan>
-  <trashCan id="94">
-    <lieu>
-      <adresse>Sfax centre</adresse>
-      <coordonnees>
-        <latitude>34.723888</latitude>
-        <longitude>10.762676</longitude>
-      </coordonnees>
-    </lieu>
-    <typeDechet>plastique</typeDechet>
-    <capacite>100</capacite>
-    <status>moitie</status>
-  </trashCan>
-  <trashCan id="95">
-    <lieu>
-      <adresse>Sfax centre</adresse>
-      <coordonnees>
-        <latitude>34.724232</latitude>
-        <longitude>10.766142</longitude>
-      </coordonnees>
-    </lieu>
-    <typeDechet>plastique</typeDechet>
-    <capacite>100</capacite>
-    <status>vide</status>
-  </trashCan>
-  <trashCan id="96">
-    <lieu>
-      <adresse>Sfax centre</adresse>
-      <coordonnees>
-        <latitude>34.72381</latitude>
-        <longitude>10.768909</longitude>
-      </coordonnees>
-    </lieu>
-    <typeDechet>plastique</typeDechet>
-    <capacite>100</capacite>
-    <status>vide</status>
-  </trashCan>
-  <trashCan id="97">
-    <lieu>
-      <adresse>Route Gremda</adresse>
-      <coordonnees>
-        <latitude>34.731949</latitude>
-        <longitude>10.737473</longitude>
-      </coordonnees>
-    </lieu>
-    <typeDechet>plastique</typeDechet>
-    <capacite>100</capacite>
-    <status>moitie</status>
-  </trashCan>
-  <trashCan id="98">
-    <lieu>
-      <adresse>Route Gremda</adresse>
-      <coordonnees>
-        <latitude>34.732399</latitude>
-        <longitude>10.731442</longitude>
-      </coordonnees>
-    </lieu>
-    <typeDechet>plastique</typeDechet>
-    <capacite>100</capacite>
-    <status>moitie</status>
-  </trashCan>
-  <trashCan id="99">
-    <lieu>
-      <adresse>Route Gremda</adresse>
-      <coordonnees>
-        <latitude>34.731781</latitude>
-        <longitude>10.728642</longitude>
-      </coordonnees>
-    </lieu>
-    <typeDechet>plastique</typeDechet>
-    <capacite>100</capacite>
-    <status>vide</status>
-  </trashCan>
-  <trashCan id="100">
-    <lieu>
-      <adresse>Route Gremda</adresse>
-      <coordonnees>
-        <latitude>34.730193</latitude>
-        <longitude>10.726538</longitude>
-      </coordonnees>
-    </lieu>
-    <typeDechet>plastique</typeDechet>
-    <capacite>100</capacite>
-    <status>moitie</status>
-  </trashCan>
+<trashCan id="1">
+<lieu>
+<adresse>Sfax centre</adresse>
+<coordonnees>
+<latitude>34.780926</latitude>
+<longitude>10.77</longitude>
+</coordonnees>
+</lieu>
+<typeDechet>plastique</typeDechet>
+<capacite>100</capacite>
+<status>vide</status>
+</trashCan>
+<trashCan id="2">
+<lieu>
+<adresse>Sfax centre</adresse>
+<coordonnees>
+<latitude>34.729974</latitude>
+<longitude>10.763759</longitude>
+</coordonnees>
+</lieu>
+<typeDechet>plastique</typeDechet>
+<capacite>100</capacite>
+<status>moitie</status>
+</trashCan>
+<trashCan id="3">
+<lieu>
+<adresse>Sfax centre</adresse>
+<coordonnees>
+<latitude>34.729789</latitude>
+<longitude>10.765519</longitude>
+</coordonnees>
+</lieu>
+<typeDechet>plastique</typeDechet>
+<capacite>100</capacite>
+<status>pleine</status>
+</trashCan>
+<trashCan id="4">
+<lieu>
+<adresse>Sfax centre</adresse>
+<coordonnees>
+<latitude>34.730406</latitude>
+<longitude>10.76627</longitude>
+</coordonnees>
+</lieu>
+<typeDechet>plastique</typeDechet>
+<capacite>100</capacite>
+<status>moitie</status>
+</trashCan>
+<trashCan id="5">
+<lieu>
+<adresse>Sfax centre</adresse>
+<coordonnees>
+<latitude>34.731703</latitude>
+<longitude>10.765927</longitude>
+</coordonnees>
+</lieu>
+<typeDechet>plastique</typeDechet>
+<capacite>100</capacite>
+<status>moitie</status>
+</trashCan>
+<trashCan id="6">
+<lieu>
+<adresse>Sfax centre</adresse>
+<coordonnees>
+<latitude>34.731527</latitude>
+<longitude>10.767708</longitude>
+</coordonnees>
+</lieu>
+<typeDechet>plastique</typeDechet>
+<capacite>100</capacite>
+<status>vide</status>
+</trashCan>
+<trashCan id="7">
+<lieu>
+<adresse>Sfax centre</adresse>
+<coordonnees>
+<latitude>34.732903</latitude>
+<longitude>10.76744</longitude>
+</coordonnees>
+</lieu>
+<typeDechet>plastique</typeDechet>
+<capacite>100</capacite>
+<status>vide</status>
+</trashCan>
+<trashCan id="8">
+<lieu>
+<adresse>Sfax centre</adresse>
+<coordonnees>
+<latitude>34.732462</latitude>
+<longitude>10.763899</longitude>
+</coordonnees>
+</lieu>
+<typeDechet>plastique</typeDechet>
+<capacite>100</capacite>
+<status>pleine</status>
+</trashCan>
+<trashCan id="9">
+<lieu>
+<adresse>Sfax centre</adresse>
+<coordonnees>
+<latitude>34.731421</latitude>
+<longitude>10.7626</longitude>
+</coordonnees>
+</lieu>
+<typeDechet>plastique</typeDechet>
+<capacite>100</capacite>
+<status>pleine</status>
+</trashCan>
+<trashCan id="10">
+<lieu>
+<adresse>Sfax centre</adresse>
+<coordonnees>
+<latitude>34.733287</latitude>
+<longitude>10.764049</longitude>
+</coordonnees>
+</lieu>
+<typeDechet>plastique</typeDechet>
+<capacite>100</capacite>
+<status>moitie</status>
+</trashCan>
+<trashCan id="11">
+<lieu>
+<adresse>Sfax centre</adresse>
+<coordonnees>
+<latitude>34.734681</latitude>
+<longitude>10.765058</longitude>
+</coordonnees>
+</lieu>
+<typeDechet>plastique</typeDechet>
+<capacite>100</capacite>
+<status>pleine</status>
+</trashCan>
+<trashCan id="12">
+<lieu>
+<adresse>Sfax centre</adresse>
+<coordonnees>
+<latitude>34.731885</latitude>
+<longitude>10.761452</longitude>
+</coordonnees>
+</lieu>
+<typeDechet>plastique</typeDechet>
+<capacite>100</capacite>
+<status>moitie</status>
+</trashCan>
+<trashCan id="13">
+<lieu>
+<adresse>Sfax centre</adresse>
+<coordonnees>
+<latitude>34.732767</latitude>
+<longitude>10.761495</longitude>
+</coordonnees>
+</lieu>
+<typeDechet>plastique</typeDechet>
+<capacite>100</capacite>
+<status>vide</status>
+</trashCan>
+<trashCan id="14">
+<lieu>
+<adresse>Sfax centre</adresse>
+<coordonnees>
+<latitude>34.733411</latitude>
+<longitude>10.760787</longitude>
+</coordonnees>
+</lieu>
+<typeDechet>plastique</typeDechet>
+<capacite>100</capacite>
+<status>moitie</status>
+</trashCan>
+<trashCan id="15">
+<lieu>
+<adresse>Sfax centre</adresse>
+<coordonnees>
+<latitude>34.73252</latitude>
+<longitude>10.759692</longitude>
+</coordonnees>
+</lieu>
+<typeDechet>plastique</typeDechet>
+<capacite>100</capacite>
+<status>pleine</status>
+</trashCan>
+<trashCan id="16">
+<lieu>
+<adresse>Sfax centre</adresse>
+<coordonnees>
+<latitude>34.73111</latitude>
+<longitude>10.760256</longitude>
+</coordonnees>
+</lieu>
+<typeDechet>plastique</typeDechet>
+<capacite>100</capacite>
+<status>moitie</status>
+</trashCan>
+<trashCan id="17">
+<lieu>
+<adresse>Sfax centre</adresse>
+<coordonnees>
+<latitude>34.72942</latitude>
+<longitude>10.760144</longitude>
+</coordonnees>
+</lieu>
+<typeDechet>plastique</typeDechet>
+<capacite>100</capacite>
+<status>vide</status>
+</trashCan>
+<trashCan id="18">
+<lieu>
+<adresse>Sfax centre</adresse>
+<coordonnees>
+<latitude>34.732327</latitude>
+<longitude>10.75715</longitude>
+</coordonnees>
+</lieu>
+<typeDechet>plastique</typeDechet>
+<capacite>100</capacite>
+<status>vide</status>
+</trashCan>
+<trashCan id="19">
+<lieu>
+<adresse>Sfax centre</adresse>
+<coordonnees>
+<latitude>34.730562</latitude>
+<longitude>10.756238</longitude>
+</coordonnees>
+</lieu>
+<typeDechet>plastique</typeDechet>
+<capacite>100</capacite>
+<status>pleine</status>
+</trashCan>
+<trashCan id="20">
+<lieu>
+<adresse>Sfax centre</adresse>
+<coordonnees>
+<latitude>34.73215</latitude>
+<longitude>10.754854</longitude>
+</coordonnees>
+</lieu>
+<typeDechet>plastique</typeDechet>
+<capacite>100</capacite>
+<status>pleine</status>
+</trashCan>
+<trashCan id="21">
+<lieu>
+<adresse>Sfax centre</adresse>
+<coordonnees>
+<latitude>34.729353</latitude>
+<longitude>10.757526</longitude>
+</coordonnees>
+</lieu>
+<typeDechet>plastique</typeDechet>
+<capacite>100</capacite>
+<status>moitie</status>
+</trashCan>
+<trashCan id="22">
+<lieu>
+<adresse>Route Gremda</adresse>
+<coordonnees>
+<latitude>34.733129</latitude>
+<longitude>10.751635</longitude>
+</coordonnees>
+</lieu>
+<typeDechet>plastique</typeDechet>
+<capacite>100</capacite>
+<status>moitie</status>
+</trashCan>
+<trashCan id="23">
+<lieu>
+<adresse>Route Gremda</adresse>
+<coordonnees>
+<latitude>34.731797</latitude>
+<longitude>10.751281</longitude>
+</coordonnees>
+</lieu>
+<typeDechet>plastique</typeDechet>
+<capacite>100</capacite>
+<status>vide</status>
+</trashCan>
+<trashCan id="24">
+<lieu>
+<adresse>Route Gremda</adresse>
+<coordonnees>
+<latitude>34.729706</latitude>
+<longitude>10.751806</longitude>
+</coordonnees>
+</lieu>
+<typeDechet>plastique</typeDechet>
+<capacite>100</capacite>
+<status>moitie</status>
+</trashCan>
+<trashCan id="25">
+<lieu>
+<adresse>Route Gremda</adresse>
+<coordonnees>
+<latitude>34.730342</latitude>
+<longitude>10.74936</longitude>
+</coordonnees>
+</lieu>
+<typeDechet>plastique</typeDechet>
+<capacite>100</capacite>
+<status>moitie</status>
+</trashCan>
+<trashCan id="26">
+<lieu>
+<adresse>Sfax centre</adresse>
+<coordonnees>
+<latitude>34.734461</latitude>
+<longitude>10.753588</longitude>
+</coordonnees>
+</lieu>
+<typeDechet>plastique</typeDechet>
+<capacite>100</capacite>
+<status>pleine</status>
+</trashCan>
+<trashCan id="27">
+<lieu>
+<adresse>Sfax centre</adresse>
+<coordonnees>
+<latitude>34.734338</latitude>
+<longitude>10.756742</longitude>
+</coordonnees>
+</lieu>
+<typeDechet>plastique</typeDechet>
+<capacite>100</capacite>
+<status>moitie</status>
+</trashCan>
+<trashCan id="28">
+<lieu>
+<adresse>Sfax centre</adresse>
+<coordonnees>
+<latitude>34.73507</latitude>
+<longitude>10.75598</longitude>
+</coordonnees>
+</lieu>
+<typeDechet>plastique</typeDechet>
+<capacite>100</capacite>
+<status>pleine</status>
+</trashCan>
+<trashCan id="29">
+<lieu>
+<adresse>Route Gremda</adresse>
+<coordonnees>
+<latitude>34.736014</latitude>
+<longitude>10.751173</longitude>
+</coordonnees>
+</lieu>
+<typeDechet>plastique</typeDechet>
+<capacite>100</capacite>
+<status>moitie</status>
+</trashCan>
+<trashCan id="30">
+<lieu>
+<adresse>Route Gremda</adresse>
+<coordonnees>
+<latitude>34.736684</latitude>
+<longitude>10.752686</longitude>
+</coordonnees>
+</lieu>
+<typeDechet>plastique</typeDechet>
+<capacite>100</capacite>
+<status>vide</status>
+</trashCan>
+<trashCan id="31">
+<lieu>
+<adresse>Sfax centre</adresse>
+<coordonnees>
+<latitude>34.737523</latitude>
+<longitude>10.753963</longitude>
+</coordonnees>
+</lieu>
+<typeDechet>plastique</typeDechet>
+<capacite>100</capacite>
+<status>vide</status>
+</trashCan>
+<trashCan id="32">
+<lieu>
+<adresse>Sfax centre</adresse>
+<coordonnees>
+<latitude>34.739084</latitude>
+<longitude>10.75318</longitude>
+</coordonnees>
+</lieu>
+<typeDechet>plastique</typeDechet>
+<capacite>100</capacite>
+<status>pleine</status>
+</trashCan>
+<trashCan id="33">
+<lieu>
+<adresse>Sfax centre</adresse>
+<coordonnees>
+<latitude>34.739904</latitude>
+<longitude>10.757805</longitude>
+</coordonnees>
+</lieu>
+<typeDechet>plastique</typeDechet>
+<capacite>100</capacite>
+<status>vide</status>
+</trashCan>
+<trashCan id="34">
+<lieu>
+<adresse>Sfax centre</adresse>
+<coordonnees>
+<latitude>34.73709</latitude>
+<longitude>10.756163</longitude>
+</coordonnees>
+</lieu>
+<typeDechet>plastique</typeDechet>
+<capacite>100</capacite>
+<status>pleine</status>
+</trashCan>
+<trashCan id="35">
+<lieu>
+<adresse>Sfax centre</adresse>
+<coordonnees>
+<latitude>34.741234</latitude>
+<longitude>10.753855</longitude>
+</coordonnees>
+</lieu>
+<typeDechet>plastique</typeDechet>
+<capacite>100</capacite>
+<status>moitie</status>
+</trashCan>
+<trashCan id="36">
+<lieu>
+<adresse>Sfax centre</adresse>
+<coordonnees>
+<latitude>34.740343</latitude>
+<longitude>10.760218</longitude>
+</coordonnees>
+</lieu>
+<typeDechet>plastique</typeDechet>
+<capacite>100</capacite>
+<status>vide</status>
+</trashCan>
+<trashCan id="37">
+<lieu>
+<adresse>Sfax centre</adresse>
+<coordonnees>
+<latitude>34.74209</latitude>
+<longitude>10.760969</longitude>
+</coordonnees>
+</lieu>
+<typeDechet>plastique</typeDechet>
+<capacite>100</capacite>
+<status>pleine</status>
+</trashCan>
+<trashCan id="38">
+<lieu>
+<adresse>Sfax centre</adresse>
+<coordonnees>
+<latitude>34.742707</latitude>
+<longitude>10.759714</longitude>
+</coordonnees>
+</lieu>
+<typeDechet>plastique</typeDechet>
+<capacite>100</capacite>
+<status>moitie</status>
+</trashCan>
+<trashCan id="39">
+<lieu>
+<adresse>Sfax centre</adresse>
+<coordonnees>
+<latitude>34.740987</latitude>
+<longitude>10.7579</longitude>
+</coordonnees>
+</lieu>
+<typeDechet>plastique</typeDechet>
+<capacite>100</capacite>
+<status>pleine</status>
+</trashCan>
+<trashCan id="40">
+<lieu>
+<adresse>Sfax centre</adresse>
+<coordonnees>
+<latitude>34.74306</latitude>
+<longitude>10.75555</longitude>
+</coordonnees>
+</lieu>
+<typeDechet>plastique</typeDechet>
+<capacite>100</capacite>
+<status>pleine</status>
+</trashCan>
+<trashCan id="41">
+<lieu>
+<adresse>Sfax centre</adresse>
+<coordonnees>
+<latitude>34.741516</latitude>
+<longitude>10.763319</longitude>
+</coordonnees>
+</lieu>
+<typeDechet>plastique</typeDechet>
+<capacite>100</capacite>
+<status>vide</status>
+</trashCan>
+<trashCan id="42">
+<lieu>
+<adresse>Sfax centre</adresse>
+<coordonnees>
+<latitude>34.742919</latitude>
+<longitude>10.760873</longitude>
+</coordonnees>
+</lieu>
+<typeDechet>plastique</typeDechet>
+<capacite>100</capacite>
+<status>pleine</status>
+</trashCan>
+<trashCan id="43">
+<lieu>
+<adresse>Sfax centre</adresse>
+<coordonnees>
+<latitude>34.744842</latitude>
+<longitude>10.761506</longitude>
+</coordonnees>
+</lieu>
+<typeDechet>plastique</typeDechet>
+<capacite>100</capacite>
+<status>vide</status>
+</trashCan>
+<trashCan id="44">
+<lieu>
+<adresse>Sfax centre</adresse>
+<coordonnees>
+<latitude>34.745406</latitude>
+<longitude>10.763609</longitude>
+</coordonnees>
+</lieu>
+<typeDechet>plastique</typeDechet>
+<capacite>100</capacite>
+<status>pleine</status>
+</trashCan>
+<trashCan id="45">
+<lieu>
+<adresse>Sfax centre</adresse>
+<coordonnees>
+<latitude>34.746756</latitude>
+<longitude>10.761795</longitude>
+</coordonnees>
+</lieu>
+<typeDechet>plastique</typeDechet>
+<capacite>100</capacite>
+<status>vide</status>
+</trashCan>
+<trashCan id="46">
+<lieu>
+<adresse>Sfax centre</adresse>
+<coordonnees>
+<latitude>34.745786</latitude>
+<longitude>10.757063</longitude>
+</coordonnees>
+</lieu>
+<typeDechet>plastique</typeDechet>
+<capacite>100</capacite>
+<status>vide</status>
+</trashCan>
+<trashCan id="47">
+<lieu>
+<adresse>Sfax centre</adresse>
+<coordonnees>
+<latitude>34.746341</latitude>
+<longitude>10.755583</longitude>
+</coordonnees>
+</lieu>
+<typeDechet>plastique</typeDechet>
+<capacite>100</capacite>
+<status>vide</status>
+</trashCan>
+<trashCan id="48">
+<lieu>
+<adresse>Sfax centre</adresse>
+<coordonnees>
+<latitude>34.747709</latitude>
+<longitude>10.75422</longitude>
+</coordonnees>
+</lieu>
+<typeDechet>plastique</typeDechet>
+<capacite>100</capacite>
+<status>pleine</status>
+</trashCan>
+<trashCan id="49">
+<lieu>
+<adresse>Sfax centre</adresse>
+<coordonnees>
+<latitude>34.749234</latitude>
+<longitude>10.753415</longitude>
+</coordonnees>
+</lieu>
+<typeDechet>plastique</typeDechet>
+<capacite>100</capacite>
+<status>vide</status>
+</trashCan>
+<trashCan id="50">
+<lieu>
+<adresse>Sfax centre</adresse>
+<coordonnees>
+<latitude>34.748952</latitude>
+<longitude>10.756312</longitude>
+</coordonnees>
+</lieu>
+<typeDechet>plastique</typeDechet>
+<capacite>100</capacite>
+<status>vide</status>
+</trashCan>
+<trashCan id="51">
+<lieu>
+<adresse>Route Gremda</adresse>
+<coordonnees>
+<latitude>34.749711</latitude>
+<longitude>10.751408</longitude>
+</coordonnees>
+</lieu>
+<typeDechet>plastique</typeDechet>
+<capacite>100</capacite>
+<status>vide</status>
+</trashCan>
+<trashCan id="52">
+<lieu>
+<adresse>Route Gremda</adresse>
+<coordonnees>
+<latitude>34.746615</latitude>
+<longitude>10.752417</longitude>
+</coordonnees>
+</lieu>
+<typeDechet>plastique</typeDechet>
+<capacite>100</capacite>
+<status>vide</status>
+</trashCan>
+<trashCan id="53">
+<lieu>
+<adresse>Route Gremda</adresse>
+<coordonnees>
+<latitude>34.750055</latitude>
+<longitude>10.749853</longitude>
+</coordonnees>
+</lieu>
+<typeDechet>plastique</typeDechet>
+<capacite>100</capacite>
+<status>moitie</status>
+</trashCan>
+<trashCan id="54">
+<lieu>
+<adresse>Sfax centre</adresse>
+<coordonnees>
+<latitude>34.742919</latitude>
+<longitude>10.751999</longitude>
+</coordonnees>
+</lieu>
+<typeDechet>plastique</typeDechet>
+<capacite>100</capacite>
+<status>pleine</status>
+</trashCan>
+<trashCan id="55">
+<lieu>
+<adresse>Sfax centre</adresse>
+<coordonnees>
+<latitude>34.74411</latitude>
+<longitude>10.750014</longitude>
+</coordonnees>
+</lieu>
+<typeDechet>plastique</typeDechet>
+<capacite>100</capacite>
+<status>pleine</status>
+</trashCan>
+<trashCan id="56">
+<lieu>
+<adresse>Route Gremda</adresse>
+<coordonnees>
+<latitude>34.743651</latitude>
+<longitude>10.748286</longitude>
+</coordonnees>
+</lieu>
+<typeDechet>plastique</typeDechet>
+<capacite>100</capacite>
+<status>moitie</status>
+</trashCan>
+<trashCan id="57">
+<lieu>
+<adresse>Sfax centre</adresse>
+<coordonnees>
+<latitude>34.741931</latitude>
+<longitude>10.75099</longitude>
+</coordonnees>
+</lieu>
+<typeDechet>plastique</typeDechet>
+<capacite>100</capacite>
+<status>pleine</status>
+</trashCan>
+<trashCan id="58">
+<lieu>
+<adresse>Route Gremda</adresse>
+<coordonnees>
+<latitude>34.742478</latitude>
+<longitude>10.749284</longitude>
+</coordonnees>
+</lieu>
+<typeDechet>plastique</typeDechet>
+<capacite>100</capacite>
+<status>pleine</status>
+</trashCan>
+<trashCan id="59">
+<lieu>
+<adresse>Route Gremda</adresse>
+<coordonnees>
+<latitude>34.743933</latitude>
+<longitude>10.746022</longitude>
+</coordonnees>
+</lieu>
+<typeDechet>plastique</typeDechet>
+<capacite>100</capacite>
+<status>pleine</status>
+</trashCan>
+<trashCan id="60">
+<lieu>
+<adresse>Route Gremda</adresse>
+<coordonnees>
+<latitude>34.74164</latitude>
+<longitude>10.746183</longitude>
+</coordonnees>
+</lieu>
+<typeDechet>plastique</typeDechet>
+<capacite>100</capacite>
+<status>pleine</status>
+</trashCan>
+<trashCan id="61">
+<lieu>
+<adresse>Route Gremda</adresse>
+<coordonnees>
+<latitude>34.742513</latitude>
+<longitude>10.744337</longitude>
+</coordonnees>
+</lieu>
+<typeDechet>plastique</typeDechet>
+<capacite>100</capacite>
+<status>moitie</status>
+</trashCan>
+<trashCan id="62">
+<lieu>
+<adresse>Route Gremda</adresse>
+<coordonnees>
+<latitude>34.74022</latitude>
+<longitude>10.743683</longitude>
+</coordonnees>
+</lieu>
+<typeDechet>plastique</typeDechet>
+<capacite>100</capacite>
+<status>pleine</status>
+</trashCan>
+<trashCan id="63">
+<lieu>
+<adresse>Route Gremda</adresse>
+<coordonnees>
+<latitude>34.739496</latitude>
+<longitude>10.749423</longitude>
+</coordonnees>
+</lieu>
+<typeDechet>plastique</typeDechet>
+<capacite>100</capacite>
+<status>vide</status>
+</trashCan>
+<trashCan id="64">
+<lieu>
+<adresse>Route Gremda</adresse>
+<coordonnees>
+<latitude>34.740881</latitude>
+<longitude>10.740635</longitude>
+</coordonnees>
+</lieu>
+<typeDechet>plastique</typeDechet>
+<capacite>100</capacite>
+<status>pleine</status>
+</trashCan>
+<trashCan id="65">
+<lieu>
+<adresse>Route Gremda</adresse>
+<coordonnees>
+<latitude>34.737582</latitude>
+<longitude>10.746269</longitude>
+</coordonnees>
+</lieu>
+<typeDechet>plastique</typeDechet>
+<capacite>100</capacite>
+<status>vide</status>
+</trashCan>
+<trashCan id="66">
+<lieu>
+<adresse>Route Gremda</adresse>
+<coordonnees>
+<latitude>34.739611</latitude>
+<longitude>10.741547</longitude>
+</coordonnees>
+</lieu>
+<typeDechet>plastique</typeDechet>
+<capacite>100</capacite>
+<status>vide</status>
+</trashCan>
+<trashCan id="67">
+<lieu>
+<adresse>Route Gremda</adresse>
+<coordonnees>
+<latitude>34.738579</latitude>
+<longitude>10.739798</longitude>
+</coordonnees>
+</lieu>
+<typeDechet>plastique</typeDechet>
+<capacite>100</capacite>
+<status>vide</status>
+</trashCan>
+<trashCan id="68">
+<lieu>
+<adresse>Route Gremda</adresse>
+<coordonnees>
+<latitude>34.735712</latitude>
+<longitude>10.745239</longitude>
+</coordonnees>
+</lieu>
+<typeDechet>plastique</typeDechet>
+<capacite>100</capacite>
+<status>vide</status>
+</trashCan>
+<trashCan id="69">
+<lieu>
+<adresse>Route Gremda</adresse>
+<coordonnees>
+<latitude>34.73588</latitude>
+<longitude>10.738661</longitude>
+</coordonnees>
+</lieu>
+<typeDechet>plastique</typeDechet>
+<capacite>100</capacite>
+<status>pleine</status>
+</trashCan>
+<trashCan id="70">
+<lieu>
+<adresse>Route Gremda</adresse>
+<coordonnees>
+<latitude>34.737273</latitude>
+<longitude>10.738289</longitude>
+</coordonnees>
+</lieu>
+<typeDechet>plastique</typeDechet>
+<capacite>100</capacite>
+<status>moitie</status>
+</trashCan>
+<trashCan id="71">
+<lieu>
+<adresse>Route Gremda</adresse>
+<coordonnees>
+<latitude>34.739663</latitude>
+<longitude>10.737227</longitude>
+</coordonnees>
+</lieu>
+<typeDechet>plastique</typeDechet>
+<capacite>100</capacite>
+<status>vide</status>
+</trashCan>
+<trashCan id="72">
+<lieu>
+<adresse>Route Gremda</adresse>
+<coordonnees>
+<latitude>34.737529</latitude>
+<longitude>10.734308</longitude>
+</coordonnees>
+</lieu>
+<typeDechet>plastique</typeDechet>
+<capacite>100</capacite>
+<status>pleine</status>
+</trashCan>
+<trashCan id="73">
+<lieu>
+<adresse>Route Gremda</adresse>
+<coordonnees>
+<latitude>34.739063</latitude>
+<longitude>10.733987</longitude>
+</coordonnees>
+</lieu>
+<typeDechet>plastique</typeDechet>
+<capacite>100</capacite>
+<status>moitie</status>
+</trashCan>
+<trashCan id="74">
+<lieu>
+<adresse>Route Gremda</adresse>
+<coordonnees>
+<latitude>34.735429</latitude>
+<longitude>10.733225</longitude>
+</coordonnees>
+</lieu>
+<typeDechet>plastique</typeDechet>
+<capacite>100</capacite>
+<status>pleine</status>
+</trashCan>
+<trashCan id="75">
+<lieu>
+<adresse>Route Gremda</adresse>
+<coordonnees>
+<latitude>34.734644</latitude>
+<longitude>10.729297</longitude>
+</coordonnees>
+</lieu>
+<typeDechet>plastique</typeDechet>
+<capacite>100</capacite>
+<status>pleine</status>
+</trashCan>
+<trashCan id="76">
+<lieu>
+<adresse>Route Gremda</adresse>
+<coordonnees>
+<latitude>34.734891</latitude>
+<longitude>10.725971</longitude>
+</coordonnees>
+</lieu>
+<typeDechet>plastique</typeDechet>
+<capacite>100</capacite>
+<status>pleine</status>
+</trashCan>
+<trashCan id="77">
+<lieu>
+<adresse>Route Gremda</adresse>
+<coordonnees>
+<latitude>34.736832</latitude>
+<longitude>10.726025</longitude>
+</coordonnees>
+</lieu>
+<typeDechet>plastique</typeDechet>
+<capacite>100</capacite>
+<status>moitie</status>
+</trashCan>
+<trashCan id="78">
+<lieu>
+<adresse>Route Gremda</adresse>
+<coordonnees>
+<latitude>34.737758</latitude>
+<longitude>10.727902</longitude>
+</coordonnees>
+</lieu>
+<typeDechet>plastique</typeDechet>
+<capacite>100</capacite>
+<status>vide</status>
+</trashCan>
+<trashCan id="79">
+<lieu>
+<adresse>Route Gremda</adresse>
+<coordonnees>
+<latitude>34.739258</latitude>
+<longitude>10.727849</longitude>
+</coordonnees>
+</lieu>
+<typeDechet>plastique</typeDechet>
+<capacite>100</capacite>
+<status>pleine</status>
+</trashCan>
+<trashCan id="80">
+<lieu>
+<adresse>Route Gremda</adresse>
+<coordonnees>
+<latitude>34.741039</latitude>
+<longitude>10.732817</longitude>
+</coordonnees>
+</lieu>
+<typeDechet>plastique</typeDechet>
+<capacite>100</capacite>
+<status>vide</status>
+</trashCan>
+<trashCan id="81">
+<lieu>
+<adresse>Route Gremda</adresse>
+<coordonnees>
+<latitude>34.742124</latitude>
+<longitude>10.735639</longitude>
+</coordonnees>
+</lieu>
+<typeDechet>plastique</typeDechet>
+<capacite>100</capacite>
+<status>pleine</status>
+</trashCan>
+<trashCan id="82">
+<lieu>
+<adresse>Route Gremda</adresse>
+<coordonnees>
+<latitude>34.743242</latitude>
+<longitude>10.73255</longitude>
+</coordonnees>
+</lieu>
+<typeDechet>plastique</typeDechet>
+<capacite>100</capacite>
+<status>vide</status>
+</trashCan>
+<trashCan id="83">
+<lieu>
+<adresse>Route Gremda</adresse>
+<coordonnees>
+<latitude>34.743251</latitude>
+<longitude>10.726488</longitude>
+</coordonnees>
+</lieu>
+<typeDechet>plastique</typeDechet>
+<capacite>100</capacite>
+<status>moitie</status>
+</trashCan>
+<trashCan id="84">
+<lieu>
+<adresse>Route Gremda</adresse>
+<coordonnees>
+<latitude>34.745112</latitude>
+<longitude>10.728269</longitude>
+</coordonnees>
+</lieu>
+<typeDechet>plastique</typeDechet>
+<capacite>100</capacite>
+<status>moitie</status>
+</trashCan>
+<trashCan id="85">
+<lieu>
+<adresse>Route Gremda</adresse>
+<coordonnees>
+<latitude>34.731137</latitude>
+<longitude>10.746294</longitude>
+</coordonnees>
+</lieu>
+<typeDechet>plastique</typeDechet>
+<capacite>100</capacite>
+<status>vide</status>
+</trashCan>
+<trashCan id="86">
+<lieu>
+<adresse>Route Gremda</adresse>
+<coordonnees>
+<latitude>34.731975</latitude>
+<longitude>10.745156</longitude>
+</coordonnees>
+</lieu>
+<typeDechet>plastique</typeDechet>
+<capacite>100</capacite>
+<status>moitie</status>
+</trashCan>
+<trashCan id="87">
+<lieu>
+<adresse>Route Gremda</adresse>
+<coordonnees>
+<latitude>34.73044</latitude>
+<longitude>10.742581</longitude>
+</coordonnees>
+</lieu>
+<typeDechet>plastique</typeDechet>
+<capacite>100</capacite>
+<status>vide</status>
+</trashCan>
+<trashCan id="88">
+<lieu>
+<adresse>Route Gremda</adresse>
+<coordonnees>
+<latitude>34.728517</latitude>
+<longitude>10.738654</longitude>
+</coordonnees>
+</lieu>
+<typeDechet>plastique</typeDechet>
+<capacite>100</capacite>
+<status>pleine</status>
+</trashCan>
+<trashCan id="89">
+<lieu>
+<adresse>Route Gremda</adresse>
+<coordonnees>
+<latitude>34.72917</latitude>
+<longitude>10.743869</longitude>
+</coordonnees>
+</lieu>
+<typeDechet>plastique</typeDechet>
+<capacite>100</capacite>
+<status>pleine</status>
+</trashCan>
+<trashCan id="90">
+<lieu>
+<adresse>Route Gremda</adresse>
+<coordonnees>
+<latitude>34.725157</latitude>
+<longitude>10.739738</longitude>
+</coordonnees>
+</lieu>
+<typeDechet>plastique</typeDechet>
+<capacite>100</capacite>
+<status>vide</status>
+</trashCan>
+<trashCan id="91">
+<lieu>
+<adresse>Route Gremda</adresse>
+<coordonnees>
+<latitude>34.722097</latitude>
+<longitude>10.74257</longitude>
+</coordonnees>
+</lieu>
+<typeDechet>plastique</typeDechet>
+<capacite>100</capacite>
+<status>vide</status>
+</trashCan>
+<trashCan id="92">
+<lieu>
+<adresse>Sfax centre</adresse>
+<coordonnees>
+<latitude>34.726835</latitude>
+<longitude>10.755125</longitude>
+</coordonnees>
+</lieu>
+<typeDechet>plastique</typeDechet>
+<capacite>100</capacite>
+<status>moitie</status>
+</trashCan>
+<trashCan id="93">
+<lieu>
+<adresse>Sfax centre</adresse>
+<coordonnees>
+<latitude>34.721586</latitude>
+<longitude>10.760629</longitude>
+</coordonnees>
+</lieu>
+<typeDechet>plastique</typeDechet>
+<capacite>100</capacite>
+<status>vide</status>
+</trashCan>
+<trashCan id="94">
+<lieu>
+<adresse>Sfax centre</adresse>
+<coordonnees>
+<latitude>34.723888</latitude>
+<longitude>10.762676</longitude>
+</coordonnees>
+</lieu>
+<typeDechet>plastique</typeDechet>
+<capacite>100</capacite>
+<status>moitie</status>
+</trashCan>
+<trashCan id="95">
+<lieu>
+<adresse>Sfax centre</adresse>
+<coordonnees>
+<latitude>34.724232</latitude>
+<longitude>10.766142</longitude>
+</coordonnees>
+</lieu>
+<typeDechet>plastique</typeDechet>
+<capacite>100</capacite>
+<status>vide</status>
+</trashCan>
+<trashCan id="96">
+<lieu>
+<adresse>Sfax centre</adresse>
+<coordonnees>
+<latitude>34.72381</latitude>
+<longitude>10.768909</longitude>
+</coordonnees>
+</lieu>
+<typeDechet>plastique</typeDechet>
+<capacite>100</capacite>
+<status>vide</status>
+</trashCan>
+<trashCan id="97">
+<lieu>
+<adresse>Route Gremda</adresse>
+<coordonnees>
+<latitude>34.731949</latitude>
+<longitude>10.737473</longitude>
+</coordonnees>
+</lieu>
+<typeDechet>plastique</typeDechet>
+<capacite>100</capacite>
+<status>moitie</status>
+</trashCan>
+<trashCan id="98">
+<lieu>
+<adresse>Route Gremda</adresse>
+<coordonnees>
+<latitude>34.732399</latitude>
+<longitude>10.731442</longitude>
+</coordonnees>
+</lieu>
+<typeDechet>plastique</typeDechet>
+<capacite>100</capacite>
+<status>moitie</status>
+</trashCan>
+<trashCan id="99">
+<lieu>
+<adresse>Route Gremda</adresse>
+<coordonnees>
+<latitude>34.731781</latitude>
+<longitude>10.728642</longitude>
+</coordonnees>
+</lieu>
+<typeDechet>plastique</typeDechet>
+<capacite>100</capacite>
+<status>vide</status>
+</trashCan>
+<trashCan id="100">
+<lieu>
+<adresse>Route Gremda</adresse>
+<coordonnees>
+<latitude>34.730193</latitude>
+<longitude>10.726538</longitude>
+</coordonnees>
+</lieu>
+<typeDechet>plastique</typeDechet>
+<capacite>100</capacite>
+<status>moitie</status>
+</trashCan>
 </trashCans>

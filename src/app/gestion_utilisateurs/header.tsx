@@ -12,7 +12,6 @@ export default function Header() {
 
   useEffect(() => {
     setMounted(true);
-    // Only access sessionStorage on the client side
     try {
       const raw = sessionStorage.getItem('user');
       if (raw) {
@@ -46,7 +45,6 @@ export default function Header() {
     }
   };
 
-  // Function to get role display text
   const getRoleDisplay = (role: string) => {
     const roleMap: { [key: string]: string } = {
       'admin': 'Administrateur',
@@ -59,7 +57,6 @@ export default function Header() {
     return roleMap[role] || role;
   };
 
-  // Don't render anything until mounted to avoid hydration mismatch
   if (!mounted) {
     return (
       <div className="header-container">
@@ -190,9 +187,12 @@ export default function Header() {
           background: white;
           border-bottom: 1px solid #e2e8f0;
           box-shadow: 0 2px 12px rgba(0, 0, 0, 0.05);
-          position: sticky;
+          position: fixed;
           top: 0;
-          z-index: 100;
+          left: 0;
+          right: 0;
+          z-index: 2000; /* 🔝 Increased to avoid overlay */
+          width: 100%;
         }
 
         .header {
@@ -203,6 +203,7 @@ export default function Header() {
           display: flex;
           align-items: center;
           justify-content: space-between;
+          background: white;
         }
 
         .header-left {
@@ -336,7 +337,7 @@ export default function Header() {
           top: 92px;
           left: 50%;
           transform: translateX(-50%);
-          z-index: 1000;
+          z-index: 999;
           width: min(640px, 92%);
           animation: slideDown 0.5s ease-out;
         }
@@ -584,107 +585,32 @@ export default function Header() {
           box-shadow: 0 4px 12px rgba(239, 68, 68, 0.3);
         }
 
-        /* Responsive Design */
+        /* Responsive */
         @media (max-width: 768px) {
-          .header {
-            padding: 0 16px;
-            height: 64px;
-          }
-          
-          .logo-icon {
-            width: 40px;
-            height: 40px;
-            font-size: 16px;
-          }
-          
-          .logo-title {
-            font-size: 20px;
-          }
-          
-          .logo-subtitle {
-            font-size: 10px;
-          }
-          
-          .user-name {
-            font-size: 13px;
-          }
-          
-          .user-role {
-            font-size: 11px;
-          }
-          
-          .avatar-image {
-            width: 40px;
-            height: 40px;
-          }
-          
-          .header-user {
-            gap: 12px;
-            padding: 6px 12px;
-          }
-          
-          .welcome-notification {
-            top: 76px;
-          }
-          
-          .welcome-content {
-            padding: 16px;
-            gap: 16px;
-          }
-          
-          .welcome-icon {
-            width: 48px;
-            height: 48px;
-            font-size: 32px;
-          }
-          
-          .welcome-title {
-            font-size: 18px;
-          }
-          
-          .welcome-message {
-            font-size: 14px;
-          }
-          
-          .profile-popup-overlay {
-            padding: 0;
-            align-items: center;
-            justify-content: center;
-          }
-          
-          .profile-popup {
-            width: 90%;
-            max-width: 320px;
-            margin: 16px;
-          }
+          .header { padding: 0 16px; height: 64px; }
+          .logo-icon { width: 40px; height: 40px; font-size: 16px; }
+          .logo-title { font-size: 20px; }
+          .logo-subtitle { font-size: 10px; }
+          .user-name { font-size: 13px; }
+          .user-role { font-size: 11px; }
+          .avatar-image { width: 40px; height: 40px; }
+          .header-user { gap: 12px; padding: 6px 12px; }
+          .welcome-notification { top: 76px; }
+          .welcome-content { padding: 16px; gap: 16px; }
+          .welcome-icon { width: 48px; height: 48px; font-size: 32px; }
+          .welcome-title { font-size: 18px; }
+          .welcome-message { font-size: 14px; }
+          .profile-popup-overlay { padding: 0; align-items: center; justify-content: center; }
+          .profile-popup { width: 90%; max-width: 320px; margin: 16px; }
         }
 
         @media (max-width: 480px) {
-          .logo-subtitle {
-            display: none;
-          }
-          
-          .user-info {
-            display: none;
-          }
-          
-          .header-user {
-            padding: 8px;
-          }
-          
-          .popup-header {
-            flex-direction: column;
-            text-align: center;
-            gap: 16px;
-          }
-          
-          .popup-actions {
-            flex-direction: column;
-          }
-          
-          .btn {
-            width: 100%;
-          }
+          .logo-subtitle { display: none; }
+          .user-info { display: none; }
+          .header-user { padding: 8px; }
+          .popup-header { flex-direction: column; text-align: center; gap: 16px; }
+          .popup-actions { flex-direction: column; }
+          .btn { width: 100%; }
         }
       `}</style>
     </>

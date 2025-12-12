@@ -239,14 +239,28 @@ export default function TrashMapChef() {
             cans = myTournees.flatMap((t: any) => t.trashCans || []);
             
             const travauxZones = myTournees.map((t: any) => t.zone).filter(Boolean);
-            if (travauxZones.length > 0) {
-              const travauxRes = await fetch('/api/travaux');
-              if (travauxRes.ok) {
-                const allTravaux = await travauxRes.json();
-                const filteredTravaux = allTravaux.filter((t: any) => 
-                  travauxZones.some((zone: string) => zone.toLowerCase() === t.adresse.toLowerCase())
-                );
+            
+            // Charger tous les travaux
+            const travauxRes = await fetch('/api/travaux');
+            if (travauxRes.ok) {
+              const allTravaux = await travauxRes.json();
+              
+              // Si le chef a des tournées, filtrer les travaux par zone
+              // Sinon, afficher tous les travaux
+              if (travauxZones.length > 0) {
+                const filteredTravaux = allTravaux.filter((t: any) => {
+                  const travauxAdresse = (t.adresse || '').toLowerCase().trim();
+                  return travauxZones.some((zone: string) => {
+                    const zoneNorm = zone.toLowerCase().trim();
+                    // Match exact ou si l'un contient l'autre
+                    return zoneNorm === travauxAdresse || 
+                           travauxAdresse.includes(zoneNorm) || 
+                           zoneNorm.includes(travauxAdresse);
+                  });
+                });
                 setTravaux(filteredTravaux);
+              } else {
+                setTravaux(allTravaux);
               }
             }
           }
@@ -379,7 +393,7 @@ export default function TrashMapChef() {
       container.style.top = '20px';
       container.style.right = '20px';
       container.style.left = 'auto';
-      container.style.background = 'linear-gradient(135deg, rgba(255, 255, 255, 0.95) 0%, rgba(240, 253, 244, 0.95) 100%)';
+      container.style.background = 'linear-gradient(135deg, rgba(255, 255, 255, 0.95) 0%, rgba(255, 255, 255, 0.95) 100%)';
       container.style.padding = '18px';
       container.style.borderRadius = '14px';
       container.style.boxShadow = '0 15px 35px rgba(34, 197, 94, 0.15)';
@@ -463,7 +477,7 @@ export default function TrashMapChef() {
 
   const getCurrentLocationIcon = (leaflet: any) =>
     leaflet.icon({
-      iconUrl: '/icons/location-green.png',
+      iconUrl: '/icons/location-red.png',
       iconSize: [40, 40], // Kept larger for visibility
       iconAnchor: [20, 40],
       popupAnchor: [0, -40],
@@ -472,7 +486,7 @@ export default function TrashMapChef() {
 
   const getDangerIcon = (leaflet: any) => {
     const icon = leaflet.icon({
-      iconUrl: '/icons/danger-green.png',
+      iconUrl: '/icons/danger.png',
       iconSize: [28, 28], // Fixed size without floating animation
       iconAnchor: [14, 28],
       popupAnchor: [0, -28],
@@ -489,7 +503,7 @@ export default function TrashMapChef() {
         display: 'flex', 
         alignItems: 'center', 
         justifyContent: 'center',
-        background: 'linear-gradient(135deg, #d1fae5 0%, #a7f3d0 50%, #6ee7b7 100%)'
+        background: 'linear-gradient(135deg, #d1fae5 0%, #ffffffff 50%, #ffffffff 100%)'
       }}>
         <div style={{ 
           textAlign: 'center',
@@ -607,16 +621,16 @@ export default function TrashMapChef() {
     <div style={{ 
       position: 'relative',
       minHeight: '100vh',
-      background: 'linear-gradient(135deg, #f0fdf4 0%, #dcfce7 100%)'
+      background: 'linear-gradient(135deg, #f0fdf4 0%, #f0f0f0ff 100%)'
     }}>
       {/* Eco Header */}
       <div style={{
         padding: '20px',
-        background: 'linear-gradient(135deg, rgba(255, 255, 255, 0.95) 0%, rgba(240, 253, 244, 0.95) 100%)',
+        paddingTop: '100px',
+        background: 'linear-gradient(135deg, rgba(255, 255, 255, 0.95) 0%, rgba(255, 255, 255, 0.95) 100%)',
         borderBottom: '2px solid #dcfce7',
-        boxShadow: '0 4px 20px rgba(34, 197, 94, 0.1)',
+        boxShadow: '0 4px 20px rgba(255, 255, 255, 0.1)',
         backdropFilter: 'blur(10px)',
-        position: 'sticky',
         top: 0,
         zIndex: 1000
       }}>
@@ -672,7 +686,7 @@ export default function TrashMapChef() {
                 borderRadius: '12px',
                 fontWeight: '700',
                 fontSize: '14px',
-                border: '2px solid rgba(34, 197, 94, 0.3)',
+                border: '2px solid rgba(255, 255, 255, 0.3)',
                 backdropFilter: 'blur(8px)'
               }}>
                 <span style={{ marginRight: '6px' }}>✓</span>
@@ -790,7 +804,7 @@ export default function TrashMapChef() {
               borderRadius: '16px',
               padding: '18px',
               border: '2px solid #bbf7d0',
-              boxShadow: '0 10px 30px rgba(34, 197, 94, 0.15)',
+
               backdropFilter: 'blur(8px)',
               flex: 1
             }}>
@@ -959,7 +973,7 @@ export default function TrashMapChef() {
                   <div style={{
                     display: 'inline-block',
                     padding: '6px 12px',
-                    background: 'linear-gradient(135deg, #dcfce7, #bbf7d0)',
+                    background: 'linear-gradient(135deg, #ffffffff, #b5b5b5ff)',
                     borderRadius: '20px',
                     fontSize: '11px',
                     color: '#15803d',
@@ -1031,7 +1045,7 @@ export default function TrashMapChef() {
                           ? 'linear-gradient(135deg, #fee2e2, #fecaca)' 
                           : can.status === 'moitie' 
                           ? 'linear-gradient(135deg, #fed7aa, #fdba74)' 
-                          : 'linear-gradient(135deg, #bbf7d0, #86efac)',
+                          : 'linear-gradient(135deg, #bbf7d0, #f9f9f9ff)',
                         borderRadius: '10px',
                         borderLeft: `4px solid ${
                           can.status === 'pleine' ? '#dc2626' : 
