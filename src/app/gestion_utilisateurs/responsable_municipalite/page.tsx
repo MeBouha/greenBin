@@ -1,5 +1,6 @@
 "use client"
 import { useState, useEffect } from 'react';
+import { useRouter } from 'next/navigation';
 import "./globals.css";
 
 // Import des composants
@@ -91,10 +92,14 @@ export interface Rapport {
   date: string;
   tourneeId: string;
   chefTourneId: string;
+  chefTourneName?: string;
   ouvriers: Ouvrier[];
   dechetsCollecte: DechetCollecte[];
   vehiculeMatricule?: string;
   tourneeZone?: string;
+  kilometrage?: string;
+  co2Emis?: string;
+  carburantConsomme?: string;
 }
 
 export interface Notification {
@@ -131,6 +136,7 @@ export interface NotificationFormData {
 }
 
 export default function RespMPage() {
+  const router = useRouter();
   const [activeSection, setActiveSection] = useState('consulter-reclamations');
   const [reclamations, setReclamations] = useState<Reclamation[]>([]);
   const [trashCans, setTrashCans] = useState<TrashCan[]>([]);
@@ -162,6 +168,8 @@ export default function RespMPage() {
   const [selectedNotification, setSelectedNotification] = useState<Notification | null>(null);
   const [isAddingVehicule, setIsAddingVehicule] = useState(false);
   const [isAddingTournee, setIsAddingTournee] = useState(false);
+  const [currentUser, setCurrentUser] = useState<any>(null);
+  const [mounted, setMounted] = useState(false);
 
   const menuItems = [
     { id: 'consulter-reclamations', label: 'Consulter les réclamations' },
@@ -172,6 +180,57 @@ export default function RespMPage() {
     { id: 'consulter-rapports', label: 'Consulter les rapports' },
     { id: 'envoyer-notification', label: 'Envoyer une notification' },
   ];
+
+  // Check authentication on mount
+  useEffect(() => {
+    setMounted(true);
+    try {
+      const raw = sessionStorage.getItem('user');
+      if (raw) {
+        const userData = JSON.parse(raw);
+        setCurrentUser(userData);
+        
+        // Check if user has permission to access this page
+        const allowedRoles = ['responsable municipalite', 'admin'];
+        if (!allowedRoles.includes(userData.role?.toLowerCase())) {
+          router.push('/gestion_utilisateurs');
+        }
+      } else {
+        // No user logged in, redirect to login
+        router.push('/gestion_utilisateurs');
+      }
+    } catch (e) {
+      console.error('Error reading user from sessionStorage:', e);
+      router.push('/gestion_utilisateurs');
+    }
+  }, [router]);
+
+  // Only fetch data if user is authenticated
+  useEffect(() => {
+    if (!currentUser) return;
+
+    const initializeData = async () => {
+      try {
+        // First fetch chauffeurs to get the options
+        const chauffeurResult = await fetchChauffeurs();
+        
+        // Then fetch other data in parallel
+        await Promise.all([
+          fetchReclamations(),
+          fetchTrashCans(),
+          fetchVehicules(chauffeurResult.chauffeurs),
+          fetchTournees(),
+          fetchRapports(),
+          fetchNotifications(),
+          fetchUsers()
+        ]);
+      } catch (error) {
+        console.error('Error initializing data:', error);
+      }
+    };
+
+    initializeData();
+  }, [currentUser]);
 
   // Fetch users from users.xml
   const fetchUsers = async () => {
@@ -312,10 +371,17 @@ export default function RespMPage() {
     }
   };
 
-  const fetchVehicules = async (optionsOverride?: ChauffeurOption[]) => {
+  const fetchVehicules = async (chauffeurOpts?: ChauffeurOption[]) => {
     try {
       setLoadingVehicules(true);
-      const options = optionsOverride ?? chauffeurOptions;
+      
+      // Use provided options or fetch new ones if not provided
+      let options = chauffeurOpts;
+      if (!options || options.length === 0) {
+        const chauffeurResult = await fetchChauffeurs();
+        options = chauffeurResult.chauffeurs;
+      }
+      
       const response = await fetch(`/data/vehicule.xml?t=${Date.now()}`);
       if (!response.ok) throw new Error(`HTTP error! status: ${response.status}`);
       
@@ -334,9 +400,18 @@ export default function RespMPage() {
         const matricule = node.getElementsByTagName('matricule')[0];
         const chauffeur = node.getElementsByTagName('chauffeur')[0];
         const disponibilite = node.getElementsByTagName('disponibilite')[0];
+        
+        // Get chauffeur ID from the chauffeur element's id attribute
         const chauffeurId = chauffeur ? chauffeur.getAttribute('id') || '' : '';
-        const chauffeurObj = options.find((c) => c.id === chauffeurId);
-        const chauffeurName = chauffeurObj ? `${chauffeurObj.prenom} ${chauffeurObj.nom}`.trim() : (chauffeur ? chauffeur.textContent || '' : 'N/A');
+        
+        // Find chauffeur name from options
+        let chauffeurName = 'N/A';
+        if (chauffeurId && options && Array.isArray(options)) {
+          const chauffeurObj = options.find((c) => c.id === chauffeurId);
+          chauffeurName = chauffeurObj ? `${chauffeurObj.prenom} ${chauffeurObj.nom}`.trim() : 'N/A';
+        } else if (chauffeur && chauffeur.textContent) {
+          chauffeurName = chauffeur.textContent.trim();
+        }
         
         vehiculesData.push({
           id: node.getAttribute('id') || '',
@@ -388,12 +463,22 @@ export default function RespMPage() {
         }
 
         const vehiculeId = vehicule ? vehicule.getAttribute('id') || '' : 'N/A';
-        const vehiculeMatricule = (vehiculesList ?? vehicules).find(v => v.id === vehiculeId)?.matricule || 'N/A';
-        const ouvrierLookup = ouvriersList ?? ouvrierOptions;
-        const ouvrierNames = ouvrierIds.map(id => {
-          const found = ouvrierLookup.find(o => o.id === id);
-          return found?.name || `Ouvrier ${id}`;
-        });
+        const currentVehicules = vehiculesList || vehicules;
+        const vehiculeMatricule = currentVehicules.find(v => v.id === vehiculeId)?.matricule || 'N/A';
+        
+        // Get ouvrier names from users.xml instead of just IDs
+        const ouvrierNames = await Promise.all(
+          ouvrierIds.map(async (id) => {
+            const user = users.find(u => u.id === id);
+            if (user) {
+              return `${user.prenom} ${user.nom}`.trim();
+            } else {
+              // Fallback to fetching from users.xml
+              const userInfo = await fetchUserById(id);
+              return userInfo ? `${userInfo.prenom} ${userInfo.nom}`.trim() : `Ouvrier ${id}`;
+            }
+          })
+        );
         
         tourneesData.push({
           id: node.getAttribute('id') || '',
@@ -428,6 +513,7 @@ export default function RespMPage() {
       const chauffeurList: ChauffeurOption[] = [];
       const ouvrierList: UserOption[] = [];
       const allOuvrierList: UserOption[] = [];
+      
       for (let i = 0; i < userNodes.length; i++) {
         const node = userNodes[i];
         const role = node.getElementsByTagName('role')[0];
@@ -437,11 +523,13 @@ export default function RespMPage() {
         const id = node.getAttribute('id') || '';
         const roleText = role ? (role.textContent || '').toLowerCase() : '';
         const dispoText = dispo ? (dispo.textContent || '').toLowerCase() : '';
-        if (roleText === 'chef trajet' || roleText === 'chef de tournee') {
+        
+        if (roleText.includes('chef') || roleText.includes('chauffeur')) {
           const nomText = nom?.textContent || '';
           const prenomText = prenom?.textContent || '';
           chauffeurList.push({ id, nom: nomText, prenom: prenomText });
         }
+        
         if (roleText === 'ouvrier') {
           const fullName = `${prenom?.textContent || ''} ${nom?.textContent || ''}`.trim();
           allOuvrierList.push({ id, name: fullName || `Ouvrier ${id}` });
@@ -450,92 +538,288 @@ export default function RespMPage() {
           }
         }
       }
+      
       setChauffeurOptions(chauffeurList);
       setOuvrierOptions(ouvrierList);
       setAllOuvrierOptions(allOuvrierList);
-      return { chauffeurs: chauffeurList, ouvriers: ouvrierList, allOuvriers: allOuvrierList };
+      
+      return { 
+        chauffeurs: chauffeurList, 
+        ouvriers: ouvrierList, 
+        allOuvriers: allOuvrierList 
+      };
     } catch (error) {
       console.error('Error fetching chauffeurs:', error);
       setOuvrierOptions([]);
       setAllOuvrierOptions([]);
-      return { chauffeurs: [] as ChauffeurOption[], ouvriers: [] as UserOption[], allOuvriers: [] as UserOption[] };
+      return { 
+        chauffeurs: [] as ChauffeurOption[], 
+        ouvriers: [] as UserOption[], 
+        allOuvriers: [] as UserOption[] 
+      };
+    }
+  };
+
+  // Helper function to fetch user by ID
+  const fetchUserById = async (userId: string): Promise<{ id: string; nom: string; prenom: string } | null> => {
+    try {
+      const response = await fetch(`/data/users.xml?t=${Date.now()}`);
+      if (!response.ok) return null;
+      
+      const xmlText = await response.text();
+      const parser = new DOMParser();
+      const xmlDoc = parser.parseFromString(xmlText, "text/xml");
+      
+      const userNodes = xmlDoc.getElementsByTagName('user');
+      for (let i = 0; i < userNodes.length; i++) {
+        const node = userNodes[i];
+        const id = node.getAttribute('id');
+        if (id === userId) {
+          const nom = node.getElementsByTagName('nom')[0]?.textContent || '';
+          const prenom = node.getElementsByTagName('prenom')[0]?.textContent || '';
+          return { id, nom, prenom };
+        }
+      }
+      return null;
+    } catch (error) {
+      console.error('Error fetching user by ID:', error);
+      return null;
+    }
+  };
+
+  // Helper function to fetch tournee data for a specific ID
+  const fetchTourneeById = async (tourneeId: string) => {
+    try {
+      const response = await fetch(`/data/tournee.xml?t=${Date.now()}`);
+      if (!response.ok) return null;
+      
+      const xmlText = await response.text();
+      const parser = new DOMParser();
+      const xmlDoc = parser.parseFromString(xmlText, "text/xml");
+      
+      const tourneeNodes = xmlDoc.getElementsByTagName('tournee');
+      for (let i = 0; i < tourneeNodes.length; i++) {
+        const node = tourneeNodes[i];
+        const id = node.getAttribute('id');
+        if (id === tourneeId) {
+          const zone = node.getElementsByTagName('zone')[0]?.textContent || 'N/A';
+          const vehicule = node.getElementsByTagName('vehicule')[0];
+          const vehiculeId = vehicule ? vehicule.getAttribute('id') || '' : '';
+          
+          return { zone, vehiculeId };
+        }
+      }
+      return null;
+    } catch (error) {
+      console.error('Error fetching tournee by ID:', error);
+      return null;
+    }
+  };
+
+  // Helper function to fetch vehicule data for a specific ID
+  const fetchVehiculeById = async (vehiculeId: string) => {
+    try {
+      const response = await fetch(`/data/vehicule.xml?t=${Date.now()}`);
+      if (!response.ok) return null;
+      
+      const xmlText = await response.text();
+      const parser = new DOMParser();
+      const xmlDoc = parser.parseFromString(xmlText, "text/xml");
+      
+      const vehiculeNodes = xmlDoc.getElementsByTagName('vehicule');
+      for (let i = 0; i < vehiculeNodes.length; i++) {
+        const node = vehiculeNodes[i];
+        const id = node.getAttribute('id');
+        if (id === vehiculeId) {
+          const matricule = node.getElementsByTagName('matricule')[0]?.textContent || 'N/A';
+          return { matricule };
+        }
+      }
+      return null;
+    } catch (error) {
+      console.error('Error fetching vehicule by ID:', error);
+      return null;
     }
   };
 
   const fetchRapports = async () => {
     try {
       setLoadingRapports(true);
-      const response = await fetch(`/data/rapports.xml?t=${Date.now()}`);
-      if (!response.ok) {
+      
+      console.log('Fetching rapports...');
+      
+      // Try to fetch from the API first
+      try {
+        const apiResponse = await fetch('/api/rapports?format=detailed');
+        if (apiResponse.ok) {
+          const apiData = await apiResponse.json();
+          console.log('API rapports data:', apiData);
+          
+          if (Array.isArray(apiData) && apiData.length > 0) {
+            // Convert API data to our Rapport interface
+            const formattedRapports: Rapport[] = await Promise.all(
+              apiData.map(async (rapport: any) => {
+                // Get chef information
+                const chefId = rapport.chef?.id?.toString() || '';
+                let chefName = 'N/A';
+                
+                if (chefId) {
+                  const chefInfo = await fetchUserById(chefId);
+                  if (chefInfo) {
+                    chefName = `${chefInfo.prenom} ${chefInfo.nom}`.trim();
+                  }
+                }
+                
+                // Get tournee and vehicule info
+                const tourneeId = rapport.tourneeId?.toString() || '';
+                let tourneeZone = 'N/A';
+                let vehiculeMatricule = 'N/A';
+                
+                if (tourneeId) {
+                  const tourneeInfo = await fetchTourneeById(tourneeId);
+                  if (tourneeInfo) {
+                    tourneeZone = tourneeInfo.zone;
+                    
+                    // Get vehicule info
+                    if (tourneeInfo.vehiculeId) {
+                      const vehiculeInfo = await fetchVehiculeById(tourneeInfo.vehiculeId);
+                      if (vehiculeInfo) {
+                        vehiculeMatricule = vehiculeInfo.matricule;
+                      }
+                    }
+                  }
+                }
+                
+                return {
+                  id: rapport.id.toString(),
+                  date: rapport.date,
+                  tourneeId: tourneeId,
+                  chefTourneId: chefId || 'N/A',
+                  chefTourneName: chefName,
+                  ouvriers: [...(rapport.presentEmployees || []), ...(rapport.absentEmployees || [])]
+                    .filter((emp: any) => emp)
+                    .map((emp: any) => ({
+                      id: emp.id?.toString() || 'N/A',
+                      nom: emp.nom || 'N/A',
+                      prenom: emp.prenom || 'N/A',
+                      status: emp.status || 'present'
+                    })),
+                  dechetsCollecte: (rapport.selectedTrashcans || []).map((tc: any) => ({
+                    id: tc.id.toString(),
+                    quantite: tc.quantite?.toString() || '0'
+                  })),
+                  vehiculeMatricule,
+                  tourneeZone,
+                  kilometrage: rapport.kilometrage?.toString(),
+                  co2Emis: rapport.co2Emis?.toString(),
+                  carburantConsomme: rapport.carburantConsomme?.toString()
+                };
+              })
+            );
+            
+            setRapports(formattedRapports);
+            return;
+          }
+        }
+      } catch (apiError) {
+        console.warn('API fetch failed, trying direct XML:', apiError);
+      }
+      
+      // Fallback to direct XML parsing
+      console.log('Falling back to XML parsing...');
+      
+      // Fetch all required data
+      const rapportRes = await fetch(`/data/rapports.xml?t=${Date.now()}`);
+      
+      if (!rapportRes.ok) {
+        console.error('Failed to fetch rapports:', rapportRes.status);
         setRapports([]);
         return;
       }
       
-      const xmlText = await response.text();
+      const xmlText = await rapportRes.text();
+      console.log('XML content length:', xmlText.length);
+      
       const parser = new DOMParser();
       const xmlDoc = parser.parseFromString(xmlText, "text/xml");
+      
       const parseError = xmlDoc.getElementsByTagName("parsererror");
-      if (parseError.length > 0) throw new Error('Error parsing XML');
-
-      // Build tournee map
-      const tourneeMap = new Map<string, { zone: string; vehiculeId: string }>();
-      if (tourneeRes.ok) {
-        const tourXml = await tourneeRes.text();
-        const tourDoc = parser.parseFromString(tourXml, "text/xml");
-        const tourNodes = tourDoc.getElementsByTagName('tournee');
-        for (let i = 0; i < tourNodes.length; i++) {
-          const tNode = tourNodes[i];
-          const id = tNode.getAttribute('id') || '';
-          const zone = tNode.getElementsByTagName('zone')[0]?.textContent || 'N/A';
-          const vehiculeId = tNode.getElementsByTagName('vehicule')[0]?.getAttribute('id') || '';
-          if (id) tourneeMap.set(id, { zone, vehiculeId });
+      if (parseError.length > 0) {
+        console.error('Error parsing XML');
+        if (parseError[0].textContent) {
+          console.error('Parse error:', parseError[0].textContent);
         }
-      }
-
-      // Build vehicule map
-      const vehiculeMap = new Map<string, string>();
-      if (vehiculeRes.ok) {
-        const vehXml = await vehiculeRes.text();
-        const vehDoc = parser.parseFromString(vehXml, "text/xml");
-        const vehNodes = vehDoc.getElementsByTagName('vehicule');
-        for (let i = 0; i < vehNodes.length; i++) {
-          const vNode = vehNodes[i];
-          const id = vNode.getAttribute('id') || '';
-          const matricule = vNode.getElementsByTagName('matricule')[0]?.textContent || '';
-          if (id) vehiculeMap.set(id, matricule);
-        }
+        throw new Error('Error parsing XML');
       }
 
       const rapportNodes = xmlDoc.getElementsByTagName('rapport');
+      console.log('Found rapport nodes:', rapportNodes.length);
+      
       const rapportsData: Rapport[] = [];
 
       for (let i = 0; i < rapportNodes.length; i++) {
         const node = rapportNodes[i];
-        const date = node.getElementsByTagName('date')[0];
+        const id = node.getAttribute('id') || '';
+        
+        console.log(`Processing rapport ${id}...`);
+        
+        // Get basic information
+        const date = node.getElementsByTagName('date')[0]?.textContent || 'N/A';
         const tournee = node.getElementsByTagName('tournee')[0];
+        const tourneeId = tournee ? tournee.getAttribute('id') || '' : 'N/A';
+        
+        // Get employees section
         const employees = node.getElementsByTagName('employees')[0];
-        const dechetsCollecte = node.getElementsByTagName('dechetsCollecte')[0];
-
-        const chefTourne = employees ? employees.getElementsByTagName('chefTourne')[0] : null;
+        let chefTourneId = 'N/A';
+        let chefTourneName = 'N/A';
+        
+        if (employees) {
+          const chefTourne = employees.getElementsByTagName('chefTourne')[0];
+          if (chefTourne) {
+            const chefId = chefTourne.getAttribute('id');
+            // Only set chefTourneId if it's not empty
+            if (chefId && chefId.trim() !== '') {
+              chefTourneId = chefId;
+              
+              // Get chef name
+              const chefInfo = await fetchUserById(chefId);
+              if (chefInfo) {
+                chefTourneName = `${chefInfo.prenom} ${chefInfo.nom}`.trim();
+              }
+            } else if (chefTourne.textContent && chefTourne.textContent.trim() !== '') {
+              // Sometimes chefTourne might have text content instead of id attribute
+              chefTourneId = chefTourne.textContent.trim();
+              chefTourneName = chefTourne.textContent.trim();
+            }
+          }
+        }
+        
+        // Parse ouvriers
         const ouvriers = employees ? employees.getElementsByTagName('ouvriers')[0] : null;
-
         const ouvrierElements = ouvriers ? ouvriers.getElementsByTagName('ouvrier') : [];
+        console.log(`Rapport ${id} has ${ouvrierElements.length} ouvriers`);
+        
         const ouvriersData: Ouvrier[] = [];
         for (let j = 0; j < ouvrierElements.length; j++) {
           const ouvrier = ouvrierElements[j];
+          const ouvrierId = ouvrier.getAttribute('id') || '';
           const nom = ouvrier.getElementsByTagName('nom')[0];
           const prenom = ouvrier.getElementsByTagName('prenom')[0];
           const status = ouvrier.getElementsByTagName('status')[0];
 
           ouvriersData.push({
-            id: ouvrier.getAttribute('id') || '',
+            id: ouvrierId,
             nom: nom ? nom.textContent || '' : 'N/A',
             prenom: prenom ? prenom.textContent || '' : 'N/A',
             status: status ? status.textContent || '' : 'N/A'
           });
         }
 
+        // Get dechets collecte
+        const dechetsCollecte = node.getElementsByTagName('dechetsCollecte')[0];
         const trashCanElements = dechetsCollecte ? dechetsCollecte.getElementsByTagName('trashCan') : [];
+        console.log(`Rapport ${id} has ${trashCanElements.length} trash cans`);
+        
         const dechetsData: DechetCollecte[] = [];
         for (let j = 0; j < trashCanElements.length; j++) {
           const trashCan = trashCanElements[j];
@@ -545,23 +829,52 @@ export default function RespMPage() {
           });
         }
 
-        const tourneeId = tournee ? tournee.getAttribute('id') || '' : 'N/A';
-        const tourInfo = tourneeMap.get(tourneeId);
-        const vehMat = tourInfo ? vehiculeMap.get(tourInfo.vehiculeId) || 'N/A' : 'N/A';
-        const zone = tourInfo?.zone || 'N/A';
+        // Get additional metrics
+        const kilometrage = node.getElementsByTagName('kilometrage')[0]?.textContent;
+        const co2Emis = node.getElementsByTagName('co2Emis')[0]?.textContent;
+        const carburantConsomme = node.getElementsByTagName('carburantConsomme')[0]?.textContent;
 
-        rapportsData.push({
-          id: node.getAttribute('id') || '',
-          date: date ? date.textContent || '' : 'N/A',
+        // Get tournee and vehicule info
+        let tourneeZone = 'N/A';
+        let vehiculeMatricule = 'N/A';
+        
+        if (tourneeId) {
+          const tourneeInfo = await fetchTourneeById(tourneeId);
+          if (tourneeInfo) {
+            tourneeZone = tourneeInfo.zone;
+            
+            // Get vehicule info
+            if (tourneeInfo.vehiculeId) {
+              const vehiculeInfo = await fetchVehiculeById(tourneeInfo.vehiculeId);
+              if (vehiculeInfo) {
+                vehiculeMatricule = vehiculeInfo.matricule;
+              }
+            }
+          }
+        }
+
+        // Build rapport object
+        const rapport: Rapport = {
+          id,
+          date,
           tourneeId,
-          chefTourneId: chefTourne ? chefTourne.getAttribute('id') || '' : 'N/A',
+          chefTourneId,
+          chefTourneName,
           ouvriers: ouvriersData,
           dechetsCollecte: dechetsData,
-          vehiculeMatricule: vehMat,
-          tourneeZone: zone
-        });
+          vehiculeMatricule,
+          tourneeZone
+        };
+
+        // Add optional fields if they exist
+        if (kilometrage) rapport.kilometrage = kilometrage;
+        if (co2Emis) rapport.co2Emis = co2Emis;
+        if (carburantConsomme) rapport.carburantConsomme = carburantConsomme;
+
+        rapportsData.push(rapport);
       }
 
+      console.log('Processed rapports:', rapportsData);
       setRapports(rapportsData);
     } catch (error) {
       console.error('Error fetching rapports:', error);
@@ -656,16 +969,7 @@ export default function RespMPage() {
     }
   };
 
-  useEffect(() => {
-    fetchReclamations();
-    fetchTrashCans();
-    fetchChauffeurs().then((options) => fetchVehicules(options));
-    fetchTournees();
-    fetchRapports();
-    fetchNotifications();
-  }, []);
-
-  // Delete functions remain the same
+  // Delete functions
   const deleteReclamation = async (reclamationId: string) => {
     if (!confirm('Êtes-vous sûr de vouloir supprimer cette réclamation ?')) return;
 
@@ -1071,6 +1375,40 @@ export default function RespMPage() {
         return <div>Sélectionnez une section</div>;
     }
   };
+
+  // Don't render anything until mounted to avoid hydration mismatch
+  if (!mounted) {
+    return (
+      <div className="container">
+        <div className="layout">
+          <main className="main-content">
+            <div className="content-area">
+              <div className="loading-spinner">
+                Chargement...
+              </div>
+            </div>
+          </main>
+        </div>
+      </div>
+    );
+  }
+
+  // If not authenticated, show loading or redirect
+  if (!currentUser) {
+    return (
+      <div className="container">
+        <div className="layout">
+          <main className="main-content">
+            <div className="content-area">
+              <div className="loading-spinner">
+                Redirection vers la page de connexion...
+              </div>
+            </div>
+          </main>
+        </div>
+      </div>
+    );
+  }
 
   return (
     <>

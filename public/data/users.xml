@@ -45,8 +45,8 @@
     <disponibilite>disponible</disponibilite>
   </user>
   <user id="5">
-    <nom>user</nom>
-    <prenom>lastname</prenom>
+    <nom>Bouhamed</nom>
+    <prenom>Ahmed</prenom>
     <role>ouvrier</role>
     <compte>
       <login>ouvrier2</login>

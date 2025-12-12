@@ -9,13 +9,7 @@ const Welcome: React.FC<WelcomeProps> = ({ onSelectService }) => {
     <div className="welcome-container">
       <div className="welcome-content">
         <div className="welcome-header">
-          <div className="welcome-brand">
-            <div className="welcome-logo">GB</div>
-            <div className="welcome-brand-text">
-              <h1 className="welcome-title">GreenBin</h1>
-              <p className="welcome-subtitle">Municipal Services Platform</p>
-            </div>
-          </div>
+
           
           <div className="welcome-hero">
             <h2 className="welcome-hero-title">

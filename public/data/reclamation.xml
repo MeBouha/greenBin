@@ -1,12 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <reclamations xmlns:xs="http://www.w3.org/2001/XMLSchema-instance" xs:noNamespaceSchemaLocation="greenBin.xsd">
-  <reclamation id="3">
-    <citoyen id="3">Pierre Lambert</citoyen>
-    <contenu>Heure de collecte non respectée, le camion passe toujours avec 2 heures de retard</contenu>
-    <date>2024-01-13</date>
-    <status>resolved</status>
-    <type>Horaire</type>
-  </reclamation>
   <reclamation id="4">
     <citoyen id="4">Sophie Bernard</citoyen>
     <contenu>Déchets non collectés malgré le dépôt aux heures réglementaires</contenu>
